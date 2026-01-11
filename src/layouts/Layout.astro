@@ -1,4 +1,5 @@
 ---
+import { ViewTransitions } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
@@ -22,6 +23,7 @@ const { title, description = 'NeoMed - Clínica Integral de Salud. Especialistas
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <meta name="generator" content={Astro.generator} />
     <title>{title} | NeoMed</title>
+    <ViewTransitions />
   </head>
   <body class="bg-white text-accent font-sans">
     <Header />
@@ -51,5 +53,68 @@ const { title, description = 'NeoMed - Clínica Integral de Salud. Especialistas
 
   main {
     flex: 1;
+  }
+
+  /* Animaciones para enlaces */
+  a {
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  a:active {
+    transform: scale(0.97);
+  }
+
+  /* Efecto ripple en botones */
+  .btn-ripple {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-ripple::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+  }
+
+  .btn-ripple:active::after {
+    width: 300px;
+    height: 300px;
+  }
+
+  /* Transiciones de página personalizadas */
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes fade-out {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+
+  @keyframes slide-from-right {
+    from { transform: translateX(30px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+
+  @keyframes slide-to-left {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(-30px); opacity: 0; }
+  }
+
+  ::view-transition-old(root) {
+    animation: 0.3s ease-out both fade-out, 0.3s ease-out both slide-to-left;
+  }
+
+  ::view-transition-new(root) {
+    animation: 0.3s ease-out both fade-in, 0.3s ease-out both slide-from-right;
   }
 </style>
