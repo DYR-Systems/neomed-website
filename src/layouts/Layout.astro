@@ -75,6 +75,11 @@ const { title, description = 'NeoMed - Clínica Integral de Salud. Especialistas
     flex: 1;
   }
 
+  /* Compensar header sticky al hacer scroll a anclas */
+  section[id] {
+    scroll-margin-top: 100px;
+  }
+
   /* Animaciones para enlaces */
   a {
     position: relative;
