@@ -1,0 +1,155 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const benefits = [
+  'Atención personalizada 24/7',
+  'Administración de medicamentos',
+  'Curaciones y cuidados de heridas',
+  'Control de signos vitales',
+  'Aplicación de inyecciones',
+  'Cuidados post-operatorios',
+  'Atención a pacientes crónicos',
+  'Cuidados paliativos'
+];
+
+const services = [
+  {
+    title: 'Cuidados a Domicilio',
+    description: 'Atención de enfermería profesional en la comodidad de tu hogar, ideal para pacientes con movilidad reducida o en recuperación.',
+    icon: '🏠'
+  },
+  {
+    title: 'Cuidados Hospitalarios',
+    description: 'Acompañamiento y atención especializada durante tu estancia hospitalaria.',
+    icon: '🏥'
+  },
+  {
+    title: 'Atención de Emergencias',
+    description: 'Respuesta rápida ante situaciones de emergencia con personal capacitado.',
+    icon: '🚑'
+  },
+  {
+    title: 'Cuidados Preventivos',
+    description: 'Programas de prevención y seguimiento para mantener tu salud óptima.',
+    icon: '💉'
+  }
+];
+---
+
+<Layout title="Enfermería" description="Servicios profesionales de enfermería en NeoMed. Atención personalizada, cuidados a domicilio y hospitalarios con personal altamente capacitado.">
+  <!-- Hero -->
+  <section class="relative bg-gradient-to-br from-primary via-primary to-primary-dark text-white py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl">
+        <a href="/" class="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+          </svg>
+          Volver al inicio
+        </a>
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+            </svg>
+          </div>
+          <span class="bg-white/20 px-4 py-1 rounded-full text-sm">Especialidad</span>
+        </div>
+        <h1 class="font-heading text-4xl md:text-5xl font-bold mb-6">Enfermería</h1>
+        <p class="text-xl text-white/90 leading-relaxed">
+          Nuestro equipo de enfermería ofrece atención profesional y humana, 
+          garantizando el mejor cuidado para ti y tu familia en todo momento.
+        </p>
+      </div>
+    </div>
+    
+    <!-- Wave Divider -->
+    <div class="absolute bottom-0 left-0 right-0">
+      <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="white"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-accent mb-4">
+          Nuestros Servicios de Enfermería
+        </h2>
+        <p class="text-accent/70">
+          Ofrecemos una amplia gama de servicios de enfermería adaptados a tus necesidades.
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-6">
+        {services.map((service) => (
+          <div class="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-shadow">
+            <span class="text-4xl mb-4 block">{service.icon}</span>
+            <h3 class="font-heading font-semibold text-xl text-accent mb-3">{service.title}</h3>
+            <p class="text-accent/70">{service.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="font-heading text-3xl md:text-4xl font-bold text-accent mb-6">
+            ¿Por qué elegir nuestro servicio de enfermería?
+          </h2>
+          <p class="text-accent/70 mb-8">
+            Contamos con profesionales certificados y comprometidos con tu bienestar, 
+            ofreciendo atención de calidad con calidez humana.
+          </p>
+          
+          <ul class="grid sm:grid-cols-2 gap-4">
+            {benefits.map((benefit) => (
+              <li class="flex items-center gap-3">
+                <div class="w-6 h-6 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
+                  <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                </div>
+                <span class="text-accent">{benefit}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        
+        <div class="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-3xl p-8 text-center">
+          <div class="w-24 h-24 mx-auto bg-primary rounded-full flex items-center justify-center mb-6">
+            <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+            </svg>
+          </div>
+          <h3 class="font-heading text-2xl font-bold text-accent mb-4">Atención Disponible</h3>
+          <p class="text-accent/70 mb-6">Servicio de enfermería las 24 horas, los 7 días de la semana</p>
+          <a href="/#contacto" class="inline-block bg-primary text-white px-8 py-3 rounded-full font-semibold hover:bg-primary-dark transition-colors">
+            Solicitar Servicio
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-primary text-white">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="font-heading text-2xl md:text-3xl font-bold mb-4">
+        ¿Necesitas atención de enfermería?
+      </h2>
+      <p class="text-white/80 mb-8 max-w-xl mx-auto">
+        Contáctanos ahora y uno de nuestros especialistas se comunicará contigo.
+      </p>
+      <a href="/#contacto" class="inline-block bg-white text-primary px-8 py-3 rounded-full font-semibold hover:bg-secondary-light transition-colors">
+        Agendar Cita
+      </a>
+    </div>
+  </section>
+</Layout>

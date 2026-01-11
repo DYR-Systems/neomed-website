@@ -1,0 +1,202 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const benefits = [
+  'Planes alimenticios personalizados',
+  'Evaluación nutricional completa',
+  'Control de peso saludable',
+  'Nutrición deportiva',
+  'Manejo de diabetes y enfermedades',
+  'Nutrición pediátrica',
+  'Nutrición durante el embarazo',
+  'Educación alimentaria'
+];
+
+const services = [
+  {
+    title: 'Consulta Nutricional',
+    description: 'Evaluación completa de tu estado nutricional y elaboración de un plan alimenticio adaptado a tus necesidades y objetivos.',
+    icon: '🥗'
+  },
+  {
+    title: 'Control de Peso',
+    description: 'Programas especializados para pérdida o ganancia de peso de manera saludable y sostenible.',
+    icon: '⚖️'
+  },
+  {
+    title: 'Nutrición Clínica',
+    description: 'Manejo nutricional de enfermedades como diabetes, hipertensión, enfermedades renales y más.',
+    icon: '🏥'
+  },
+  {
+    title: 'Nutrición Deportiva',
+    description: 'Planes alimenticios diseñados para optimizar tu rendimiento deportivo y recuperación.',
+    icon: '🏃'
+  }
+];
+
+const plans = [
+  { name: 'Consulta Inicial', price: 'Desde $800', features: ['Evaluación completa', 'Plan inicial', 'Guía de alimentos'] },
+  { name: 'Plan Mensual', price: 'Desde $1,500', features: ['4 consultas', 'Plan personalizado', 'Seguimiento WhatsApp'] },
+  { name: 'Plan Trimestral', price: 'Desde $3,500', features: ['12 consultas', 'Plan completo', 'Soporte 24/7'] },
+];
+---
+
+<Layout title="Nutrición" description="Servicios de nutrición profesional en NeoMed. Planes alimenticios personalizados, control de peso y nutrición clínica.">
+  <!-- Hero -->
+  <section class="relative bg-gradient-to-br from-primary via-primary to-primary-dark text-white py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl">
+        <a href="/" class="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+          </svg>
+          Volver al inicio
+        </a>
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+            </svg>
+          </div>
+          <span class="bg-white/20 px-4 py-1 rounded-full text-sm">Especialidad</span>
+        </div>
+        <h1 class="font-heading text-4xl md:text-5xl font-bold mb-6">Nutrición</h1>
+        <p class="text-xl text-white/90 leading-relaxed">
+          Transforma tu salud a través de una alimentación consciente y personalizada. 
+          Nuestros nutriólogos te guiarán en el camino hacia una vida más saludable.
+        </p>
+      </div>
+    </div>
+    
+    <!-- Wave Divider -->
+    <div class="absolute bottom-0 left-0 right-0">
+      <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="white"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-accent mb-4">
+          Servicios de Nutrición
+        </h2>
+        <p class="text-accent/70">
+          Programas nutricionales diseñados para cada etapa de tu vida y objetivos específicos.
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-6">
+        {services.map((service) => (
+          <div class="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-shadow">
+            <span class="text-4xl mb-4 block">{service.icon}</span>
+            <h3 class="font-heading font-semibold text-xl text-accent mb-3">{service.title}</h3>
+            <p class="text-accent/70">{service.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-accent mb-4">
+          Planes y Precios
+        </h2>
+        <p class="text-accent/70">
+          Elige el plan que mejor se adapte a tus necesidades.
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        {plans.map((plan, index) => (
+          <div class={`rounded-2xl p-6 ${index === 1 ? 'bg-primary text-white scale-105' : 'bg-white'}`}>
+            <h3 class={`font-heading font-semibold text-lg mb-2 ${index === 1 ? 'text-white' : 'text-accent'}`}>{plan.name}</h3>
+            <p class={`text-2xl font-bold mb-4 ${index === 1 ? 'text-white' : 'text-primary'}`}>{plan.price}</p>
+            <ul class="space-y-2 mb-6">
+              {plan.features.map((feature) => (
+                <li class={`flex items-center gap-2 text-sm ${index === 1 ? 'text-white/90' : 'text-accent/70'}`}>
+                  <svg class={`w-4 h-4 ${index === 1 ? 'text-white' : 'text-primary'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+            <a 
+              href="/#contacto" 
+              class={`block text-center py-2 rounded-full font-medium transition-colors ${
+                index === 1 
+                  ? 'bg-white text-primary hover:bg-secondary-light' 
+                  : 'bg-primary text-white hover:bg-primary-dark'
+              }`}
+            >
+              Agendar
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="order-2 lg:order-1">
+          <div class="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-3xl p-8 text-center">
+            <div class="w-24 h-24 mx-auto bg-primary rounded-full flex items-center justify-center mb-6">
+              <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+              </svg>
+            </div>
+            <h3 class="font-heading text-2xl font-bold text-accent mb-4">Nutrición Personalizada</h3>
+            <p class="text-accent/70 mb-6">Planes diseñados específicamente para ti y tus objetivos</p>
+          </div>
+        </div>
+        
+        <div class="order-1 lg:order-2">
+          <h2 class="font-heading text-3xl md:text-4xl font-bold text-accent mb-6">
+            Beneficios de nuestro programa
+          </h2>
+          <p class="text-accent/70 mb-8">
+            Trabajamos contigo para crear un estilo de vida saludable y sostenible a largo plazo.
+          </p>
+          
+          <ul class="grid sm:grid-cols-2 gap-4">
+            {benefits.map((benefit) => (
+              <li class="flex items-center gap-3">
+                <div class="w-6 h-6 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
+                  <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                </div>
+                <span class="text-accent">{benefit}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-primary text-white">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="font-heading text-2xl md:text-3xl font-bold mb-4">
+        Comienza tu transformación hoy
+      </h2>
+      <p class="text-white/80 mb-8 max-w-xl mx-auto">
+        Agenda tu consulta nutricional y da el primer paso hacia una vida más saludable.
+      </p>
+      <a href="/#contacto" class="inline-block bg-white text-primary px-8 py-3 rounded-full font-semibold hover:bg-secondary-light transition-colors">
+        Agendar Cita
+      </a>
+    </div>
+  </section>
+</Layout>

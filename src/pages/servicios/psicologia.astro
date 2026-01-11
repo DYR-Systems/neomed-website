@@ -1,0 +1,219 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const benefits = [
+  'Terapia individual y de pareja',
+  'Manejo del estrés y ansiedad',
+  'Tratamiento de depresión',
+  'Terapia cognitivo-conductual',
+  'Desarrollo personal',
+  'Terapia familiar',
+  'Orientación vocacional',
+  'Atención a adolescentes'
+];
+
+const services = [
+  {
+    title: 'Terapia Individual',
+    description: 'Sesiones personalizadas para trabajar en tus metas de bienestar emocional y crecimiento personal.',
+    icon: '🧠'
+  },
+  {
+    title: 'Terapia de Pareja',
+    description: 'Mejora la comunicación y resuelve conflictos en tu relación con ayuda profesional.',
+    icon: '💑'
+  },
+  {
+    title: 'Terapia Familiar',
+    description: 'Fortalece los vínculos familiares y aprende a manejar situaciones difíciles en conjunto.',
+    icon: '👨‍👩‍👧‍👦'
+  },
+  {
+    title: 'Terapia para Adolescentes',
+    description: 'Apoyo especializado para jóvenes en una etapa crucial de su desarrollo.',
+    icon: '🎓'
+  }
+];
+
+const areas = [
+  { name: 'Ansiedad', description: 'Manejo de ataques de pánico, fobias y ansiedad generalizada' },
+  { name: 'Depresión', description: 'Tratamiento integral para superar estados depresivos' },
+  { name: 'Estrés', description: 'Técnicas para manejar el estrés laboral y personal' },
+  { name: 'Autoestima', description: 'Desarrollo de una imagen positiva de ti mismo' },
+  { name: 'Duelo', description: 'Acompañamiento en procesos de pérdida y duelo' },
+  { name: 'Relaciones', description: 'Mejora de habilidades sociales y comunicación' },
+];
+---
+
+<Layout title="Psicología" description="Servicios de psicología profesional en NeoMed. Terapia individual, de pareja y familiar. Cuida tu salud mental con nosotros.">
+  <!-- Hero -->
+  <section class="relative bg-gradient-to-br from-primary via-primary to-primary-dark text-white py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl">
+        <a href="/" class="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+          </svg>
+          Volver al inicio
+        </a>
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+            </svg>
+          </div>
+          <span class="bg-white/20 px-4 py-1 rounded-full text-sm">Especialidad</span>
+        </div>
+        <h1 class="font-heading text-4xl md:text-5xl font-bold mb-6">Psicología</h1>
+        <p class="text-xl text-white/90 leading-relaxed">
+          Tu bienestar emocional es nuestra prioridad. Nuestros psicólogos te brindan 
+          un espacio seguro y confidencial para trabajar en tu salud mental.
+        </p>
+      </div>
+    </div>
+    
+    <!-- Wave Divider -->
+    <div class="absolute bottom-0 left-0 right-0">
+      <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="white"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-accent mb-4">
+          Servicios de Psicología
+        </h2>
+        <p class="text-accent/70">
+          Diferentes modalidades de terapia adaptadas a tus necesidades específicas.
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-6">
+        {services.map((service) => (
+          <div class="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-shadow">
+            <span class="text-4xl mb-4 block">{service.icon}</span>
+            <h3 class="font-heading font-semibold text-xl text-accent mb-3">{service.title}</h3>
+            <p class="text-accent/70">{service.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Areas of Focus -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-accent mb-4">
+          Áreas de Atención
+        </h2>
+        <p class="text-accent/70">
+          Tratamos diversas condiciones y situaciones de vida con enfoque profesional y empático.
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-6">
+        {areas.map((area) => (
+          <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition-shadow">
+            <h3 class="font-heading font-semibold text-lg text-primary mb-2">{area.name}</h3>
+            <p class="text-accent/70 text-sm">{area.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-3xl p-8 text-center">
+          <div class="w-24 h-24 mx-auto bg-primary rounded-full flex items-center justify-center mb-6">
+            <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+            </svg>
+          </div>
+          <h3 class="font-heading text-2xl font-bold text-accent mb-4">Espacio Seguro</h3>
+          <p class="text-accent/70 mb-6">Confidencialidad y respeto en cada sesión</p>
+          <a href="/#contacto" class="inline-block bg-primary text-white px-8 py-3 rounded-full font-semibold hover:bg-primary-dark transition-colors">
+            Agendar Primera Sesión
+          </a>
+        </div>
+        
+        <div>
+          <h2 class="font-heading text-3xl md:text-4xl font-bold text-accent mb-6">
+            ¿Por qué elegir nuestro servicio?
+          </h2>
+          <p class="text-accent/70 mb-8">
+            Contamos con psicólogos certificados y especializados en diferentes 
+            enfoques terapéuticos para brindarte la mejor atención.
+          </p>
+          
+          <ul class="grid sm:grid-cols-2 gap-4">
+            {benefits.map((benefit) => (
+              <li class="flex items-center gap-3">
+                <div class="w-6 h-6 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
+                  <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                </div>
+                <span class="text-accent">{benefit}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="font-heading text-3xl md:text-4xl font-bold text-accent mb-4">
+            Preguntas Frecuentes
+          </h2>
+        </div>
+        
+        <div class="space-y-4">
+          <div class="bg-white rounded-xl p-6 shadow-sm">
+            <h3 class="font-semibold text-accent mb-2">¿Cuánto dura una sesión?</h3>
+            <p class="text-accent/70">Las sesiones individuales tienen una duración aproximada de 50 minutos. Las sesiones de pareja o familia pueden extenderse hasta 90 minutos.</p>
+          </div>
+          <div class="bg-white rounded-xl p-6 shadow-sm">
+            <h3 class="font-semibold text-accent mb-2">¿Cada cuánto debo asistir?</h3>
+            <p class="text-accent/70">Generalmente se recomienda una sesión semanal, aunque esto puede variar según tus necesidades y el avance del tratamiento.</p>
+          </div>
+          <div class="bg-white rounded-xl p-6 shadow-sm">
+            <h3 class="font-semibold text-accent mb-2">¿Las sesiones son confidenciales?</h3>
+            <p class="text-accent/70">Absolutamente. Todo lo que compartas en terapia es estrictamente confidencial y está protegido por el secreto profesional.</p>
+          </div>
+          <div class="bg-white rounded-xl p-6 shadow-sm">
+            <h3 class="font-semibold text-accent mb-2">¿Ofrecen terapia en línea?</h3>
+            <p class="text-accent/70">Sí, ofrecemos sesiones tanto presenciales como en línea para tu comodidad.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-primary text-white">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="font-heading text-2xl md:text-3xl font-bold mb-4">
+        Tu bienestar emocional importa
+      </h2>
+      <p class="text-white/80 mb-8 max-w-xl mx-auto">
+        Da el primer paso hacia una vida más plena. Agenda tu primera sesión hoy.
+      </p>
+      <a href="/#contacto" class="inline-block bg-white text-primary px-8 py-3 rounded-full font-semibold hover:bg-secondary-light transition-colors">
+        Agendar Cita
+      </a>
+    </div>
+  </section>
+</Layout>

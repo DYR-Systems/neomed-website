@@ -1,0 +1,203 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const benefits = [
+  'Rehabilitación post-quirúrgica',
+  'Terapia manual especializada',
+  'Electroterapia y ultrasonido',
+  'Ejercicios terapéuticos',
+  'Tratamiento del dolor crónico',
+  'Rehabilitación deportiva',
+  'Terapia neurológica',
+  'Atención a domicilio'
+];
+
+const services = [
+  {
+    title: 'Rehabilitación Física',
+    description: 'Recuperación funcional después de lesiones, cirugías o accidentes mediante técnicas especializadas.',
+    icon: '🦿'
+  },
+  {
+    title: 'Terapia Manual',
+    description: 'Técnicas manuales para aliviar el dolor, mejorar la movilidad y restaurar la función articular.',
+    icon: '🙌'
+  },
+  {
+    title: 'Fisioterapia Deportiva',
+    description: 'Tratamiento y prevención de lesiones deportivas para atletas de todos los niveles.',
+    icon: '🏅'
+  },
+  {
+    title: 'Terapia Neurológica',
+    description: 'Rehabilitación especializada para pacientes con condiciones neurológicas.',
+    icon: '🧠'
+  }
+];
+
+const conditions = [
+  'Lesiones de espalda y columna',
+  'Dolor cervical y lumbar',
+  'Lesiones deportivas',
+  'Artritis y artrosis',
+  'Fracturas y esguinces',
+  'Rehabilitación post-operatoria',
+  'Parálisis facial',
+  'Accidentes cerebrovasculares'
+];
+---
+
+<Layout title="Terapia Física" description="Servicios de terapia física y rehabilitación en NeoMed. Recupera tu movilidad y calidad de vida con nuestros especialistas.">
+  <!-- Hero -->
+  <section class="relative bg-gradient-to-br from-primary via-primary to-primary-dark text-white py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl">
+        <a href="/" class="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+          </svg>
+          Volver al inicio
+        </a>
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <span class="bg-white/20 px-4 py-1 rounded-full text-sm">Especialidad</span>
+        </div>
+        <h1 class="font-heading text-4xl md:text-5xl font-bold mb-6">Terapia Física</h1>
+        <p class="text-xl text-white/90 leading-relaxed">
+          Recupera tu movilidad y calidad de vida con nuestro equipo de fisioterapeutas 
+          especializados. Tratamientos personalizados para cada tipo de lesión o condición.
+        </p>
+      </div>
+    </div>
+    
+    <!-- Wave Divider -->
+    <div class="absolute bottom-0 left-0 right-0">
+      <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="white"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-accent mb-4">
+          Servicios de Terapia Física
+        </h2>
+        <p class="text-accent/70">
+          Tratamientos especializados para todo tipo de condiciones musculoesqueléticas y neurológicas.
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-6">
+        {services.map((service) => (
+          <div class="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-shadow">
+            <span class="text-4xl mb-4 block">{service.icon}</span>
+            <h3 class="font-heading font-semibold text-xl text-accent mb-3">{service.title}</h3>
+            <p class="text-accent/70">{service.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Conditions We Treat -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="font-heading text-3xl md:text-4xl font-bold text-accent mb-6">
+            Condiciones que Tratamos
+          </h2>
+          <p class="text-accent/70 mb-8">
+            Nuestro equipo de fisioterapeutas está capacitado para tratar una amplia 
+            variedad de condiciones, siempre con un enfoque personalizado.
+          </p>
+          
+          <ul class="grid sm:grid-cols-2 gap-4">
+            {conditions.map((condition) => (
+              <li class="flex items-center gap-3">
+                <div class="w-6 h-6 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
+                  <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                </div>
+                <span class="text-accent">{condition}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        
+        <div class="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-3xl p-8 text-center">
+          <div class="w-24 h-24 mx-auto bg-primary rounded-full flex items-center justify-center mb-6">
+            <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <h3 class="font-heading text-2xl font-bold text-accent mb-4">Recuperación Garantizada</h3>
+          <p class="text-accent/70 mb-6">Seguimiento continuo hasta tu completa rehabilitación</p>
+          <a href="/#contacto" class="inline-block bg-primary text-white px-8 py-3 rounded-full font-semibold hover:bg-primary-dark transition-colors">
+            Solicitar Evaluación
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <h2 class="font-heading text-3xl md:text-4xl font-bold text-accent mb-4">
+          Nuestro Proceso
+        </h2>
+        <p class="text-accent/70">
+          Un enfoque estructurado para tu recuperación.
+        </p>
+      </div>
+      
+      <div class="grid md:grid-cols-4 gap-6">
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold mb-4">1</div>
+          <h3 class="font-heading font-semibold text-lg text-accent mb-2">Evaluación</h3>
+          <p class="text-accent/70 text-sm">Diagnóstico completo de tu condición</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold mb-4">2</div>
+          <h3 class="font-heading font-semibold text-lg text-accent mb-2">Plan</h3>
+          <p class="text-accent/70 text-sm">Diseño de tratamiento personalizado</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold mb-4">3</div>
+          <h3 class="font-heading font-semibold text-lg text-accent mb-2">Tratamiento</h3>
+          <p class="text-accent/70 text-sm">Sesiones de rehabilitación</p>
+        </div>
+        <div class="text-center">
+          <div class="w-16 h-16 mx-auto bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold mb-4">4</div>
+          <h3 class="font-heading font-semibold text-lg text-accent mb-2">Seguimiento</h3>
+          <p class="text-accent/70 text-sm">Monitoreo de tu progreso</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-primary text-white">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="font-heading text-2xl md:text-3xl font-bold mb-4">
+        Recupera tu movilidad hoy
+      </h2>
+      <p class="text-white/80 mb-8 max-w-xl mx-auto">
+        Agenda tu evaluación y comienza tu camino hacia la recuperación.
+      </p>
+      <a href="/#contacto" class="inline-block bg-white text-primary px-8 py-3 rounded-full font-semibold hover:bg-secondary-light transition-colors">
+        Agendar Cita
+      </a>
+    </div>
+  </section>
+</Layout>
