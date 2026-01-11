@@ -16,24 +16,31 @@ const services = [
   {
     title: 'Rehabilitación Física',
     description: 'Recuperación funcional después de lesiones, cirugías o accidentes mediante técnicas especializadas.',
-    icon: '🦿'
+    icon: 'refresh'
   },
   {
     title: 'Terapia Manual',
     description: 'Técnicas manuales para aliviar el dolor, mejorar la movilidad y restaurar la función articular.',
-    icon: '🙌'
+    icon: 'hand'
   },
   {
     title: 'Fisioterapia Deportiva',
     description: 'Tratamiento y prevención de lesiones deportivas para atletas de todos los niveles.',
-    icon: '🏅'
+    icon: 'trophy'
   },
   {
     title: 'Terapia Neurológica',
     description: 'Rehabilitación especializada para pacientes con condiciones neurológicas.',
-    icon: '🧠'
+    icon: 'brain'
   }
 ];
+
+const icons: Record<string, string> = {
+  refresh: '<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>',
+  hand: '<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11"/></svg>',
+  trophy: '<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>',
+  brain: '<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>'
+};
 
 const conditions = [
   'Lesiones de espalda y columna',
@@ -49,7 +56,7 @@ const conditions = [
 
 <Layout title="Terapia Física" description="Servicios de terapia física y rehabilitación en NeoMed. Recupera tu movilidad y calidad de vida con nuestros especialistas.">
   <!-- Hero -->
-  <section class="relative bg-gradient-to-br from-primary via-primary to-primary-dark text-white py-20">
+  <section class="relative bg-gradient-to-br from-primary via-primary to-primary-dark text-white pt-20 pb-32">
     <div class="container mx-auto px-4">
       <div class="max-w-3xl">
         <a href="/" class="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors">
@@ -66,8 +73,8 @@ const conditions = [
           </div>
           <span class="bg-white/20 px-4 py-1 rounded-full text-sm">Especialidad</span>
         </div>
-        <h1 class="font-heading text-4xl md:text-5xl font-bold mb-6">Terapia Física</h1>
-        <p class="text-xl text-white/90 leading-relaxed">
+        <h1 class="font-heading text-4xl md:text-5xl font-bold mb-6 text-white">Terapia Física</h1>
+        <p class="text-xl leading-relaxed text-white opacity-90">
           Recupera tu movilidad y calidad de vida con nuestro equipo de fisioterapeutas 
           especializados. Tratamientos personalizados para cada tipo de lesión o condición.
         </p>
@@ -97,7 +104,9 @@ const conditions = [
       <div class="grid md:grid-cols-2 gap-6">
         {services.map((service) => (
           <div class="bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-shadow">
-            <span class="text-4xl mb-4 block">{service.icon}</span>
+            <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-4">
+              <Fragment set:html={icons[service.icon]} />
+            </div>
             <h3 class="font-heading font-semibold text-xl text-accent mb-3">{service.title}</h3>
             <p class="text-accent/70">{service.description}</p>
           </div>

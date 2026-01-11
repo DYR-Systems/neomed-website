@@ -4,10 +4,10 @@ Sitio web para NeoMed - Clínica Integral de Salud.
 
 ## Especialidades
 
-- 🏥 Enfermería
-- 🥗 Nutrición
-- 🦿 Terapia Física
-- 🧠 Psicología
+- Enfermería
+- Nutrición
+- Terapia Física
+- Psicología
 
 ## Tecnologías
 
