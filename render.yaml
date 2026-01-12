@@ -20,7 +20,9 @@ services:
     #     source: /*
     #     destination: /index.html
     routes:
+      - type: rewrite
+        source: /coming-soon
+        destination: /coming-soon.html
       - type: redirect
         source: /*
         destination: /coming-soon
-        status: 302
