@@ -15,12 +15,12 @@ services:
       - path: /*.html
         name: Cache-Control
         value: public, max-age=0, must-revalidate
-    routes:
-      - type: rewrite
-        source: /*
-        destination: /index.html
     # routes:
-    #   - type: redirect
+    #   - type: rewrite
     #     source: /*
-    #     destination: /maintenance
-    #     status: 302
+    #     destination: /index.html
+    routes:
+      - type: redirect
+        source: /*
+        destination: /coming-soon
+        status: 302
