@@ -2,7 +2,7 @@ services:
   - type: web
     name: neomed-website
     runtime: static
-    buildCommand: npm install && npm run build
+    buildCommand: npm install && npm run build && cp dist/coming-soon/index.html dist/index.html
     staticPublishPath: ./dist
     pullRequestPreviewsEnabled: true
     headers:
@@ -15,7 +15,3 @@ services:
       - path: /*.html
         name: Cache-Control
         value: public, max-age=0, must-revalidate
-    routes:
-      - type: rewrite
-        source: /**
-        destination: /coming-soon/index.html
