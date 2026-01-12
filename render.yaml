@@ -19,3 +19,8 @@ services:
       - type: rewrite
         source: /*
         destination: /index.html
+    # routes:
+    #   - type: redirect
+    #     source: /*
+    #     destination: /maintenance
+    #     status: 302

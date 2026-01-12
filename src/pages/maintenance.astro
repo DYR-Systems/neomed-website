@@ -1,0 +1,155 @@
+---
+// Maintenance page - standalone without header/footer
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="NeoMed - Sitio en mantenimiento" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Mantenimiento | NeoMed</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: 'Inter', sans-serif;
+        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #f0fdf4 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+      }
+      
+      .container {
+        text-align: center;
+        max-width: 600px;
+      }
+      
+      .icon {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 2rem;
+        background: linear-gradient(135deg, #0ea5e9 0%, #10b981 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: pulse 2s ease-in-out infinite;
+      }
+      
+      .icon svg {
+        width: 60px;
+        height: 60px;
+        color: white;
+      }
+      
+      @keyframes pulse {
+        0%, 100% {
+          transform: scale(1);
+          box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.4);
+        }
+        50% {
+          transform: scale(1.05);
+          box-shadow: 0 0 0 20px rgba(14, 165, 233, 0);
+        }
+      }
+      
+      h1 {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 1rem;
+      }
+      
+      .subtitle {
+        font-size: 1.25rem;
+        color: #64748b;
+        margin-bottom: 2rem;
+        line-height: 1.6;
+      }
+      
+      .message {
+        background: white;
+        padding: 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+      }
+      
+      .message p {
+        color: #475569;
+        line-height: 1.7;
+      }
+      
+      .contact {
+        color: #64748b;
+        font-size: 0.95rem;
+      }
+      
+      .contact a {
+        color: #0ea5e9;
+        text-decoration: none;
+        font-weight: 500;
+      }
+      
+      .contact a:hover {
+        text-decoration: underline;
+      }
+      
+      .logo {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.5rem;
+        font-weight: 800;
+        margin-bottom: 3rem;
+      }
+      
+      .logo span:first-child {
+        color: #0ea5e9;
+      }
+      
+      .logo span:last-child {
+        color: #10b981;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="logo">
+        <span>Neo</span><span>Med</span>
+      </div>
+      
+      <div class="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+      </div>
+      
+      <h1>Sitio en Mantenimiento</h1>
+      <p class="subtitle">Estamos mejorando nuestra plataforma para brindarte una mejor experiencia.</p>
+      
+      <div class="message">
+        <p>
+          Nuestro equipo está trabajando para implementar mejoras importantes. 
+          El sitio estará disponible nuevamente en breve. 
+          Agradecemos tu paciencia y comprensión.
+        </p>
+      </div>
+      
+      <p class="contact">
+        ¿Necesitas atención urgente? Contáctanos al <a href="tel:+525512345678">+52 55 1234 5678</a>
+      </p>
+    </div>
+  </body>
+</html>
