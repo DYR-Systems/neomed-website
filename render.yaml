@@ -22,7 +22,7 @@ services:
     routes:
       - type: rewrite
         source: /coming-soon
-        destination: /coming-soon.html
+        destination: /coming-soon/index.html
       - type: redirect
         source: /*
         destination: /coming-soon
