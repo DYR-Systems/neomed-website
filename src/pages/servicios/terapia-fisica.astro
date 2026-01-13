@@ -43,13 +43,13 @@ const benefits = [
         </a>
         
         <div class="flex items-center gap-4 mb-6">
-          <div class="w-16 h-16 rounded-2xl bg-rgb(6, 112, 116)/20 backdrop-blur-sm flex items-center justify-center">
-            <svg class="w-8 h-8 text-rgb(10, 160, 165)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="w-16 h-16 rounded-2xl" style="background-color: rgba(6, 112, 116, 0.2);" backdrop-blur-sm flex items-center justify-center">
+            <svg class="w-8 h-8" style="color: rgb(10, 160, 165);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
             </svg>
           </div>
           <h1 class="font-heading text-4xl md:text-5xl font-light text-white">
-            <span class="font-semibold text-rgb(8, 140, 145)">Terapia Física</span>
+            <span class="font-semibold" style="color: rgb(8, 140, 145);">Terapia Física</span>
           </h1>
         </div>
         
@@ -65,7 +65,7 @@ const benefits = [
   <section class="py-20 bg-slate-50">
     <div class="container mx-auto px-4">
       <div class="max-w-5xl mx-auto">
-        <p class="text-sm text-rgb(6, 112, 116) font-semibold uppercase tracking-wider mb-4">Lo que ofrecemos</p>
+        <p class="text-sm" style="color: rgb(6, 112, 116);" font-semibold uppercase tracking-wider mb-4">Lo que ofrecemos</p>
         <h2 class="font-heading text-3xl md:text-4xl font-light text-slate-900 mb-12">
           Servicios de <span class="font-semibold">Terapia Física</span>
         </h2>
@@ -73,7 +73,7 @@ const benefits = [
         <div class="grid sm:grid-cols-2 gap-4">
           {benefits.map((benefit) => (
             <div class="flex items-start gap-3 bg-white p-6 rounded-xl border border-slate-100 hover:shadow-md transition-shadow">
-              <svg class="w-6 h-6 text-rgb(6, 112, 116) flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-6 h-6" style="color: rgb(6, 112, 116);" flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
               </svg>
               <span class="text-slate-700 font-light">{benefit}</span>
@@ -89,14 +89,14 @@ const benefits = [
     <div class="container mx-auto px-4">
       <div class="max-w-3xl mx-auto text-center">
         <h2 class="font-heading text-3xl md:text-4xl font-light text-slate-900 mb-6">
-          ¿Listo para recuperar tu <span class="font-semibold text-rgb(6, 112, 116)">movilidad</span>?
+          ¿Listo para recuperar tu <span class="font-semibold" style="color: rgb(6, 112, 116);">movilidad</span>?
         </h2>
         <p class="text-lg text-slate-500 mb-8 font-light">
           Agenda tu sesión de terapia física y comienza tu rehabilitación
         </p>
         <a 
           href="/agendar" 
-          class="inline-flex items-center gap-2 bg-rgb(6, 112, 116) hover:bg-rgb(8, 140, 145) text-white px-10 py-4 rounded-full transition-all duration-300 hover:scale-105 text-lg font-medium shadow-lg hover:shadow-rgb(6, 112, 116)/25"
+          class="inline-flex items-centers gap-2 text-white px-10 py-4 rounded-full transition-all duration-300 hover:scale-105 text-lg font-medium shadow-lg" style="background-color: #067074;" onmouseover="this.style.backgroundColor='#088c91'" onmouseout="this.style.backgroundColor='#067074'"
         >
           <span>Agendar cita</span>
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
