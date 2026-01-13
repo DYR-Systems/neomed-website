@@ -1,32 +1,28 @@
 ---
 const navItems = [
-  { href: '/', label: 'Inicio' },
-  { href: '/#servicios', label: 'Servicios' },
-  { href: '/#nosotros', label: 'Nosotros' },
-  { href: '/#equipo', label: 'Equipo' },
-  { href: '/#contacto', label: 'Contacto' },
+  { href: '#servicios', label: 'Especialidades' },
+  { href: '#nosotros', label: 'Nosotros' },
+  { href: '#contacto', label: 'Contacto' },
 ];
 ---
 
-<header class="bg-white shadow-md sticky top-0 z-50">
-  <nav class="container mx-auto px-4 py-4">
+<header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <nav class="container mx-auto px-6 py-5">
     <div class="flex items-center justify-between">
-      <!-- Logo -->
       <a href="/" class="flex items-center">
         <img 
           src="/neomed_logo.png" 
-          alt="NeoMed - Clínica Integral" 
-          class="h-14 w-auto"
+          alt="NeoMed" 
+          class="h-12 w-auto header-logo transition-all duration-300"
         />
       </a>
 
-      <!-- Desktop Navigation -->
-      <ul class="hidden md:flex items-center gap-8">
+      <ul class="hidden md:flex items-center gap-10">
         {navItems.map((item) => (
           <li>
             <a 
               href={item.href} 
-              class="text-accent hover:text-primary transition-colors font-medium"
+              class="nav-link text-white/90 hover:text-white transition-colors font-medium text-sm uppercase tracking-wider"
             >
               {item.label}
             </a>
@@ -35,42 +31,44 @@ const navItems = [
         <li>
           <a 
             href="/agendar" 
-            class="bg-primary text-white px-6 py-2 rounded-full hover:bg-primary-dark transition-colors font-medium"
+            class="bg-cyan-500 hover:bg-cyan-400 text-white px-6 py-2.5 rounded-full transition-all font-medium text-sm shadow-lg hover:shadow-cyan-500/25"
           >
             Agendar Cita
           </a>
         </li>
       </ul>
 
-      <!-- Mobile Menu Button -->
       <button 
         id="mobile-menu-btn" 
-        class="md:hidden p-2 text-accent hover:text-primary"
-        aria-label="Abrir menú"
+        class="md:hidden p-2 text-white hover:text-cyan-300"
+        aria-label="Menú"
       >
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+        <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
         </svg>
       </button>
     </div>
-
-    <!-- Mobile Navigation -->
-    <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-secondary/30">
-      <ul class="flex flex-col gap-4 pt-4">
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-white/20 pt-4">
+      <ul class="space-y-4">
         {navItems.map((item) => (
           <li>
             <a 
               href={item.href} 
-              class="block text-accent hover:text-primary transition-colors font-medium py-2"
+              class="block text-white/90 hover:text-white transition-colors font-medium py-2 uppercase tracking-wider"
             >
               {item.label}
             </a>
           </li>
         ))}
-        <li>
+        <li class="pt-2">
           <a 
             href="/agendar" 
-            class="inline-block bg-primary text-white px-6 py-2 rounded-full hover:bg-primary-dark transition-colors font-medium mt-2"
+            class="block bg-cyan-500 text-white px-6 py-3 rounded-full hover:bg-cyan-400 transition-colors font-medium text-center"
           >
             Agendar Cita
           </a>
@@ -81,18 +79,70 @@ const navItems = [
 </header>
 
 <script>
-  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
-
-  menuBtn?.addEventListener('click', () => {
-    mobileMenu?.classList.toggle('hidden');
-  });
-
-  // Close menu when clicking on a link
-  const menuLinks = mobileMenu?.querySelectorAll('a');
-  menuLinks?.forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu?.classList.add('hidden');
+  const menuIcon = document.getElementById('menu-icon');
+  const closeIcon = document.getElementById('close-icon');
+  const header = document.getElementById('main-header');
+  
+  // Mobile menu toggle
+  if (mobileMenuBtn && mobileMenu && menuIcon && closeIcon) {
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      menuIcon.classList.toggle('hidden');
+      closeIcon.classList.toggle('hidden');
     });
-  });
+    
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        menuIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+      });
+    });
+  }
+  
+  // Header scroll effect
+  if (header) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        header.classList.add('header-scrolled');
+      } else {
+        header.classList.remove('header-scrolled');
+      }
+    });
+  }
+</script>
+
+<style>
+  #main-header {
+    background: transparent;
+  }
+  
+  #main-header.header-scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  #main-header.header-scrolled .nav-link {
+    color: #334155;
+  }
+  
+  #main-header.header-scrolled .nav-link:hover {
+    color: #0891b2;
+  }
+  
+  #main-header.header-scrolled .header-logo {
+    filter: none;
+  }
+  
+  #main-header:not(.header-scrolled) .header-logo {
+    filter: brightness(0) invert(1);
+  }
+  
+  #main-header.header-scrolled #mobile-menu-btn {
+    color: #334155;
+  }
+</style>
 </script>

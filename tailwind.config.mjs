@@ -5,19 +5,14 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#067074',
-          light: '#0a9499',
-          dark: '#045456',
+          DEFAULT: '#0ea5e9',
+          light: '#38bdf8',
+          dark: '#0284c7',
         },
         secondary: {
-          DEFAULT: '#87a8aa',
-          light: '#a5c2c4',
-          dark: '#6a8e90',
-        },
-        accent: {
-          DEFAULT: '#575756',
-          light: '#737372',
-          dark: '#3d3d3c',
+          DEFAULT: '#10b981',
+          light: '#34d399',
+          dark: '#059669',
         },
       },
       fontFamily: {
@@ -27,4 +22,4 @@ export default {
     },
   },
   plugins: [],
-};
+}

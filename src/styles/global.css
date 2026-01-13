@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+/* Custom color theme - NeoMed Green */
+@theme {
+  --color-primary: #067074;
+  --color-primary-light: #088c91;
+  --color-primary-dark: #055b5e;
+  --color-secondary: #0aa0a5;
+  --color-secondary-light: #6dd5d8;
+  --color-secondary-dark: #067074;
+  
+  /* Cyan replacements with NeoMed green */
+  --color-cyan-50: #f0fcfc;
+  --color-cyan-100: #d5f5f6;
+  --color-cyan-200: #aaeaed;
+  --color-cyan-300: #0aa0a5;
+  --color-cyan-400: #088c91;
+  --color-cyan-500: #067074;
+  --color-cyan-600: #067074;
+  --color-cyan-900: #055b5e;
+}
+
+/* Custom Animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 1s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Stagger animations */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Better focus states */
+*:focus-visible {
+  outline: 2px solid #0ea5e9;
+  outline-offset: 2px;
+}

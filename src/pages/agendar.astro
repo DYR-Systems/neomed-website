@@ -1,38 +1,96 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
 ---
 
-<Layout title="Agendar Cita" description="Agenda tu cita en NeoMed. Reserva tu consulta con nuestros especialistas en enfermería, nutrición, terapia física y psicología.">
-  <!-- Hero -->
-  <section class="bg-gradient-to-br from-primary via-primary to-primary-dark text-white py-12">
-    <div class="container mx-auto px-4">
-      <div class="max-w-3xl">
-        <button onclick="history.back()" class="inline-flex items-center text-white/80 hover:text-white mb-6 transition-colors cursor-pointer bg-transparent border-none">
-          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<Layout title="Agendar Cita" description="Agenda tu cita en NeoMed. Reserva tu consulta con nuestros especialistas.">
+  <Header />
+  
+  <!-- Hero con imagen de fondo -->
+  <section class="relative pt-32 pb-16 overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <div class="absolute inset-0 bg-gradient-to-b from-slate-900/90 to-slate-800/80 z-10"></div>
+      <img 
+        src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=2000&q=80" 
+        alt="Clínica" 
+        class="w-full h-full object-cover"
+      />
+    </div>
+    
+    <div class="container mx-auto px-4 relative z-20">
+      <div class="max-w-2xl mx-auto text-center">
+        <a 
+          href="/" 
+          class="inline-flex items-center text-white/70 hover:text-white mb-8 transition-colors group"
+        >
+          <svg class="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
           </svg>
-          Volver
-        </button>
-        <h1 class="font-heading text-3xl md:text-4xl font-bold mb-4 text-white">Agendar Cita</h1>
-        <p class="text-lg text-white opacity-90">
-          Selecciona el servicio, fecha y hora que mejor se adapte a tu agenda.
+          Volver al inicio
+        </a>
+        
+        <h1 class="font-heading text-4xl md:text-5xl font-light text-white mb-4">
+          Agenda tu
+          <span class="font-semibold text-rgb(8, 140, 145)">cita</span>
+        </h1>
+        <p class="text-lg text-white/80 font-light">
+          Selecciona el servicio y horario que mejor se adapte a ti
         </p>
       </div>
     </div>
   </section>
 
-  <!-- Booking iframe -->
-  <section class="py-8 bg-gray-50">
+  <!-- Booking Section -->
+  <section class="py-16 bg-slate-50">
     <div class="container mx-auto px-4">
-      <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
-        <iframe 
-          src="https://ehr.dyrsystems.com/booking/neomed" 
-          class="w-full border-0"
-          style="min-height: 800px; height: calc(100vh - 250px);"
-          title="Sistema de Reservas NeoMed"
-          loading="lazy"
-        ></iframe>
+      <div class="max-w-5xl mx-auto">
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100">
+          <iframe 
+            src="https://ehr.dyrsystems.com/booking/neomed" 
+            class="w-full border-0"
+            style="min-height: 800px; height: calc(100vh - 300px);"
+            title="Sistema de Reservas NeoMed"
+            loading="lazy"
+          ></iframe>
+        </div>
+        
+        <!-- Info cards -->
+        <div class="grid md:grid-cols-3 gap-6 mt-12">
+          <div class="text-center p-6 bg-white rounded-xl border border-slate-100">
+            <div class="w-12 h-12 rounded-full bg-[rgb(240,252,252)] flex items-center justify-center mx-auto mb-4">
+              <svg class="w-6 h-6 text-rgb(6, 112, 116)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <h3 class="font-medium text-slate-900 mb-2">Confirmación inmediata</h3>
+            <p class="text-sm text-slate-500 font-light">Recibe confirmación de tu cita al instante</p>
+          </div>
+          
+          <div class="text-center p-6 bg-white rounded-xl border border-slate-100">
+            <div class="w-12 h-12 rounded-full bg-[rgb(240,252,252)] flex items-center justify-center mx-auto mb-4">
+              <svg class="w-6 h-6 text-rgb(6, 112, 116)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <h3 class="font-medium text-slate-900 mb-2">Flexibilidad total</h3>
+            <p class="text-sm text-slate-500 font-light">Reprograma o cancela sin complicaciones</p>
+          </div>
+          
+          <div class="text-center p-6 bg-white rounded-xl border border-slate-100">
+            <div class="w-12 h-12 rounded-full bg-[rgb(240,252,252)] flex items-center justify-center mx-auto mb-4">
+              <svg class="w-6 h-6 text-rgb(6, 112, 116)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <h3 class="font-medium text-slate-900 mb-2">Recordatorios</h3>
+            <p class="text-sm text-slate-500 font-light">Te recordamos tu cita por correo y SMS</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
+
+  <Footer />
 </Layout>
