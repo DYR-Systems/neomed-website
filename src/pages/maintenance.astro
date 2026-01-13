@@ -84,6 +84,61 @@
           filter: drop-shadow(0 0 8px rgba(14, 165, 233, 0.3)) drop-shadow(0 0 12px rgba(16, 185, 129, 0.25));
         }
       }
+
+      /* Responsive para móviles */
+      @media (max-width: 640px) {
+        body {
+          padding: 1.5rem;
+        }
+
+        .container {
+          margin-left: 1rem;
+          margin-right: 1rem;
+        }
+
+        .logo img {
+          height: 70px;
+        }
+
+        h1 {
+          font-size: 1.75rem;
+        }
+
+        .subtitle {
+          font-size: 1rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .message {
+          padding: 1.25rem;
+        }
+
+        .message p {
+          font-size: 0.95rem;
+        }
+      }
+
+      @media (max-width: 380px) {
+        h1 {
+          font-size: 1.5rem;
+        }
+
+        .logo img {
+          height: 60px;
+        }
+
+        .subtitle {
+          font-size: 0.9rem;
+        }
+
+        .message {
+          padding: 1rem;
+        }
+
+        .message p {
+          font-size: 0.875rem;
+        }
+      }
     </style>
   </head>
   <body>
