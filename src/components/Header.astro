@@ -151,12 +151,17 @@ const navItems = [
     border-top-color: #e2e8f0;
   }
   
-  #main-header.header-scrolled #mobile-menu a {
+  #main-header.header-scrolled #mobile-menu a:not(.bg-cyan-500) {
     color: #334155;
   }
   
-  #main-header.header-scrolled #mobile-menu a:hover {
+  #main-header.header-scrolled #mobile-menu a:not(.bg-cyan-500):hover {
     color: #0891b2;
+  }
+  
+  /* Mantener el botón "Agendar Cita" con texto blanco siempre */
+  #main-header #mobile-menu a.bg-cyan-500 {
+    color: white !important;
   }
 </style>
 </script>
