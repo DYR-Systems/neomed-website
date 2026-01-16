@@ -1,23 +1,19 @@
 @import "tailwindcss";
 
-/* Custom color theme - NeoMed Green */
-@theme {
-  --color-primary: #067074;
-  --color-primary-light: #088c91;
-  --color-primary-dark: #055b5e;
-  --color-secondary: #0aa0a5;
-  --color-secondary-light: #6dd5d8;
-  --color-secondary-dark: #067074;
-  
-  /* Cyan replacements with NeoMed green */
-  --color-cyan-50: #f0fcfc;
-  --color-cyan-100: #d5f5f6;
-  --color-cyan-200: #aaeaed;
-  --color-cyan-300: #0aa0a5;
-  --color-cyan-400: #088c91;
-  --color-cyan-500: #067074;
-  --color-cyan-600: #067074;
-  --color-cyan-900: #055b5e;
+/* Custom font styling */
+.font-display {
+  font-family: 'Playfair Display', serif;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Better focus states */
+*:focus-visible {
+  outline: 2px solid #0f766e;
+  outline-offset: 2px;
 }
 
 /* Custom Animations */
@@ -43,12 +39,36 @@
   }
 }
 
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
   }
-  50% {
-    transform: translateY(-10px);
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
@@ -57,33 +77,39 @@
 }
 
 .animate-fade-in-up {
-  animation: fade-in-up 1s ease-out forwards;
+  animation: fade-in-up 0.8s ease-out forwards;
 }
 
-.animate-float {
-  animation: float 3s ease-in-out infinite;
+.animate-slide-in-right {
+  animation: slide-in-right 0.8s ease-out forwards;
 }
 
-/* Stagger animations */
-.stagger-1 { animation-delay: 0.1s; }
-.stagger-2 { animation-delay: 0.2s; }
-.stagger-3 { animation-delay: 0.3s; }
-.stagger-4 { animation-delay: 0.4s; }
-
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-  overflow-x: hidden;
+.animate-slide-in-left {
+  animation: slide-in-left 0.8s ease-out forwards;
 }
 
+.animate-scale-in {
+  animation: scale-in 0.6s ease-out forwards;
+}
+
+.animate-delay-100 { animation-delay: 0.1s; }
+.animate-delay-200 { animation-delay: 0.2s; }
+.animate-delay-300 { animation-delay: 0.3s; }
+.animate-delay-400 { animation-delay: 0.4s; }
+.animate-delay-500 { animation-delay: 0.5s; }
+
+/* Hover effects */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Better typography */
 body {
-  overflow-x: hidden;
-  width: 100%;
-  position: relative;
-}
-
-/* Better focus states */
-*:focus-visible {
-  outline: 2px solid #0ea5e9;
-  outline-offset: 2px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

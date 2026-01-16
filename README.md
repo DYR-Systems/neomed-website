@@ -1,78 +1,43 @@
-# NeoMed Website
+# Astro Starter Kit: Minimal
 
-Sitio web para NeoMed - Clínica Integral de Salud.
-
-## Especialidades
-
-- Enfermería
-- Nutrición
-- Terapia Física
-- Psicología
-
-## Tecnologías
-
-- [Astro](https://astro.build/) - Framework web
-- [Tailwind CSS](https://tailwindcss.com/) - Estilos
-- TypeScript
-
-## Instalación
-
-```bash
-# Instalar dependencias
-npm install
-
-# Iniciar servidor de desarrollo
-npm run dev
-
-# Construir para producción
-npm run build
-
-# Vista previa de producción
-npm run preview
+```sh
+npm create astro@latest -- --template minimal
 ```
 
-## Estructura del Proyecto
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-```
+## 🚀 Project Structure
+
+Inside of your Astro project, you'll see the following folders and files:
+
+```text
 /
 ├── public/
-│   └── favicon.svg
 ├── src/
-│   ├── components/
-│   │   ├── Header.astro
-│   │   ├── Footer.astro
-│   │   ├── ServiceCard.astro
-│   │   └── TeamCard.astro
-│   ├── layouts/
-│   │   └── Layout.astro
 │   └── pages/
-│       ├── index.astro
-│       └── servicios/
-│           ├── enfermeria.astro
-│           ├── nutricion.astro
-│           ├── terapia-fisica.astro
-│           └── psicologia.astro
-├── astro.config.mjs
-├── tailwind.config.mjs
+│       └── index.astro
 └── package.json
 ```
 
-## Colores
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-| Color | Código | Uso |
-|-------|--------|-----|
-| Primary | `#067074` | Color principal |
-| Secondary | `#87a8aa` | Color secundario |
-| Accent | `#575756` | Texto y acentos |
+There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
 
-## Scripts Disponibles
+Any static assets, like images, can be placed in the `public/` directory.
 
-| Comando | Descripción |
-|---------|-------------|
-| `npm run dev` | Inicia servidor de desarrollo |
-| `npm run build` | Construye el sitio para producción |
-| `npm run preview` | Vista previa del build de producción |
+## 🧞 Commands
 
-## Licencia
+All commands are run from the root of the project, from a terminal:
 
-© 2026 NeoMed Clínica Integral. Todos los derechos reservados.
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | Installs dependencies                            |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro -- --help` | Get help using the Astro CLI                     |
+
+## 👀 Want to learn more?
+
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

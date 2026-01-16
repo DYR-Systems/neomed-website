@@ -4,15 +4,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: {
-          DEFAULT: '#0ea5e9',
-          light: '#38bdf8',
-          dark: '#0284c7',
-        },
-        secondary: {
-          DEFAULT: '#10b981',
-          light: '#34d399',
-          dark: '#059669',
+        teal: {
+          50: '#f5f9f9',
+          100: '#e6f0f1',
+          200: '#cce1e3',
+          300: '#99c3c7',
+          400: '#66a5ab',
+          500: '#067074',
+          600: '#055a5d',
+          700: '#044346',
+          800: '#032d2f',
+          900: '#021617',
         },
       },
       fontFamily: {
