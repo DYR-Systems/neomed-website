@@ -1,8 +1,11 @@
 ---
+const currentPath = Astro.url.pathname;
+const isHomePage = currentPath === '/' || currentPath === '';
+
 const navItems = [
-  { href: '#servicios', label: 'Especialidades' },
-  { href: '#nosotros', label: 'Nosotros' },
-  { href: '#contacto', label: 'Contacto' },
+  { href: isHomePage ? '#servicios' : '/#servicios', label: 'Especialidades' },
+  { href: isHomePage ? '#nosotros' : '/nosotros', label: 'Nosotros' },
+  { href: isHomePage ? '#contacto' : '/contacto', label: 'Contacto' },
 ];
 ---
 
@@ -85,6 +88,9 @@ const navItems = [
   const closeIcon = document.getElementById('close-icon');
   const header = document.getElementById('main-header');
   
+  // Detectar si estamos en la página principal
+  const isHomePage = window.location.pathname === '/' || window.location.pathname === '';
+  
   // Mobile menu toggle
   if (mobileMenuBtn && mobileMenu && menuIcon && closeIcon) {
     mobileMenuBtn.addEventListener('click', () => {
@@ -104,11 +110,24 @@ const navItems = [
   
   // Header scroll effect
   if (header) {
-    window.addEventListener('scroll', () => {
+    // Si no estamos en la homepage, aplicar el estilo scrolled inmediatamente
+    if (!isHomePage) {
+      header.classList.add('header-scrolled');
+    } else {
+      // En homepage, aplicar según el scroll inicial
       if (window.scrollY > 100) {
         header.classList.add('header-scrolled');
-      } else {
-        header.classList.remove('header-scrolled');
+      }
+    }
+    
+    window.addEventListener('scroll', () => {
+      // Solo aplicar efecto de scroll en la homepage
+      if (isHomePage) {
+        if (window.scrollY > 100) {
+          header.classList.add('header-scrolled');
+        } else {
+          header.classList.remove('header-scrolled');
+        }
       }
     });
   }
