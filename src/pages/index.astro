@@ -103,9 +103,9 @@ const team = [
     <div class="absolute inset-0 z-0">
       <div class="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-slate-800/70 to-cyan-900/60 z-10"></div>
       <img 
-        src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=2000&q=80" 
+        src="/facilities/instalacion_1.png" 
         alt="Clínica médica" 
-        class="w-full h-full object-cover"
+        class="w-full h-full object-cover object-[80%_center] md:object-center"
       />
     </div>
     
@@ -293,8 +293,150 @@ const team = [
     </div>
   </section>
 
+  <!-- Facilities Section -->
+  <section id="instalaciones" class="py-24 bg-slate-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <p class="text-sm text-cyan-600 font-semibold uppercase tracking-wider mb-4">Instalaciones</p>
+        <h2 class="font-heading text-4xl md:text-5xl font-light text-slate-900 mb-6">
+          Nuestras <span class="font-semibold">Instalaciones</span>
+        </h2>
+        <p class="text-lg text-slate-500 font-light leading-relaxed">
+          Espacios diseñados pensando en tu comodidad y bienestar
+        </p>
+      </div>
+
+      <div class="max-w-5xl mx-auto">
+        <!-- Carrusel de instalaciones -->
+        <div class="relative">
+          <!-- Contenedor del carrusel -->
+          <div class="overflow-hidden rounded-2xl shadow-2xl">
+            <div id="facilities-carousel" class="relative h-[400px] md:h-[500px] lg:h-[600px]">
+              <!-- Slide 1 -->
+              <div class="carousel-slide absolute inset-0 opacity-100 transition-opacity duration-700 ease-in-out">
+                <img 
+                  src="/facilities/instalacion_1.png" 
+                  alt="Instalaciones NeoMed" 
+                  loading="eager"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <!-- Slide 2 -->
+              <div class="carousel-slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out">
+                <img 
+                  src="/facilities/instalacion_2.png" 
+                  alt="Instalaciones NeoMed" 
+                  loading="eager"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <!-- Slide 3 -->
+              <div class="carousel-slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out">
+                <img 
+                  src="/facilities/instalacion_3.jpg" 
+                  alt="Instalaciones NeoMed" 
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <!-- Slide 4 -->
+              <div class="carousel-slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out">
+                <img 
+                  src="/facilities/instalacion_4.jpg" 
+                  alt="Instalaciones NeoMed" 
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <!-- Slide 5 -->
+              <div class="carousel-slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out">
+                <img 
+                  src="/facilities/instalacion_5.jpg" 
+                  alt="Instalaciones NeoMed" 
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <!-- Slide 6 -->
+              <div class="carousel-slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out">
+                <img 
+                  src="/facilities/instalacion_6.jpg" 
+                  alt="Instalaciones NeoMed" 
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <!-- Slide 7 -->
+              <div class="carousel-slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out">
+                <img 
+                  src="/facilities/instalacion_7.jpg" 
+                  alt="Instalaciones NeoMed" 
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <!-- Slide 8 -->
+              <div class="carousel-slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out">
+                <img 
+                  src="/facilities/instalacion_8.jpg" 
+                  alt="Instalaciones NeoMed" 
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <!-- Slide 9 -->
+              <div class="carousel-slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out">
+                <img 
+                  src="/facilities/instalacion_9.jpg" 
+                  alt="Instalaciones NeoMed" 
+                  class="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Botón anterior -->
+          <button 
+            id="prev-btn"
+            class="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/90 hover:bg-white shadow-lg flex items-center justify-center transition-all hover:scale-110 z-10"
+            aria-label="Imagen anterior"
+          >
+            <svg class="w-6 h-6 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+          </button>
+
+          <!-- Botón siguiente -->
+          <button 
+            id="next-btn"
+            class="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/90 hover:bg-white shadow-lg flex items-center justify-center transition-all hover:scale-110 z-10"
+            aria-label="Imagen siguiente"
+          >
+            <svg class="w-6 h-6 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </button>
+
+          <!-- Indicadores -->
+          <div class="flex justify-center gap-2 mt-6">
+            <button class="carousel-indicator w-2 h-2 rounded-full bg-cyan-500 transition-all" data-slide="0"></button>
+            <button class="carousel-indicator w-2 h-2 rounded-full bg-slate-300 transition-all" data-slide="1"></button>
+            <button class="carousel-indicator w-2 h-2 rounded-full bg-slate-300 transition-all" data-slide="2"></button>
+            <button class="carousel-indicator w-2 h-2 rounded-full bg-slate-300 transition-all" data-slide="3"></button>
+            <button class="carousel-indicator w-2 h-2 rounded-full bg-slate-300 transition-all" data-slide="4"></button>
+            <button class="carousel-indicator w-2 h-2 rounded-full bg-slate-300 transition-all" data-slide="5"></button>
+            <button class="carousel-indicator w-2 h-2 rounded-full bg-slate-300 transition-all" data-slide="6"></button>
+            <button class="carousel-indicator w-2 h-2 rounded-full bg-slate-300 transition-all" data-slide="7"></button>
+            <button class="carousel-indicator w-2 h-2 rounded-full bg-slate-300 transition-all" data-slide="8"></button>
+          </div>
+        </div>
+
+        <!-- CTA adicional opcional -->
+        <div class="text-center mt-12">
+          <p class="text-slate-600 mb-6">
+            Ven a conocer nuestras instalaciones modernas y cómodas
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Team Section -->
-  <section id="equipo" class="py-24 bg-slate-50">
+  <section id="equipo" class="py-24 bg-white">
     <div class="container mx-auto px-4">
       <div class="text-center max-w-2xl mx-auto mb-16">
         <p class="text-sm text-cyan-600 font-semibold uppercase tracking-wider mb-4">Nuestro Equipo</p>
@@ -326,7 +468,7 @@ const team = [
   </section>
 
   <!-- Insurance Section -->
-  <section class="py-24 bg-slate-50 pt-0">
+  <section class="py-24 bg-slate-50">
     <div class="container mx-auto px-4">
       <div class="text-center max-w-2xl mx-auto mb-12">
         <p class="text-sm text-cyan-600 font-semibold uppercase tracking-wider mb-4">Seguros Médicos</p>
@@ -573,3 +715,108 @@ const team = [
     animation: fade-in 0.8s ease-out 0.6s forwards;
   }
 </style>
+
+<script>
+  // Carrusel de instalaciones - Fade
+  document.addEventListener('DOMContentLoaded', () => {
+    const slides = document.querySelectorAll('.carousel-slide');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const indicators = document.querySelectorAll('.carousel-indicator');
+    
+    let currentSlide = 0;
+    const totalSlides = slides.length;
+    let autoPlayInterval;
+
+    function updateCarousel() {
+      slides.forEach((slide, index) => {
+        if (index === currentSlide) {
+          slide.classList.remove('opacity-0');
+          slide.classList.add('opacity-100', 'z-10');
+        } else {
+          slide.classList.remove('opacity-100', 'z-10');
+          slide.classList.add('opacity-0');
+        }
+      });
+
+      indicators.forEach((indicator, index) => {
+        if (index === currentSlide) {
+          indicator.classList.remove('bg-slate-300');
+          indicator.classList.add('bg-cyan-500');
+        } else {
+          indicator.classList.remove('bg-cyan-500');
+          indicator.classList.add('bg-slate-300');
+        }
+      });
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      updateCarousel();
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+      updateCarousel();
+    }
+
+    function goToSlide(index) {
+      currentSlide = index;
+      updateCarousel();
+    }
+
+    function startAutoPlay() {
+      autoPlayInterval = setInterval(nextSlide, 5000);
+    }
+
+    function stopAutoPlay() {
+      clearInterval(autoPlayInterval);
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        nextSlide();
+        stopAutoPlay();
+        startAutoPlay();
+      });
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        prevSlide();
+        stopAutoPlay();
+        startAutoPlay();
+      });
+    }
+
+    indicators.forEach((indicator, index) => {
+      indicator.addEventListener('click', () => {
+        goToSlide(index);
+        stopAutoPlay();
+        startAutoPlay();
+      });
+    });
+
+    startAutoPlay();
+
+    // Pausar al hover
+    const carouselContainer = document.getElementById('facilities-carousel');
+    if (carouselContainer) {
+      carouselContainer.parentElement.addEventListener('mouseenter', stopAutoPlay);
+      carouselContainer.parentElement.addEventListener('mouseleave', startAutoPlay);
+    }
+
+    // Gestos táctiles
+    let touchStartX = 0;
+    if (carouselContainer) {
+      carouselContainer.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      });
+      carouselContainer.addEventListener('touchend', (e) => {
+        const diff = e.changedTouches[0].screenX - touchStartX;
+        if (diff < -50) { nextSlide(); stopAutoPlay(); startAutoPlay(); }
+        if (diff > 50) { prevSlide(); stopAutoPlay(); startAutoPlay(); }
+      });
+    }
+  });
+</script>
