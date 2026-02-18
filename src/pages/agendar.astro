@@ -6,10 +6,28 @@ import '../styles/global.css';
 ---
 
 <Layout title="Agendar Cita" description="Agenda tu cita en NeoMed. Reserva tu consulta con nuestros especialistas.">
-  <Header />
+  <!-- Desktop: Header normal -->
+  <div class="hidden md:block">
+    <Header />
+  </div>
   
-  <!-- Hero con imagen de fondo -->
-  <section class="relative pt-32 pb-16 overflow-hidden">
+  <!-- Móvil -->
+  <div class="md:hidden fixed top-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-sm px-4 py-3 flex items-center justify-between">
+    <a href="/" class="inline-flex items-center text-white/80 hover:text-white text-sm transition-colors">
+      <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+      </svg>
+      Volver
+    </a>
+    <div class="flex items-center gap-2">
+      <img src="/neomed_icon.png" alt="" class="h-5 w-auto" style="" />
+      <span class="text-white text-sm font-medium">Agenda tu cita</span>
+    </div>
+    <div class="w-14"></div>
+  </div>
+
+  <!-- Hero with background image (desktop only) -->
+  <section class="relative pt-32 pb-16 overflow-hidden hidden md:block">
     <div class="absolute inset-0 z-0">
       <div class="absolute inset-0 bg-gradient-to-b from-slate-900/90 to-slate-800/80 z-10"></div>
       <img 
@@ -42,21 +60,31 @@ import '../styles/global.css';
     </div>
   </section>
 
-  <!-- Booking Section -->
-  <section class="py-16 bg-slate-50">
+  <!-- Móvil: iframe full-screen -->
+  <div class="md:hidden fixed top-[44px] left-0 right-0 bottom-0 z-40">
+    <iframe 
+      src="https://ehr.dyrsystems.com/booking/neomed" 
+      class="w-full h-full border-0"
+      title="Sistema de Reservas NeoMed"
+      loading="lazy"
+    ></iframe>
+  </div>
+
+  <!-- Desktop: Booking Section -->
+  <section class="py-16 bg-slate-50 hidden md:block">
     <div class="container mx-auto px-4">
       <div class="max-w-5xl mx-auto">
         <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-100">
           <iframe 
             src="https://ehr.dyrsystems.com/booking/neomed" 
             class="w-full border-0"
-            style="min-height: 800px; height: calc(100vh - 300px);"
+            style="min-height: 1000px; height: calc(100vh - 200px);"
             title="Sistema de Reservas NeoMed"
             loading="lazy"
           ></iframe>
         </div>
         
-        <!-- Info cards -->
+        <!-- Info cards (only desktop) -->
         <div class="grid md:grid-cols-3 gap-6 mt-12">
           <div class="text-center p-6 bg-white rounded-xl border border-slate-100">
             <div class="w-12 h-12 rounded-full bg-[rgb(240,252,252)] flex items-center justify-center mx-auto mb-4">
@@ -92,5 +120,21 @@ import '../styles/global.css';
     </div>
   </section>
 
-  <Footer />
+  <!-- Footer only desktop -->
+  <div class="hidden md:block">
+    <Footer />
+  </div>
 </Layout>
+
+<script>
+  // On mobile: block scrolling of the body so that only the iframe scrolls
+  const isMobile = window.matchMedia('(max-width: 767px)').matches;
+  if (isMobile) {
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.width = '100%';
+    document.body.style.height = '100%';
+  }
+</script>
+
+
