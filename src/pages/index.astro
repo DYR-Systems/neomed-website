@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { directorio } from '../data/directorio';
 import '../styles/global.css';
 
 const services = [
@@ -51,46 +52,8 @@ const services = [
     </svg>`
   }
 ];
-const team = [
-  { 
-    name: 'Lic. Montserrat Villalobos Leitón', 
-    role: 'Psicóloga Clínica', 
-    specialty: 'Psicodiagnóstico · Psicología Educativa',
-    image: '/professionals/montserrat_villalobos.webp'
-  },
-  { 
-    name: 'Dra. Geovanna Calvo Gutierrez', 
-    role: 'Psicóloga Clínica', 
-    specialty: 'Trauma · Duelo · Terapia de Pareja',
-    image: '/professionals/geovanna_calvo.webp'
-  },
-  { 
-    name: 'Dr. Deibi Soto', 
-    role: 'Médico Familiar', 
-    specialty: 'Medicina Familiar',
-    image: '/professionals/deibi_soto_montero.webp',
-    imagePosition: '10%'
-  },
-  { 
-    name: 'Dra. Daniela Soto', 
-    role: 'Fisioterapeuta', 
-    specialty: 'Fisioterapia Deportiva · Neurológica',
-    image: '/professionals/daniela_soto.webp'
-  },
-  { 
-    name: 'Dra. Maria Jose Soto', 
-    role: 'Nutricionista', 
-    specialty: 'Nutrición y Dietética',
-    image: '/professionals/maria_jose_soto.webp'
-  },
-  { 
-    name: 'Lic. Tamara Guerrero Carrillo', 
-    role: 'Enfermera', 
-    specialty: 'Enfermería',
-    image: '/professionals/tamara_guerrero.webp',
-    imagePosition: '30%'
-  },
-];
+// Unique specialties count for the team section
+const uniqueRoles = new Set(directorio.map(p => p.role)).size;
 
 
 ---
@@ -436,42 +399,97 @@ const team = [
     </div>
   </section>
 
-  <!-- Team Section -->
+  <!-- Team Section - CTA to Directory -->
   <section id="equipo" class="py-24 bg-white">
     <div class="container mx-auto px-4">
-      <div class="text-center max-w-2xl mx-auto mb-16">
-        <p class="text-sm text-cyan-600 font-semibold uppercase tracking-wider mb-4">Nuestro Equipo</p>
-        <h2 class="font-heading text-4xl md:text-5xl font-light text-slate-900 mb-6">
-          Profesionales de <span class="font-semibold">Excelencia</span>
-        </h2>
-        <p class="text-lg text-slate-500 font-light leading-relaxed">
-          Conoce a los especialistas que harán de tu experiencia en NeoMed algo excepcional
-        </p>
-      </div>
-      
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-        {team.map((member) => (
-          <div class="bg-white rounded-2xl p-8 text-center hover:shadow-xl transition-all duration-300 border border-slate-100 group">
-            <div 
-              class="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden ring-4 ring-cyan-50 group-hover:ring-cyan-200 transition-all duration-300 cursor-pointer"
-              data-lightbox-trigger
-              data-image={member.image}
-              data-name={member.name}
-              data-role={member.role}
-              data-specialty={member.specialty}
-            >
-              <img 
-                src={member.image} 
-                alt={member.name}
-                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                style={member.imagePosition ? `object-position: 50% ${member.imagePosition};` : ''}
-              />
+      <div class="max-w-4xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-12">
+          <p class="text-sm text-cyan-600 font-semibold uppercase tracking-wider mb-4">Nuestro Equipo</p>
+          <h2 class="font-heading text-4xl md:text-5xl font-light text-slate-900 mb-6">
+            Profesionales de <span class="font-semibold">Excelencia</span>
+          </h2>
+          <p class="text-lg text-slate-500 font-light leading-relaxed max-w-2xl mx-auto">
+            Contamos con un equipo multidisciplinario comprometido con tu bienestar integral
+          </p>
+        </div>
+
+        <!-- Card with avatars + stats + CTA -->
+        <div class="bg-gradient-to-br from-slate-50 to-cyan-50/40 rounded-3xl p-8 md:p-12 border border-slate-100 shadow-sm">
+          <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+            
+            <!-- Avatar stack -->
+            <div class="flex-shrink-0">
+              <div class="flex -space-x-4">
+                {directorio.slice(0, 6).map((prof) => (
+                  <div class="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden ring-4 ring-white shadow-lg">
+                    <img 
+                      src={prof.image} 
+                      alt={prof.name}
+                      class="w-full h-full object-cover"
+                      style={prof.imagePosition ? `object-position: 50% ${prof.imagePosition};` : ''}
+                    />
+                  </div>
+                ))}
+                {directorio.length > 6 && (
+                  <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-cyan-600 ring-4 ring-white shadow-lg flex items-center justify-center">
+                    <span class="text-white font-semibold text-sm md:text-base">+{directorio.length - 6}</span>
+                  </div>
+                )}
+              </div>
             </div>
-            <h3 class="font-heading text-lg font-semibold text-slate-900 mb-1">{member.name}</h3>
-            <p class="text-cyan-600 text-sm font-medium mb-2">{member.role}</p>
-            <p class="text-slate-500 text-sm font-light">{member.specialty}</p>
+
+            <!-- Text + Stats -->
+            <div class="flex-1 text-center md:text-left">
+              <h3 class="font-heading text-2xl md:text-3xl font-semibold text-slate-900 mb-3">
+                Conoce a nuestros especialistas
+              </h3>
+              <p class="text-slate-500 font-light leading-relaxed mb-6">
+                Encuentra al profesional ideal para ti. Busca por especialidad, nombre o área de atención en nuestro directorio médico.
+              </p>
+              
+              <!-- Stats row -->
+              <div class="flex flex-wrap justify-center md:justify-start gap-6 mb-8">
+                <div class="flex items-center gap-2">
+                  <div class="w-10 h-10 rounded-xl bg-cyan-100 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="text-xl font-bold text-slate-900">{directorio.length}</p>
+                    <p class="text-xs text-slate-500">Profesionales</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2">
+                  <div class="w-10 h-10 rounded-xl bg-teal-100 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="text-xl font-bold text-slate-900">{uniqueRoles}</p>
+                    <p class="text-xs text-slate-500">Especialidades</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CTA Button -->
+              <a 
+                href="/directorio" 
+                class="inline-flex items-center gap-3 bg-cyan-600 hover:bg-cyan-700 text-white font-semibold px-8 py-4 rounded-2xl shadow-lg shadow-cyan-600/25 hover:shadow-xl hover:shadow-cyan-600/30 transition-all duration-300 group"
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                </svg>
+                Explorar Directorio Médico
+                <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
           </div>
-        ))}
+        </div>
       </div>
     </div>
   </section>
@@ -692,22 +710,7 @@ const team = [
 
   <Footer />
 
-  <!-- Lightbox Modal -->
-  <div id="lightbox-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-    <button id="lightbox-close" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/20 hover:bg-white/40 flex items-center justify-center transition-all z-10" aria-label="Cerrar">
-      <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-      </svg>
-    </button>
-    <div class="max-w-2xl w-full text-center animate-fade-in">
-      <div class="mx-auto rounded-2xl overflow-hidden shadow-2xl ring-4 ring-white/20 mb-6 flex items-center justify-center" style="max-height: 80vh;">
-        <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[80vh] w-auto h-auto object-contain" />
-      </div>
-      <h3 id="lightbox-name" class="text-2xl font-semibold text-white mb-1"></h3>
-      <p id="lightbox-role" class="text-cyan-400 font-medium mb-1"></p>
-      <p id="lightbox-specialty" class="text-white/70 text-sm"></p>
-    </div>
-  </div>
+
 </Layout>
 
 <style>
@@ -846,41 +849,5 @@ const team = [
     }
   });
 
-  // Lightbox para fotos de profesionales
-  document.addEventListener('DOMContentLoaded', () => {
-    const modal = document.getElementById('lightbox-modal');
-    const modalImg = document.getElementById('lightbox-img');
-    const modalName = document.getElementById('lightbox-name');
-    const modalRole = document.getElementById('lightbox-role');
-    const modalSpecialty = document.getElementById('lightbox-specialty');
-    const closeBtn = document.getElementById('lightbox-close');
-    const triggers = document.querySelectorAll('[data-lightbox-trigger]');
 
-    triggers.forEach(trigger => {
-      trigger.addEventListener('click', () => {
-        modalImg.src = trigger.dataset.image;
-        modalImg.alt = trigger.dataset.name;
-        modalName.textContent = trigger.dataset.name;
-        modalRole.textContent = trigger.dataset.role;
-        modalSpecialty.textContent = trigger.dataset.specialty;
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-        document.body.style.overflow = 'hidden';
-      });
-    });
-
-    function closeLightbox() {
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-      document.body.style.overflow = '';
-    }
-
-    closeBtn.addEventListener('click', closeLightbox);
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeLightbox();
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeLightbox();
-    });
-  });
 </script>
