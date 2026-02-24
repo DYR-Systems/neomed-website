@@ -270,11 +270,22 @@ import { directorio } from '../../data/directorio';
 
 <script>
   // Directorio Médico - Search-first experience
-  // Prevent browser from restoring scroll position on back navigation
-  if ('scrollRestoration' in history) {
-    history.scrollRestoration = 'manual';
+  // Detect if this is a back/forward navigation (e.g. coming back from a profile)
+  const navEntries = performance.getEntriesByType('navigation') as PerformanceNavigationTiming[];
+  const isBackForward = navEntries.length > 0 && navEntries[0].type === 'back_forward';
+  const fromProfile = sessionStorage.getItem('directorio-from-profile') === '1';
+  sessionStorage.removeItem('directorio-from-profile');
+  const shouldRestore = isBackForward || fromProfile;
+
+  // Only force scroll to top on fresh navigations, not when restoring
+  if (!shouldRestore) {
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+    // Clear any saved state on fresh navigation (e.g. coming from homepage)
+    sessionStorage.removeItem('directorio-state');
   }
-  window.scrollTo(0, 0);
 
   document.addEventListener('DOMContentLoaded', () => {
     const cards = document.querySelectorAll('.directorio-card');
@@ -292,6 +303,19 @@ import { directorio } from '../../data/directorio';
 
     let activeFilter = '';
     let hasSearched = false;
+
+    // Track the last actually-executed search state (not live dropdown value)
+    let lastSearchedState = { search: '', filter: '' };
+
+    // Save the last executed search state before navigating to a profile
+    function saveState() {
+      sessionStorage.setItem('directorio-state', JSON.stringify(lastSearchedState));
+    }
+
+    // Intercept clicks on profile cards to save state
+    cards.forEach(card => {
+      card.addEventListener('click', () => saveState());
+    });
 
     // Strip accents/diacritics for search matching
     function normalize(str: string): string {
@@ -320,6 +344,7 @@ import { directorio } from '../../data/directorio';
       resultadosHeader?.classList.add('hidden');
       noResults?.classList.add('hidden');
       especialidadesSection?.classList.remove('hidden');
+      sessionStorage.removeItem('directorio-state');
       // Remove active state from specialty buttons
       especialidadBtns.forEach(btn => {
         btn.querySelector('div')?.classList.remove('border-cyan-500', 'bg-cyan-50', 'shadow-md');
@@ -382,6 +407,9 @@ import { directorio } from '../../data/directorio';
 
       showResults(visibleCount);
 
+      // Remember this as the last executed search
+      lastSearchedState = { search: searchInput?.value.trim() || '', filter: activeFilter };
+
       // Scroll to results
       const resultsSection = grid?.closest('section');
       if (resultsSection) {
@@ -443,6 +471,27 @@ import { directorio } from '../../data/directorio';
     if (searchParam && searchInput) {
       searchInput.value = searchParam;
       doSearch();
+    }
+
+    // Restore state only when coming back from a profile (back button or "Volver" link)
+    if (shouldRestore) {
+      const saved = sessionStorage.getItem('directorio-state');
+      if (saved) {
+        try {
+          const state = JSON.parse(saved);
+          if (searchInput && state.search) searchInput.value = state.search;
+          if (state.filter) {
+            activeFilter = state.filter;
+            if (selectFilter) selectFilter.value = state.filter;
+          }
+          if (state.search || state.filter) {
+            doSearch();
+          }
+        } catch (e) {
+          // Ignore invalid state
+        }
+        sessionStorage.removeItem('directorio-state');
+      }
     }
   });
 </script>

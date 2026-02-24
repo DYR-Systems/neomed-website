@@ -231,6 +231,13 @@ const { prof } = Astro.props;
 </Layout>
 
 <script>
+  // When clicking any link back to the directory, signal to restore the search state
+  document.querySelectorAll('a[href="/directorio"]').forEach(link => {
+    link.addEventListener('click', () => {
+      sessionStorage.setItem('directorio-from-profile', '1');
+    });
+  });
+
   document.addEventListener('DOMContentLoaded', () => {
     const trigger = document.getElementById('profile-photo-trigger');
     const modal = document.getElementById('lightbox-modal');
