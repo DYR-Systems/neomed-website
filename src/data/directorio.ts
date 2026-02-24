@@ -50,7 +50,7 @@ export const directorio: Profesional[] = [
   },
   {
     slug: 'deibi-soto',
-    name: 'Dr. Deibi Soto',
+    name: 'Dr. Deibi Soto Montero',
     role: 'Médico Familiar',
     code: '',
     image: '/professionals/deibi_soto_montero.webp',
