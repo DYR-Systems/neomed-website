@@ -30,7 +30,7 @@ export const directorio: Profesional[] = [
     about: 'Licenciada en Psicología. Brinda atención a población infantil, adultos jóvenes y personas adultas desde una mirada humanista, ofreciendo un espacio seguro donde cada historia es validada y transformada con respeto y sensibilidad. Se caracteriza por ser una profesional empática, cercana y comprometida con el bienestar integral de cada persona. Cree profundamente en la escucha respetuosa, el trabajo en equipo y el acompañamiento consciente como base para generar cambios significativos.',
     specialties: ['Psicodiagnóstico', 'Psicología Organizacional y Bienestar Laboral', 'Psicología Educativa', 'Evaluación Psicológica'],
     procedures: ['Entrevista clínica', 'Evaluación psicológica en adultos', 'Acompañamiento emocional', 'Intervención psicoeducativa', 'Elaboración de informes'],
-    languages: ['Español', 'Inglés 85%'],
+    languages: ['Español', 'Inglés'],
   },
   {
     slug: 'geovanna-calvo',
@@ -46,7 +46,7 @@ export const directorio: Profesional[] = [
     about: 'Psicóloga clínica graduada de la Universidad Iberoamericana (UNIBE), colegiada ante el Colegio de Profesionales en Psicología de Costa Rica. Cuenta con formación especializada en Terapia Cognitivo Conductual (TCC), Terapia Racional Emotivo Conductual (TREC) y Psicotrauma. Especialista en el abordaje de trauma psicológico, procesos de duelo e intervención en conducta suicida, integrando enfoques basados en evidencia y una mirada ética, sensible y profundamente humana. Posee un Máster en Sexualidad y Terapia de Pareja.',
     specialties: ['Trauma psicológico y psicotrauma', 'Procesos de duelo', 'Intervención en conducta e ideación suicida', 'Trastornos de ansiedad', 'Depresión y trastornos del estado de ánimo', 'Regulación emocional', 'Trastornos de personalidad', 'Sexualidad clínica', 'Terapia de pareja', 'Identidad y diversidad sexual', 'Crecimiento personal y autoconocimiento'],
     procedures: ['Psicoterapia individual (presencial y virtual)', 'Terapia de pareja', 'Intervención en crisis y conducta suicida', 'Procesos terapéuticos para trauma y duelo', 'Evaluación y acompañamiento psicológico', 'Talleres y charlas psicoeducativas', 'Atención psicológica para empresas', 'Telepsicología'],
-    languages: ['Español', 'Inglés B2'],
+    languages: ['Español', 'Inglés'],
   },
   {
     slug: 'deibi-soto',
