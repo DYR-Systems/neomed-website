@@ -6,9 +6,6 @@ services:
     staticPublishPath: ./dist
     pullRequestPreviewsEnabled: true
     headers:
-      - path: /admin/config.yml
-        name: Content-Type
-        value: text/yaml; charset=utf-8
       - path: /*
         name: Cache-Control
         value: public, max-age=31536000, immutable
