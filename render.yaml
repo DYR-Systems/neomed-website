@@ -6,6 +6,9 @@ services:
     staticPublishPath: ./dist
     pullRequestPreviewsEnabled: true
     headers:
+      - path: /cms/*
+        name: Cache-Control
+        value: no-cache, no-store, must-revalidate
       - path: /admin/*
         name: Cache-Control
         value: no-cache, no-store, must-revalidate
@@ -18,3 +21,10 @@ services:
       - path: /*.html
         name: Cache-Control
         value: public, max-age=0, must-revalidate
+    routes:
+      - type: redirect
+        source: /admin
+        destination: /cms
+      - type: redirect
+        source: /admin/*
+        destination: /cms/*
