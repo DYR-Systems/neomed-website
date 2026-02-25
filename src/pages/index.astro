@@ -1,377 +1,855 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ServiceCard from '../components/ServiceCard.astro';
-import TeamCard from '../components/TeamCard.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { getDirectorio } from '../data/directorio';
+import '../styles/global.css';
+
+const directorio = await getDirectorio();
 
 const services = [
   {
+    title: 'Medicina',
+    description: 'Atención médica integral para toda la familia.',
+    href: '/servicios/medicina',
+    image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80',
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+    </svg>`
+  },
+  {
     title: 'Enfermería',
-    description: 'Atención profesional de enfermería con cuidados especializados, administración de medicamentos y seguimiento personalizado de tu salud.',
+    description: 'Cuidados profesionales y personalizados para tu bienestar diario.',
     href: '/servicios/enfermeria',
-    icon: `<svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    image: 'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?auto=format&fit=crop&w=800&q=80',
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
     </svg>`
   },
   {
     title: 'Nutrición',
-    description: 'Planes alimenticios personalizados para alcanzar tus objetivos de salud, pérdida de peso o manejo de condiciones específicas.',
+    description: 'Planes alimenticios diseñados especialmente para ti.',
     href: '/servicios/nutricion',
-    icon: `<svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+    image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=800&q=80',
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/>
     </svg>`
   },
   {
     title: 'Terapia Física',
-    description: 'Rehabilitación física especializada para recuperar tu movilidad, aliviar el dolor y mejorar tu calidad de vida.',
+    description: 'Recupera tu movilidad con tratamientos especializados.',
     href: '/servicios/terapia-fisica',
-    icon: `<svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6l4 2"/>
+    image: 'https://images.unsplash.com/photo-1522898467493-49726bf28798?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
     </svg>`
   },
   {
     title: 'Psicología',
-    description: 'Apoyo psicológico profesional para tu bienestar emocional, manejo del estrés, ansiedad y crecimiento personal.',
+    description: 'Apoyo profesional para tu salud mental y emocional.',
     href: '/servicios/psicologia',
-    icon: `<svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+    image: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=800&q=80',
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
     </svg>`
   }
 ];
+// Unique specialties count for the team section
+const uniqueRoles = new Set(directorio.map(p => p.role)).size;
 
-const team = [
-  { name: 'Dra. María González', role: 'Directora Médica', specialty: 'Medicina Interna' },
-  { name: 'Lic. Carlos Mendoza', role: 'Enfermero Jefe', specialty: 'Cuidados Intensivos' },
-  { name: 'Lic. Ana Rodríguez', role: 'Nutrióloga', specialty: 'Nutrición Clínica' },
-  { name: 'Lic. Roberto Sánchez', role: 'Fisioterapeuta', specialty: 'Rehabilitación Deportiva' },
-  { name: 'Dra. Laura Martínez', role: 'Psicóloga', specialty: 'Terapia Cognitivo-Conductual' },
-  { name: 'Lic. Patricia López', role: 'Enfermera', specialty: 'Atención Pediátrica' },
-];
 
-const stats = [
-  { number: '10+', label: 'Años de experiencia' },
-  { number: '15,000+', label: 'Pacientes atendidos' },
-  { number: '4', label: 'Especialidades' },
-  { number: '98%', label: 'Satisfacción' },
-];
 ---
 
 <Layout title="Inicio">
-  <!-- Hero Section -->
-  <section class="relative bg-gradient-to-br from-primary via-primary to-primary-dark text-white overflow-hidden">
-    <div class="absolute inset-0 opacity-10">
-      <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-        <defs>
-          <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
-            <path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" stroke-width="0.5"/>
-          </pattern>
-        </defs>
-        <rect width="100" height="100" fill="url(#grid)"/>
-      </svg>
+  <Header />
+  
+  <!-- Hero Section - Con imagen de fondo estilo Torre Médica -->
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <!-- Background Image with Overlay -->
+    <div class="absolute inset-0 z-0">
+      <div class="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-slate-800/70 to-cyan-900/60 z-10"></div>
+      <img 
+        src="/facilities/instalacion_1.webp" 
+        alt="Clínica médica" 
+        class="w-full h-full object-cover object-[80%_center] md:object-center"
+      />
     </div>
     
-    <div class="container mx-auto px-4 py-20 md:py-32 relative">
-      <div class="grid md:grid-cols-2 gap-12 items-center">
-        <div>
-          <span class="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium mb-6">
-            Clínica Integral de Salud
-          </span>
-          <h1 class="font-heading text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-            Tu salud es nuestra
-            <span class="text-secondary-light">prioridad</span>
-          </h1>
-          <p class="text-lg md:text-xl text-white/90 mb-8 leading-relaxed">
-            En NeoMed ofrecemos atención médica integral con especialistas en 
-            enfermería, nutrición, terapia física y psicología. Cuidamos de ti 
-            con profesionalismo y calidez humana.
-          </p>
-          <div class="flex flex-wrap gap-4">
-            <a href="/agendar" class="btn-ripple bg-white text-primary px-8 py-3 rounded-full font-semibold hover:bg-secondary-light transition-colors">
-              Agendar Cita
-            </a>
-            <a href="#servicios" class="btn-ripple border-2 border-white/50 text-white px-8 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors">
-              Ver Servicios
-            </a>
-          </div>
+    <div class="container mx-auto px-4 py-20 relative z-20">
+      <div class="max-w-4xl mx-auto text-center">
+        
+        <!-- Logo e título en horizontal -->
+        <div class="flex items-center justify-center mb-6 animate-fade-in-delay">
+          <!-- Imagen con filter: brightness(0) invert(1) -->
+           <img 
+            src="/neomed_icon.png" 
+            alt="NeoMed Icon" 
+            class="w-22 h-20 md:w-28 md:h-25"
+          />
+          <img 
+            src="/neomed_text.png" 
+            alt="NeoMed Text" 
+            class="w-60 h-20 md:w-80 md:h-55 object-contain ml-0 md:ml-3" style="filter: brightness(0) invert(1);"
+          />
         </div>
         
-        <div class="relative hidden md:block">
-          <div class="aspect-square bg-white/10 backdrop-blur-sm rounded-3xl p-8 relative">
-            <div class="absolute top-4 right-4 w-20 h-20 bg-secondary rounded-full flex items-center justify-center">
-              <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
-              </svg>
-            </div>
-            <div class="h-full flex items-center justify-center">
-              <div class="text-center">
-                <div class="w-32 h-32 mx-auto bg-white/20 rounded-full flex items-center justify-center mb-4">
-                  <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-                  </svg>
-                </div>
-                <p class="text-white/80 text-sm">Cuidando tu salud desde 2015</p>
-              </div>
-            </div>
-            <div class="absolute bottom-4 left-4 bg-white/20 backdrop-blur-sm rounded-2xl p-4">
-              <p class="text-sm font-semibold">+15,000</p>
-              <p class="text-xs text-white/70">Pacientes satisfechos</p>
-            </div>
-          </div>
+        <p class="text-xl md:text-2xl text-white/80 max-w-2xl mx-auto mb-12 font-light leading-relaxed animate-fade-in-delay-2">
+          Tu mejor opción en salud integral
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-delay-3">
+          <a 
+            href="#servicios" 
+            class="group inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-white px-10 py-4 rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-cyan-500/25"
+          >
+            <span class="font-medium">Ver especialidades</span>
+          </a>
+          <a 
+            href="/agendar" 
+            class="inline-flex items-center gap-2 text-white px-10 py-4 rounded-full hover:bg-white/10 transition-all border border-white/30 hover:border-white/50"
+          >
+            <span class="font-medium">Agendar cita</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </a>
         </div>
       </div>
     </div>
     
-    <!-- Wave Divider -->
-    <div class="absolute bottom-0 left-0 right-0">
-      <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="white"/>
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 animate-bounce">
+      <svg class="w-6 h-6 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
       </svg>
     </div>
   </section>
 
+  <!-- Stats Section -->
+  <section class="py-16 bg-white border-b border-slate-100">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+        <div class="text-center">
+          <div class="text-4xl md:text-5xl font-light text-cyan-600 mb-2">6+</div>
+          <div class="text-sm text-slate-500 uppercase tracking-wider">Profesionales</div>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl md:text-5xl font-light text-cyan-600 mb-2">5</div>
+          <div class="text-sm text-slate-500 uppercase tracking-wider">Especialidades</div>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl md:text-5xl font-light text-cyan-600 mb-2">60+</div>
+          <div class="text-sm text-slate-500 uppercase tracking-wider">Horas semanales</div>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl md:text-5xl font-light text-cyan-600 mb-2">100%</div>
+          <div class="text-sm text-slate-500 uppercase tracking-wider">Atención personalizada</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Services Section -->
-  <section id="servicios" class="py-20 bg-gray-50">
+  <section id="servicios" class="py-24 bg-slate-50">
     <div class="container mx-auto px-4">
       <div class="text-center max-w-2xl mx-auto mb-16">
-        <span class="text-primary font-semibold text-sm uppercase tracking-wider">Nuestros Servicios</span>
-        <h2 class="font-heading text-3xl md:text-4xl font-bold text-accent mt-2 mb-4">
-          Especialidades Médicas
+        <p class="text-sm text-cyan-600 font-semibold uppercase tracking-wider mb-4">Especialidades</p>
+        <h2 class="font-heading text-4xl md:text-5xl font-light text-slate-900 mb-6">
+          Servicios <span class="font-semibold">Médicos</span>
         </h2>
-        <p class="text-accent/70">
-          Contamos con un equipo multidisciplinario de profesionales de la salud 
-          comprometidos con tu bienestar integral.
+        <p class="text-lg text-slate-500 font-light leading-relaxed">
+          Profesionales dedicados a tu bienestar integral
         </p>
       </div>
       
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
         {services.map((service) => (
-          <ServiceCard {...service} />
+          <a 
+            href={service.href}
+            class="group relative block h-80 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:scale-105"
+          >
+            <!-- Background Image -->
+            <img 
+              src={service.image} 
+              alt={service.title}
+              class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            />
+            
+            <!-- Dark Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/50 to-slate-900/30 group-hover:from-slate-900/95 transition-all duration-300"></div>
+            
+            <!-- Content -->
+            <div class="relative h-full flex flex-col justify-between p-8">
+              <!-- Icon -->
+              <div class="w-14 h-14 rounded-full bg-teal-600/80 backdrop-blur-sm flex items-center justify-center group-hover:bg-teal-500 transition-colors duration-300">
+                <div set:html={service.icon} class="text-white" />
+              </div>
+              
+              <!-- Text Content -->
+              <div>
+                <h3 class="font-heading text-2xl font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">
+                  {service.title}
+                </h3>
+                <p class="text-white/90 text-sm leading-relaxed">
+                  {service.description}
+                </p>
+              </div>
+            </div>
+          </a>
         ))}
       </div>
     </div>
   </section>
 
   <!-- About Section -->
-  <section id="nosotros" class="py-20 bg-white">
+  <section id="nosotros" class="py-24 bg-white">
     <div class="container mx-auto px-4">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div class="relative">
-          <div class="aspect-[4/3] bg-gradient-to-br from-primary/20 to-secondary/20 rounded-3xl overflow-hidden">
-            <div class="absolute inset-0 flex items-center justify-center">
-              <div class="text-center p-8">
-                <div class="w-24 h-24 mx-auto bg-primary rounded-full flex items-center justify-center mb-4">
-                  <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-                  </svg>
-                </div>
-                <h3 class="font-heading text-2xl font-bold text-accent">NeoMed</h3>
-                <p class="text-accent/60 mt-2">Clínica Integral de Salud</p>
-              </div>
+      <div class="max-w-5xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+          <div>
+            <p class="text-sm text-cyan-600 font-semibold uppercase tracking-wider mb-3">Nosotros</p>
+            <h2 class="font-heading text-3xl md:text-4xl lg:text-5xl font-light text-slate-900 mb-4 md:mb-6">
+              Conoce <span class="font-semibold text-teal-600">NeoMed</span>
+            </h2>
+            <p class="text-base md:text-lg text-slate-600 mb-4 md:mb-6 leading-relaxed font-light">
+              Neomed nació de una idea sencilla pero ambiciosa: que en Heredia existiera un lugar donde la medicina se sintiera distinta. No solo por la calidad clínica, sino por la forma en la que el paciente es recibido, acompañado y atendido desde el primer momento.
+            </p>
+            <p class="text-base md:text-lg text-slate-600 mb-6 md:mb-8 leading-relaxed font-light">
+              Cada decisión —desde la ubicación hasta el diseño interior— fue pensada para crear una experiencia diferente: privacidad, calma, orden, y una sensación real de confianza.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
+              <a 
+                href="/nosotros" 
+                class="inline-flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-white px-8 py-3 rounded-full transition-all font-medium shadow-lg hover:shadow-cyan-500/25"
+              >
+                <span>Conoce más</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </a>
+              <a 
+                href="/agendar" 
+                class="inline-flex items-center justify-center gap-2 border-2 border-cyan-500 text-cyan-600 hover:bg-cyan-50 px-8 py-3 rounded-full transition-all font-medium"
+              >
+                <span>Agenda tu cita</span>
+              </a>
             </div>
           </div>
           
-          <!-- Stats Cards -->
-          <div class="absolute -bottom-6 -right-6 bg-white rounded-2xl shadow-xl p-6 hidden md:block">
-            <div class="flex items-center gap-4">
-              <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          <div class="relative mt-8 md:mt-0 mb-12 md:mb-0">
+            <div class="aspect-square rounded-2xl bg-gradient-to-br from-cyan-100 to-cyan-200 relative overflow-hidden">
+              <img 
+                src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?auto=format&fit=crop&w=800&q=80" 
+                alt="Equipo médico" 
+                class="w-full h-full object-cover mix-blend-overlay opacity-60"
+              />
+              <div class="absolute inset-0 flex items-center justify-center">
+                <svg class="w-32 h-32 md:w-48 md:h-48 text-cyan-500 opacity-30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
                 </svg>
               </div>
-              <div>
-                <p class="font-heading font-bold text-2xl text-accent">98%</p>
-                <p class="text-sm text-accent/60">Satisfacción</p>
-              </div>
             </div>
-          </div>
-        </div>
-        
-        <div>
-          <span class="text-primary font-semibold text-sm uppercase tracking-wider">Sobre Nosotros</span>
-          <h2 class="font-heading text-3xl md:text-4xl font-bold text-accent mt-2 mb-6">
-            Más de 10 años cuidando tu salud
-          </h2>
-          <p class="text-accent/70 leading-relaxed mb-6">
-            En NeoMed creemos que la salud es un derecho fundamental. Desde 2015, 
-            hemos trabajado incansablemente para ofrecer servicios médicos de la 
-            más alta calidad, combinando tecnología de vanguardia con un trato 
-            humano y personalizado.
-          </p>
-          <p class="text-accent/70 leading-relaxed mb-8">
-            Nuestro equipo multidisciplinario está comprometido con tu bienestar 
-            integral, abordando cada caso de manera única y con la atención que 
-            mereces.
-          </p>
-          
-          <div class="grid grid-cols-2 gap-4">
-            {stats.map((stat) => (
-              <div class="bg-gray-50 rounded-xl p-4 text-center">
-                <p class="font-heading font-bold text-2xl text-primary">{stat.number}</p>
-                <p class="text-sm text-accent/60">{stat.label}</p>
-              </div>
-            ))}
+            <div class="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 bg-white p-4 md:p-6 rounded-xl shadow-xl border border-slate-100">
+              <div class="text-2xl md:text-3xl font-semibold text-cyan-600 mb-1">2026</div>
+              <div class="text-xs md:text-sm text-slate-500">Fundación</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Team Section -->
-  <section id="equipo" class="py-20 bg-gray-50">
+  <!-- Facilities Section -->
+  <section id="instalaciones" class="py-24 bg-slate-50">
     <div class="container mx-auto px-4">
       <div class="text-center max-w-2xl mx-auto mb-16">
-        <span class="text-primary font-semibold text-sm uppercase tracking-wider">Nuestro Equipo</span>
-        <h2 class="font-heading text-3xl md:text-4xl font-bold text-accent mt-2 mb-4">
-          Profesionales de Excelencia
+        <p class="text-sm text-cyan-600 font-semibold uppercase tracking-wider mb-4">Instalaciones</p>
+        <h2 class="font-heading text-4xl md:text-5xl font-light text-slate-900 mb-6">
+          Nuestras <span class="font-semibold">Instalaciones</span>
         </h2>
-        <p class="text-accent/70">
-          Conoce a los especialistas que harán de tu experiencia en NeoMed algo excepcional.
+        <p class="text-lg text-slate-500 font-light leading-relaxed">
+          Espacios diseñados pensando en tu comodidad y bienestar
         </p>
       </div>
-      
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {team.map((member) => (
-          <TeamCard {...member} />
-        ))}
+
+      <div class="max-w-5xl mx-auto">
+        <!-- Carrusel de instalaciones -->
+        <div class="relative">
+          <!-- Contenedor del carrusel -->
+          <div class="overflow-hidden rounded-2xl shadow-2xl">
+            <div id="facilities-carousel" class="relative h-[400px] md:h-[500px] lg:h-[600px]">
+              <!-- Slide 1 -->
+              <div class="carousel-slide absolute inset-0 opacity-100 transition-opacity duration-700 ease-in-out">
+                <img 
+                  src="/facilities/instalacion_1.webp" 
+                  alt="Instalaciones NeoMed" 
+                  loading="eager"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <!-- Slide 2 -->
+              <div class="carousel-slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out">
+                <img 
+                  src="/facilities/instalacion_2.webp" 
+                  alt="Instalaciones NeoMed" 
+                  loading="eager"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <!-- Slide 3 -->
+              <div class="carousel-slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out">
+                <img 
+                  src="/facilities/instalacion_3.webp" 
+                  alt="Instalaciones NeoMed" 
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <!-- Slide 4 -->
+              <div class="carousel-slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out">
+                <img 
+                  src="/facilities/instalacion_4.webp" 
+                  alt="Instalaciones NeoMed" 
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <!-- Slide 5 -->
+              <div class="carousel-slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out">
+                <img 
+                  src="/facilities/instalacion_5.webp" 
+                  alt="Instalaciones NeoMed" 
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <!-- Slide 6 -->
+              <div class="carousel-slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out">
+                <img 
+                  src="/facilities/instalacion_6.webp" 
+                  alt="Instalaciones NeoMed" 
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <!-- Slide 7 -->
+              <div class="carousel-slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out">
+                <img 
+                  src="/facilities/instalacion_7.webp" 
+                  alt="Instalaciones NeoMed" 
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <!-- Slide 8 -->
+              <div class="carousel-slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out">
+                <img 
+                  src="/facilities/instalacion_8.webp" 
+                  alt="Instalaciones NeoMed" 
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <!-- Slide 9 -->
+              <div class="carousel-slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out">
+                <img 
+                  src="/facilities/instalacion_9.webp" 
+                  alt="Instalaciones NeoMed" 
+                  class="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Botón anterior -->
+          <button 
+            id="prev-btn"
+            class="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/90 hover:bg-white shadow-lg flex items-center justify-center transition-all hover:scale-110 z-10"
+            aria-label="Imagen anterior"
+          >
+            <svg class="w-6 h-6 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+          </button>
+
+          <!-- Botón siguiente -->
+          <button 
+            id="next-btn"
+            class="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/90 hover:bg-white shadow-lg flex items-center justify-center transition-all hover:scale-110 z-10"
+            aria-label="Imagen siguiente"
+          >
+            <svg class="w-6 h-6 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </button>
+
+          <!-- Indicadores -->
+          <div class="flex justify-center gap-2 mt-6">
+            <button class="carousel-indicator w-2 h-2 rounded-full bg-cyan-500 transition-all" data-slide="0"></button>
+            <button class="carousel-indicator w-2 h-2 rounded-full bg-slate-300 transition-all" data-slide="1"></button>
+            <button class="carousel-indicator w-2 h-2 rounded-full bg-slate-300 transition-all" data-slide="2"></button>
+            <button class="carousel-indicator w-2 h-2 rounded-full bg-slate-300 transition-all" data-slide="3"></button>
+            <button class="carousel-indicator w-2 h-2 rounded-full bg-slate-300 transition-all" data-slide="4"></button>
+            <button class="carousel-indicator w-2 h-2 rounded-full bg-slate-300 transition-all" data-slide="5"></button>
+            <button class="carousel-indicator w-2 h-2 rounded-full bg-slate-300 transition-all" data-slide="6"></button>
+            <button class="carousel-indicator w-2 h-2 rounded-full bg-slate-300 transition-all" data-slide="7"></button>
+            <button class="carousel-indicator w-2 h-2 rounded-full bg-slate-300 transition-all" data-slide="8"></button>
+          </div>
+        </div>
+
+        <!-- CTA adicional opcional -->
+        <div class="text-center mt-12">
+          <p class="text-slate-600 mb-6">
+            Ven a conocer nuestras instalaciones modernas y cómodas
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section - CTA to Directory -->
+  <section id="equipo" class="py-24 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-12">
+          <p class="text-sm text-cyan-600 font-semibold uppercase tracking-wider mb-4">Nuestro Equipo</p>
+          <h2 class="font-heading text-4xl md:text-5xl font-light text-slate-900 mb-6">
+            Profesionales de <span class="font-semibold">Excelencia</span>
+          </h2>
+          <p class="text-lg text-slate-500 font-light leading-relaxed max-w-2xl mx-auto">
+            Contamos con un equipo multidisciplinario comprometido con tu bienestar integral
+          </p>
+        </div>
+
+        <!-- Card with avatars + stats + CTA -->
+        <div class="bg-gradient-to-br from-slate-50 to-cyan-50/40 rounded-3xl p-8 md:p-12 border border-slate-100 shadow-sm">
+          <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+            
+            <!-- Avatar stack -->
+            <div class="flex-shrink-0">
+              <div class="flex -space-x-4">
+                {directorio.slice(0, 6).map((prof) => (
+                  <div class="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden ring-4 ring-white shadow-lg">
+                    <img 
+                      src={prof.image} 
+                      alt={prof.name}
+                      class="w-full h-full object-cover"
+                      style={prof.imagePosition ? `object-position: 50% ${prof.imagePosition};` : ''}
+                    />
+                  </div>
+                ))}
+                {directorio.length > 6 && (
+                  <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-cyan-600 ring-4 ring-white shadow-lg flex items-center justify-center">
+                    <span class="text-white font-semibold text-sm md:text-base">+{directorio.length - 6}</span>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <!-- Text + Stats -->
+            <div class="flex-1 text-center md:text-left">
+              <h3 class="font-heading text-2xl md:text-3xl font-semibold text-slate-900 mb-3">
+                Conoce a nuestros especialistas
+              </h3>
+              <p class="text-slate-500 font-light leading-relaxed mb-6">
+                Encuentra al profesional ideal para ti. Busca por especialidad, nombre o área de atención en nuestro directorio médico.
+              </p>
+              
+              <!-- Stats row -->
+              <div class="flex flex-wrap justify-center md:justify-start gap-6 mb-8">
+                <div class="flex items-center gap-2">
+                  <div class="w-10 h-10 rounded-xl bg-cyan-100 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="text-xl font-bold text-slate-900">{directorio.length}</p>
+                    <p class="text-xs text-slate-500">Profesionales</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2">
+                  <div class="w-10 h-10 rounded-xl bg-teal-100 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="text-xl font-bold text-slate-900">{uniqueRoles}</p>
+                    <p class="text-xs text-slate-500">Especialidades</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CTA Button -->
+              <a 
+                href="/directorio" 
+                class="inline-flex items-center gap-3 bg-cyan-600 hover:bg-cyan-700 text-white font-semibold px-8 py-4 rounded-2xl shadow-lg shadow-cyan-600/25 hover:shadow-xl hover:shadow-cyan-600/30 transition-all duration-300 group"
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                </svg>
+                Explorar Directorio Médico
+                <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Insurance Section -->
+  <section class="py-24 bg-slate-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <p class="text-sm text-cyan-600 font-semibold uppercase tracking-wider mb-4">Seguros Médicos</p>
+        <h2 class="font-heading text-3xl md:text-4xl font-light text-slate-900 mb-6">
+          Trabajamos con tus <span class="font-semibold">seguros</span>
+        </h2>
+        <p class="text-lg text-slate-500 font-light leading-relaxed">
+          Aceptamos los principales seguros médicos del país
+        </p>
+      </div>
+
+      <div class="max-w-5xl mx-auto">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div class="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-all border border-slate-100 group">
+            <img src="/insurances/placeholder-panamerican.png" alt="Panamerican" class="h-12 w-auto object-contain transition-all" />
+          </div>
+          <div class="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-all border border-slate-100 group">
+            <img src="/insurances/placeholder-assa.png" alt="ASSA" class="h-12 w-auto object-contain transition-all" />
+          </div>
+          <div class="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-all border border-slate-100 group">
+            <img src="/insurances/placeholder-mapfre.png" alt="Mapfre" class="h-12 w-auto object-contain transition-all" />
+          </div>
+          <div class="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-all border border-slate-100 group">
+            <img src="/insurances/placeholder-ins.png" alt="INS" class="h-12 w-auto object-contain transition-all" />
+          </div>
+          <div class="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-all border border-slate-100 group">
+            <img src="/insurances/placeholder-bmi.png" alt="BMI" class="h-12 w-auto object-contain transition-all" />
+          </div>
+          <div class="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-all border border-slate-100 group">
+            <img src="/insurances/placeholder-ebs.png" alt="EBS" class="h-12 w-auto object-contain transition-all" />
+          </div>
+          <div class="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-all border border-slate-100 group">
+            <img src="/insurances/placeholder-adisa.png" alt="ADISA" class="h-12 w-auto object-contain transition-all" />
+          </div>
+          <div class="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-all border border-slate-100 group">
+            <img src="/insurances/placeholder-sagicor.png" alt="Sagicor" class="h-12 w-auto object-contain transition-all" />
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Contact Section -->
-  <section id="contacto" class="py-20 bg-white">
+  <section id="contacto" class="py-24 bg-white">
     <div class="container mx-auto px-4">
-      <div class="grid lg:grid-cols-2 gap-12">
-        <div>
-          <span class="text-primary font-semibold text-sm uppercase tracking-wider">Contacto</span>
-          <h2 class="font-heading text-3xl md:text-4xl font-bold text-accent mt-2 mb-6">
-            ¿Listo para cuidar tu salud?
-          </h2>
-          <p class="text-accent/70 leading-relaxed mb-8">
-            Agenda tu cita hoy mismo y da el primer paso hacia una vida más 
-            saludable. Nuestro equipo está listo para atenderte.
-          </p>
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <p class="text-sm text-cyan-600 font-semibold uppercase tracking-wider mb-4">Contacto</p>
+        <h2 class="font-heading text-4xl md:text-5xl font-light text-slate-900 mb-6">
+          Estamos aquí <span class="font-semibold text-cyan-600">para ti</span>
+        </h2>
+        <p class="text-xl text-slate-500 font-light">
+          Agenda tu cita o contáctanos para más información
+        </p>
+      </div>
+
+      <div class="max-w-6xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-12">
           
-          <div class="space-y-6">
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                </svg>
+          <!-- Contact Information -->
+          <div>
+            <div class="space-y-6">
+              <!-- Dirección -->
+              <div class="flex items-start gap-4 p-6 rounded-xl bg-slate-50 hover:shadow-lg transition-all border border-slate-100">
+                <div class="w-12 h-12 rounded-full bg-cyan-50 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-lg font-semibold text-slate-900 mb-2">Dirección</h3>
+                  <p class="text-slate-600 leading-relaxed">
+                    100 metros oeste de KFC Pirro<br/>
+                    Heredia, Edificio ASO UNA<br/>
+                    Costa Rica
+                  </p>
+                </div>
               </div>
-              <div>
-                <h4 class="font-semibold text-accent">Dirección</h4>
-                <p class="text-accent/70">Av. Principal #123, Colonia Centro, Ciudad</p>
+
+              <!-- WhatsApp -->
+              <a 
+                href="https://wa.me/50670494362" 
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-start gap-4 p-6 rounded-xl bg-slate-50 hover:shadow-lg transition-all border border-slate-100 hover:bg-green-50 group"
+              >
+                <div class="w-12 h-12 rounded-full bg-cyan-50 group-hover:bg-green-500 flex items-center justify-center flex-shrink-0 transition-colors">
+                  <svg class="w-6 h-6 text-cyan-600 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-lg font-semibold text-slate-900 mb-2 group-hover:text-green-600 transition-colors">WhatsApp</h3>
+                  <p class="text-cyan-600 group-hover:text-green-600 text-lg font-medium transition-colors">
+                    +506 7049-4362
+                  </p>
+                  <p class="text-slate-500 text-sm mt-1">Chatea con nosotros</p>
+                </div>
+              </a>
+
+              <!-- Email -->
+              <div class="flex items-start gap-4 p-6 rounded-xl bg-slate-50 hover:shadow-lg transition-all border border-slate-100">
+                <div class="w-12 h-12 rounded-full bg-cyan-50 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-lg font-semibold text-slate-900 mb-2">Email</h3>
+                  <a href="mailto:info@neomedcr.com" class="text-cyan-600 hover:text-cyan-700 text-lg font-medium transition-colors">
+                    info@neomedcr.com
+                  </a>
+                </div>
+              </div>
+
+              <!-- Horarios -->
+              <div class="flex items-start gap-4 p-6 rounded-xl bg-slate-50 hover:shadow-lg transition-all border border-slate-100">
+                <div class="w-12 h-12 rounded-full bg-cyan-50 flex items-center justify-center flex-shrink-0">
+                  <svg class="w-6 h-6 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <h3 class="text-lg font-semibold text-slate-900 mb-3">Horario de Atención</h3>
+                  <div class="space-y-2 text-slate-600">
+                    <div class="flex justify-between">
+                      <span>Lunes - Viernes</span>
+                      <span class="font-medium">8:00 AM - 6:00 PM</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span>Sábados</span>
+                      <span class="font-medium">9:00 AM - 1:00 PM</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span>Domingos</span>
+                      <span class="font-medium text-slate-400">Cerrado</span>
+                    </div>
+                  </div>
+                  <div class="mt-4 pt-4 border-t border-slate-200">
+                    <p class="text-sm text-cyan-600 font-semibold">⚠️ Solo con cita previa</p>
+                  </div>
+                </div>
               </div>
             </div>
-            
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                </svg>
-              </div>
-              <div>
-                <h4 class="font-semibold text-accent">Teléfono</h4>
-                <p class="text-accent/70">(123) 456-7890</p>
-              </div>
-            </div>
-            
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                </svg>
-              </div>
-              <div>
-                <h4 class="font-semibold text-accent">Email</h4>
-                <p class="text-accent/70">contacto@neomed.com</p>
+
+            <!-- Redes Sociales -->
+            <div class="mt-8 p-6 rounded-xl bg-gradient-to-br from-cyan-50 to-cyan-100/50 border border-cyan-200">
+              <h3 class="text-lg font-semibold text-slate-900 mb-4">Síguenos en redes sociales</h3>
+              <div class="flex gap-4">
+                <a 
+                  href="https://facebook.com/neomedcr" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="w-12 h-12 rounded-full bg-white hover:bg-cyan-600 flex items-center justify-center transition-all group shadow-md hover:shadow-lg"
+                  aria-label="Facebook"
+                >
+                  <svg class="w-6 h-6 text-cyan-600 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                  </svg>
+                </a>
+                
+                <a 
+                  href="https://instagram.com/neomedcr" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="w-12 h-12 rounded-full bg-white hover:bg-gradient-to-br hover:from-purple-600 hover:to-pink-500 flex items-center justify-center transition-all group shadow-md hover:shadow-lg"
+                  aria-label="Instagram"
+                >
+                  <svg class="w-6 h-6 text-cyan-600 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                  </svg>
+                </a>
+                
+                
               </div>
             </div>
           </div>
-        </div>
-        
-        <div class="bg-gray-50 rounded-3xl p-8">
-          <h3 class="font-heading font-semibold text-xl text-accent mb-6">Agenda tu Cita</h3>
-          <form class="space-y-4">
-            <div class="grid sm:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-sm font-medium text-accent mb-2">Nombre</label>
-                <input 
-                  type="text" 
-                  class="w-full px-4 py-3 rounded-xl border border-secondary/30 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-                  placeholder="Tu nombre"
-                />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-accent mb-2">Teléfono</label>
-                <input 
-                  type="tel" 
-                  class="w-full px-4 py-3 rounded-xl border border-secondary/30 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-                  placeholder="Tu teléfono"
-                />
-              </div>
+
+          <!-- Map -->
+          <div class="lg:sticky lg:top-24 h-fit">
+            <div class="rounded-2xl overflow-hidden shadow-xl border border-slate-200">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1992.052060810276!2d-84.11402412745329!3d9.99616115653302!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0fbe978ef7a3b%3A0x9854106fc0b6fd52!2sNeo%20Med%20Clinica%20Integral!5e0!3m2!1ses-419!2scr!4v1768845781502!5m2!1ses-419!2scr"
+                width="100%" 
+                height="600" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Ubicación NeoMed"
+              ></iframe>
             </div>
-            
-            <div>
-              <label class="block text-sm font-medium text-accent mb-2">Email</label>
-              <input 
-                type="email" 
-                class="w-full px-4 py-3 rounded-xl border border-secondary/30 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-                placeholder="tu@email.com"
-              />
+            <div class="mt-6 p-4 rounded-xl bg-cyan-50 border border-cyan-200">
+              <p class="text-sm text-cyan-900 font-medium text-center">
+                📍 100 metros oeste de KFC Pirro, Heredia
+              </p>
             </div>
-            
-            <div>
-              <label class="block text-sm font-medium text-accent mb-2">Servicio</label>
-              <select class="w-full px-4 py-3 rounded-xl border border-secondary/30 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all bg-white">
-                <option value="">Selecciona un servicio</option>
-                <option value="enfermeria">Enfermería</option>
-                <option value="nutricion">Nutrición</option>
-                <option value="terapia-fisica">Terapia Física</option>
-                <option value="psicologia">Psicología</option>
-              </select>
+            <!-- CTA Button -->
+            <div class="mt-8">
+              <a 
+                href="/agendar" 
+                class="block text-center bg-cyan-500 hover:bg-cyan-400 text-white px-10 py-4 rounded-full transition-all duration-300 hover:scale-105 text-lg font-medium shadow-lg hover:shadow-cyan-500/25"
+              >
+                Agendar cita ahora
+              </a>
             </div>
-            
-            <div>
-              <label class="block text-sm font-medium text-accent mb-2">Mensaje</label>
-              <textarea 
-                rows="4"
-                class="w-full px-4 py-3 rounded-xl border border-secondary/30 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none"
-                placeholder="¿En qué podemos ayudarte?"
-              ></textarea>
-            </div>
-            
-            <button 
-              type="submit"
-              class="w-full bg-primary text-white py-3 rounded-xl font-semibold hover:bg-primary-dark transition-colors"
-            >
-              Enviar Solicitud
-            </button>
-          </form>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA Section -->
-  <section class="py-16 bg-gradient-to-r from-primary to-primary-dark text-white">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="font-heading text-2xl md:text-3xl font-bold mb-4">
-        ¿Necesitas atención médica urgente?
-      </h2>
-      <p class="text-white/80 mb-8 max-w-xl mx-auto">
-        Llámanos ahora y te atenderemos de inmediato. Estamos disponibles de lunes a sábado.
-      </p>
-      <a 
-        href="tel:+1234567890" 
-        class="inline-flex items-center gap-2 bg-white text-primary px-8 py-3 rounded-full font-semibold hover:bg-secondary-light transition-colors"
-      >
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-        </svg>
-        (123) 456-7890
-      </a>
-    </div>
-  </section>
+  <Footer />
+
+
 </Layout>
+
+<style>
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 0.8s ease-out forwards;
+  }
+  
+  .animate-fade-in-delay {
+    opacity: 0;
+    animation: fade-in 0.8s ease-out 0.2s forwards;
+  }
+  
+  .animate-fade-in-delay-2 {
+    opacity: 0;
+    animation: fade-in 0.8s ease-out 0.4s forwards;
+  }
+  
+  .animate-fade-in-delay-3 {
+    opacity: 0;
+    animation: fade-in 0.8s ease-out 0.6s forwards;
+  }
+</style>
+
+<script>
+  // Carrusel de instalaciones - Fade
+  document.addEventListener('DOMContentLoaded', () => {
+    const slides = document.querySelectorAll('.carousel-slide');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const indicators = document.querySelectorAll('.carousel-indicator');
+    
+    let currentSlide = 0;
+    const totalSlides = slides.length;
+    let autoPlayInterval;
+
+    function updateCarousel() {
+      slides.forEach((slide, index) => {
+        if (index === currentSlide) {
+          slide.classList.remove('opacity-0');
+          slide.classList.add('opacity-100', 'z-10');
+        } else {
+          slide.classList.remove('opacity-100', 'z-10');
+          slide.classList.add('opacity-0');
+        }
+      });
+
+      indicators.forEach((indicator, index) => {
+        if (index === currentSlide) {
+          indicator.classList.remove('bg-slate-300');
+          indicator.classList.add('bg-cyan-500');
+        } else {
+          indicator.classList.remove('bg-cyan-500');
+          indicator.classList.add('bg-slate-300');
+        }
+      });
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      updateCarousel();
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+      updateCarousel();
+    }
+
+    function goToSlide(index) {
+      currentSlide = index;
+      updateCarousel();
+    }
+
+    function startAutoPlay() {
+      autoPlayInterval = setInterval(nextSlide, 5000);
+    }
+
+    function stopAutoPlay() {
+      clearInterval(autoPlayInterval);
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        nextSlide();
+        stopAutoPlay();
+        startAutoPlay();
+      });
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        prevSlide();
+        stopAutoPlay();
+        startAutoPlay();
+      });
+    }
+
+    indicators.forEach((indicator, index) => {
+      indicator.addEventListener('click', () => {
+        goToSlide(index);
+        stopAutoPlay();
+        startAutoPlay();
+      });
+    });
+
+    startAutoPlay();
+
+    // Pausar al hover
+    const carouselContainer = document.getElementById('facilities-carousel');
+    if (carouselContainer) {
+      carouselContainer.parentElement.addEventListener('mouseenter', stopAutoPlay);
+      carouselContainer.parentElement.addEventListener('mouseleave', startAutoPlay);
+    }
+
+    // Gestos táctiles
+    let touchStartX = 0;
+    if (carouselContainer) {
+      carouselContainer.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      });
+      carouselContainer.addEventListener('touchend', (e) => {
+        const diff = e.changedTouches[0].screenX - touchStartX;
+        if (diff < -50) { nextSlide(); stopAutoPlay(); startAutoPlay(); }
+        if (diff > 50) { prevSlide(); stopAutoPlay(); startAutoPlay(); }
+      });
+    }
+  });
+
+
+</script>

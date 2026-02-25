@@ -2,7 +2,7 @@ services:
   - type: web
     name: neomed-website
     runtime: static
-    buildCommand: npm install && npm run build && cp dist/coming-soon/index.html dist/index.html
+    buildCommand: npm install && npm run build
     staticPublishPath: ./dist
     pullRequestPreviewsEnabled: true
     headers:
