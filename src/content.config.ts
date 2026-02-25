@@ -6,6 +6,7 @@ const directorio = defineCollection({
   schema: z.object({
     name: z.string(),
     role: z.string(),
+    banner: z.string().default(''),
     code: z.string().default(''),
     image: z.string(),
     imagePosition: z.string().default(''),

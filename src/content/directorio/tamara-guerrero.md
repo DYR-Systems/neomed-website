@@ -1,6 +1,6 @@
 ---
 name: Lic. Tamara Guerrero Carrillo
-role: Enfermera
+role: Enfermería
 code: ""
 image: /professionals/tamara_guerrero.webp
 imagePosition: 30%

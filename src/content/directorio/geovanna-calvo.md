@@ -1,35 +1,42 @@
 ---
-name: "Dra. Geovanna Calvo Gutierrez"
-role: "Psicóloga Clínica"
+name: Dra. Geovanna Calvo Gutierrez
+role: Psicología
+banner: Psicología Clínica
 code: "11634"
-image: "/professionals/geovanna_calvo.webp"
+image: /professionals/geovanna_calvo.webp
 imagePosition: ""
-location: "NeoMed - Consulta Principal"
-locationDetail: "Heredia, Costa Rica"
-enfoque: "Infantil, adolescentes y adultos"
-about: "Psicóloga clínica graduada de la Universidad Iberoamericana (UNIBE), colegiada ante el Colegio de Profesionales en Psicología de Costa Rica. Cuenta con formación especializada en Terapia Cognitivo Conductual (TCC), Terapia Racional Emotivo Conductual (TREC) y Psicotrauma. Especialista en el abordaje de trauma psicológico, procesos de duelo e intervención en conducta suicida, integrando enfoques basados en evidencia y una mirada ética, sensible y profundamente humana. Posee un Máster en Sexualidad y Terapia de Pareja."
 specialties:
-  - "Trauma psicológico y psicotrauma"
-  - "Procesos de duelo"
-  - "Intervención en conducta e ideación suicida"
-  - "Trastornos de ansiedad"
-  - "Depresión y trastornos del estado de ánimo"
-  - "Regulación emocional"
-  - "Trastornos de personalidad"
-  - "Sexualidad clínica"
-  - "Terapia de pareja"
-  - "Identidad y diversidad sexual"
-  - "Crecimiento personal y autoconocimiento"
+  - Trauma psicológico y psicotrauma
+  - Procesos de duelo
+  - Intervención en conducta e ideación suicida
+  - Trastornos de ansiedad
+  - Depresión y trastornos del estado de ánimo
+  - Regulación emocional
+  - Trastornos de personalidad
+  - Sexualidad clínica
+  - Terapia de pareja
+  - Identidad y diversidad sexual
+  - Crecimiento personal y autoconocimiento
 procedures:
-  - "Psicoterapia individual (presencial y virtual)"
-  - "Terapia de pareja"
-  - "Intervención en crisis y conducta suicida"
-  - "Procesos terapéuticos para trauma y duelo"
-  - "Evaluación y acompañamiento psicológico"
-  - "Talleres y charlas psicoeducativas"
-  - "Atención psicológica para empresas"
-  - "Telepsicología"
+  - Psicoterapia individual (presencial y virtual)
+  - Terapia de pareja
+  - Intervención en crisis y conducta suicida
+  - Procesos terapéuticos para trauma y duelo
+  - Evaluación y acompañamiento psicológico
+  - Talleres y charlas psicoeducativas
+  - Atención psicológica para empresas
+  - Telepsicología
+locationDetail: Heredia, Costa Rica
+enfoque: Infantil, adolescentes y adultos
+about: Psicóloga clínica graduada de la Universidad Iberoamericana (UNIBE),
+  colegiada ante el Colegio de Profesionales en Psicología de Costa Rica. Cuenta
+  con formación especializada en Terapia Cognitivo Conductual (TCC), Terapia
+  Racional Emotivo Conductual (TREC) y Psicotrauma. Especialista en el abordaje
+  de trauma psicológico, procesos de duelo e intervención en conducta suicida,
+  integrando enfoques basados en evidencia y una mirada ética, sensible y
+  profundamente humana. Posee un Máster en Sexualidad y Terapia de Pareja.
+location: NeoMed - Consulta Principal
 languages:
-  - "Español"
-  - "Inglés"
+  - Español
+  - Inglés
 ---

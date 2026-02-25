@@ -1,17 +1,18 @@
 ---
-name: "Lic. Enid Hernández"
-role: "Psicopedagoga y Psicóloga"
+name: Lic. Enid Hernández
+role: Psicología
+banner: Psicopedagoga y Psicóloga
 code: ""
-image: "/professionals/enid_hernandez.webp"
+image: /professionals/enid_hernandez.webp
 imagePosition: ""
-location: "NeoMed - Consulta Principal"
-locationDetail: "Heredia, Costa Rica"
+specialties:
+  - Psicopedagogía
+  - Psicología
+procedures: []
+locationDetail: Heredia, Costa Rica
 enfoque: ""
 about: ""
-specialties:
-  - "Psicopedagogía"
-  - "Psicología"
-procedures: []
+location: NeoMed - Consulta Principal
 languages:
-  - "Español"
+  - Español
 ---

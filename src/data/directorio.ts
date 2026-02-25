@@ -4,6 +4,7 @@ export interface Profesional {
   slug: string;
   name: string;
   role: string;
+  banner: string;
   code: string;
   image: string;
   imagePosition: string;
@@ -24,6 +25,7 @@ export async function getDirectorio(): Promise<Profesional[]> {
       slug: entry.id,
       name: entry.data.name,
       role: entry.data.role,
+      banner: entry.data.banner,
       code: entry.data.code || '',
       image: entry.data.image,
       imagePosition: entry.data.imagePosition || '',

@@ -181,7 +181,7 @@ const directorio = await getDirectorio();
               <!-- Basic Info -->
               <div class="flex-1 text-center md:text-left">
                 <h3 class="font-heading text-xl font-semibold text-slate-900 group-hover:text-cyan-700 transition-colors">{prof.name}</h3>
-                <p class="text-cyan-600 font-medium text-sm mb-1">{prof.role}</p>
+                <p class="text-cyan-600 font-medium text-sm mb-1">{prof.banner}</p>
                 {prof.code && <p class="text-slate-400 text-xs mb-3">Código de profesional: {prof.code}</p>}
                 <div class="flex flex-wrap gap-2 justify-center md:justify-start">
                   {prof.specialties.slice(0, 3).map((spec) => (

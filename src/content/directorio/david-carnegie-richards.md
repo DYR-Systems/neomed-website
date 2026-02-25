@@ -1,17 +1,17 @@
 ---
-name: "Dr. David Carnegie Richards"
-role: "Médico General y Rehabilitación"
+name: Dr. David Carnegie Richards
+role: Medicina
 code: ""
-image: "/professionals/david_carnegie_richards.webp"
+image: /professionals/david_carnegie_richards.webp
 imagePosition: ""
-location: "NeoMed - Consulta Principal"
-locationDetail: "Heredia, Costa Rica"
 enfoque: ""
-about: ""
-specialties:
-  - "Medicina General"
-  - "Rehabilitación"
 procedures: []
+locationDetail: Heredia, Costa Rica
+about: ""
+location: NeoMed - Consulta Principal
+specialties:
+  - Medicina General
+  - Rehabilitación
 languages:
-  - "Español"
+  - Español
 ---

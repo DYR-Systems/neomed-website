@@ -55,7 +55,7 @@ const { prof } = Astro.props;
           <!-- Basic Info -->
           <div class="flex-1 text-center md:text-left">
             <h1 class="font-heading text-2xl md:text-3xl font-semibold text-slate-900">{prof.name}</h1>
-            <p class="text-cyan-600 font-medium mb-1">{prof.role}</p>
+            <p class="text-cyan-600 font-medium mb-1">{prof.banner}</p>
             {prof.code && <p class="text-slate-400 text-xs mb-4">Código de profesional: {prof.code}</p>}
             <div class="flex flex-wrap gap-2 justify-center md:justify-start mb-6">
               {prof.specialties.map((spec) => (
@@ -226,7 +226,7 @@ const { prof } = Astro.props;
         <img id="lightbox-img" src={prof.image} alt={prof.name} class="max-w-full max-h-[80vh] w-auto h-auto object-contain" style={prof.imagePosition ? `object-position: 50% ${prof.imagePosition};` : ''} />
       </div>
       <h3 class="text-2xl font-semibold text-white mb-1">{prof.name}</h3>
-      <p class="text-cyan-400 font-medium mb-1">{prof.role}</p>
+      <p class="text-cyan-400 font-medium mb-1">{prof.banner}</p>
     </div>
   </div>
 

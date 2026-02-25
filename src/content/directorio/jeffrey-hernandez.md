@@ -1,16 +1,16 @@
 ---
 name: Lic. Jeffrey Hernández
-role: Psicólogo
+role: Psicología
 code: ""
 image: /professionals/jeffrey_hernandez.webp
 imagePosition: ""
-location: NeoMed - Consulta Principal
-locationDetail: Heredia, Costa Rica
 enfoque: ""
+procedures: []
+locationDetail: Heredia, Costa Rica
 about: ""
+location: NeoMed - Consulta Principal
 specialties:
   - Psicología
-procedures: []
 languages:
   - Español
 ---
