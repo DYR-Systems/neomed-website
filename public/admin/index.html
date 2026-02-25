@@ -7,68 +7,7 @@
   <title>NeoMed Admin</title>
 </head>
 <body>
+  <!-- Include the script that builds the page and powers Decap CMS -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-  <script>
-    CMS.init({
-      config: {
-        load_config_file: false,
-        backend: {
-          name: "github",
-          repo: "DYR-Systems/neomed-website",
-          branch: "main",
-          base_url: "https://api.netlify.com",
-          auth_endpoint: "auth",
-          site_domain: "peaceful-cassata-e6374c.netlify.app"
-        },
-        media_folder: "public/professionals",
-        public_folder: "/professionals",
-        locale: "es",
-        slug: { encoding: "ascii", clean_accents: true },
-        collections: [
-          {
-            name: "directorio",
-            label: "Directorio Médico",
-            label_singular: "Profesional",
-            folder: "src/content/directorio",
-            create: true,
-            delete: true,
-            extension: "md",
-            format: "frontmatter",
-            slug: "{{slug}}",
-            identifier_field: "name",
-            summary: "{{name}} — {{role}}",
-            sortable_fields: ["name", "role"],
-            fields: [
-              { label: "Nombre completo", name: "name", widget: "string", hint: "Incluir título (Dr., Dra., Lic., etc.)" },
-              { label: "Rol / Especialidad", name: "role", widget: "string", hint: "Ej: Psicóloga Clínica, Médico Familiar" },
-              { label: "Código de profesional", name: "code", widget: "string", required: false, default: "" },
-              { label: "Foto", name: "image", widget: "image", choose_url: false, hint: "Subir foto del profesional (preferiblemente WebP)" },
-              { label: "Posición de imagen", name: "imagePosition", widget: "string", required: false, default: "", hint: "Posición vertical del recorte (ej: 10%, 30%). Dejar vacío para centrado" },
-              { label: "Enfoque/Población", name: "enfoque", widget: "string", required: false, default: "", hint: "Ej: Infantil, adolescentes, adultos" },
-              { label: "Acerca de", name: "about", widget: "text", required: false, default: "", hint: "Descripción profesional" },
-              {
-                label: "Especialidades", name: "specialties", widget: "list",
-                summary: "{{fields.specialty}}",
-                field: { label: "Especialidad", name: "specialty", widget: "string" },
-                hint: "Lista de especialidades del profesional"
-              },
-              {
-                label: "Procedimientos", name: "procedures", widget: "list", required: false,
-                summary: "{{fields.procedure}}",
-                field: { label: "Procedimiento", name: "procedure", widget: "string" },
-                hint: "Lista de procedimientos que realiza"
-              },
-              {
-                label: "Idiomas", name: "languages", widget: "list",
-                default: ["Español"],
-                summary: "{{fields.language}}",
-                field: { label: "Idioma", name: "language", widget: "string" }
-              }
-            ]
-          }
-        ]
-      }
-    });
-  </script>
 </body>
 </html>
