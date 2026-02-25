@@ -2,8 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { directorio } from '../data/directorio';
+import { getDirectorio } from '../data/directorio';
 import '../styles/global.css';
+
+const directorio = await getDirectorio();
 
 const services = [
   {

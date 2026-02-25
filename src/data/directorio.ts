@@ -1,3 +1,5 @@
+import { getCollection } from 'astro:content';
+
 export interface Profesional {
   slug: string;
   name: string;
@@ -7,7 +9,6 @@ export interface Profesional {
   imagePosition: string;
   location: string;
   locationDetail: string;
-  phone: string;
   enfoque: string;
   about: string;
   specialties: string[];
@@ -15,149 +16,23 @@ export interface Profesional {
   languages: string[];
 }
 
-export const directorio: Profesional[] = [
-  {
-    slug: 'montserrat-villalobos',
-    name: 'Lic. Montserrat Villalobos Leitón',
-    role: 'Psicóloga Clínica',
-    code: '14019',
-    image: '/professionals/montserrat_villalobos.webp',
-    imagePosition: '',
-    location: 'NeoMed - Consulta Principal',
-    locationDetail: 'Heredia, Costa Rica',
-    phone: '+506 7049-4362',
-    enfoque: 'Infantil, adolescentes, adulto y adulto mayor',
-    about: 'Licenciada en Psicología. Brinda atención a población infantil, adultos jóvenes y personas adultas desde una mirada humanista, ofreciendo un espacio seguro donde cada historia es validada y transformada con respeto y sensibilidad. Se caracteriza por ser una profesional empática, cercana y comprometida con el bienestar integral de cada persona. Cree profundamente en la escucha respetuosa, el trabajo en equipo y el acompañamiento consciente como base para generar cambios significativos.',
-    specialties: ['Psicodiagnóstico', 'Psicología Organizacional y Bienestar Laboral', 'Psicología Educativa', 'Evaluación Psicológica'],
-    procedures: ['Entrevista clínica', 'Evaluación psicológica en adultos', 'Acompañamiento emocional', 'Intervención psicoeducativa', 'Elaboración de informes'],
-    languages: ['Español', 'Inglés'],
-  },
-  {
-    slug: 'geovanna-calvo',
-    name: 'Dra. Geovanna Calvo Gutierrez',
-    role: 'Psicóloga Clínica',
-    code: '11634',
-    image: '/professionals/geovanna_calvo.webp',
-    imagePosition: '',
-    location: 'NeoMed - Consulta Principal',
-    locationDetail: 'Heredia, Costa Rica',
-    phone: '+506 7049-4362',
-    enfoque: 'Infantil, adolescentes y adultos',
-    about: 'Psicóloga clínica graduada de la Universidad Iberoamericana (UNIBE), colegiada ante el Colegio de Profesionales en Psicología de Costa Rica. Cuenta con formación especializada en Terapia Cognitivo Conductual (TCC), Terapia Racional Emotivo Conductual (TREC) y Psicotrauma. Especialista en el abordaje de trauma psicológico, procesos de duelo e intervención en conducta suicida, integrando enfoques basados en evidencia y una mirada ética, sensible y profundamente humana. Posee un Máster en Sexualidad y Terapia de Pareja.',
-    specialties: ['Trauma psicológico y psicotrauma', 'Procesos de duelo', 'Intervención en conducta e ideación suicida', 'Trastornos de ansiedad', 'Depresión y trastornos del estado de ánimo', 'Regulación emocional', 'Trastornos de personalidad', 'Sexualidad clínica', 'Terapia de pareja', 'Identidad y diversidad sexual', 'Crecimiento personal y autoconocimiento'],
-    procedures: ['Psicoterapia individual (presencial y virtual)', 'Terapia de pareja', 'Intervención en crisis y conducta suicida', 'Procesos terapéuticos para trauma y duelo', 'Evaluación y acompañamiento psicológico', 'Talleres y charlas psicoeducativas', 'Atención psicológica para empresas', 'Telepsicología'],
-    languages: ['Español', 'Inglés'],
-  },
-  {
-    slug: 'deibi-soto',
-    name: 'Dr. Deibi Soto Montero',
-    role: 'Médico Familiar',
-    code: '',
-    image: '/professionals/deibi_soto_montero.webp',
-    imagePosition: '10%',
-    location: 'NeoMed - Consulta Principal',
-    locationDetail: 'Heredia, Costa Rica',
-    phone: '+506 7049-4362',
-    enfoque: '',
-    about: 'Especialidad centrada en la atención continua e integral del paciente y su núcleo familiar a lo largo del ciclo de vida, con enfoque preventivo y comunitario.',
-    specialties: ['Medicina Familiar', 'Medicina General'],
-    procedures: ['Consulta médica familiar', 'Control preventivo integral', 'Seguimiento longitudinal de enfermedades crónicas', 'Atención de enfermedades agudas', 'Educación en salud familiar', 'Evaluación integral del entorno biopsicosocial'],
-    languages: ['Español'],
-  },
-  {
-    slug: 'daniela-soto',
-    name: 'Dra. Daniela Soto',
-    role: 'Fisioterapeuta',
-    code: '',
-    image: '/professionals/daniela_soto.webp',
-    imagePosition: '',
-    location: 'NeoMed - Consulta Principal',
-    locationDetail: 'Heredia, Costa Rica',
-    phone: '+506 7049-4362',
-    enfoque: '',
-    about: 'Fisioterapeuta especializada en rehabilitación física y el movimiento, integrando técnicas de fisioterapia deportiva y neurológica para mejorar la calidad de vida de cada paciente.',
-    specialties: ['Fisioterapia Deportiva', 'Fisioterapia Neurológica'],
-    procedures: ['Valoración fisioterapéutica integral', 'Terapia manual', 'Rehabilitación postquirúrgica', 'Manejo de dolor muscular y articular', 'Ejercicio terapéutico', 'Terapia de movilidad'],
-    languages: ['Español'],
-  },
-  {
-    slug: 'maria-jose-soto',
-    name: 'Dra. Maria Jose Soto',
-    role: 'Nutricionista',
-    code: '',
-    image: '/professionals/maria_jose_soto.webp',
-    imagePosition: '',
-    location: 'NeoMed - Consulta Principal',
-    locationDetail: 'Heredia, Costa Rica',
-    phone: '+506 7049-4362',
-    enfoque: '',
-    about: 'Especialista en nutrición y dietética, dedicada a la evaluación y planificación nutricional personalizada para la prevención y tratamiento de enfermedades.',
-    specialties: ['Nutrición y Dietética'],
-    procedures: ['Consulta nutricional inicial', 'Evaluación antropométrica', 'Planes alimentarios personalizados', 'Manejo nutricional de enfermedades metabólicas', 'Control de peso', 'Educación nutricional', 'Seguimiento periódico'],
-    languages: ['Español'],
-  },
-  {
-    slug: 'enid-hernandez',
-    name: 'Lic. Enid Hernández',
-    role: 'Psicopedagoga y Psicóloga',
-    code: '',
-    image: '/professionals/enid_hernandez.webp',
-    imagePosition: '',
-    location: 'NeoMed - Consulta Principal',
-    locationDetail: 'Heredia, Costa Rica',
-    phone: '+506 7049-4362',
-    enfoque: '',
-    about: '',
-    specialties: ['Psicopedagogía', 'Psicología'],
-    procedures: [],
-    languages: ['Español'],
-  },
-  {
-    slug: 'jeffrey-hernandez',
-    name: 'Lic. Jeffrey Hernández',
-    role: 'Psicólogo',
-    code: '',
-    image: '/professionals/jeffrey_hernandez.webp',
-    imagePosition: '',
-    location: 'NeoMed - Consulta Principal',
-    locationDetail: 'Heredia, Costa Rica',
-    phone: '+506 7049-4362',
-    enfoque: '',
-    about: '',
-    specialties: ['Psicología'],
-    procedures: [],
-    languages: ['Español'],
-  },
-  {
-    slug: 'david-carnegie-richards',
-    name: 'Dr. David Carnegie Richards',
-    role: 'Médico General y Rehabilitación',
-    code: '',
-    image: '/professionals/david_carnegie_richards.webp',
-    imagePosition: '',
-    location: 'NeoMed - Consulta Principal',
-    locationDetail: 'Heredia, Costa Rica',
-    phone: '+506 7049-4362',
-    enfoque: '',
-    about: '',
-    specialties: ['Medicina General', 'Rehabilitación'],
-    procedures: [],
-    languages: ['Español'],
-  },
-  {
-    slug: 'tamara-guerrero',
-    name: 'Lic. Tamara Guerrero Carrillo',
-    role: 'Enfermera',
-    code: '',
-    image: '/professionals/tamara_guerrero.webp',
-    imagePosition: '30%',
-    location: 'NeoMed - Consulta Principal',
-    locationDetail: 'Heredia, Costa Rica',
-    phone: '+506 7049-4362',
-    enfoque: '',
-    about: 'Profesional de enfermería con vocación de servicio y amplia experiencia en cuidados integrales. Se caracteriza por ofrecer un trato humano, empático y profesional, buscando siempre los mejores resultados en la atención de sus pacientes.',
-    specialties: ['Enfermería General', 'Cuidados Integrales'],
-    procedures: ['Cuidados de enfermería', 'Atención de urgencias', 'Procedimientos clínicos', 'Administración de medicamentos', 'Seguimiento de pacientes'],
-    languages: ['Español'],
-  },
-];
+export async function getDirectorio(): Promise<Profesional[]> {
+  const entries = await getCollection('directorio');
+  return entries
+    .sort((a, b) => a.data.name.localeCompare(b.data.name, 'es'))
+    .map((entry) => ({
+      slug: entry.id,
+      name: entry.data.name,
+      role: entry.data.role,
+      code: entry.data.code || '',
+      image: entry.data.image,
+      imagePosition: entry.data.imagePosition || '',
+      location: entry.data.location || 'NeoMed - Consulta Principal',
+      locationDetail: entry.data.locationDetail || 'Heredia, Costa Rica',
+      enfoque: entry.data.enfoque || '',
+      about: entry.data.about || '',
+      specialties: entry.data.specialties || [],
+      procedures: entry.data.procedures || [],
+      languages: entry.data.languages || ['Español'],
+    }));
+}
