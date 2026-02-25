@@ -8,9 +8,19 @@
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
   <title>NeoMed Admin</title>
+  <link rel="stylesheet" href="https://unpkg.com/decap-cms@3.3.3/dist/decap-cms.css" />
 </head>
 <body>
   <!-- Include the script that builds the page and powers Decap CMS -->
   <script src="https://unpkg.com/decap-cms@3.3.3/dist/decap-cms.js"></script>
+  <script>
+    // Cargar config desde archivo versionado para evitar caché
+    CMS.init({
+      config: {
+        load_config_file: true,
+        config_file: '/admin/config-v2.yml'
+      }
+    });
+  </script>
 </body>
 </html>
