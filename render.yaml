@@ -6,6 +6,9 @@ services:
     staticPublishPath: ./dist
     pullRequestPreviewsEnabled: true
     headers:
+      - path: /config.yml
+        name: Cache-Control
+        value: no-cache, no-store, must-revalidate
       - path: /cms/*
         name: Cache-Control
         value: no-cache, no-store, must-revalidate
