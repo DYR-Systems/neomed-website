@@ -6,6 +6,9 @@ services:
     staticPublishPath: ./dist
     pullRequestPreviewsEnabled: true
     headers:
+      - path: /admin/*
+        name: Cache-Control
+        value: no-cache, no-store, must-revalidate
       - path: /*
         name: Cache-Control
         value: public, max-age=31536000, immutable
