@@ -1,7 +1,10 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: DYR-Systems/neomed-website
   branch: main
-  site_url: https://peaceful-cassata-e6374c.netlify.app
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
+  site_domain: peaceful-cassata-e6374c.netlify.app
 
 # Para desarrollo local, descomentar estas líneas:
 # local_backend: true
