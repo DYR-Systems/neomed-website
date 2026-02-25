@@ -2,9 +2,8 @@ backend:
   name: github
   repo: DYR-Systems/neomed-website
   branch: main
-  base_url: https://api.netlify.com
+  base_url: https://dyr-neomed-oauth-backend.onrender.com/
   auth_endpoint: auth
-  site_domain: peaceful-cassata-e6374c.netlify.app
 
 # Para desarrollo local, descomentar estas líneas:
 # local_backend: true
