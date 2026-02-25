@@ -32,7 +32,16 @@ collections:
     sortable_fields: ["order", "name", "role"]
     fields:
       - { label: "Nombre completo", name: "name", widget: "string", hint: "Incluir título (Dr., Dra., Lic., etc.)" }
-      - { label: "Rol / Especialidad", name: "role", widget: "string", hint: "Ej: Psicóloga Clínica, Médico Familiar" }
+      - label: "Categoría"
+        name: "role"
+        widget: "select"
+        options:
+          - Psicología
+          - Medicina
+          - Fisioterapia
+          - Nutrición
+          - Enfermería
+      - { label: "Banner de Categoría", name: "banner", widget: "string", required: false, hint: "Ejemplo: Psicología Infantil, Medicina Familiar, Psicología Clínica" }
       - { label: "Código de profesional", name: "code", widget: "string", required: false, default: "" }
       - { label: "Foto", name: "image", widget: "image", choose_url: false, hint: "Subir foto del profesional (preferiblemente WebP)" }
       - { label: "Posición de imagen", name: "imagePosition", widget: "string", required: false, default: "", hint: "Posición vertical del recorte (ej: 10%, 30%). Dejar vacío para centrado" }
