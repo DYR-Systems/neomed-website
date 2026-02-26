@@ -1,4 +1,4 @@
 ---
-name: "Medicina"
+name: Medicina.
 icon: ""
 ---
