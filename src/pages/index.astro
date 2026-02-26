@@ -204,8 +204,8 @@ const uniqueRoles = new Set(directorio.map(p => p.role)).size;
   </section>
 
   <!-- Lab Exams CTA Section -->
+  <!-- COMENTADO TEMPORALMENTE
   <section class="py-20 bg-gradient-to-br from-emerald-600 via-teal-600 to-emerald-700 relative overflow-hidden">
-    <!-- Background pattern -->
     <div class="absolute inset-0 opacity-10">
       <div class="absolute top-10 left-10 w-64 h-64">
         <svg class="w-full h-full text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="0.3">
@@ -223,7 +223,6 @@ const uniqueRoles = new Set(directorio.map(p => p.role)).size;
       <div class="max-w-5xl mx-auto">
         <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
           
-          <!-- Left: Text content -->
           <div class="flex-1 text-center lg:text-left">
             <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-white text-sm font-semibold px-4 py-1.5 rounded-full mb-6">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -238,7 +237,6 @@ const uniqueRoles = new Set(directorio.map(p => p.role)).size;
               Resultados rápidos, precios transparentes. Consulta nuestro catálogo completo de exámenes clínicos.
             </p>
             
-            <!-- Feature pills -->
             <div class="flex flex-wrap justify-center lg:justify-start gap-3 mb-8">
               <span class="inline-flex items-center gap-1.5 bg-white/15 backdrop-blur-sm text-white text-sm px-4 py-2 rounded-full">
                 <svg class="w-4 h-4 text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -287,21 +285,22 @@ const uniqueRoles = new Set(directorio.map(p => p.role)).size;
             </div>
           </div>
 
-          <!-- Right: Category preview cards -->
           <div class="flex-shrink-0 w-full lg:w-auto">
             <div class="grid grid-cols-3 gap-3 max-w-sm mx-auto lg:mx-0">
               {categoriasLab.slice(0, 6).map(cat => (
                 <div class="bg-white/15 backdrop-blur-sm rounded-xl p-4 text-center hover:bg-white/25 transition-all">
                   {cat.icon ? (
-                    <div class="w-8 h-8 mx-auto mb-1">
-                      <img src={cat.icon} alt={cat.name} class="w-full h-full object-contain" />
-                    </div>
+                    <>
+                      <div class="w-8 h-8 mx-auto mb-1">
+                        <img src={cat.icon} alt={cat.name} class="w-full h-full object-contain" />
+                      </div>
+                      <span class="text-white text-xs font-medium">{cat.name}</span>
+                    </>
                   ) : (
-                    <div class="w-8 h-8 mx-auto mb-1 flex items-center justify-center">
-                      <span class="text-white font-bold text-xs">{cat.name.substring(0, 3)}</span>
+                    <div class="flex items-center justify-center h-full">
+                      <span class="text-white font-semibold text-xs text-center break-words">{cat.name}</span>
                     </div>
                   )}
-                  <span class="text-white text-xs font-medium">{cat.name}</span>
                 </div>
               ))}
             </div>
@@ -310,6 +309,7 @@ const uniqueRoles = new Set(directorio.map(p => p.role)).size;
       </div>
     </div>
   </section>
+  -->
 
   <!-- About Section -->
   <section id="nosotros" class="py-24 bg-white">

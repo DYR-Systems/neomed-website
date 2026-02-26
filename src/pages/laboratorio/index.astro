@@ -75,20 +75,24 @@ const categorias = await getCategorias();
       <div class="flex flex-wrap justify-center gap-6 md:gap-10 max-w-5xl mx-auto">
         {categorias.map(cat => (
           <button class="categoria-btn group flex flex-col items-center gap-3 cursor-pointer" data-filter={cat.name}>
-            <div class="w-20 h-20 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center group-hover:border-cyan-300 group-hover:shadow-md transition-all categoria-icon">
-              {cat.icon ? (
+            {cat.icon ? (
+              <div class="w-20 h-20 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center group-hover:border-cyan-300 group-hover:shadow-md transition-all categoria-icon">
                 <img 
                   src={cat.icon} 
                   alt={cat.name} 
                   class="w-12 h-12 object-contain group-hover:scale-110 transition-transform" 
                 />
-              ) : (
-                <span class="text-cyan-600 font-semibold text-sm text-center px-2 group-hover:scale-110 transition-transform">
+              </div>
+            ) : (
+              <div class="min-w-[5rem] max-w-[7rem] h-20 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center group-hover:border-cyan-300 group-hover:shadow-md transition-all categoria-icon px-2">
+                <span class="text-cyan-600 font-semibold text-xs text-center leading-tight">
                   {cat.name}
                 </span>
-              )}
-            </div>
-            <span class="text-sm text-slate-600 font-medium group-hover:text-cyan-700 transition-colors text-center max-w-[100px] categoria-label">{cat.name}</span>
+              </div>
+            )}
+            {cat.icon && (
+              <span class="text-sm text-slate-600 font-medium group-hover:text-cyan-700 transition-colors text-center max-w-[100px] categoria-label">{cat.name}</span>
+            )}
           </button>
         ))}
       </div>

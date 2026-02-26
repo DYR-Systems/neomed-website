@@ -87,20 +87,24 @@ const categoriasMedicas = await getCategoriasMedicas();
           const filterValue = categoria.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').substring(0, 10);
           return (
             <button class="especialidad-btn group flex flex-col items-center gap-3 cursor-pointer" data-filter={filterValue}>
-              <div class="w-20 h-20 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center group-hover:border-cyan-300 group-hover:shadow-md transition-all">
-                {categoria.icon ? (
+              {categoria.icon ? (
+                <div class="w-20 h-20 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center group-hover:border-cyan-300 group-hover:shadow-md transition-all">
                   <img 
                     src={categoria.icon} 
                     alt={categoria.name}
                     class="w-12 h-12 object-contain group-hover:scale-110 transition-transform"
                   />
-                ) : (
-                  <span class="text-cyan-600 font-semibold text-sm text-center px-2 group-hover:scale-110 transition-transform">
+                </div>
+              ) : (
+                <div class="min-w-[5rem] max-w-[7rem] h-20 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center group-hover:border-cyan-300 group-hover:shadow-md transition-all px-2">
+                  <span class="text-cyan-600 font-semibold text-xs text-center leading-tight">
                     {categoria.name}
                   </span>
-                )}
-              </div>
-              <span class="text-sm text-slate-600 font-medium group-hover:text-cyan-700 transition-colors">{categoria.name}</span>
+                </div>
+              )}
+              {categoria.icon && (
+                <span class="text-sm text-slate-600 font-medium group-hover:text-cyan-700 transition-colors">{categoria.name}</span>
+              )}
             </button>
           );
         })}
