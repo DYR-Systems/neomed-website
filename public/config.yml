@@ -6,7 +6,7 @@ backend:
   auth_endpoint: auth
 
 # Para desarrollo local, descomentar estas líneas:
-# local_backend: true
+local_backend: true
 
 media_folder: "public/professionals"
 public_folder: "/professionals"
@@ -66,3 +66,43 @@ collections:
         default: ["Español"]
         summary: "{{fields.language}}"
         field: { label: "Idioma", name: "language", widget: "string" }
+
+  - name: "categorias-laboratorio"
+    label: "Categorías de Laboratorio"
+    label_singular: "Categoría"
+    folder: "src/content/categorias-laboratorio"
+    create: true
+    delete: true
+    extension: "md"
+    format: "frontmatter"
+    slug: "{{slug}}"
+    identifier_field: "name"
+    summary: "{{name}}"
+    sortable_fields: ["name"]
+    fields:
+      - { label: "Nombre", name: "name", widget: "string" }
+      - { label: "Emoji", name: "emoji", widget: "string", required: false, default: "🔬", hint: "Emoji para mostrar en la página principal (ej: 🔬 🏥 🤰 🧬)" }
+
+  - name: "examenes"
+    label: "Exámenes de Laboratorio"
+    label_singular: "Examen"
+    folder: "src/content/examenes"
+    create: true
+    delete: true
+    extension: "md"
+    format: "frontmatter"
+    slug: "{{slug}}"
+    identifier_field: "name"
+    summary: "{{name}} — ₡{{price}}"
+    sortable_fields: ["name", "category", "price"]
+    fields:
+      - { label: "Nombre del examen", name: "name", widget: "string" }
+      - label: "Categoría"
+        name: "category"
+        widget: "relation"
+        collection: "categorias-laboratorio"
+        search_fields: ["name"]
+        value_field: "name"
+        display_fields: ["name"]
+      - { label: "Precio (₡)", name: "price", widget: "number", value_type: "int", min: 0, hint: "Precio en colones" }
+      - { label: "Descripción", name: "description", widget: "text", required: false, default: "", hint: "Descripción breve del examen" }

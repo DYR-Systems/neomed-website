@@ -20,4 +20,22 @@ const directorio = defineCollection({
   }),
 });
 
-export const collections = { directorio };
+const categoriasLaboratorio = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/categorias-laboratorio' }),
+  schema: z.object({
+    name: z.string(),
+    emoji: z.string().default('🔬'),
+  }),
+});
+
+const examenes = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/examenes' }),
+  schema: z.object({
+    name: z.string(),
+    category: z.string(),
+    price: z.number(),
+    description: z.string().default(''),
+  }),
+});
+
+export const collections = { directorio, categoriasLaboratorio, examenes };
