@@ -6,7 +6,7 @@ backend:
   auth_endpoint: auth
 
 # Para desarrollo local, descomentar estas líneas:
-local_backend: true
+# local_backend: true
 
 media_folder: "public/professionals"
 public_folder: "/professionals"
