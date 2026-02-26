@@ -93,7 +93,7 @@ collections:
     format: "frontmatter"
     slug: "{{slug}}"
     identifier_field: "name"
-    summary: "{{name}} — ₡{{price}}"
+    summary: "{{name}} — {{currency}} {{price}}"
     sortable_fields: ["name", "category", "price"]
     fields:
       - { label: "Nombre del examen", name: "name", widget: "string" }
@@ -104,5 +104,12 @@ collections:
         search_fields: ["name"]
         value_field: "name"
         display_fields: ["name"]
-      - { label: "Precio (₡)", name: "price", widget: "number", value_type: "int", min: 0, hint: "Precio en colones" }
+      - label: "Moneda"
+        name: "currency"
+        widget: "select"
+        default: "₡"
+        options:
+          - { label: "₡ Colones (CRC)", value: "₡" }
+          - { label: "$ Dólares (USD)", value: "$" }
+      - { label: "Precio", name: "price", widget: "number", value_type: "int", min: 0, hint: "Monto del precio" }
       - { label: "Descripción", name: "description", widget: "text", required: false, default: "", hint: "Descripción breve del examen" }

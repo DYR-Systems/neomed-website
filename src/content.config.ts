@@ -33,6 +33,7 @@ const examenes = defineCollection({
   schema: z.object({
     name: z.string(),
     category: z.string(),
+    currency: z.string().default('₡'),
     price: z.number(),
     description: z.string().default(''),
   }),

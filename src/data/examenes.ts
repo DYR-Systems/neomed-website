@@ -10,6 +10,7 @@ export interface Examen {
   slug: string;
   name: string;
   category: string;
+  currency: string;
   price: number;
   description: string;
 }
@@ -33,6 +34,7 @@ export async function getExamenes(): Promise<Examen[]> {
       slug: entry.id,
       name: entry.data.name,
       category: entry.data.category,
+      currency: entry.data.currency || '₡',
       price: entry.data.price,
       description: entry.data.description || '',
     }));

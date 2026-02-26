@@ -136,7 +136,7 @@ const categorias = await getCategorias();
               <!-- Price -->
               <div class="flex-shrink-0 text-right md:self-center">
                 <div class="flex items-baseline gap-1 justify-end">
-                  <span class="text-3xl font-bold text-cyan-600">₡{exam.price.toLocaleString('es-CR')}</span>
+                  <span class="text-3xl font-bold text-cyan-600">{exam.currency}{exam.price.toLocaleString('es-CR')}</span>
                 </div>
                 <p class="text-slate-400 text-xs mt-1">Precio de contado</p>
               </div>
