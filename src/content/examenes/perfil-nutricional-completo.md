@@ -1,7 +1,7 @@
 ---
-name: "Perfil Nutricional Completo"
-category: "Nutricional"
-currency: "₡"
+name: Perfil Nutricional Completo
+category: Nutricional
+currency: ₡
 price: 0
-description: "Vitamina D, B12, hierro sérico, ferritina, ácido fólico y proteínas totales"
+description: Vitamina D, B12, hierro sérico, ferritina, ácido fólico y proteínas totales
 ---

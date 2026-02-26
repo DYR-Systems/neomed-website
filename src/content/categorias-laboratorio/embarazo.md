@@ -1,4 +1,4 @@
 ---
 name: Embarazo
-emoji: 👩‍🍼
+emoji: ""
 ---
