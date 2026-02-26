@@ -1,4 +1,4 @@
 ---
 name: "Masculinos"
-emoji: "♂️"
+icon: ""
 ---

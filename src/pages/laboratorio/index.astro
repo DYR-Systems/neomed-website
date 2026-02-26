@@ -76,7 +76,7 @@ const categorias = await getCategorias();
         {categorias.map(cat => (
           <button class="categoria-btn group flex flex-col items-center gap-3 cursor-pointer" data-filter={cat.name}>
             <div class="w-20 h-20 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center group-hover:border-cyan-300 group-hover:shadow-md transition-all categoria-icon">
-              <span class="text-4xl group-hover:scale-110 transition-transform">{cat.emoji}</span>
+              <img src={cat.icon} alt={cat.name} class="w-12 h-12 object-contain group-hover:scale-110 transition-transform" />
             </div>
             <span class="text-sm text-slate-600 font-medium group-hover:text-cyan-700 transition-colors text-center max-w-[100px] categoria-label">{cat.name}</span>
           </button>

@@ -1,4 +1,4 @@
 ---
 name: "Pediátrico"
-emoji: "👶"
+icon: ""
 ---

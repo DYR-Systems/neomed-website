@@ -24,7 +24,7 @@ const categoriasLaboratorio = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/categorias-laboratorio' }),
   schema: z.object({
     name: z.string(),
-    emoji: z.string().default('🔬'),
+    icon: z.string().default(''),
   }),
 });
 

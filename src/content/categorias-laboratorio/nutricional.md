@@ -1,4 +1,4 @@
 ---
 name: "Nutricional"
-emoji: "🥗"
+icon: ""
 ---

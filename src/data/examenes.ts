@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 export interface CategoriaLaboratorio {
   slug: string;
   name: string;
-  emoji: string;
+  icon: string;
 }
 
 export interface Examen {
@@ -21,7 +21,7 @@ export async function getCategorias(): Promise<CategoriaLaboratorio[]> {
     .map((entry) => ({
       slug: entry.id,
       name: entry.data.name,
-      emoji: entry.data.emoji || '🔬',
+      icon: entry.data.icon || '/neomed_icon.png',
     }))
     .sort((a, b) => a.name.localeCompare(b.name, 'es'));
 }

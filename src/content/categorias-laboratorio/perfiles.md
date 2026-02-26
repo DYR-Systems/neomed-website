@@ -1,4 +1,4 @@
 ---
 name: "Perfiles"
-emoji: "🔬"
+icon: ""
 ---

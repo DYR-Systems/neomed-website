@@ -1,4 +1,4 @@
 ---
 name: "Tiroides"
-emoji: "🧬"
+icon: ""
 ---

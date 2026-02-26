@@ -1,4 +1,4 @@
 ---
 name: "Femeninos"
-emoji: "♀️"
+icon: ""
 ---

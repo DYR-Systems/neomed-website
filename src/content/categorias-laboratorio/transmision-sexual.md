@@ -1,4 +1,4 @@
 ---
 name: "Transmisión Sexual"
-emoji: "🛡️"
+icon: ""
 ---

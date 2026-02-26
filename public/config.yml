@@ -71,6 +71,8 @@ collections:
     label: "Categorías de Laboratorio"
     label_singular: "Categoría"
     folder: "src/content/categorias-laboratorio"
+    media_folder: "public/lab-icons"
+    public_folder: "/lab-icons"
     create: true
     delete: true
     extension: "md"
@@ -81,7 +83,7 @@ collections:
     sortable_fields: ["name"]
     fields:
       - { label: "Nombre", name: "name", widget: "string" }
-      - { label: "Emoji", name: "emoji", widget: "string", required: false, default: "🔬", hint: "Emoji para mostrar en la página principal (ej: 🔬 🏥 🤰 🧬)" }
+      - { label: "Icono", name: "icon", widget: "image", required: false, choose_url: false, hint: "Subir icono personalizado (PNG/SVG recomendado). Si no subes nada, se usará el logo de NeoMed" }
 
   - name: "examenes"
     label: "Exámenes de Laboratorio"
