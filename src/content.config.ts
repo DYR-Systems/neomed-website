@@ -20,6 +20,14 @@ const directorio = defineCollection({
   }),
 });
 
+const categoriasMedicas = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/categorias-medicas' }),
+  schema: z.object({
+    name: z.string(),
+    icon: z.string().default(''),
+  }),
+});
+
 const categoriasLaboratorio = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/categorias-laboratorio' }),
   schema: z.object({
@@ -39,4 +47,4 @@ const examenes = defineCollection({
   }),
 });
 
-export const collections = { directorio, categoriasLaboratorio, examenes };
+export const collections = { directorio, categoriasMedicas, categoriasLaboratorio, examenes };

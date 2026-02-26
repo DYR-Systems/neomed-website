@@ -17,6 +17,12 @@ export interface Profesional {
   languages: string[];
 }
 
+export interface CategoriaMedica {
+  slug: string;
+  name: string;
+  icon: string;
+}
+
 export async function getDirectorio(): Promise<Profesional[]> {
   const entries = await getCollection('directorio');
   return entries
@@ -37,4 +43,15 @@ export async function getDirectorio(): Promise<Profesional[]> {
       procedures: entry.data.procedures || [],
       languages: entry.data.languages || ['Español'],
     }));
+}
+
+export async function getCategoriasMedicas(): Promise<CategoriaMedica[]> {
+  const entries = await getCollection('categoriasMedicas');
+  return entries
+    .map((entry) => ({
+      slug: entry.id,
+      name: entry.data.name,
+      icon: entry.data.icon || '',
+    }))
+    .sort((a, b) => a.name.localeCompare(b.name, 'es'));
 }

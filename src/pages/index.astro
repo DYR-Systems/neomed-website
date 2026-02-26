@@ -292,9 +292,15 @@ const uniqueRoles = new Set(directorio.map(p => p.role)).size;
             <div class="grid grid-cols-3 gap-3 max-w-sm mx-auto lg:mx-0">
               {categoriasLab.slice(0, 6).map(cat => (
                 <div class="bg-white/15 backdrop-blur-sm rounded-xl p-4 text-center hover:bg-white/25 transition-all">
-                  <div class="w-8 h-8 mx-auto mb-1">
-                    <img src={cat.icon} alt={cat.name} class="w-full h-full object-contain" />
-                  </div>
+                  {cat.icon ? (
+                    <div class="w-8 h-8 mx-auto mb-1">
+                      <img src={cat.icon} alt={cat.name} class="w-full h-full object-contain" />
+                    </div>
+                  ) : (
+                    <div class="w-8 h-8 mx-auto mb-1 flex items-center justify-center">
+                      <span class="text-white font-bold text-xs">{cat.name.substring(0, 3)}</span>
+                    </div>
+                  )}
                   <span class="text-white text-xs font-medium">{cat.name}</span>
                 </div>
               ))}

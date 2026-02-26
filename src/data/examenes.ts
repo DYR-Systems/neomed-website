@@ -21,7 +21,7 @@ export async function getCategorias(): Promise<CategoriaLaboratorio[]> {
     .map((entry) => ({
       slug: entry.id,
       name: entry.data.name,
-      icon: entry.data.icon || '/neomed_icon.png',
+      icon: entry.data.icon || '',
     }))
     .sort((a, b) => a.name.localeCompare(b.name, 'es'));
 }

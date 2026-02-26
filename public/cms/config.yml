@@ -6,7 +6,7 @@ backend:
   auth_endpoint: auth
 
 # Para desarrollo local, descomentar estas líneas:
-# local_backend: true
+local_backend: true
 
 media_folder: "public/professionals"
 public_folder: "/professionals"
@@ -18,6 +18,24 @@ slug:
   clean_accents: true
 
 collections:
+  - name: "categorias-medicas"
+    label: "Categorías Directorio Médico"
+    label_singular: "Categoría"
+    folder: "src/content/categorias-medicas"
+    media_folder: "public/medical-icons"
+    public_folder: "/medical-icons"
+    create: true
+    delete: true
+    extension: "md"
+    format: "frontmatter"
+    slug: "{{slug}}"
+    identifier_field: "name"
+    summary: "{{name}}"
+    sortable_fields: ["name"]
+    fields:
+      - { label: "Nombre", name: "name", widget: "string" }
+      - { label: "Icono", name: "icon", widget: "image", required: false, choose_url: false, hint: "Sube un icono para la categoría. Si no subes ninguno, se mostrará el texto del nombre." }
+
   - name: "directorio"
     label: "Directorio Médico"
     label_singular: "Profesional"
@@ -30,17 +48,31 @@ collections:
     identifier_field: "name"
     summary: "{{name}} — {{role}}"
     sortable_fields: ["order", "name", "role"]
+    view_filters:
+      - label: "Enfermería"
+        field: role
+        pattern: "Enfermería"
+      - label: "Fisioterapia"
+        field: role
+        pattern: "Fisioterapia"
+      - label: "Medicina"
+        field: role
+        pattern: "Medicina"
+      - label: "Nutrición"
+        field: role
+        pattern: "Nutrición"
+      - label: "Psicología"
+        field: role
+        pattern: "Psicología"
     fields:
       - { label: "Nombre completo", name: "name", widget: "string", hint: "Incluir título (Dr., Dra., Lic., etc.)" }
       - label: "Categoría"
         name: "role"
-        widget: "select"
-        options:
-          - Psicología
-          - Medicina
-          - Fisioterapia
-          - Nutrición
-          - Enfermería
+        widget: "relation"
+        collection: "categorias-medicas"
+        search_fields: ["name"]
+        value_field: "name"
+        display_fields: ["name"]
       - { label: "Banner de Categoría", name: "banner", widget: "string", required: false, hint: "Ejemplo: Psicología Infantil, Medicina Familiar, Psicología Clínica" }
       - { label: "Código de profesional", name: "code", widget: "string", required: false, default: "" }
       - { label: "Foto", name: "image", widget: "image", choose_url: false, hint: "Subir foto del profesional (preferiblemente WebP)" }
@@ -83,7 +115,7 @@ collections:
     sortable_fields: ["name"]
     fields:
       - { label: "Nombre", name: "name", widget: "string" }
-      - { label: "Icono", name: "icon", widget: "image", required: false, choose_url: false, hint: "Subir icono personalizado (PNG/SVG recomendado). Si no subes nada, se usará el logo de NeoMed" }
+      - { label: "Icono", name: "icon", widget: "image", required: false, choose_url: false, hint: "Sube un icono para la categoría. Si no subes ninguno, se mostrará el texto del nombre." }
 
   - name: "examenes"
     label: "Exámenes de Laboratorio"
@@ -97,6 +129,34 @@ collections:
     identifier_field: "name"
     summary: "{{name}} — {{currency}} {{price}}"
     sortable_fields: ["name", "category", "price"]
+    view_filters:
+      - label: "Embarazo"
+        field: category
+        pattern: "Embarazo"
+      - label: "Femeninos"
+        field: category
+        pattern: "Femeninos"
+      - label: "Masculinos"
+        field: category
+        pattern: "Masculinos"
+      - label: "Nutricional"
+        field: category
+        pattern: "Nutricional"
+      - label: "Pediátrico"
+        field: category
+        pattern: "Pediátrico"
+      - label: "Perfiles"
+        field: category
+        pattern: "Perfiles"
+      - label: "Quirúrgicos"
+        field: category
+        pattern: "Quirúrgicos"
+      - label: "Tiroides"
+        field: category
+        pattern: "Tiroides"
+      - label: "Transmisión Sexual"
+        field: category
+        pattern: "Transmisión Sexual"
     fields:
       - { label: "Nombre del examen", name: "name", widget: "string" }
       - label: "Categoría"
