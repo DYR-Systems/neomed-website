@@ -1,4 +1,4 @@
 ---
-name: "Fisioterapia"
+name: Fisioterapia.
 icon: ""
 ---
