@@ -11,6 +11,7 @@
   <script>
     // Custom button to run Render Deploy Hook
     const RENDER_DEPLOY_HOOK = 'https://api.render.com/deploy/srv-d5ilgpm3jp1c73c33ol0?key=1GJxMSMivIM';
+    const DEPLOY_COOLDOWN_MS = 90000; // 1.5 minutos en milisegundos
     
     // Wait for the CMS to load
     window.addEventListener('load', () => {
@@ -34,20 +35,69 @@
           z-index: 9999;
         `;
         
+        // Check if there is active cooldown when loading
+        function checkCooldown() {
+          const lastDeployTime = localStorage.getItem('lastDeployTime');
+          if (lastDeployTime) {
+            const elapsed = Date.now() - parseInt(lastDeployTime);
+            const remaining = DEPLOY_COOLDOWN_MS - elapsed;
+            
+            if (remaining > 0) {
+              // Still on cooldown
+              deployButton.disabled = true;
+              deployButton.style.cursor = 'not-allowed';
+              deployButton.style.background = '#6b7280';
+              
+              // Update text with countdown
+              const updateCountdown = () => {
+                const remainingNow = DEPLOY_COOLDOWN_MS - (Date.now() - parseInt(lastDeployTime));
+                if (remainingNow > 0) {
+                  const seconds = Math.ceil(remainingNow / 1000);
+                  deployButton.textContent = `⏳ Espera ${seconds}s`;
+                  setTimeout(updateCountdown, 1000);
+                } else {
+                  // Cooldown over
+                  deployButton.disabled = false;
+                  deployButton.style.cursor = 'pointer';
+                  deployButton.style.background = '#10b981';
+                  deployButton.textContent = '🚀 Deploy a Producción';
+                }
+              };
+              updateCountdown();
+              
+              return true; // In cooldown
+            }
+          }
+          return false; // Not in cooldown
+        }
+        
+        // Check initial cooldown
+        checkCooldown();
+        
         deployButton.onmouseover = () => {
-          deployButton.style.background = '#059669';
-          deployButton.style.transform = 'translateY(-2px)';
-          deployButton.style.boxShadow = '0 6px 16px rgba(16, 185, 129, 0.4)';
+          if (!deployButton.disabled) {
+            deployButton.style.background = '#059669';
+            deployButton.style.transform = 'translateY(-2px)';
+            deployButton.style.boxShadow = '0 6px 16px rgba(16, 185, 129, 0.4)';
+          }
         };
         deployButton.onmouseout = () => {
-          deployButton.style.background = '#10b981';
-          deployButton.style.transform = 'translateY(0)';
-          deployButton.style.boxShadow = '0 4px 12px rgba(16, 185, 129, 0.3)';
+          if (!deployButton.disabled) {
+            deployButton.style.background = '#10b981';
+            deployButton.style.transform = 'translateY(0)';
+            deployButton.style.boxShadow = '0 4px 12px rgba(16, 185, 129, 0.3)';
+          }
         };
         
         deployButton.onclick = async () => {
           if (RENDER_DEPLOY_HOOK === 'TU_DEPLOY_HOOK_URL_AQUI') {
             alert('⚠️ Configura el RENDER_DEPLOY_HOOK en public/cms/index.html primero');
+            return;
+          }
+          
+          // Check cooldown before proceeding
+          if (checkCooldown()) {
+            alert('⏳ Por favor espera. Se puede hacer deploy cada 1.5 minutos.');
             return;
           }
           
@@ -58,30 +108,37 @@
           deployButton.disabled = true;
           deployButton.textContent = '⏳ Desplegando...';
           deployButton.style.background = '#6b7280';
+          deployButton.style.cursor = 'not-allowed';
           
           try {
-            // Usar no-cors porque Render no devuelve CORS headers
+            // Use no-cors because Render does not return CORS headers
             await fetch(RENDER_DEPLOY_HOOK, { 
               method: 'POST',
-              mode: 'no-cors' // No podemos leer la respuesta, pero sí se envía el request
+              mode: 'no-cors' // We cannot read the response, but the request is sent
             });
             
-            // Si no hay error de red, asumimos éxito
+            // Save deploy timestamp
+            localStorage.setItem('lastDeployTime', Date.now().toString());
+            
+            // If there is no network error, we assume success
             deployButton.textContent = '✅ Deploy iniciado';
             deployButton.style.background = '#10b981';
+            
+            // Start cooldown
             setTimeout(() => {
-              deployButton.textContent = '🚀 Deploy a Producción';
-              deployButton.disabled = false;
-            }, 3000);
-            alert('✅ Deploy iniciado!\n\nEl sitio se actualizará en unos minutos.');
+              checkCooldown(); // This will start the countdown
+            }, 2000);
+            
+            alert('✅ Deploy iniciado!\n\nEl sitio se actualizará en unos minutos.\n\nPodrás hacer otro deploy en 1.5 minutos.');
             
           } catch (error) {
-            // Solo entra aquí si hay error de red (sin internet, URL incorrecta, etc)
+            // Only enters here if there is a network error (no internet, incorrect URL, etc)
             deployButton.textContent = '❌ Error';
             deployButton.style.background = '#ef4444';
             setTimeout(() => {
               deployButton.textContent = '🚀 Deploy a Producción';
               deployButton.style.background = '#10b981';
+              deployButton.style.cursor = 'pointer';
               deployButton.disabled = false;
             }, 3000);
             alert('❌ Error de red. Verifica tu conexión.');
