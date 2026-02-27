@@ -51,7 +51,7 @@
             return;
           }
           
-          if (!confirm('¿Desplegar cambios a producción?\n\nEsto ejecutará el build en Render.')) {
+          if (!confirm('¿Desplegar cambios a producción?\n\nPor favor verifica que todos los cambios estén listos.')) {
             return;
           }
           
@@ -60,20 +60,23 @@
           deployButton.style.background = '#6b7280';
           
           try {
-            const response = await fetch(RENDER_DEPLOY_HOOK, { method: 'POST' });
+            // Usar no-cors porque Render no devuelve CORS headers
+            await fetch(RENDER_DEPLOY_HOOK, { 
+              method: 'POST',
+              mode: 'no-cors' // No podemos leer la respuesta, pero sí se envía el request
+            });
             
-            if (response.ok) {
-              deployButton.textContent = '✅ Deploy iniciado';
-              deployButton.style.background = '#10b981';
-              setTimeout(() => {
-                deployButton.textContent = '🚀 Deploy a Producción';
-                deployButton.disabled = false;
-              }, 3000);
-              alert('✅ Deploy iniciado!\n\nEl sitio se actualizará en unos minutos.');
-            } else {
-              throw new Error('Error en deploy');
-            }
+            // Si no hay error de red, asumimos éxito
+            deployButton.textContent = '✅ Deploy iniciado';
+            deployButton.style.background = '#10b981';
+            setTimeout(() => {
+              deployButton.textContent = '🚀 Deploy a Producción';
+              deployButton.disabled = false;
+            }, 3000);
+            alert('✅ Deploy iniciado!\n\nEl sitio se actualizará en unos minutos.');
+            
           } catch (error) {
+            // Solo entra aquí si hay error de red (sin internet, URL incorrecta, etc)
             deployButton.textContent = '❌ Error';
             deployButton.style.background = '#ef4444';
             setTimeout(() => {
@@ -81,7 +84,7 @@
               deployButton.style.background = '#10b981';
               deployButton.disabled = false;
             }, 3000);
-            alert('❌ Error al ejecutar deploy. Verifica la configuración.');
+            alert('❌ Error de red. Verifica tu conexión.');
           }
         };
         
