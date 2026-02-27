@@ -8,5 +8,86 @@
 </head>
 <body>
   <script src="https://unpkg.com/decap-cms@^3.1.0/dist/decap-cms.js"></script>
+  <script>
+    // Custom button to run Render Deploy Hook
+    const RENDER_DEPLOY_HOOK = 'https://api.render.com/deploy/srv-d5ilgpm3jp1c73c33ol0?key=1GJxMSMivIM';
+    
+    // Wait for the CMS to load
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const deployButton = document.createElement('button');
+        deployButton.textContent = '🚀 Deploy a Producción';
+        deployButton.style.cssText = `
+          position: fixed;
+          bottom: 24px;
+          right: 24px;
+          background: #10b981;
+          color: white;
+          border: none;
+          padding: 14px 24px;
+          border-radius: 8px;
+          cursor: pointer;
+          font-weight: 600;
+          font-size: 14px;
+          transition: all 0.2s;
+          box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+          z-index: 9999;
+        `;
+        
+        deployButton.onmouseover = () => {
+          deployButton.style.background = '#059669';
+          deployButton.style.transform = 'translateY(-2px)';
+          deployButton.style.boxShadow = '0 6px 16px rgba(16, 185, 129, 0.4)';
+        };
+        deployButton.onmouseout = () => {
+          deployButton.style.background = '#10b981';
+          deployButton.style.transform = 'translateY(0)';
+          deployButton.style.boxShadow = '0 4px 12px rgba(16, 185, 129, 0.3)';
+        };
+        
+        deployButton.onclick = async () => {
+          if (RENDER_DEPLOY_HOOK === 'TU_DEPLOY_HOOK_URL_AQUI') {
+            alert('⚠️ Configura el RENDER_DEPLOY_HOOK en public/cms/index.html primero');
+            return;
+          }
+          
+          if (!confirm('¿Desplegar cambios a producción?\n\nEsto ejecutará el build en Render.')) {
+            return;
+          }
+          
+          deployButton.disabled = true;
+          deployButton.textContent = '⏳ Desplegando...';
+          deployButton.style.background = '#6b7280';
+          
+          try {
+            const response = await fetch(RENDER_DEPLOY_HOOK, { method: 'POST' });
+            
+            if (response.ok) {
+              deployButton.textContent = '✅ Deploy iniciado';
+              deployButton.style.background = '#10b981';
+              setTimeout(() => {
+                deployButton.textContent = '🚀 Deploy a Producción';
+                deployButton.disabled = false;
+              }, 3000);
+              alert('✅ Deploy iniciado!\n\nEl sitio se actualizará en unos minutos.');
+            } else {
+              throw new Error('Error en deploy');
+            }
+          } catch (error) {
+            deployButton.textContent = '❌ Error';
+            deployButton.style.background = '#ef4444';
+            setTimeout(() => {
+              deployButton.textContent = '🚀 Deploy a Producción';
+              deployButton.style.background = '#10b981';
+              deployButton.disabled = false;
+            }, 3000);
+            alert('❌ Error al ejecutar deploy. Verifica la configuración.');
+          }
+        };
+        
+        document.body.appendChild(deployButton);
+      }, 1000);
+    });
+  </script>
 </body>
 </html>
