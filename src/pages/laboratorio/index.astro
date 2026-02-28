@@ -326,17 +326,34 @@ const categorias = await getCategorias();
     buscarBtn?.addEventListener('click', () => {
       doFilter();
       
-      // Scroll to results
+      // Smooth scroll to results with custom animation
       const resultsSection = document.getElementById('lab-results-header');
       if (resultsSection) {
-        const offset = 100; // Offset from top
-        const elementPosition = resultsSection.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - offset;
-        
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
+        const offset = 200;
+        const targetPosition = resultsSection.getBoundingClientRect().top + window.pageYOffset - offset;
+        const startPosition = window.pageYOffset;
+        const distance = targetPosition - startPosition;
+        const duration = 800;
+        let startTime2: number | null = null;
+
+        function easeOutCubic2(t: number): number {
+          return 1 - Math.pow(1 - t, 3);
+        }
+
+        function animateScroll2(currentTime: number) {
+          if (startTime2 === null) startTime2 = currentTime;
+          const elapsed = currentTime - startTime2;
+          const progress = Math.min(elapsed / duration, 1);
+          const easeProgress = easeOutCubic2(progress);
+          
+          window.scrollTo(0, startPosition + distance * easeProgress);
+          
+          if (progress < 1) {
+            requestAnimationFrame(animateScroll2);
+          }
+        }
+
+        requestAnimationFrame(animateScroll2);
       }
     });
 
@@ -347,17 +364,34 @@ const categorias = await getCategorias();
         updateCategoryButtons(cat);
         doFilter();
         
-        // Scroll to results
+        // Smooth scroll to results with custom animation
         const resultsSection = document.getElementById('lab-results-header');
         if (resultsSection) {
-          const offset = 100; // Offset from top
-          const elementPosition = resultsSection.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - offset;
-          
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          });
+          const offset = 120;
+          const targetPosition = resultsSection.getBoundingClientRect().top + window.pageYOffset - offset;
+          const startPosition = window.pageYOffset;
+          const distance = targetPosition - startPosition;
+          const duration = 800; // ms
+          let startTime: number | null = null;
+
+          function easeOutCubic(t: number): number {
+            return 1 - Math.pow(1 - t, 3);
+          }
+
+          function animateScroll(currentTime: number) {
+            if (startTime === null) startTime = currentTime;
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const easeProgress = easeOutCubic(progress);
+            
+            window.scrollTo(0, startPosition + distance * easeProgress);
+            
+            if (progress < 1) {
+              requestAnimationFrame(animateScroll);
+            }
+          }
+
+          requestAnimationFrame(animateScroll);
         }
       });
     });

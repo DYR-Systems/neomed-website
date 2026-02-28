@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* Smooth scroll globally */
+html {
+  scroll-behavior: smooth;
+}
+
 /* Custom color theme - NeoMed Green */
 @theme {
   --color-primary: #067074;
