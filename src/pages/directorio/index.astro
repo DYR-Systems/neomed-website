@@ -389,34 +389,12 @@ const categoriasMedicas = await getCategoriasMedicas();
       // Remember this as the last executed search
       lastSearchedState = { search: searchInput?.value.trim() || '', filter: activeFilter };
 
-      // Smooth scroll to results with custom animation
+      // Smooth scroll to results
       const resultsSection = grid?.closest('section');
       if (resultsSection) {
         const offset = 120;
         const targetPosition = resultsSection.getBoundingClientRect().top + window.pageYOffset - offset;
-        const startPosition = window.pageYOffset;
-        const distance = targetPosition - startPosition;
-        const duration = 800; // ms
-        let startTime: number | null = null;
-
-        function easeOutCubic(t: number): number {
-          return 1 - Math.pow(1 - t, 3);
-        }
-
-        function animateScroll(currentTime: number) {
-          if (startTime === null) startTime = currentTime;
-          const elapsed = currentTime - startTime;
-          const progress = Math.min(elapsed / duration, 1);
-          const easeProgress = easeOutCubic(progress);
-          
-          window.scrollTo(0, startPosition + distance * easeProgress);
-          
-          if (progress < 1) {
-            requestAnimationFrame(animateScroll);
-          }
-        }
-
-        requestAnimationFrame(animateScroll);
+        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
       }
     }
 
