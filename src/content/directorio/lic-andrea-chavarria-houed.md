@@ -5,9 +5,7 @@ banner: Psico-oncología
 code: "13553"
 image: /professionals/lic.-andrea-chavarri-a-houed.jpeg
 imagePosition: ""
-enfoque: Personas adultas que atraviesan diagnósticos médicos complejos,
-  procesos oncológicos, enfermedad avanzada y cuidados paliativos, así como sus
-  familiares y cuidadores.
+enfoque: "Adultos "
 about: >-
   Acompaño a personas que enfrentan diagnósticos médicos complejos, tratamientos
   prolongados o situaciones de enfermedad avanzada, así como a sus familiares y
@@ -28,6 +26,7 @@ specialties:
 procedures:
   - Apoyo psicológico a pacientes y familiares
   - Acompañamiento en cuidados paliativos
+  - Acompañamiento procesos oncológicos
 languages:
   - Español
 ---
