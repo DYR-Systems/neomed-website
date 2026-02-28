@@ -325,7 +325,7 @@ const categoriasMedicas = await getCategoriasMedicas();
       sessionStorage.removeItem('directorio-state');
       // Remove active state from specialty buttons
       especialidadBtns.forEach(btn => {
-        btn.querySelector('div')?.classList.remove('border-cyan-500', 'bg-cyan-50', 'shadow-md');
+        btn.querySelector('div')?.classList.remove('border-cyan-500', 'shadow-md');
         btn.querySelector('div')?.classList.add('border-slate-200');
       });
       // Show all cards (reset filter)
@@ -343,7 +343,6 @@ const categoriasMedicas = await getCategoriasMedicas();
         especialidadBtns.forEach(b => {
           const match = (b as HTMLElement).dataset.filter === activeFilter;
           b.querySelector('div')?.classList.toggle('border-cyan-500', match);
-          b.querySelector('div')?.classList.toggle('bg-cyan-50', match);
           b.querySelector('div')?.classList.toggle('shadow-md', match);
           b.querySelector('div')?.classList.toggle('border-slate-200', !match);
         });
@@ -420,10 +419,10 @@ const categoriasMedicas = await getCategoriasMedicas();
 
         // Active state on button
         especialidadBtns.forEach(b => {
-          b.querySelector('div')?.classList.remove('border-cyan-500', 'bg-cyan-50', 'shadow-md');
+          b.querySelector('div')?.classList.remove('border-cyan-500', 'shadow-md');
           b.querySelector('div')?.classList.add('border-slate-200');
         });
-        btn.querySelector('div')?.classList.add('border-cyan-500', 'bg-cyan-50', 'shadow-md');
+        btn.querySelector('div')?.classList.add('border-cyan-500', 'shadow-md');
         btn.querySelector('div')?.classList.remove('border-slate-200');
 
         doSearch();
@@ -437,7 +436,6 @@ const categoriasMedicas = await getCategoriasMedicas();
       especialidadBtns.forEach(b => {
         const match = (b as HTMLElement).dataset.filter === activeFilter;
         b.querySelector('div')?.classList.toggle('border-cyan-500', match);
-        b.querySelector('div')?.classList.toggle('bg-cyan-50', match);
         b.querySelector('div')?.classList.toggle('shadow-md', match);
         b.querySelector('div')?.classList.toggle('border-slate-200', !match);
       });
