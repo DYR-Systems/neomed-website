@@ -1,6 +1,6 @@
 ---
 name: Lic. Cristel Guevara Rosales
-role: Fisioterapia
+role: Terapia del Lenguaje
 banner: Terapia del Lenguaje
 code: ""
 image: /professionals/neomed-logo-2.jpg
