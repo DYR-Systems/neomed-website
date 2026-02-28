@@ -85,7 +85,7 @@ const categorias = await getCategorias();
               </div>
             ) : (
               <div class="w-20 h-20 md:w-24 md:h-24 rounded-2xl flex items-center justify-center categoria-icon px-3">
-                <span class="text-cyan-700 font-bold text-sm md:text-base text-center leading-tight">
+                <span class="text-cyan-700 font-bold text-sm md:text-base text-center leading-tight categoria-label">
                   {cat.name}
                 </span>
               </div>
@@ -304,21 +304,17 @@ const categorias = await getCategorias();
         const isActive = btnCat === activeCat;
         
         if (isActive) {
-          el.classList.add('active');
-          const icon = el.querySelector('.categoria-icon');
+          el.classList.add('active', 'border-cyan-500', 'bg-cyan-50', 'shadow-lg', 'scale-[1.02]');
+          el.classList.remove('border-slate-200');
           const label = el.querySelector('.categoria-label');
-          icon?.classList.add('border-cyan-500', 'shadow-md');
-          icon?.classList.remove('border-slate-200');
-          label?.classList.add('text-cyan-700', 'font-semibold');
-          label?.classList.remove('text-slate-600');
+          label?.classList.add('text-cyan-700');
+          label?.classList.remove('text-slate-700');
         } else {
-          el.classList.remove('active');
-          const icon = el.querySelector('.categoria-icon');
+          el.classList.remove('active', 'border-cyan-500', 'bg-cyan-50', 'shadow-lg', 'scale-[1.02]');
+          el.classList.add('border-slate-200');
           const label = el.querySelector('.categoria-label');
-          icon?.classList.remove('border-cyan-500', 'shadow-md');
-          icon?.classList.add('border-slate-200');
-          label?.classList.remove('text-cyan-700', 'font-semibold');
-          label?.classList.add('text-slate-600');
+          label?.classList.remove('text-cyan-700');
+          label?.classList.add('text-slate-700');
         }
       });
     }

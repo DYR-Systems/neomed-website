@@ -95,13 +95,13 @@ const categoriasMedicas = await getCategoriasMedicas();
                 </div>
               ) : (
                 <div class="w-20 h-20 md:w-24 md:h-24 rounded-2xl flex items-center justify-center px-3">
-                  <span class="text-cyan-700 font-bold text-sm md:text-base text-center leading-tight">
+                  <span class="especialidad-label text-cyan-700 font-bold text-sm md:text-base text-center leading-tight">
                     {categoria.name}
                   </span>
                 </div>
               )}
               {categoria.icon && (
-                <span class="text-sm md:text-base text-slate-700 font-semibold group-hover:text-cyan-700 transition-colors text-center leading-tight">{categoria.name}</span>
+                <span class="especialidad-label text-sm md:text-base text-slate-700 font-semibold group-hover:text-cyan-700 transition-colors text-center leading-tight">{categoria.name}</span>
               )}
             </button>
           );
@@ -323,8 +323,9 @@ const categoriasMedicas = await getCategoriasMedicas();
       sessionStorage.removeItem('directorio-state');
       // Remove active state from specialty buttons
       especialidadBtns.forEach(btn => {
-        btn.querySelector('div')?.classList.remove('border-cyan-500', 'shadow-md');
-        btn.querySelector('div')?.classList.add('border-slate-200');
+        const el = btn as HTMLElement;
+        el.classList.remove('border-cyan-500', 'bg-cyan-50', 'shadow-lg', 'scale-[1.02]');
+        el.classList.add('border-slate-200');
       });
       // Show all cards (reset filter)
       cards.forEach(card => {
@@ -339,10 +340,13 @@ const categoriasMedicas = await getCategoriasMedicas();
         activeFilter = selectFilter.value;
         // Sync specialty button active state
         especialidadBtns.forEach(b => {
-          const match = (b as HTMLElement).dataset.filter === activeFilter;
-          b.querySelector('div')?.classList.toggle('border-cyan-500', match);
-          b.querySelector('div')?.classList.toggle('shadow-md', match);
-          b.querySelector('div')?.classList.toggle('border-slate-200', !match);
+          const el = b as HTMLElement;
+          const match = el.dataset.filter === activeFilter;
+          el.classList.toggle('border-cyan-500', match);
+          el.classList.toggle('bg-cyan-50', match);
+          el.classList.toggle('shadow-lg', match);
+          el.classList.toggle('scale-[1.02]', match);
+          el.classList.toggle('border-slate-200', !match);
         });
       }
       const searchTerm = normalize(searchInput?.value.trim() || '');
@@ -417,11 +421,13 @@ const categoriasMedicas = await getCategoriasMedicas();
 
         // Active state on button
         especialidadBtns.forEach(b => {
-          b.querySelector('div')?.classList.remove('border-cyan-500', 'shadow-md');
-          b.querySelector('div')?.classList.add('border-slate-200');
+          const el = b as HTMLElement;
+          el.classList.remove('border-cyan-500', 'bg-cyan-50', 'shadow-lg', 'scale-[1.02]');
+          el.classList.add('border-slate-200');
         });
-        btn.querySelector('div')?.classList.add('border-cyan-500', 'shadow-md');
-        btn.querySelector('div')?.classList.remove('border-slate-200');
+        const btnEl = btn as HTMLElement;
+        btnEl.classList.add('border-cyan-500', 'bg-cyan-50', 'shadow-lg', 'scale-[1.02]');
+        btnEl.classList.remove('border-slate-200');
 
         doSearch();
       });
@@ -432,10 +438,13 @@ const categoriasMedicas = await getCategoriasMedicas();
       activeFilter = selectFilter.value;
       // Sync specialty button active state
       especialidadBtns.forEach(b => {
-        const match = (b as HTMLElement).dataset.filter === activeFilter;
-        b.querySelector('div')?.classList.toggle('border-cyan-500', match);
-        b.querySelector('div')?.classList.toggle('shadow-md', match);
-        b.querySelector('div')?.classList.toggle('border-slate-200', !match);
+        const el = b as HTMLElement;
+        const match = el.dataset.filter === activeFilter;
+        el.classList.toggle('border-cyan-500', match);
+        el.classList.toggle('bg-cyan-50', match);
+        el.classList.toggle('shadow-lg', match);
+        el.classList.toggle('scale-[1.02]', match);
+        el.classList.toggle('border-slate-200', !match);
       });
     });
 
