@@ -14,12 +14,9 @@ about: >
 specialties:
   - Depresión
   - Ansiedad
-  - Trastornos de personalidad
-  - Trastornos de la conducta alimentaria (TCA)
-  - Trastorno obsesivo compulsivo (TOC)
   - Procrastinación
   - Dependencia emocional
-  - Relaciones tóxicas
+  - "Relaciones disfuncionales "
 procedures:
   - Terapia individual
   - Terapia de pareja
