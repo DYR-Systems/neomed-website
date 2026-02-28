@@ -1,4 +1,4 @@
 ---
-name: Enfermería.
+name: Enfermería
 icon: ""
 ---
