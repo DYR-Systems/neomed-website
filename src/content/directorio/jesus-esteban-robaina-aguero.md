@@ -1,6 +1,6 @@
 ---
 name: Jesús Esteban Robaina Agüero
-role: Fisioterapia
+role: Terapia Física
 code: MS-MP01148
 image: /professionals/neomed-logo-2.jpg
 imagePosition: ""
