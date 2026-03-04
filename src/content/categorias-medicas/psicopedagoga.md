@@ -1,3 +1,3 @@
 ---
-name: Psicopedagoga
+name: psicopedagogía
 ---
