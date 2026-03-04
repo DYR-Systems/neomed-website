@@ -4,7 +4,7 @@ role: Terapia del Lenguaje
 banner: Terapia del Lenguaje
 code: ""
 image: /professionals/whatsapp-image-2026-03-04-at-4.41.53-pm.jpeg
-imagePosition: ""
+imagePosition: 10%
 enfoque: "Infantil "
 about: ""
 specialties:
