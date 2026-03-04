@@ -1,7 +1,7 @@
 ---
 name: Lic. Enid Hernández
 role: Psicología
-banner: Psicopedagoga, Psicóloga
+banner: Psicopedagoga
 code: ""
 image: /professionals/enid_hernandez.webp
 imagePosition: ""
