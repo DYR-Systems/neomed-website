@@ -4,7 +4,7 @@ role: Psicopedagogía
 banner: Psicopedagoga
 code: ""
 image: /professionals/whatsapp-image-2026-03-04-at-4.49.54-pm-1-.jpeg
-imagePosition: ""
+imagePosition: 10%
 specialties:
   - Terapia Cognitivo Conductual
   - Terapia Breve Estratégica
