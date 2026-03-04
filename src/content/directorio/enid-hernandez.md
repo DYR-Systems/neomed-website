@@ -3,7 +3,7 @@ name: Lic. Enid Hernández
 role: Psicopedagogía
 banner: Psicopedagoga
 code: ""
-image: /professionals/enid_hernandez.webp
+image: /professionals/whatsapp-image-2026-03-04-at-4.49.54-pm-1-.jpeg
 imagePosition: ""
 specialties:
   - Terapia Cognitivo Conductual
