@@ -1,4 +1,4 @@
 ---
-name: Terapia física
+name: Terapia Física
 icon: ""
 ---
