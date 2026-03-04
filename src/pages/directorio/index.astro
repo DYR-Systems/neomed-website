@@ -50,7 +50,7 @@ const categoriasMedicas = await getCategoriasMedicas();
             >
               <option value="">Todas las especialidades</option>
               {categoriasMedicas.map((categoria) => {
-                return <option value={categoria.slug}>{categoria.name}</option>;
+                return <option value={categoria.name}>{categoria.name}</option>;
               })}
             </select>
             <button 
@@ -84,7 +84,7 @@ const categoriasMedicas = await getCategoriasMedicas();
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6 max-w-5xl mx-auto">
         {categoriasMedicas.map((categoria) => {
           return (
-            <button class="especialidad-btn group flex flex-col items-center gap-4 cursor-pointer p-4 rounded-3xl bg-white border-2 border-slate-200 shadow-sm hover:border-cyan-400 hover:shadow-lg transition-all duration-300" data-filter={categoria.slug}>
+            <button class="especialidad-btn group flex flex-col items-center gap-4 cursor-pointer p-4 rounded-3xl bg-white border-2 border-slate-200 shadow-sm hover:border-cyan-400 hover:shadow-lg transition-all duration-300" data-filter={categoria.name}>
               {categoria.icon ? (
                 <div class="w-20 h-20 md:w-24 md:h-24 rounded-2xl flex items-center justify-center">
                   <img 
@@ -373,8 +373,7 @@ const categoriasMedicas = await getCategoriasMedicas();
           role.includes(searchTerm);
 
         const matchesFilter = !filterTerm || 
-          specialties.includes(filterTerm) || 
-          role.includes(filterTerm);
+          role === filterTerm;
 
         if (matchesSearch && matchesFilter) {
           el.style.display = '';
