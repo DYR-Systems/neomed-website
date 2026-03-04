@@ -2,7 +2,7 @@
 name: "Dr. Pedro Ignacio Quirós Portuguez "
 role: Medicina
 code: "16956"
-image: /professionals/neomed-logo-2.jpg
+image: /professionals/whatsapp-image-2026-03-04-at-5.01.28-pm.jpeg
 imagePosition: ""
 enfoque: Pediátricos y adultos
 about: >-
