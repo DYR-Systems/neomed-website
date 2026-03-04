@@ -3,7 +3,7 @@ name: Lic. Cristel Guevara Rosales
 role: Terapia del Lenguaje
 banner: Terapia del Lenguaje
 code: ""
-image: /professionals/neomed-logo-2.jpg
+image: /professionals/whatsapp-image-2026-03-04-at-4.41.53-pm.jpeg
 imagePosition: ""
 enfoque: "Infantil "
 about: ""
