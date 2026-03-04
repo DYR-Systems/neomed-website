@@ -1,6 +1,6 @@
 ---
 name: Dra. Daniela Soto
-role: Fisioterapia
+role: Terapia Física
 code: ""
 image: /professionals/daniela_soto.webp
 imagePosition: ""
