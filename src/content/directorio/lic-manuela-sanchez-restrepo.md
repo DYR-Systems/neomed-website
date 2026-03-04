@@ -3,7 +3,7 @@ name: Lic. Manuela Sánchez Restrepo
 role: Nutrición
 banner: Nutrición
 code: " 3266-23"
-image: /professionals/whatsapp-image-2026-03-04-at-4.05.01-pm.jpeg
+image: /professionals/whatsapp-image-2026-03-04-at-4.44.05-pm.jpeg
 imagePosition: ""
 enfoque: Adultos
 about: >
