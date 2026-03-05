@@ -3,8 +3,8 @@ name: Lic. Montserrat Villalobos Leitón
 role: Psicología
 banner: Psicología Clínica
 code: "14019"
-image: /professionals/montserrat_villalobos.webp
-imagePosition: ""
+image: /professionals/whatsapp-image-2026-03-04-at-10.15.27-pm.jpeg
+imagePosition: 10%
 specialties:
   - Psicodiagnóstico
   - Psicología Organizacional y Bienestar Laboral
