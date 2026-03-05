@@ -1,5 +1,5 @@
 ---
-name: Lic. Fabiola Miranda Paguaga
+name: Dra. Fabiola Miranda Paguaga
 role: Nutrición
 banner: Nutrición
 code: 3695-25
