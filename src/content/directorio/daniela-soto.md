@@ -15,7 +15,7 @@ procedures:
   - Pre y post operatorio
   - Rehabilitación de lesiones sistema nervioso central(•Evento Cerebro Vascular
 locationDetail: Heredia, Costa Rica
-enfoque: ""
+enfoque: Adulto
 about: >
   Soy fisioterapeuta especializada en el movimiento humano y apasionada por
   ayudar a las personas a recuperar su bienestar y calidad de vida. Trabajo con
