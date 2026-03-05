@@ -1,6 +1,7 @@
 ---
 name: "Dr. Pedro Ignacio Quirós Portuguez "
 role: Medicina
+banner: Medico General
 code: "16956"
 image: /professionals/whatsapp-image-2026-03-04-at-5.01.28-pm.jpeg
 imagePosition: ""
