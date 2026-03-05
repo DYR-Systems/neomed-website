@@ -6,17 +6,17 @@ code: "11634"
 image: /professionals/geovanna_calvo.webp
 imagePosition: ""
 specialties:
+  - Intervención en conducta e ideación suicida
   - Trauma psicológico y psicotrauma
   - Procesos de duelo
-  - Intervención en conducta e ideación suicida
   - Trastornos de ansiedad
-  - Depresión y trastornos del estado de ánimo
   - Regulación emocional
   - Trastornos de personalidad
+  - Depresión y trastornos del estado de ánimo
+  - Crecimiento personal y autoconocimiento
   - Sexualidad clínica
   - Terapia de pareja
   - Identidad y diversidad sexual
-  - Crecimiento personal y autoconocimiento
 procedures:
   - Psicoterapia individual (presencial y virtual)
   - Terapia de pareja
