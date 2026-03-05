@@ -1,7 +1,7 @@
 ---
 name: Dr. David Anthony Carnegie Richards
 role: Medicina
-banner: Terapia Física
+banner: Medicina Regenerativa.
 code: "15017"
 image: /professionals/david_carnegie_richards.webp
 imagePosition: ""
@@ -11,7 +11,7 @@ specialties:
 procedures:
   - Evaluación clínica
   - Rehabilitación musculoesquelética
-  - Medicina regenerativa.
+  - Medicina regenerativa
   - " Manejo del dolor"
   - Rehabilitación cardíaca
   - Medicina regenerativa
