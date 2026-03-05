@@ -1,10 +1,13 @@
 ---
 name: Dr. David Anthony Carnegie Richards
 role: Medicina
+banner: Terapia Física
 code: "15017"
 image: /professionals/david_carnegie_richards.webp
 imagePosition: ""
-enfoque: Adultos
+specialties:
+  - Medicina General
+  - " Terapia Física"
 procedures:
   - Evaluación clínica
   - Rehabilitación musculoesquelética
@@ -13,6 +16,7 @@ procedures:
   - Rehabilitación cardíaca
   - Medicina regenerativa
 locationDetail: Heredia, Costa Rica
+enfoque: Adultos
 about: >-
   Médico General con formación en Terapia Física y enfoque integral en
   rehabilitación musculoesquelética, manejo del dolor y medicina regenerativa.
@@ -29,9 +33,6 @@ about: >-
 
   Su abordaje combina evaluación clínica, rehabilitación física y estrategias regenerativas, promoviendo una atención centrada en la recuperación funcional y el bienestar global del paciente
 location: NeoMed - Consulta Principal
-specialties:
-  - Medicina General
-  - " Terapia Física"
 languages:
   - Español
 ---
