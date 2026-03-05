@@ -1,7 +1,7 @@
 ---
 name: Dr. David Anthony Carnegie Richards
 role: Medicina
-banner: Medicina Regenerativa.
+banner: Medicina Regenerativa
 code: "15017"
 image: /professionals/david_carnegie_richards.webp
 imagePosition: ""
