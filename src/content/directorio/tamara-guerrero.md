@@ -1,16 +1,19 @@
 ---
-name: Lic. Tamara Guerrero Carrillo
+name: Dra. Tamara Guerrero Carrillo
 role: Enfermería
-code: ""
+code: "23948"
 image: /professionals/tamara_guerrero.webp
 imagePosition: 30%
 enfoque: ""
 procedures:
-  - Cuidados de enfermería
-  - Atención de urgencias
-  - Procedimientos clínicos
+  - Control de signos vitales
+  - Canalización de vía intravenosa
+  - Sueroterapia
   - Administración de medicamentos
   - Seguimiento de pacientes
+  - Evaluación corporal con InBody
+  - Tratamientos corporales no invasivos
+  - Limpieza facial profesional
 locationDetail: Heredia, Costa Rica
 about: >
   Profesional de enfermería con vocación de servicio y amplia experiencia en
@@ -23,4 +26,5 @@ specialties:
   - Cuidados Integrales
 languages:
   - Español
+  - inglés
 ---
