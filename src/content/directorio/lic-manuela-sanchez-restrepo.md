@@ -1,10 +1,10 @@
 ---
-name: Lic. Manuela Sánchez Restrepo
+name: Dra. Manuela Sánchez Restrepo
 role: Nutrición
 banner: Nutrición
 code: " 3266-23"
-image: /professionals/whatsapp-image-2026-03-04-at-4.44.05-pm.jpeg
-imagePosition: ""
+image: /professionals/whatsapp-image-2026-03-05-at-1.55.20-pm.jpeg
+imagePosition: 10%
 enfoque: Adultos
 about: >
   Nutricionista especializada en valoración nutricional integral y en el diseño
@@ -18,9 +18,10 @@ about: >
 
   Su práctica se fundamenta en la educación nutricional, el acompañamiento continuo y la promoción de cambios sostenibles en el tiempo. Prioriza resultados reales y progresivos, sin recurrir a dietas restrictivas, con el objetivo de que cada persona construya hábitos saludables que impacten positivamente su salud metabólica y su calidad de vida a largo plazo.
 specialties:
+  - Nutrición hormonal femenina ( SOP- Hipotiroidismo, resistencia a la insulina)
+  - "Sobrepeso  y Obesidad "
   - Manejo nutricional de dislipidemia
   - Manejo nutricional de diabetes
-  - Manejo nutricional de resistencia a la insulina
   - Manejo nutricional de hipertensión arterial
 procedures:
   - Valoración nutricional integral
