@@ -1,7 +1,7 @@
 ---
 name: Dra. Diana Rosales Quirós
 role: Nutrición
-banner: ""
+banner: "Nutrición Deportiva "
 code: 2455-17
 image: /professionals/whatsapp-image-2026-03-04-at-10.14.37-pm.jpeg
 imagePosition: 10%
