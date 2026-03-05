@@ -3,8 +3,8 @@ name: Lic. Diana Rosales Quirós
 role: Nutrición
 banner: "Nutrición Deportiva, "
 code: 2455-17
-image: /professionals/neomed-logo-2.jpg
-imagePosition: ""
+image: /professionals/whatsapp-image-2026-03-04-at-10.14.37-pm.jpeg
+imagePosition: 10%
 enfoque: Adultos
 about: >
   Licenciada en Nutrición Humana, certificada en Nutrición Deportiva y
