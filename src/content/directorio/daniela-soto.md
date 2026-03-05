@@ -1,10 +1,13 @@
 ---
 name: Dra. Daniela Soto Delgado
 role: Terapia Física
+banner: Fisioterapeuta
 code: "3817"
 image: /professionals/daniela_soto.webp
 imagePosition: ""
-enfoque: ""
+specialties:
+  - Rehabilitación Neurológica
+  - Rehabilitación Deportiva
 procedures:
   - "Rehabilitación de lesiones músculares "
   - Rehabilitación funcional
@@ -12,6 +15,7 @@ procedures:
   - Pre y post operatorio
   - Rehabilitación de lesiones sistema nervioso central(•Evento Cerebro Vascular
 locationDetail: Heredia, Costa Rica
+enfoque: ""
 about: >
   Soy fisioterapeuta especializada en el movimiento humano y apasionada por
   ayudar a las personas a recuperar su bienestar y calidad de vida. Trabajo con
@@ -19,9 +23,6 @@ about: >
   pre y post operatorios, diseñando planes de tratamiento personalizados basados
   en ejercicio terapéutico y evidencia científica.
 location: NeoMed - Consulta Principal
-specialties:
-  - Rehabilitación Neurológica
-  - Rehabilitación Deportiva
 languages:
   - Español
 ---
