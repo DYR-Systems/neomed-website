@@ -19,7 +19,8 @@ about: Especialista en nutrición y dietética, dedicada a la evaluación y
   enfermedades.
 location: NeoMed - Consulta Principal
 specialties:
-  - Nutrición y Dietética
+  - "Nutrición "
+  - Dietética
 languages:
   - Español
 ---
