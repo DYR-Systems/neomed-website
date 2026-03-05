@@ -1,8 +1,8 @@
 ---
 name: Dra. Maria Jose Soto
 role: Nutrición
-banner: 3016-21
-code: ""
+banner: Nutrición clínica
+code: 3016-21
 image: /professionals/maria_jose_soto.webp
 imagePosition: ""
 specialties:
@@ -19,7 +19,7 @@ procedures:
 locationDetail: Heredia, Costa Rica
 enfoque: Adultos
 about: >-
-  utricionista clínica especializada en nutrición deportiva. Actualmente cursa
+  Nutricionista clínica especializada en nutrición deportiva. Actualmente cursa
   una Maestría en Entrenamiento y Nutrición Deportiva, fortaleciendo su
   formación en el abordaje nutricional orientado al rendimiento físico y la
   optimización de la composición corporal.
