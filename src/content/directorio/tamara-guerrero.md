@@ -22,8 +22,8 @@ about: >
   pacientes.
 location: NeoMed - Consulta Principal
 specialties:
-  - Enfermería General
-  - Cuidados Integrales
+  - Enfermería estética
+  - Enfermería clínica
 languages:
   - Español
   - inglés
