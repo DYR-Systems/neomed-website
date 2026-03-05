@@ -1,5 +1,5 @@
 ---
-name: Lic. Diana Rosales Quirós
+name: Dra. Diana Rosales Quirós
 role: Nutrición
 banner: "Nutrición Deportiva, "
 code: 2455-17
