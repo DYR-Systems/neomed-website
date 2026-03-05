@@ -8,6 +8,7 @@ imagePosition: ""
 specialties:
   - Medicina General
   - " Terapia Física"
+  - Medicina regenerativa.
 procedures:
   - Evaluación clínica
   - Rehabilitación musculoesquelética
