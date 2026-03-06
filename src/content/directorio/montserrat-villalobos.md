@@ -6,18 +6,24 @@ code: "14019"
 image: /professionals/whatsapp-image-2026-03-04-at-10.15.27-pm.jpeg
 imagePosition: 10%
 specialties:
-  - Psicodiagnóstico
-  - Psicología Organizacional y Bienestar Laboral
-  - Psicología Educativa
-  - Evaluación Psicológica
+  - Ansiedad y manejo del estrés
+  - Depresión y estado de ánimo
+  - Autoestima y amor propio
+  - Procesos de duelo y cambios de vida
+  - Conflictos de pareja y relaciones interpersonales
+  - Bienestar emocional y desarrollo personal
+  - Bienestar organizacional y salud mental en el trabajo
 procedures:
   - Entrevista clínica
-  - Evaluación psicológica en adultos
-  - Acompañamiento emocional
-  - Intervención psicoeducativa
-  - Elaboración de informes
+  - Psicoterapia individual
+  - Terapia de pareja
+  - Terapia familiar
+  - Terapia grupal
+  - "Evaluación psicológica "
+  - Psicoeducación y desarrollo de herramientas emocionales
+  - Elaboración de informes psicológicos
 locationDetail: Heredia, Costa Rica
-enfoque: Infantil, adolescentes, adulto y adulto mayor
+enfoque: Infantil, adulto joven y adultos
 about: Licenciada en Psicología. Brinda atención a población infantil, adultos
   jóvenes y personas adultas desde una mirada humanista, ofreciendo un espacio
   seguro donde cada historia es validada y transformada con respeto y
