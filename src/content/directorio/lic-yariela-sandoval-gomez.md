@@ -5,7 +5,7 @@ banner: Psicología Clínica
 code: "13299"
 image: /professionals/whatsapp-image-2026-03-04-at-4.49.54-pm.jpeg
 imagePosition: ""
-enfoque: Adolescentes, adultas jóvenes (13 a 35 años). 
+enfoque: Infantil, adultos jóvenes y adultos 
 about: >-
   Licenciada en Psicología con un enfoque Cognitivo-conductual, basado en
   evidencia científica y en un acompañamiento empático.
