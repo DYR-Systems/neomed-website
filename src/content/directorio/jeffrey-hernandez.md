@@ -1,5 +1,5 @@
 ---
-name: Lic. Jeffrey Hernández
+name: Lic. Jeffrey Gómez Oviedo
 role: Psicología
 banner: Psicología Clínica
 code: "12347"
