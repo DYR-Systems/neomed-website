@@ -13,12 +13,12 @@ const navItems = [
 
 <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
   <nav class="container mx-auto px-6 py-5">
-    <div class="flex items-center justify-between">
-      <a href="/" class="flex items-center">
+    <div class="flex items-center justify-between gap-4 lg:gap-0">
+      <a href="/" class="flex items-center shrink-0">
         <img 
           src="/neomed_logo.png" 
           alt="NeoMed" 
-          class="h-12 w-auto header-logo transition-all duration-300"
+          class="h-8 md:h-9 lg:h-12 w-auto header-logo transition-all duration-300"
         />
       </a>
 
@@ -27,7 +27,7 @@ const navItems = [
           <li>
             <a 
               href={item.href} 
-              class="nav-link text-white/90 hover:text-white transition-colors font-medium text-xs lg:text-sm uppercase tracking-wider whitespace-nowrap"
+              class="nav-link text-white/90 hover:text-white transition-colors font-medium text-xs lg:text-sm uppercase tracking-wide lg:tracking-wider whitespace-nowrap"
             >
               {item.label}
             </a>
