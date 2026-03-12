@@ -22,12 +22,12 @@ const navItems = [
         />
       </a>
 
-      <ul class="hidden md:flex items-center gap-10">
+      <ul class="hidden md:flex items-center gap-4 lg:gap-10">
         {navItems.map((item) => (
           <li>
             <a 
               href={item.href} 
-              class="nav-link text-white/90 hover:text-white transition-colors font-medium text-sm uppercase tracking-wider"
+              class="nav-link text-white/90 hover:text-white transition-colors font-medium text-xs lg:text-sm uppercase tracking-wider whitespace-nowrap"
             >
               {item.label}
             </a>
@@ -36,7 +36,7 @@ const navItems = [
         <li>
           <a 
             href="/agendar" 
-            class="bg-cyan-500 hover:bg-cyan-400 text-white px-6 py-2.5 rounded-full transition-all font-medium text-sm shadow-lg hover:shadow-cyan-500/25"
+            class="bg-cyan-500 hover:bg-cyan-400 text-white px-4 lg:px-6 py-2.5 rounded-full transition-all font-medium text-xs lg:text-sm shadow-lg hover:shadow-cyan-500/25 whitespace-nowrap"
           >
             Agendar Cita
           </a>
