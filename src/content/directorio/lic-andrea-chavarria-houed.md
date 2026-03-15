@@ -1,5 +1,5 @@
 ---
-name: Lic. Andrea Chavarría Houed
+name: Dra. Andrea Chavarría Houed
 role: Psicología
 banner: Psico-oncología
 code: "13553"
