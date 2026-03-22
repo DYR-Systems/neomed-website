@@ -151,6 +151,101 @@ const uniqueRoles = new Set(directorio.map(p => p.role)).size;
     </div>
   </section>
 
+  <!-- Team Section - CTA to Directory -->
+  <section id="equipo" class="py-24 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-12">
+          <p class="text-sm text-cyan-600 font-semibold uppercase tracking-wider mb-4">Nuestro Equipo</p>
+          <h2 class="font-heading text-4xl md:text-5xl font-light text-slate-900 mb-6">
+            Profesionales de <span class="font-semibold">Excelencia</span>
+          </h2>
+          <p class="text-lg text-slate-500 font-light leading-relaxed max-w-2xl mx-auto">
+            Contamos con un equipo multidisciplinario comprometido con tu bienestar integral
+          </p>
+        </div>
+
+        <!-- Card with avatars + stats + CTA -->
+        <div class="bg-gradient-to-br from-slate-50 to-cyan-50/40 rounded-3xl p-8 md:p-12 border border-slate-100 shadow-sm">
+          <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+            
+            <!-- Avatar stack -->
+            <div class="flex-shrink-0">
+              <div class="flex -space-x-4">
+                {directorio.slice(0, 6).map((prof) => (
+                  <div class="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden ring-4 ring-white shadow-lg">
+                    <img 
+                      src={prof.image} 
+                      alt={prof.name}
+                      class="w-full h-full object-cover"
+                      style={prof.imagePosition ? `object-position: 50% ${prof.imagePosition};` : ''}
+                    />
+                  </div>
+                ))}
+                {directorio.length > 6 && (
+                  <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-cyan-600 ring-4 ring-white shadow-lg flex items-center justify-center">
+                    <span class="text-white font-semibold text-sm md:text-base">+{directorio.length - 6}</span>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <!-- Text + Stats -->
+            <div class="flex-1 text-center md:text-left">
+              <h3 class="font-heading text-2xl md:text-3xl font-semibold text-slate-900 mb-3">
+                Conoce a nuestros especialistas
+              </h3>
+              <p class="text-slate-500 font-light leading-relaxed mb-6">
+                Encuentra al profesional ideal para ti. Busca por especialidad, nombre o área de atención en nuestro directorio médico.
+              </p>
+              
+              <!-- Stats row -->
+              <div class="flex flex-wrap justify-center md:justify-start gap-6 mb-8">
+                <div class="flex items-center gap-2">
+                  <div class="w-10 h-10 rounded-xl bg-cyan-100 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="text-xl font-bold text-slate-900">{directorio.length}</p>
+                    <p class="text-xs text-slate-500">Profesionales</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2">
+                  <div class="w-10 h-10 rounded-xl bg-teal-100 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="text-xl font-bold text-slate-900">{uniqueRoles}</p>
+                    <p class="text-xs text-slate-500">Especialidades</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CTA Button -->
+              <a 
+                href="/directorio" 
+                class="inline-flex items-center gap-3 bg-cyan-600 hover:bg-cyan-700 text-white font-semibold px-8 py-4 rounded-2xl shadow-lg shadow-cyan-600/25 hover:shadow-xl hover:shadow-cyan-600/30 transition-all duration-300 group"
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                </svg>
+                Explorar Directorio Médico
+                <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Services Section -->
   <section id="servicios" class="py-24 bg-slate-50">
     <div class="container mx-auto px-4">
@@ -506,101 +601,6 @@ const uniqueRoles = new Set(directorio.map(p => p.role)).size;
           <p class="text-slate-600 mb-6">
             Ven a conocer nuestras instalaciones modernas y cómodas
           </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Team Section - CTA to Directory -->
-  <section id="equipo" class="py-24 bg-white">
-    <div class="container mx-auto px-4">
-      <div class="max-w-4xl mx-auto">
-        <!-- Header -->
-        <div class="text-center mb-12">
-          <p class="text-sm text-cyan-600 font-semibold uppercase tracking-wider mb-4">Nuestro Equipo</p>
-          <h2 class="font-heading text-4xl md:text-5xl font-light text-slate-900 mb-6">
-            Profesionales de <span class="font-semibold">Excelencia</span>
-          </h2>
-          <p class="text-lg text-slate-500 font-light leading-relaxed max-w-2xl mx-auto">
-            Contamos con un equipo multidisciplinario comprometido con tu bienestar integral
-          </p>
-        </div>
-
-        <!-- Card with avatars + stats + CTA -->
-        <div class="bg-gradient-to-br from-slate-50 to-cyan-50/40 rounded-3xl p-8 md:p-12 border border-slate-100 shadow-sm">
-          <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-            
-            <!-- Avatar stack -->
-            <div class="flex-shrink-0">
-              <div class="flex -space-x-4">
-                {directorio.slice(0, 6).map((prof) => (
-                  <div class="w-16 h-16 md:w-20 md:h-20 rounded-full overflow-hidden ring-4 ring-white shadow-lg">
-                    <img 
-                      src={prof.image} 
-                      alt={prof.name}
-                      class="w-full h-full object-cover"
-                      style={prof.imagePosition ? `object-position: 50% ${prof.imagePosition};` : ''}
-                    />
-                  </div>
-                ))}
-                {directorio.length > 6 && (
-                  <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-cyan-600 ring-4 ring-white shadow-lg flex items-center justify-center">
-                    <span class="text-white font-semibold text-sm md:text-base">+{directorio.length - 6}</span>
-                  </div>
-                )}
-              </div>
-            </div>
-
-            <!-- Text + Stats -->
-            <div class="flex-1 text-center md:text-left">
-              <h3 class="font-heading text-2xl md:text-3xl font-semibold text-slate-900 mb-3">
-                Conoce a nuestros especialistas
-              </h3>
-              <p class="text-slate-500 font-light leading-relaxed mb-6">
-                Encuentra al profesional ideal para ti. Busca por especialidad, nombre o área de atención en nuestro directorio médico.
-              </p>
-              
-              <!-- Stats row -->
-              <div class="flex flex-wrap justify-center md:justify-start gap-6 mb-8">
-                <div class="flex items-center gap-2">
-                  <div class="w-10 h-10 rounded-xl bg-cyan-100 flex items-center justify-center">
-                    <svg class="w-5 h-5 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <p class="text-xl font-bold text-slate-900">{directorio.length}</p>
-                    <p class="text-xs text-slate-500">Profesionales</p>
-                  </div>
-                </div>
-                <div class="flex items-center gap-2">
-                  <div class="w-10 h-10 rounded-xl bg-teal-100 flex items-center justify-center">
-                    <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <p class="text-xl font-bold text-slate-900">{uniqueRoles}</p>
-                    <p class="text-xs text-slate-500">Especialidades</p>
-                  </div>
-                </div>
-              </div>
-
-              <!-- CTA Button -->
-              <a 
-                href="/directorio" 
-                class="inline-flex items-center gap-3 bg-cyan-600 hover:bg-cyan-700 text-white font-semibold px-8 py-4 rounded-2xl shadow-lg shadow-cyan-600/25 hover:shadow-xl hover:shadow-cyan-600/30 transition-all duration-300 group"
-              >
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                </svg>
-                Explorar Directorio Médico
-                <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-                </svg>
-              </a>
-            </div>
-          </div>
         </div>
       </div>
     </div>
