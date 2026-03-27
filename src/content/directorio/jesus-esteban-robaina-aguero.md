@@ -1,6 +1,6 @@
 ---
 name: Jesús Esteban Robaina Agüero
-role: Terapia Física
+role: Quirosteopraxis
 banner: "Quirosteopraxis "
 code: MS-MP01148
 image: /professionals/neomed-logo-2.jpg
