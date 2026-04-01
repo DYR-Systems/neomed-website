@@ -17,13 +17,10 @@ services:
         value: no-cache, no-store, must-revalidate
       - path: /*
         name: Cache-Control
+        value: no-cache, no-store, must-revalidate
+      - path: /_astro/*
+        name: Cache-Control
         value: public, max-age=31536000, immutable
-      - path: /
-        name: Cache-Control
-        value: public, max-age=0, must-revalidate
-      - path: /*.html
-        name: Cache-Control
-        value: public, max-age=0, must-revalidate
     routes:
       - type: redirect
         source: /admin
