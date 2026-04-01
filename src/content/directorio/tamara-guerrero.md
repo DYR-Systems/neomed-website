@@ -19,7 +19,7 @@ about: >
   Profesional de enfermería con vocación de servicio y amplia experiencia en
   cuidados integrales. Se caracteriza por ofrecer un trato humano, empático y
   profesional, buscando siempre los mejores resultados en la atención de sus
-  pacientes.
+  pacientes..
 location: NeoMed - Consulta Principal
 specialties:
   - Enfermería estética
