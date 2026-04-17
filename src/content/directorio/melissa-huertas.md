@@ -1,5 +1,5 @@
 ---
-name: Melissa Huertas
+name: Dra. Melissa Huertas Angulo
 role: Medicina
 banner: "Psiquiatría "
 code: "13924"
