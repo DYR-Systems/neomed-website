@@ -6,21 +6,21 @@ code: ""
 image: /professionals/whatsapp-image-2026-03-04-at-4.49.54-pm-1-.jpeg
 imagePosition: 10%
 specialties:
-  - Terapia Cognitivo Conductual
-  - Terapia Breve Estratégica
-  - EMDR para abordaje de trauma
-  - Evaluación y diagnóstico en Trastorno del Espectro Autista (ADOS-2 y ADI-R)
   - Psicopedagogía
-  - Neuropsicología clínica
-  - Neurodesarrollo y estimulación sensorial
   - Inclusión educativa
+  - Neuropsicología clínica
+  - Terapia Breve Estratégica
+  - Terapia Cognitivo Conductual
+  - EMDR para abordaje de trauma
+  - Neurodesarrollo y estimulación sensorial
+  - Evaluación y diagnóstico en Trastorno del Espectro Autista (ADOS-2 y ADI-R)
 procedures:
   - Evaluación psicodiagnóstica
+  - Evaluación neuropsicológica
   - Evaluación psicopedagógica
   - Atención psicológica en niños, adolescentes y adultos
   - Evaluación de idoneidad mental para trabajar con PME
   - Evaluación de idoneidad mental para portación de armas de fuego
-  - Evaluación neuropsicológica
 locationDetail: Heredia, Costa Rica
 enfoque: " Infantil, adolescentes y adultos"
 about: >
