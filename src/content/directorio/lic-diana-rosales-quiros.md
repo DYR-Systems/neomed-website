@@ -22,15 +22,15 @@ about: >
 
   Su enfoque se fundamenta en una nutrición realista, sostenible y no restrictiva, promoviendo cambios de hábitos duraderos que mejoren la relación con la alimentación, favorezcan la salud metabólica y contribuyan a una mejor calidad de vida a largo plazo.
 specialties:
+  - Nutrición deportiva
+  - Salud hormonal femenina
   - Manejo nutricional de enfermedades crónicas
   - Abordaje nutricional en sobrepeso y obesidad
-  - Salud hormonal femenina
   - Educación nutricional basada en evidencia científica
-  - Nutrición deportiva
 procedures:
+  - Historia clínica nutricional
   - Evaluación nutricional integral
   - Análisis de hábitos alimentarios
-  - Historia clínica nutricional
   - "Consulta nutricional presencial y virtual "
   - Diseño de planes de alimentación personalizados
 languages:
