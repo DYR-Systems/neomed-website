@@ -14,26 +14,26 @@ about: >-
 
   Ofrece un espacio terapéutico seguro, donde cada persona es validada y tratada desde el respeto y empatía, cada paciente puede avanzar a su propio ritmo, promoviendo cambios sostenibles y funcionales para su bienestar.
 specialties:
-  - Depresión y Ansiedad
-  - Procrastinación y hábitos
-  - Dependencia emocional
-  - "Relaciones disfuncionales "
-  - Conductas autolesivas
-  - Situaciones de abuso
   - Toma de decisiones
+  - Depresión y Ansiedad
+  - Situaciones de abuso
+  - Dependencia emocional
+  - Conductas autolesivas
+  - Procrastinación y hábitos
+  - "Relaciones disfuncionales "
   - Trastornos de personalidad
-  - Trastornos de la conducta alimenticia
-  - Trastorno Obsesivo Compulsivo
   - Estrés y sobre carga emocional
+  - Trastorno Obsesivo Compulsivo
+  - Trastornos de la conducta alimenticia
   - Manejo de límites y vínculos sanos, personales e intrapersonales
   - Autoestima y amor propio, incluyendo problemas de autoimagen y autopercepción
 procedures:
-  - Psicoterapia individual
   - Terapia de pareja
   - Terapia familiar
-  - Evaluación, diagnóstico y acompañamiento
-  - Atención y abordaje en crisis
+  - Psicoterapia individual
   - Atención presencial y virtual
+  - Atención y abordaje en crisis
+  - Evaluación, diagnóstico y acompañamiento
 languages:
   - Español
 ---
