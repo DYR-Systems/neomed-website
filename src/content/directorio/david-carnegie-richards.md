@@ -6,16 +6,16 @@ code: "15017"
 image: /professionals/david_carnegie_richards.webp
 imagePosition: ""
 specialties:
-  - Medicina General
   - " Terapia Física"
-  - Medicina regenerativa.
+  - Medicina General
+  - Medicina regenerativa
 procedures:
-  - Evaluación clínica
-  - Rehabilitación musculoesquelética
-  - Medicina regenerativa
   - " Manejo del dolor"
-  - Rehabilitación cardíaca
+  - Evaluación clínica
   - Medicina regenerativa
+  - Medicina regenerativa
+  - Rehabilitación cardíaca
+  - Rehabilitación musculoesquelética
 locationDetail: Heredia, Costa Rica
 enfoque: Adultos
 about: >-
