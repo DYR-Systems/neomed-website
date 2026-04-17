@@ -8,15 +8,15 @@ imagePosition: 10%
 specialties:
   - Medicina Familiar
   - Medicina General
+  - Médico de cabecera
   - Manejo de enfermedades crónicas
   - Atención médica integral del adolescente
-  - Médico de cabecera
 procedures:
+  - Vasectomía
+  - Cirugía menor
+  - Consulta médica general
   - Consulta médica familiar
   - Educación en salud familiar
-  - Consulta médica general
-  - Cirugía menor
-  - Vasectomía
   - Control y seguimiento de enfermedades crónicas
 locationDetail: Heredia, Costa Rica
 enfoque: Adolescentes, Adultos
