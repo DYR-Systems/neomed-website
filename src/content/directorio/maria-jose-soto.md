@@ -11,8 +11,8 @@ specialties:
   - Recomposición corporal
   - Planificación nutricional para actividad física y deporte
 procedures:
-  - Evaluación nutricional
   - Educación nutricional
+  - Evaluación nutricional
   - Mediciones de composición corporal (InBody)
   - Elaboración de planes de alimentación personalizados
   - Protocolos nutricionales para entrenamiento y carrera deportiva
