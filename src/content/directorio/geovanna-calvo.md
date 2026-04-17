@@ -6,26 +6,26 @@ code: "11634"
 image: /professionals/geovanna_calvo.webp
 imagePosition: ""
 specialties:
-  - Intervención en conducta e ideación suicida
-  - Trauma psicológico y psicotrauma
   - Procesos de duelo
+  - Terapia de pareja
+  - Sexualidad clínica
   - Trastornos de ansiedad
   - Regulación emocional
   - Trastornos de personalidad
-  - Depresión y trastornos del estado de ánimo
-  - Crecimiento personal y autoconocimiento
-  - Sexualidad clínica
-  - Terapia de pareja
   - Identidad y diversidad sexual
+  - Trauma psicológico y psicotrauma
+  - Crecimiento personal y autoconocimiento
+  - Depresión y trastornos del estado de ánimo
+  - Intervención en conducta e ideación suicida
 procedures:
-  - Psicoterapia individual (presencial y virtual)
+  - Telepsicología
   - Terapia de pareja
+  - Talleres y charlas psicoeducativas
+  - Atención psicológica para empresas
   - Intervención en crisis y conducta suicida
   - Procesos terapéuticos para trauma y duelo
   - Evaluación y acompañamiento psicológico
-  - Talleres y charlas psicoeducativas
-  - Atención psicológica para empresas
-  - Telepsicología
+  - Psicoterapia individual (presencial y virtual)
 locationDetail: Heredia, Costa Rica
 enfoque: Infantil, adolescentes y adultos
 about: Psicóloga clínica graduada de la Universidad Iberoamericana (UNIBE),
