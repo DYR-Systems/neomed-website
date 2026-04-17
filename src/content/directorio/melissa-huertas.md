@@ -1,6 +1,7 @@
 ---
 name: Melissa Huertas
-role: "Psiquiatría "
+role: Medicina
+banner: "Psiquiatría "
 code: "13924"
 image: /professionals/whatsapp-image-2026-04-14-at-3.11.12-pm.jpeg
 imagePosition: ""
