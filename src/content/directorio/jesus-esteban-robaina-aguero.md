@@ -18,8 +18,8 @@ specialties:
   - Quirosteopraxis
   - Rehabilitación deportiva
   - Evaluación postural y funcional
-  - Manejo de dolor agudo y crónico
   - Técnicas manuales avanzadas
+  - Manejo de dolor agudo y crónico
 procedures:
   - Aromaterapia
   - Bambuterapia
