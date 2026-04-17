@@ -6,22 +6,22 @@ code: "14019"
 image: /professionals/whatsapp-image-2026-03-04-at-10.15.27-pm.jpeg
 imagePosition: 10%
 specialties:
+  - Autoestima y amor propio
   - Ansiedad y manejo del estrés
   - Depresión y estado de ánimo
-  - Autoestima y amor propio
   - Procesos de duelo y cambios de vida
   - Conflictos de pareja y relaciones interpersonales
   - Bienestar emocional y desarrollo personal
   - Bienestar organizacional y salud mental en el trabajo
 procedures:
-  - Entrevista clínica
-  - Psicoterapia individual
-  - Terapia de pareja
   - Terapia familiar
   - Terapia grupal
+  - Terapia de pareja
+  - Entrevista clínica
+  - Psicoterapia individual
   - "Evaluación psicológica "
-  - Psicoeducación y desarrollo de herramientas emocionales
   - Elaboración de informes psicológicos
+  - Psicoeducación y desarrollo de herramientas emocionales
 locationDetail: Heredia, Costa Rica
 enfoque: Infantil, adulto joven y adultos
 about: Licenciada en Psicología. Brinda atención a población infantil, adultos
