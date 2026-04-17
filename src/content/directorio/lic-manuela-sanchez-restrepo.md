@@ -18,18 +18,18 @@ about: >
 
   Su práctica se fundamenta en la educación nutricional, el acompañamiento continuo y la promoción de cambios sostenibles en el tiempo. Prioriza resultados reales y progresivos, sin recurrir a dietas restrictivas, con el objetivo de que cada persona construya hábitos saludables que impacten positivamente su salud metabólica y su calidad de vida a largo plazo.
 specialties:
-  - Nutrición hormonal femenina ( SOP- Hipotiroidismo, resistencia a la insulina)
   - "Sobrepeso  y Obesidad "
-  - Manejo nutricional de dislipidemia
   - Manejo nutricional de diabetes
+  - Manejo nutricional de dislipidemia
   - Manejo nutricional de hipertensión arterial
+  - Nutrición hormonal femenina ( SOP- Hipotiroidismo, resistencia a la insulina)
 procedures:
-  - Valoración nutricional integral
-  - Evaluación antropométrica
   - Educación nutricional
+  - Evaluación antropométrica
   - Aumento de masa muscular
-  - Diseño de planes nutricionales personalizados
+  - Valoración nutricional integral
   - Pérdida de grasa y recomposición corporal
+  - Diseño de planes nutricionales personalizados
 languages:
   - Español
 ---
