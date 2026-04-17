@@ -20,13 +20,13 @@ about: >-
   Entiendo que cada proceso es único. Por ello, ofrezco una atención personalizada que busca fortalecer los recursos internos de cada persona y su entorno, favoreciendo una vivencia más consciente, acompañada y digna en cada etapa del camino.
 specialties:
   - Psico-oncología
-  - Depresión en contexto médico
-  - Intervención en duelo
   - "Manejo de ansiedad "
+  - Intervención en duelo
+  - Depresión en contexto médico
 procedures:
-  - Apoyo psicológico a pacientes y familiares
-  - Acompañamiento en cuidados paliativos
   - Acompañamiento procesos oncológicos
+  - Acompañamiento en cuidados paliativos
+  - Apoyo psicológico a pacientes y familiares
 languages:
   - Español
 ---
