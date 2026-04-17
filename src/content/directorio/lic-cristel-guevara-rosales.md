@@ -8,15 +8,15 @@ imagePosition: 10%
 enfoque: "Infantil "
 about: ""
 specialties:
-  - Trastorno del Desarrollo del Lenguaje (TDL)
-  - Trastornos de los Sonidos del Habla (TSH)
   - Estimulación del lenguaje
   - Dificultades en lectoescritura
+  - Trastorno del Desarrollo del Lenguaje (TDL)
+  - Trastornos de los Sonidos del Habla (TSH)
 procedures:
   - Evaluación del lenguaje
-  - Diagnóstico en trastornos del habla y comunicación
   - Intervención terapéutica personalizada
   - Planes de intervención individualizados
+  - Diagnóstico en trastornos del habla y comunicación
 languages:
   - Español
 ---
