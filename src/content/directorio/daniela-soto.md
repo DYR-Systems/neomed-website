@@ -9,10 +9,10 @@ specialties:
   - Rehabilitación Neurológica
   - Rehabilitación Deportiva
 procedures:
-  - "Rehabilitación de lesiones músculares "
+  - Pre y post operatorio
   - Rehabilitación funcional
   - Readaptación deportiva
-  - Pre y post operatorio
+  - "Rehabilitación de lesiones músculares "
   - Rehabilitación de lesiones sistema nervioso central(•Evento Cerebro Vascular
 locationDetail: Heredia, Costa Rica
 enfoque: Adulto
