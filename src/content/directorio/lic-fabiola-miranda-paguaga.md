@@ -22,19 +22,19 @@ about: >
   Su objetivo es ofrecer un acompañamiento profesional, claro y humano que contribuya a mejorar el bienestar digestivo y metabólico, fortaleciendo al mismo tiempo una relación saludable y equilibrada con la alimentación.
 specialties:
   - Celiaquía
-  - Alergias e intolerancias alimentarias
-  - Síndrome de intestino irritable (SII)
-  - Gastritis y reflujo gastroesofágico
-  - Inflamación y malestar digestivo recurrente
   - Sobrepeso y obesidad
-  - Dislipidemia e hipertensión
   - Recomposición corporal
+  - Dislipidemia e hipertensión
+  - Alergias e intolerancias alimentarias
+  - Gastritis y reflujo gastroesofágico
+  - Síndrome de intestino irritable (SII)
+  - Inflamación y malestar digestivo recurrente
 procedures:
-  - Evaluación nutricional integral (Antropométrica, Clínica, Bioquímica,
-    Dietética)
-  - Elaboración de planes de alimentación personalizados
   - Educación nutricional
   - Seguimiento y ajuste periódico del plan
+  - Elaboración de planes de alimentación personalizados
+  - Evaluación nutricional integral (Antropométrica, Clínica, Bioquímica,
+    Dietética)
 languages:
   - Español
   - Inglés
