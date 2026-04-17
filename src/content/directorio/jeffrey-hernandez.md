@@ -6,10 +6,10 @@ code: "12347"
 image: /professionals/jeffrey_hernandez.webp
 imagePosition: ""
 specialties:
+  - Depresión
   - Abordaje de adicciones
   - Trastornos de ansiedad
   - Intervención en sexualidad
-  - Depresión
 procedures:
   - Terapia enfocada en solución de problemas
 locationDetail: Heredia, Costa Rica
