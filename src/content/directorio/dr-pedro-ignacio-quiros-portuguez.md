@@ -20,17 +20,17 @@ about: >-
 specialties:
   - Consulta médica general
   - Control prenatal básico
-  - Valoración médica integral (adulto y pediátrico)
-  - Interpretación básica de radiografías
   - Valoración pre-operatoria básica
+  - Interpretación básica de radiografías
+  - Valoración médica integral (adulto y pediátrico)
 procedures:
-  - Mapeo de presión arterial
-  - Sutura simple y por planos
   - Retiro de puntos
   - Drenaje de abscesos
+  - Mapeo de presión arterial
+  - Sutura simple y por planos
+  - Retiro de uñas encarnadas
   - Lavado quirúrgico de heridas
   - Inmovilización básica (férulas)
-  - Retiro de uñas encarnadas
   - Interpretación de exámenes de laboratorio
   - Certificados médicos (laborales, deportivos, escolares, licencia nueva o
     renovación, lactancia materna)
