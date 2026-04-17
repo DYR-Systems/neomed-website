@@ -28,8 +28,8 @@ about: >-
   Su objetivo es brindar un espacio seguro, cercano y profesional donde cada persona pueda sentirse acompañada en su proceso y recibir un abordaje claro, respetuoso y efectivo en su salud mental.
 specialties:
   - Psiquiatría clínica
-  - Trastornos de ansiedad
   - Psiquiatría forense
+  - Trastornos de ansiedad
   - Psiquiatría hospitalaria
   - Trastornos del estado de ánimo
   - Manejo farmacológico en salud mental
