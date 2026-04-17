@@ -6,14 +6,14 @@ image: /professionals/tamara_guerrero.webp
 imagePosition: 30%
 enfoque: ""
 procedures:
-  - Control de signos vitales
-  - Canalización de vía intravenosa
   - Sueroterapia
-  - Administración de medicamentos
+  - Control de signos vitales
+  - Limpieza facial profesional
   - Seguimiento de pacientes
   - Evaluación corporal con InBody
+  - Canalización de vía intravenosa
+  - Administración de medicamentos
   - Tratamientos corporales no invasivos
-  - Limpieza facial profesional
 locationDetail: Heredia, Costa Rica
 about: Profesional de enfermería con vocación de servicio y amplia experiencia
   en cuidados integrales. Se caracteriza por ofrecer un trato humano, empático y
