@@ -27,7 +27,7 @@ procedures:
   - Evaluación y acompañamiento psicológico
   - Psicoterapia individual (presencial y virtual)
 locationDetail: Heredia, Costa Rica
-enfoque: Infantil, adolescentes y adultos
+enfoque: Adolescentes y adultos
 about: Psicóloga clínica graduada de la Universidad Iberoamericana (UNIBE),
   colegiada ante el Colegio de Profesionales en Psicología de Costa Rica. Cuenta
   con formación especializada en Terapia Cognitivo Conductual (TCC), Terapia
