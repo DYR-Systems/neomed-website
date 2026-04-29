@@ -83,8 +83,8 @@ for (const configPath of configFiles) {
   let updated = false;
 
   // Update directorio collection (medical categories)
-  const dirFiltersRegex = /(- name: "directorio"[\s\S]*?sortable_fields:.*\n)(    view_filters:[\s\S]*?)(    fields:)/;
-  const dirGroupsRegex = /(- name: "directorio"[\s\S]*?sortable_fields:.*\n)(    view_groups:[\s\S]*?)(    fields:)/;
+  const dirFiltersRegex = /(- name: "directorio"[\s\S]*?sortable_fields:[^\n]*\n)(    view_filters:[\s\S]*?)(    fields:)/;
+  const dirGroupsRegex = /(- name: "directorio"[\s\S]*?sortable_fields:[^\n]*\n)(    view_groups:[\s\S]*?)(    fields:)/;
 
   if (dirFiltersRegex.test(yaml)) {
     yaml = yaml.replace(dirFiltersRegex, `$1${directorioFiltersBlock}\n$3`);
@@ -95,7 +95,7 @@ for (const configPath of configFiles) {
     console.log(`✅ Reemplazado view_groups → view_filters de Directorio en: ${path.relative(ROOT, configPath)}`);
     updated = true;
   } else {
-    const dirInsertRegex = /(- name: "directorio"[\s\S]*?sortable_fields:.*\n)(    fields:)/;
+    const dirInsertRegex = /(- name: "directorio"[\s\S]*?sortable_fields:[^\n]*\n)(    fields:)/;
     if (dirInsertRegex.test(yaml)) {
       yaml = yaml.replace(dirInsertRegex, `$1${directorioFiltersBlock}\n$2`);
       console.log(`✅ Insertado view_filters de Directorio en: ${path.relative(ROOT, configPath)}`);
@@ -104,8 +104,8 @@ for (const configPath of configFiles) {
   }
 
   // Update examenes collection (lab categories)
-  const examFiltersRegex = /(- name: "examenes"[\s\S]*?sortable_fields:.*\n)(    view_filters:[\s\S]*?)(    fields:)/;
-  const examGroupsRegex = /(- name: "examenes"[\s\S]*?sortable_fields:.*\n)(    view_groups:[\s\S]*?)(    fields:)/;
+  const examFiltersRegex = /(- name: "examenes"[\s\S]*?sortable_fields:[^\n]*\n)(    view_filters:[\s\S]*?)(    fields:)/;
+  const examGroupsRegex = /(- name: "examenes"[\s\S]*?sortable_fields:[^\n]*\n)(    view_groups:[\s\S]*?)(    fields:)/;
 
   if (examFiltersRegex.test(yaml)) {
     yaml = yaml.replace(examFiltersRegex, `$1${examenesFiltersBlock}\n$3`);
@@ -116,7 +116,7 @@ for (const configPath of configFiles) {
     console.log(`✅ Reemplazado view_groups → view_filters de Exámenes en: ${path.relative(ROOT, configPath)}`);
     updated = true;
   } else {
-    const examInsertRegex = /(- name: "examenes"[\s\S]*?sortable_fields:.*\n)(    fields:)/;
+    const examInsertRegex = /(- name: "examenes"[\s\S]*?sortable_fields:[^\n]*\n)(    fields:)/;
     if (examInsertRegex.test(yaml)) {
       yaml = yaml.replace(examInsertRegex, `$1${examenesFiltersBlock}\n$2`);
       console.log(`✅ Insertado view_filters de Exámenes en: ${path.relative(ROOT, configPath)}`);

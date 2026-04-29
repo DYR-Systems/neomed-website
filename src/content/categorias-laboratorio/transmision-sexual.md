@@ -1,4 +1,0 @@
----
-name: "Transmisión Sexual"
-icon: ""
----
