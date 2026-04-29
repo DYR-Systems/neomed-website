@@ -172,9 +172,6 @@ collections:
       - label: "Orina 24 Horas"
         field: category
         pattern: "Orina 24 Horas"
-      - label: "Paquete con Precio especial"
-        field: category
-        pattern: "Paquete con Precio especial"
       - label: "Paquetes"
         field: category
         pattern: "Paquetes"
