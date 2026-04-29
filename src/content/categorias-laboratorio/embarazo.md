@@ -1,4 +1,0 @@
----
-name: Embarazo
-icon: ""
----
