@@ -196,3 +196,72 @@ collections:
           - { label: "$ Dólares (USD)", value: "$" }
       - { label: "Precio", name: "price", widget: "number", value_type: "int", min: 0, hint: "Monto del precio" }
       - { label: "Descripción", name: "description", widget: "text", required: false, default: "", hint: "Descripción breve del examen" }
+
+  - name: "pantalla-anuncios"
+    label: "Pantalla de Anuncios"
+    files:
+      - name: "anuncios"
+        label: "Anuncios de la pantalla"
+        file: "src/content/ads/pantalla.json"
+        media_folder: "/public/ads"
+        public_folder: "/ads"
+        description: "Contenido que se muestra en la pantalla de la clínica (/ads). Al terminar, presiona '🚀 Deploy a Producción' para que los cambios lleguen a la pantalla."
+        fields:
+          - label: "Orientación"
+            name: "orientacion"
+            widget: "select"
+            default: "auto"
+            hint: "Automática llena toda la pantalla. Horizontal/Vertical fuerzan la proporción y agregan barras negras."
+            options:
+              - { label: "Automática (llenar pantalla)", value: "auto" }
+              - { label: "Horizontal 16:9", value: "horizontal" }
+              - { label: "Vertical 9:16", value: "vertical" }
+          - label: "Rotación"
+            name: "rotacion"
+            widget: "select"
+            default: "0"
+            hint: "Usar solo si la pantalla está montada girada físicamente"
+            options:
+              - { label: "Sin rotación", value: "0" }
+              - { label: "90° (horario)", value: "90" }
+              - { label: "180°", value: "180" }
+              - { label: "270° (antihorario)", value: "270" }
+          - label: "Ajuste del contenido"
+            name: "ajuste"
+            widget: "select"
+            default: "cover"
+            options:
+              - { label: "Cubrir (puede recortar bordes)", value: "cover" }
+              - { label: "Contener (muestra todo, con barras negras)", value: "contain" }
+          - { label: "Duración de la transición (ms)", name: "transicionMs", widget: "number", value_type: "int", default: 600, min: 0, max: 3000 }
+          - { label: "Revisar cambios cada (minutos)", name: "intervaloRecargaMin", widget: "number", value_type: "int", default: 5, min: 1, max: 120, hint: "Cada cuánto la pantalla busca contenido nuevo. Se recarga al terminar el anuncio en curso." }
+          - label: "Anuncios"
+            name: "anuncios"
+            label_singular: "Anuncio"
+            widget: "list"
+            required: false
+            hint: "Arrastra para cambiar el orden en que se muestran"
+            types:
+              - label: "Imagen"
+                name: "imagen"
+                widget: "object"
+                summary: "🖼️ {{fields.titulo}} ({{fields.duracion}}s)"
+                fields:
+                  - { label: "Título", name: "titulo", widget: "string", hint: "Solo para identificarlo aquí, no se muestra en pantalla" }
+                  - { label: "Imagen", name: "imagen", widget: "image", choose_url: false, hint: "Recomendado: 1920x1080 px (horizontal) o 1080x1920 px (vertical). Formato WebP o JPG." }
+                  - { label: "Duración (segundos)", name: "duracion", widget: "number", value_type: "int", default: 10, min: 3, max: 3600 }
+                  - { label: "Activo", name: "activo", widget: "boolean", default: true }
+                  - { label: "Mostrar desde", name: "desde", widget: "datetime", required: false, default: "", format: "YYYY-MM-DDTHH:mm", date_format: "DD/MM/YYYY", time_format: "HH:mm", picker_utc: false, hint: "Opcional. Dejar vacío para mostrarlo siempre." }
+                  - { label: "Mostrar hasta", name: "hasta", widget: "datetime", required: false, default: "", format: "YYYY-MM-DDTHH:mm", date_format: "DD/MM/YYYY", time_format: "HH:mm", picker_utc: false, hint: "Opcional. Dejar vacío para mostrarlo siempre." }
+              - label: "Video de YouTube"
+                name: "youtube"
+                widget: "object"
+                summary: "▶️ {{fields.titulo}}"
+                fields:
+                  - { label: "Título", name: "titulo", widget: "string", hint: "Solo para identificarlo aquí, no se muestra en pantalla" }
+                  - { label: "URL del video", name: "url", widget: "string", hint: "Pega el enlace completo (youtube.com/watch?v=..., youtu.be/... o Shorts). El video se reproduce siempre sin sonido." }
+                  - { label: "Usar la duración del video", name: "usarDuracionVideo", widget: "boolean", default: true, hint: "Activo: pasa al siguiente cuando el video termina. Inactivo: usa la duración fija de abajo y repite el video." }
+                  - { label: "Duración fija (segundos)", name: "duracion", widget: "number", value_type: "int", default: 30, min: 3, max: 3600, hint: "Solo se usa si desactivas la opción anterior" }
+                  - { label: "Activo", name: "activo", widget: "boolean", default: true }
+                  - { label: "Mostrar desde", name: "desde", widget: "datetime", required: false, default: "", format: "YYYY-MM-DDTHH:mm", date_format: "DD/MM/YYYY", time_format: "HH:mm", picker_utc: false, hint: "Opcional. Dejar vacío para mostrarlo siempre." }
+                  - { label: "Mostrar hasta", name: "hasta", widget: "datetime", required: false, default: "", format: "YYYY-MM-DDTHH:mm", date_format: "DD/MM/YYYY", time_format: "HH:mm", picker_utc: false, hint: "Opcional. Dejar vacío para mostrarlo siempre." }

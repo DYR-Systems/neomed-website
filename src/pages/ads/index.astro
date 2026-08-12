@@ -1,0 +1,386 @@
+---
+import { getAdPlaylist } from '../../data/ads';
+
+const { buildId, settings, slides } = getAdPlaylist();
+const clientConfig = JSON.stringify({ buildId, settings }).replace(/</g, '\\u003c');
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="description" content="Pantalla de anuncios NeoMed" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=2" />
+    <title>NeoMed | Pantalla</title>
+    <style is:global>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        background: #000;
+        overflow: hidden;
+        cursor: none;
+      }
+
+      #stage {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        background: #000;
+        transform: translate(-50%, -50%);
+        transform-origin: center center;
+      }
+
+      .slide {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #000;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity var(--fade, 600ms) ease-in-out;
+      }
+
+      .slide.is-active {
+        opacity: 1;
+      }
+
+      .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: var(--fit, cover);
+      }
+
+      .slide iframe {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        border: 0;
+        transform: translate(-50%, -50%);
+      }
+
+      #fallback img {
+        width: auto;
+        height: 22%;
+        max-width: 60%;
+        object-fit: contain;
+        opacity: 0.9;
+        filter: brightness(0) invert(1);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="stage">
+      {
+        slides.map((slide, index) => (
+          <div
+            class="slide"
+            data-index={index}
+            data-type={slide.type}
+            data-src={slide.src}
+            data-title={slide.titulo}
+            data-duration={slide.duracionMs}
+            data-video-duration={slide.usarDuracionVideo ? '1' : ''}
+            data-desde={slide.desde ?? ''}
+            data-hasta={slide.hasta ?? ''}
+          >
+            {slide.type === 'imagen' && <img src={slide.src} alt="" decoding="async" />}
+          </div>
+        ))
+      }
+      <div id="fallback" class:list={['slide', slides.length === 0 && 'is-active']}>
+        <img src="/neomed_logo.png" alt="NeoMed" />
+      </div>
+    </div>
+
+    <script type="application/json" id="ads-config" set:html={clientConfig} />
+
+    <script>
+      const configEl = document.getElementById('ads-config');
+      const cfg = JSON.parse(configEl?.textContent || '{}');
+      const settings = cfg.settings || {};
+      const BUILD_ID = cfg.buildId || '';
+
+      const stage = document.getElementById('stage') as HTMLElement;
+      const fallback = document.getElementById('fallback') as HTMLElement;
+      const slides = Array.from(document.querySelectorAll<HTMLElement>('.slide[data-index]'));
+
+      const FADE = Number(settings.transicionMs) || 600;
+      const RELOAD_MS = (Number(settings.intervaloRecargaMin) || 5) * 60000;
+      const MAX_SLIDE_MS = 20 * 60000;
+      const EMPTY_RETRY_MS = 30000;
+      const VIDEO_RATIO = 16 / 9;
+
+      document.documentElement.style.setProperty('--fade', `${FADE}ms`);
+      document.documentElement.style.setProperty('--fit', settings.ajuste === 'contain' ? 'contain' : 'cover');
+
+      let currentEl: HTMLElement | null = null;
+      let timer: number | null = null;
+      let pendingReload = false;
+
+      function sizeIframe(iframe: HTMLIFrameElement) {
+        const w = stage.clientWidth;
+        const h = stage.clientHeight;
+        const cover = settings.ajuste !== 'contain';
+        let iw: number;
+        let ih: number;
+        if ((w / h > VIDEO_RATIO) === cover) {
+          iw = w;
+          ih = w / VIDEO_RATIO;
+        } else {
+          ih = h;
+          iw = h * VIDEO_RATIO;
+        }
+        iframe.style.width = `${Math.ceil(iw)}px`;
+        iframe.style.height = `${Math.ceil(ih)}px`;
+      }
+
+      function layout() {
+        const rot = ((Number(settings.rotacion) || 0) % 360 + 360) % 360;
+        const swapped = rot === 90 || rot === 270;
+        const vw = swapped ? window.innerHeight : window.innerWidth;
+        const vh = swapped ? window.innerWidth : window.innerHeight;
+        const ratio =
+          settings.orientacion === 'horizontal' ? 16 / 9 : settings.orientacion === 'vertical' ? 9 / 16 : 0;
+
+        let w = vw;
+        let h = vh;
+        if (ratio) {
+          if (vw / vh > ratio) {
+            h = vh;
+            w = vh * ratio;
+          } else {
+            w = vw;
+            h = vw / ratio;
+          }
+        }
+
+        stage.style.width = `${Math.round(w)}px`;
+        stage.style.height = `${Math.round(h)}px`;
+        stage.style.transform = `translate(-50%, -50%) rotate(${rot}deg)`;
+
+        const iframe = stage.querySelector<HTMLIFrameElement>('.slide.is-active iframe');
+        if (iframe) sizeIframe(iframe);
+      }
+
+      function parseDate(value: string | undefined) {
+        const time = value ? Date.parse(value) : NaN;
+        return Number.isFinite(time) ? time : null;
+      }
+
+      // La programación se evalúa en el navegador para que funcione sin volver a desplegar.
+      function isEligible(el: HTMLElement) {
+        if (el.dataset.broken) return false;
+        const now = Date.now();
+        const from = parseDate(el.dataset.desde);
+        const to = parseDate(el.dataset.hasta);
+        if (from !== null && now < from) return false;
+        if (to !== null && now > to) return false;
+        return true;
+      }
+
+      function clearTimer() {
+        if (timer !== null) {
+          clearTimeout(timer);
+          timer = null;
+        }
+      }
+
+      function schedule(ms: number) {
+        clearTimer();
+        timer = window.setTimeout(advance, Math.min(Math.max(ms, 1000), MAX_SLIDE_MS));
+      }
+
+      function scheduleFor(el: HTMLElement) {
+        // Los videos arrancan con la duración fija como salvaguarda y se reajustan al empezar a reproducirse.
+        schedule(Number(el.dataset.duration) || 10000);
+      }
+
+      function isCurrent(iframe: HTMLIFrameElement) {
+        return iframe.isConnected && iframe.closest('.slide') === currentEl;
+      }
+
+      let ytApi: Promise<any> | null = null;
+
+      function loadYtApi(): Promise<any> {
+        if (ytApi) return ytApi;
+        ytApi = new Promise((resolve, reject) => {
+          const win = window as any;
+          if (win.YT?.Player) {
+            resolve(win.YT);
+            return;
+          }
+          const previous = win.onYouTubeIframeAPIReady;
+          win.onYouTubeIframeAPIReady = () => {
+            if (typeof previous === 'function') previous();
+            resolve(win.YT);
+          };
+          const script = document.createElement('script');
+          script.src = 'https://www.youtube.com/iframe_api';
+          script.onerror = () => reject(new Error('yt-api'));
+          document.head.appendChild(script);
+          window.setTimeout(() => reject(new Error('yt-timeout')), 8000);
+        });
+        return ytApi;
+      }
+
+      function attachPlayer(iframe: HTMLIFrameElement, useVideoDuration: boolean) {
+        loadYtApi()
+          .then((YT) => {
+            if (!isCurrent(iframe)) return;
+            new YT.Player(iframe, {
+              events: {
+                // El autoplay del embed no es fiable en pantallas sin interacción.
+                onReady: (event: any) => {
+                  event.target.mute();
+                  event.target.playVideo();
+                },
+                onStateChange: (event: any) => {
+                  if (!isCurrent(iframe) || !useVideoDuration) return;
+                  if (event.data === YT.PlayerState.PLAYING) {
+                    const total = event.target.getDuration();
+                    const elapsed = event.target.getCurrentTime() || 0;
+                    if (total > 0) schedule((total - elapsed) * 1000 + 500);
+                  }
+                  if (event.data === YT.PlayerState.ENDED) advance();
+                },
+                onError: () => {
+                  if (isCurrent(iframe)) advance();
+                },
+              },
+            });
+          })
+          .catch(() => {
+            /* sin API: se mantiene el temporizador fijo ya programado */
+          });
+      }
+
+      function mountYoutube(el: HTMLElement) {
+        el.querySelector('iframe')?.remove();
+        const iframe = document.createElement('iframe');
+        iframe.title = el.dataset.title || 'Video';
+        iframe.allow = 'autoplay; encrypted-media';
+        iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+        iframe.src = el.dataset.src || '';
+        el.appendChild(iframe);
+        sizeIframe(iframe);
+        attachPlayer(iframe, el.dataset.videoDuration === '1');
+      }
+
+      function unmount(el: HTMLElement | null) {
+        if (!el) return;
+        el.classList.remove('is-active');
+        const iframe = el.querySelector('iframe');
+        if (!iframe) return;
+        window.setTimeout(() => {
+          if (!el.classList.contains('is-active')) iframe.remove();
+        }, FADE);
+      }
+
+      function activate(el: HTMLElement) {
+        const previous = currentEl;
+        currentEl = el;
+        if (el.dataset.type === 'youtube') mountYoutube(el);
+        el.classList.add('is-active');
+        fallback.classList.remove('is-active');
+        if (previous && previous !== el) unmount(previous);
+        scheduleFor(el);
+      }
+
+      function showFallback() {
+        unmount(currentEl);
+        currentEl = null;
+        fallback.classList.add('is-active');
+        if (pendingReload) {
+          location.reload();
+          return;
+        }
+        schedule(EMPTY_RETRY_MS);
+      }
+
+      function advance() {
+        clearTimer();
+
+        const eligible = slides.filter(isEligible);
+        if (!eligible.length) {
+          showFallback();
+          return;
+        }
+
+        const start = currentEl ? slides.indexOf(currentEl) : -1;
+        let next = eligible[0];
+        for (let i = 1; i <= slides.length; i++) {
+          const candidate = slides[(start + i + slides.length) % slides.length];
+          if (isEligible(candidate)) {
+            next = candidate;
+            break;
+          }
+        }
+
+        if (next === eligible[0] && pendingReload) {
+          location.reload();
+          return;
+        }
+
+        const restartNeeded = next.dataset.type === 'youtube' && next.dataset.videoDuration === '1';
+        if (next === currentEl && !restartNeeded) {
+          scheduleFor(next);
+          return;
+        }
+
+        activate(next);
+      }
+
+      async function checkVersion() {
+        try {
+          const response = await fetch(`/ads/playlist.json?t=${Date.now()}`, { cache: 'no-store' });
+          if (!response.ok) return;
+          const data = await response.json();
+          if (data.buildId && data.buildId !== BUILD_ID) pendingReload = true;
+        } catch {
+          /* sin red: se reintenta en el próximo ciclo */
+        }
+      }
+
+      let wakeLock: any = null;
+
+      async function requestWakeLock() {
+        try {
+          wakeLock = await (navigator as any).wakeLock?.request('screen');
+        } catch {
+          /* el navegador puede negarlo; la pantalla se configura aparte */
+        }
+      }
+
+      slides.forEach((el) => {
+        el.querySelector('img')?.addEventListener('error', () => {
+          el.dataset.broken = '1';
+          if (el === currentEl) advance();
+        });
+      });
+
+      window.addEventListener('resize', layout);
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') requestWakeLock();
+      });
+
+      layout();
+      requestWakeLock();
+      window.setInterval(checkVersion, RELOAD_MS);
+      advance();
+    </script>
+  </body>
+</html>

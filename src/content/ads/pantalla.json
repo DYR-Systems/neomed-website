@@ -1,0 +1,8 @@
+{
+  "orientacion": "auto",
+  "rotacion": "0",
+  "ajuste": "cover",
+  "transicionMs": 600,
+  "intervaloRecargaMin": 5,
+  "anuncios": []
+}
