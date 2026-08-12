@@ -3,7 +3,7 @@
   "rotacion": "0",
   "ajuste": "contain",
   "transicionMs": 600,
-  "intervaloRecargaMin": 5,
+  "intervaloRecargaMin": 1,
   "anuncios": [
     {
       "type": "imagen",
