@@ -4,5 +4,15 @@
   "ajuste": "cover",
   "transicionMs": 600,
   "intervaloRecargaMin": 5,
-  "anuncios": []
+  "anuncios": [
+    {
+      "type": "imagen",
+      "duracion": 10,
+      "activo": true,
+      "desde": "",
+      "hasta": "",
+      "titulo": "Botox",
+      "imagen": "/ads/screenshot-2026-08-12-at-1.19.42-pm.png"
+    }
+  ]
 }
