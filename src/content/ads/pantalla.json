@@ -58,6 +58,60 @@
       "hasta": "",
       "imagen": "/ads/medical-service.png",
       "titulo": "Vitamina C"
+    },
+    {
+      "type": "imagen",
+      "duracion": 10,
+      "activo": true,
+      "desde": "",
+      "hasta": "",
+      "imagen": "/ads/1.png",
+      "titulo": "Profesonales"
+    },
+    {
+      "type": "imagen",
+      "duracion": 10,
+      "activo": true,
+      "desde": "",
+      "hasta": "",
+      "imagen": "/ads/2.png",
+      "titulo": "Enfe"
+    },
+    {
+      "type": "imagen",
+      "duracion": 10,
+      "activo": true,
+      "desde": "",
+      "hasta": "",
+      "imagen": "/ads/3.png",
+      "titulo": "Nutrición "
+    },
+    {
+      "type": "imagen",
+      "duracion": 10,
+      "activo": true,
+      "desde": "",
+      "hasta": "",
+      "imagen": "/ads/4.png",
+      "titulo": "terapia "
+    },
+    {
+      "type": "imagen",
+      "duracion": 10,
+      "activo": true,
+      "desde": "",
+      "hasta": "",
+      "imagen": "/ads/10.png",
+      "titulo": "terapia 2"
+    },
+    {
+      "type": "imagen",
+      "duracion": 10,
+      "activo": true,
+      "desde": "",
+      "hasta": "",
+      "imagen": "/ads/6.png",
+      "titulo": "psicólogia "
     }
   ]
 }
