@@ -13,6 +13,51 @@
       "hasta": "",
       "titulo": "Botox",
       "imagen": "/ads/screenshot-2026-08-12-at-1.19.42-pm.png"
+    },
+    {
+      "type": "imagen",
+      "duracion": 10,
+      "activo": true,
+      "desde": "",
+      "hasta": "",
+      "titulo": "Medicina ",
+      "imagen": "/ads/1.png"
+    },
+    {
+      "type": "imagen",
+      "duracion": 10,
+      "activo": true,
+      "desde": "",
+      "hasta": "",
+      "imagen": "/ads/2.png",
+      "titulo": "Medicina 2 "
+    },
+    {
+      "type": "imagen",
+      "duracion": 10,
+      "activo": true,
+      "desde": "",
+      "hasta": "",
+      "imagen": "/ads/3.png",
+      "titulo": "Medicina 3 "
+    },
+    {
+      "type": "imagen",
+      "duracion": 10,
+      "activo": true,
+      "desde": "",
+      "hasta": "",
+      "titulo": "Resfrio ",
+      "imagen": "/ads/blue-prevent-coronavirus-instagram-post.png"
+    },
+    {
+      "type": "imagen",
+      "duracion": 10,
+      "activo": true,
+      "desde": "",
+      "hasta": "",
+      "imagen": "/ads/medical-service.png",
+      "titulo": "Vitamina C"
     }
   ]
 }
