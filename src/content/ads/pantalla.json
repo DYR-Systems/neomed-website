@@ -1,7 +1,7 @@
 {
   "orientacion": "auto",
   "rotacion": "0",
-  "ajuste": "cover",
+  "ajuste": "contain",
   "transicionMs": 600,
   "intervaloRecargaMin": 5,
   "anuncios": [
