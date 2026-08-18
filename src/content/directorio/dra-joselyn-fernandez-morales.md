@@ -4,7 +4,7 @@ role: Medicina
 banner: "Medicina General "
 code: "18127"
 image: /professionals/whatsapp-image-2026-08-18-at-2.16.59-pm.jpeg
-imagePosition: ""
+imagePosition: "10"
 enfoque: "Niños, Adolescentes, Adultos, Adultos Mayores "
 about: >-
   Brinda atención médica integral a pacientes de todas las edades, desde niños
