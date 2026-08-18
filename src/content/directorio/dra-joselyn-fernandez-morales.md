@@ -18,8 +18,8 @@ about: >-
   Su enfoque en salud metabólica incluye la evaluación, prevención y tratamiento de resistencia a la insulina y síndrome metabólico, promoviendo cambios sostenibles en el estilo de vida y estrategias individualizadas para mejorar la salud y calidad de vida de sus pacientes.
 specialties:
   - Medicina General
-  - Manejo de enfermedades crónicas
   - "Control Metabólico "
+  - Manejo de enfermedades crónicas
 procedures:
   - Retiro de puntos
   - Drenaje de abscesos
