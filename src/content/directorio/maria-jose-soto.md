@@ -1,7 +1,7 @@
 ---
 name: Dra. Maria Jose Soto
 role: Nutrición
-banner: Nutrición clínica
+banner: Nutrición deportiva
 code: 3016-21
 image: /professionals/maria_jose_soto.webp
 imagePosition: ""
