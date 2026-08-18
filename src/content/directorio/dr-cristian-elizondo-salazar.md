@@ -2,7 +2,7 @@
 name: Dr. Cristian Elizondo Salazar
 role: Medicina
 banner: "Psiquiatría "
-code: ""
+code: "10662"
 image: /professionals/whatsapp-image-2026-08-18-at-2.40.20-pm.jpeg
 imagePosition: ""
 enfoque: "Adultos "
