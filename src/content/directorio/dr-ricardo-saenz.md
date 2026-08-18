@@ -1,5 +1,5 @@
 ---
-name: "Dr Ricardo Saenz Coto "
+name: "Dr. Ricardo Saenz Coto "
 role: Medicina
 banner: Medicina General
 code: "11821"
