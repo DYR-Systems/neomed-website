@@ -20,8 +20,8 @@ export const CLINIC = {
 } as const;
 
 export const OPENING_HOURS = [
-  { days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '08:00', closes: '18:00' },
-  { days: ['Saturday'], opens: '09:00', closes: '13:00' },
+  { days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '09:00', closes: '18:00' },
+  { days: ['Saturday'], opens: '08:00', closes: '13:00' },
 ];
 
 /** Cobertura para SEO local: se expone solo en schema areaServed, no en texto visible. */
