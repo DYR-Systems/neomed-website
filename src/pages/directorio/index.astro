@@ -90,28 +90,25 @@ const categoriasMedicas = await getCategoriasMedicas();
       <h2 class="font-heading text-2xl md:text-3xl font-bold text-slate-800 text-center mb-12">
         Especialidades más buscadas
       </h2>
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6 max-w-5xl mx-auto">
+      <!-- Flex wrap (no grid) para que la última fila quede centrada con cualquier cantidad de categorías -->
+      <div class="flex flex-wrap justify-center gap-3 md:gap-4 max-w-4xl mx-auto">
         {categoriasMedicas.map((categoria) => {
           return (
-            <button class="especialidad-btn group flex flex-col items-center gap-4 cursor-pointer p-4 rounded-3xl bg-white border-2 border-slate-200 shadow-sm hover:border-cyan-400 hover:shadow-lg transition-all duration-300" data-filter={categoria.name}>
-              {categoria.icon ? (
-                <div class="w-20 h-20 md:w-24 md:h-24 rounded-2xl flex items-center justify-center">
-                  <img 
-                    src={categoria.icon} 
-                    alt={categoria.name}
-                    class="w-14 h-14 md:w-16 md:h-16 object-contain group-hover:scale-110 transition-transform duration-300"
-                  />
-                </div>
-              ) : (
-                <div class="w-20 h-20 md:w-24 md:h-24 rounded-2xl flex items-center justify-center px-3">
-                  <span class="especialidad-label text-cyan-700 font-bold text-sm md:text-base text-center leading-tight">
-                    {categoria.name}
-                  </span>
-                </div>
-              )}
+            <button
+              class="especialidad-btn group relative flex flex-col items-center justify-center text-center cursor-pointer grow-0 shrink-0 basis-[calc(50%-0.375rem)] sm:basis-44 md:basis-48 px-4 py-6 min-h-[108px] rounded-2xl bg-white border-2 border-slate-200 shadow-sm hover:border-cyan-400 hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2 transition-all duration-300"
+              data-filter={categoria.name}
+            >
               {categoria.icon && (
-                <span class="especialidad-label text-sm md:text-base text-slate-700 font-semibold group-hover:text-cyan-700 transition-colors text-center leading-tight">{categoria.name}</span>
+                <img
+                  src={categoria.icon}
+                  alt=""
+                  class="w-12 h-12 md:w-14 md:h-14 mb-3 object-contain group-hover:scale-110 transition-transform duration-300"
+                />
               )}
+              <span class="especialidad-label text-sm md:text-base font-semibold text-slate-700 group-hover:text-cyan-700 transition-colors leading-snug text-balance">
+                {categoria.name}
+              </span>
+              <span class="mt-3 h-0.5 w-6 rounded-full bg-slate-200 group-hover:w-10 group-hover:bg-cyan-500 transition-all duration-300"></span>
             </button>
           );
         })}
@@ -250,7 +247,15 @@ const categoriasMedicas = await getCategoriasMedicas();
 </Layout>
 
 <style>
-  /* No additional styles needed */
+  /* Accent underline follows the active state applied by the filter script */
+  .especialidad-btn.bg-cyan-50 > span:last-child {
+    width: 2.5rem;
+    background-color: var(--color-cyan-500, #06b6d4);
+  }
+
+  .especialidad-btn.bg-cyan-50 .especialidad-label {
+    color: var(--color-cyan-700, #0e7490);
+  }
 </style>
 
 <script>
