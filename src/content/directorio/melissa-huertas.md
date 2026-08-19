@@ -1,7 +1,7 @@
 ---
 name: Dra. Melissa Huertas Angulo
-role: Medicina
-banner: "Psiquiatría "
+role: Psiquiatría
+banner: Psiquiatría clínica y forense
 code: "13924"
 image: /professionals/whatsapp-image-2026-04-14-at-3.11.12-pm.jpeg
 imagePosition: ""
