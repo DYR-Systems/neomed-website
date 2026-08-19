@@ -14,7 +14,8 @@ const services = [
     title: 'Medicina General',
     description: 'Consultas, chequeos preventivos y control de enfermedades crónicas para toda la familia.',
     href: '/servicios/medicina',
-    image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80',
+    image: '/services/medicina_general.webp',
+    imagePosition: 'object-[center_18%]',
     icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
     </svg>`
@@ -23,7 +24,8 @@ const services = [
     title: 'Enfermería',
     description: 'Cuidados profesionales y personalizados para tu bienestar diario.',
     href: '/servicios/enfermeria',
-    image: 'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?auto=format&fit=crop&w=800&q=80',
+    image: '/services/enfermeria.webp',
+    imagePosition: 'object-[center_10%]',
     icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
     </svg>`
@@ -375,7 +377,7 @@ const faqSchema = {
               alt={`${service.title} en Heredia — NeoMed`}
               loading="lazy"
               decoding="async"
-              class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              class={`absolute inset-0 w-full h-full object-cover ${service.imagePosition ?? 'object-center'} transition-transform duration-500 group-hover:scale-110`}
             />
             
             <!-- Dark Overlay -->
@@ -550,9 +552,13 @@ const faqSchema = {
           <div class="relative mt-8 md:mt-0 mb-12 md:mb-0">
             <div class="aspect-square rounded-2xl bg-gradient-to-br from-cyan-100 to-cyan-200 relative overflow-hidden">
               <img 
-                src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?auto=format&fit=crop&w=800&q=80" 
-                alt="Equipo médico" 
-                class="w-full h-full object-cover mix-blend-overlay opacity-60"
+                src="/facilities/foundation.webp" 
+                alt="Equipo médico NeoMed" 
+                width="1024"
+                height="1536"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-full object-cover object-[center_20%] mix-blend-overlay opacity-60"
               />
               <div class="absolute inset-0 flex items-center justify-center">
                 <svg class="w-32 h-32 md:w-48 md:h-48 text-cyan-500 opacity-30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
