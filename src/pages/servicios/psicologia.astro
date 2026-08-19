@@ -69,11 +69,19 @@ const serviceSchema = {
   <section class="relative pt-32 pb-16 overflow-hidden">
     <div class="absolute inset-0 z-0">
       <div class="absolute inset-0 bg-gradient-to-b from-slate-900/90 to-slate-800/80 z-10"></div>
-      <img 
-        src="/services/psicologia.jpg" 
-        alt="Consulta de psicología en NeoMed: psicóloga durante una sesión de terapia" 
-        class="w-full h-full object-cover object-[center_30%]"
-      />
+      <picture class="block w-full h-full">
+        <source srcset="/services/psicologia.avif" type="image/avif" />
+        <source srcset="/services/psicologia.webp" type="image/webp" />
+        <img
+          src="/services/psicologia.jpg"
+          alt="Consulta de psicología en NeoMed: psicóloga durante una sesión de terapia"
+          width="640"
+          height="853"
+          fetchpriority="high"
+          decoding="async"
+          class="w-full h-full object-cover object-[center_20%]"
+        />
+      </picture>
     </div>
     
     <div class="container mx-auto px-4 relative z-20">
