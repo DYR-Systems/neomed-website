@@ -1,0 +1,119 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { SITE_URL } from '../../data/site';
+import '../../styles/global.css';
+
+// `title` se muestra en la tarjeta; `seoTitle` alimenta el schema y el aria-label del enlace.
+const servicios = [
+  {
+    title: 'Médico general',
+    seoTitle: 'Médico general en Heredia',
+    href: '/servicios/medicina',
+    text: 'Consultas, chequeos preventivos, control de diabetes e hipertensión y medicina familiar para toda la familia.',
+  },
+  {
+    title: 'Nutricionista',
+    seoTitle: 'Nutricionista en Heredia',
+    href: '/servicios/nutricion',
+    text: 'Planes alimenticios personalizados para bajar de peso, nutrición deportiva y análisis de composición corporal InBody.',
+  },
+  {
+    title: 'Psicología',
+    seoTitle: 'Psicólogo en Heredia',
+    href: '/servicios/psicologia',
+    text: 'Terapia individual, de pareja e infantil para ansiedad, depresión, estrés y bienestar emocional.',
+  },
+  {
+    title: 'Psiquiatría',
+    seoTitle: 'Psiquiatra en Heredia',
+    href: '/servicios/psiquiatria',
+    text: 'Valoración médica y tratamiento de depresión, ansiedad, TDAH, trastorno bipolar e insomnio, con manejo de medicación.',
+  },
+  {
+    title: 'Control metabólico e InBody',
+    seoTitle: 'Control metabólico e InBody en Heredia',
+    href: '/servicios/control-metabolico',
+    text: 'Programa médico-nutricional para bajar de peso con exámenes de laboratorio y seguimiento con InBody.',
+  },
+  {
+    title: 'Terapia física',
+    seoTitle: 'Terapia física y fisioterapia en Heredia',
+    href: '/servicios/terapia-fisica',
+    text: 'Fisioterapia, rehabilitación post-lesión, terapia manual y tratamiento del dolor.',
+  },
+  {
+    title: 'Enfermería',
+    seoTitle: 'Enfermería en Heredia',
+    href: '/servicios/enfermeria',
+    text: 'Inyecciones, curaciones, control de signos vitales y cuidados post-operatorios.',
+  },
+  {
+    title: 'Laboratorio clínico',
+    seoTitle: 'Laboratorio clínico en Heredia',
+    href: '/laboratorio',
+    text: 'Más de 260 exámenes con precios visibles: hemograma, perfil lipídico, hormonas, glicemia y más.',
+  },
+];
+
+const listSchema = {
+  '@type': 'ItemList',
+  name: 'Especialidades médicas en Heredia — NeoMed',
+  itemListElement: servicios.map((s, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: s.seoTitle,
+    url: `${SITE_URL}${s.href}`,
+  })),
+};
+---
+
+<Layout
+  title="Especialidades médicas en Heredia | NeoMed Clínica Integral"
+  rawTitle={true}
+  description="Todas las especialidades de NeoMed en Heredia: médico general, nutricionista, psicólogo, control metabólico con InBody, terapia física, enfermería y laboratorio clínico."
+  keywords="especialidades medicas Heredia, servicios medicos Heredia, clinica Heredia Costa Rica, medico nutricionista psicologo Heredia"
+  canonical="/servicios"
+  breadcrumbs={[
+    { name: 'Inicio', href: '/' },
+    { name: 'Especialidades', href: '/servicios' },
+  ]}
+  schema={listSchema}
+>
+  <Header />
+
+  <section class="bg-gradient-to-b from-slate-100 to-slate-50 pt-28 pb-12">
+    <div class="container mx-auto px-4 max-w-5xl">
+      <h1 class="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
+        Especialidades médicas
+      </h1>
+      <p class="text-lg text-slate-600 font-light leading-relaxed max-w-3xl">
+        En NeoMed reunimos en un solo lugar las especialidades que más necesitas: medicina general,
+        nutrición, psicología, psiquiatría, terapia física, enfermería, control metabólico y
+        laboratorio clínico.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 bg-slate-50">
+    <div class="container mx-auto px-4 max-w-5xl">
+      <div class="grid md:grid-cols-2 gap-6">
+        {servicios.map((servicio) => (
+          <a
+            href={servicio.href}
+            aria-label={servicio.seoTitle}
+            class="block bg-white p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg hover:border-cyan-200 transition-all group"
+          >
+            <h2 class="font-heading text-xl font-semibold text-slate-900 group-hover:text-cyan-700 transition-colors mb-3">
+              {servicio.title}
+            </h2>
+            <p class="text-slate-600 font-light leading-relaxed">{servicio.text}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

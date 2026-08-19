@@ -1,0 +1,52 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+const enlaces = [
+  { href: '/servicios', label: 'Especialidades médicas' },
+  { href: '/laboratorio', label: 'Exámenes de laboratorio' },
+  { href: '/directorio', label: 'Directorio de profesionales' },
+  { href: '/agendar', label: 'Agendar una cita' },
+  { href: '/contacto', label: 'Contacto y ubicación' },
+];
+---
+
+<Layout title="Página no encontrada" description="La página que buscas no existe. Explora las especialidades, el laboratorio clínico o agenda tu cita en NeoMed Heredia." noindex={true}>
+  <Header />
+
+  <section class="min-h-[70vh] flex items-center bg-slate-50 pt-28 pb-16">
+    <div class="container mx-auto px-4 max-w-2xl text-center">
+      <p class="text-7xl font-bold text-cyan-600 mb-4">404</p>
+      <h1 class="font-heading text-3xl md:text-4xl font-light text-slate-900 mb-4">
+        Esta página <span class="font-semibold">no existe</span>
+      </h1>
+      <p class="text-lg text-slate-500 font-light mb-10">
+        Puede que el enlace esté roto o que la página se haya movido. Estos son los destinos más buscados:
+      </p>
+
+      <ul class="grid sm:grid-cols-2 gap-3 mb-10 text-left">
+        {enlaces.map((enlace) => (
+          <li>
+            <a
+              href={enlace.href}
+              class="block bg-white px-6 py-4 rounded-xl border border-slate-200 text-slate-700 hover:border-cyan-400 hover:text-cyan-700 transition-all font-medium"
+            >
+              {enlace.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <a
+        href="/"
+        class="inline-flex items-center gap-2 bg-cyan-600 hover:bg-cyan-700 text-white px-10 py-4 rounded-full font-medium transition-all shadow-lg"
+      >
+        Volver al inicio
+      </a>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

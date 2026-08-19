@@ -19,9 +19,43 @@ interface Props {
 }
 
 const { prof } = Astro.props;
+
+// Algunos nombres del CMS traen espacios sobrantes.
+const nombre = prof.name.replace(/\s+/g, ' ').trim();
+
+const personSchema = {
+  '@type': 'Physician',
+  name: nombre,
+  jobTitle: prof.role,
+  description: prof.about || prof.banner,
+  image: new URL(prof.image, Astro.site ?? Astro.url).href,
+  knowsLanguage: prof.languages,
+  knowsAbout: [...prof.specialties, ...prof.procedures],
+  medicalSpecialty: prof.role,
+  areaServed: { '@type': 'City', name: 'Heredia' },
+  worksFor: { '@id': `${new URL('/', Astro.site ?? Astro.url).href.replace(/\/$/, '')}/#clinica` },
+};
+
+const titulo = [
+  `${nombre} — ${prof.role} en Heredia | NeoMed`,
+  `${nombre} — ${prof.role} | NeoMed Heredia`,
+  `${nombre} — ${prof.role}`,
+].find((t) => t.length <= 65) ?? `${nombre} — ${prof.role}`;
 ---
 
-<Layout title={`${prof.name} - NeoMed`} description={`${prof.name} - ${prof.banner}. Profesional de salud en NeoMed Clínica Integral. Agenda tu cita.`}>
+<Layout
+  title={titulo}
+  rawTitle={true}
+  description={`${nombre}, ${prof.role} en Heredia, Costa Rica. ${prof.banner}. Agenda tu cita en NeoMed Clínica Integral al 7049-4362.`}
+  keywords={`${prof.role} Heredia, ${nombre}, ${prof.specialties.slice(0, 5).join(', ')}`}
+  image={prof.image}
+  breadcrumbs={[
+    { name: 'Inicio', href: '/' },
+    { name: 'Directorio', href: '/directorio' },
+    { name: prof.name, href: `/directorio/${prof.slug}` },
+  ]}
+  schema={personSchema}
+>
   <Header />
 
   <!-- Profile Hero -->

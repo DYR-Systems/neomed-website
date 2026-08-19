@@ -5,7 +5,16 @@ import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 ---
 
-<Layout title="Contacto - NeoMed" description="Contáctanos en NeoMed Clínica Integral. Estamos para atenderte por teléfono, WhatsApp o en nuestras instalaciones.">
+<Layout
+  title="Contacto | Clínica NeoMed en Heredia, Costa Rica"
+  rawTitle={true}
+  description="Contáctanos: NeoMed Clínica Integral, 100 metros oeste de KFC Pirro, Edificio ASO UNA, Heredia. Teléfono y WhatsApp 7049-4362. Atención con cita previa."
+  keywords="contacto clinica Heredia, NeoMed Heredia telefono, direccion clinica Heredia, clinica cerca de KFC Pirro Heredia"
+  breadcrumbs={[
+    { name: 'Inicio', href: '/' },
+    { name: 'Contacto', href: '/contacto' },
+  ]}
+>
   <Header />
   
   <!-- Hero Section -->

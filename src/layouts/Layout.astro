@@ -1,19 +1,98 @@
 ---
 import '../styles/global.css';
+import { SITE_URL, CLINIC, clinicSchema, websiteSchema } from '../data/site';
+
+interface Breadcrumb {
+  name: string;
+  href: string;
+}
 
 interface Props {
   title: string;
   description?: string;
+  /** Usa el título tal cual, sin añadir "| NeoMed Heredia". */
+  rawTitle?: boolean;
+  keywords?: string;
+  image?: string;
+  /** Ruta canónica explícita (por defecto se deriva de la URL actual). */
+  canonical?: string;
+  noindex?: boolean;
+  breadcrumbs?: Breadcrumb[];
+  /** Imagen LCP a precargar (mejora Largest Contentful Paint). */
+  preloadImage?: string;
+  /** Nodos JSON-LD adicionales que se añaden al @graph de la página. */
+  schema?: Record<string, any> | Record<string, any>[];
+  /** 'MedicalWebPage' en contenido clínico: añade señales de revisión profesional. */
+  pageType?: 'WebPage' | 'MedicalWebPage';
 }
 
-const { 
-  title, 
-  description = 'NeoMed - Clínica Integral de Salud. Especialistas en Medicina, Enfermería, Nutrición, Terapia Física y Psicología.' 
+const {
+  title,
+  description = 'NeoMed es una clínica integral en Heredia, Costa Rica: medicina general, nutrición, psicología, psiquiatría, terapia física, enfermería, control metabólico con InBody y laboratorio clínico.',
+  rawTitle = false,
+  keywords,
+  image = '/og-image.jpg',
+  canonical,
+  noindex = false,
+  breadcrumbs,
+  preloadImage,
+  schema,
+  pageType = 'WebPage',
 } = Astro.props;
+
+const fullTitle = rawTitle ? title : `${title} | NeoMed Heredia`;
+const canonicalURL = new URL(canonical ?? Astro.url.pathname, SITE_URL).href.replace(/(.+)\/$/, '$1');
+const ogImage = new URL(image, SITE_URL).href;
+const isDefaultOgImage = image === '/og-image.jpg';
+
+const breadcrumbSchema = breadcrumbs?.length
+  ? {
+      '@type': 'BreadcrumbList',
+      itemListElement: breadcrumbs.map((crumb, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: crumb.name,
+        item: new URL(crumb.href, SITE_URL).href,
+      })),
+    }
+  : null;
+
+const extraSchema = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
+
+const isMedical = pageType === 'MedicalWebPage';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    clinicSchema,
+    websiteSchema,
+    {
+      '@type': pageType,
+      '@id': `${canonicalURL}#webpage`,
+      url: canonicalURL,
+      name: fullTitle,
+      description,
+      inLanguage: 'es-CR',
+      isPartOf: { '@id': `${SITE_URL}/#website` },
+      about: { '@id': `${SITE_URL}/#clinica` },
+      publisher: { '@id': `${SITE_URL}/#clinica` },
+      primaryImageOfPage: ogImage,
+      ...(isMedical
+        ? {
+            reviewedBy: { '@id': `${SITE_URL}/#clinica` },
+            lastReviewed: new Date().toISOString().slice(0, 10),
+            audience: { '@type': 'Patient' },
+          }
+        : {}),
+    },
+    ...(breadcrumbSchema ? [breadcrumbSchema] : []),
+    ...extraSchema,
+  ],
+};
 ---
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-CR">
   <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-B3T4X64N3Z"></script>
@@ -25,14 +104,59 @@ const {
       gtag('config', 'G-B3T4X64N3Z');
     </script>
     <meta charset="UTF-8" />
-    <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    {keywords && <meta name="keywords" content={keywords} />}
+    <link rel="canonical" href={canonicalURL} />
+    <meta
+      name="robots"
+      content={noindex
+        ? 'noindex, nofollow'
+        : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'}
+    />
+
+    <!-- SEO local (Heredia, Costa Rica) -->
+    <meta name="geo.region" content="CR-H" />
+    <meta name="geo.placename" content="Heredia, Costa Rica" />
+    <meta name="geo.position" content={`${CLINIC.latitude};${CLINIC.longitude}`} />
+    <meta name="ICBM" content={`${CLINIC.latitude}, ${CLINIC.longitude}`} />
+    <meta name="author" content={CLINIC.name} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={CLINIC.name} />
+    <meta property="og:locale" content="es_CR" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImage} />
+    {isDefaultOgImage && (
+      <>
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:type" content="image/jpeg" />
+      </>
+    )}
+    <meta property="og:image:alt" content={fullTitle} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png?v=2" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2" />
+    <meta name="theme-color" content="#067074" />
+    {preloadImage && <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <title>{title} | NeoMed</title>
+
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
   </head>
   <body class="bg-white text-slate-900 font-sans antialiased overflow-x-hidden">
     <slot />

@@ -2,21 +2,67 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import Ubicacion from '../../components/Ubicacion.astro';
 import '../../styles/global.css';
 
 const benefits = [
   'Planes alimenticios personalizados',
   'Evaluación nutricional completa',
-  'Control de peso',
-  'Nutrición deportiva',
-  'Manejo de diabetes',
-  'Nutrición infantil',
-  'Asesoría en alimentación',
-  'Seguimiento nutricional'
+  'Programas para bajar de peso',
+  'Análisis de composición corporal InBody',
+  'Nutrición deportiva y ganancia muscular',
+  'Manejo de diabetes, colesterol y triglicéridos',
+  'Nutrición infantil y adolescente',
+  'Seguimiento nutricional continuo'
 ];
+
+const faqs = [
+  {
+    q: '¿Qué incluye la primera consulta con el nutricionista?',
+    a: 'Incluye historia clínica y alimentaria, análisis de composición corporal InBody (grasa, músculo, grasa visceral y agua), definición de metas y entrega de un plan alimenticio personalizado.',
+  },
+  {
+    q: '¿Qué es el análisis de composición corporal InBody?',
+    a: 'Es una prueba que toma pocos minutos, no es invasiva y te entrega un reporte con masa muscular, porcentaje de grasa, grasa visceral y agua corporal. La usamos para dar seguimiento objetivo a tu proceso.',
+  },
+  {
+    q: '¿Cuánto tiempo tarda en verse resultados para bajar de peso?',
+    a: 'Con un plan nutricional supervisado, la mayoría de pacientes observa cambios medibles en 4 a 8 semanas. Damos seguimiento con InBody para confirmar que la pérdida sea de grasa y no de masa muscular.',
+  },
+];
+
+const faqSchema = {
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const serviceSchema = {
+  '@type': 'MedicalBusiness',
+  name: 'Nutricionista en Heredia — NeoMed',
+  description:
+    'Consulta de nutrición en Heredia, Costa Rica. Planes para bajar de peso, nutrición deportiva y análisis de composición corporal InBody.',
+  medicalSpecialty: 'Dietetics',
+  areaServed: { '@type': 'City', name: 'Heredia' },
+};
 ---
 
-<Layout title="Nutrición" description="Servicios de nutrición en NeoMed. Planes alimenticios personalizados para tu salud.">
+<Layout
+  title="Nutricionista en Heredia | Bajar de peso e InBody — NeoMed"
+  rawTitle={true}
+  description="Nutricionista en Heredia con planes personalizados para bajar de peso, nutrición deportiva y análisis de composición corporal InBody. Agenda tu cita al 7049-4362."
+  keywords="nutricionista Heredia, nutricionista en Heredia, bajar de peso Heredia, InBody Heredia, composicion corporal Heredia, plan alimenticio Heredia, dieta Heredia Costa Rica"
+  breadcrumbs={[
+    { name: 'Inicio', href: '/' },
+    { name: 'Especialidades', href: '/servicios' },
+    { name: 'Nutrición', href: '/servicios/nutricion' },
+  ]}
+  schema={[serviceSchema, faqSchema]}
+  pageType="MedicalWebPage"
+>
   <Header />
   
   <!-- Hero con imagen de fondo -->
@@ -49,13 +95,13 @@ const benefits = [
             </svg>
           </div>
           <h1 class="font-heading text-4xl md:text-5xl font-light text-white">
-            <span class="font-semibold" style="color: rgb(8, 140, 145);">Nutrición</span>
+            <span class="font-semibold" style="color: rgb(8, 140, 145);">Nutricionista</span>
           </h1>
         </div>
         
         <p class="text-lg text-white/80 font-light leading-relaxed">
-          Planes alimenticios personalizados diseñados especialmente para alcanzar 
-          tus objetivos de salud y bienestar.
+          Planes alimenticios personalizados para bajar de peso, ganar masa muscular
+          o controlar tu salud metabólica, con medición de composición corporal InBody.
         </p>
       </div>
     </div>
@@ -83,6 +129,71 @@ const benefits = [
       </div>
     </div>
   </section>
+
+  <!-- InBody Section -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="font-heading text-3xl md:text-4xl font-light text-slate-900 mb-6">
+          Análisis de composición corporal <span class="font-semibold" style="color: rgb(6, 112, 116);">InBody</span>
+        </h2>
+        <p class="text-lg text-slate-600 font-light leading-relaxed mb-6">
+          El InBody es un análisis de composición corporal que en menos de un minuto mide
+          tu masa muscular, porcentaje de grasa, grasa visceral y agua corporal. Es la forma
+          objetiva de saber si realmente estás bajando de peso a costa de grasa — y no de músculo.
+        </p>
+        <ul class="grid sm:grid-cols-2 gap-4 mb-8">
+          {[
+            'Masa muscular esquelética por segmento',
+            'Porcentaje de grasa corporal',
+            'Nivel de grasa visceral',
+            'Agua corporal total e hidratación',
+            'Tasa metabólica basal',
+            'Comparativo entre citas de seguimiento',
+          ].map((item) => (
+            <li class="flex items-start gap-3 bg-slate-50 p-5 rounded-xl border border-slate-100">
+              <svg class="w-6 h-6 flex-shrink-0 mt-0.5" style="color: rgb(6, 112, 116);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              <span class="text-slate-700 font-light">{item}</span>
+            </li>
+          ))}
+        </ul>
+        <a href="/servicios/control-metabolico" class="inline-flex items-center gap-2 font-medium" style="color: rgb(6, 112, 116);">
+          Ver el programa de control metabólico
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-20 bg-slate-50 border-t border-slate-100">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="font-heading text-3xl md:text-4xl font-light text-slate-900 mb-10 text-center">
+          Preguntas <span class="font-semibold">frecuentes</span>
+        </h2>
+        <div class="space-y-4">
+          {faqs.map((faq) => (
+            <details class="group bg-white rounded-2xl border border-slate-200 p-6">
+              <summary class="flex items-start justify-between gap-4 cursor-pointer list-none">
+                <h3 class="font-heading text-lg font-semibold text-slate-900">{faq.q}</h3>
+                <svg class="w-5 h-5 mt-1 flex-shrink-0 text-cyan-600 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </summary>
+              <p class="mt-4 text-slate-600 font-light leading-relaxed">{faq.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Ubicacion background="white" />
 
   <!-- CTA Section -->
   <section class="py-20 bg-white">

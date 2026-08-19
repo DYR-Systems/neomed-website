@@ -6,28 +6,32 @@ import Ubicacion from '../../components/Ubicacion.astro';
 import '../../styles/global.css';
 
 const benefits = [
-  'Consultas de medicina general',
-  'Chequeos preventivos y exámenes de laboratorio',
-  'Control de enfermedades crónicas (diabetes, presión, colesterol)',
-  'Medicina familiar para niños y adultos',
-  'Diagnóstico y tratamiento oportuno',
-  'Referencias a especialistas',
-  'Seguimiento médico continuo',
-  'Certificados y órdenes médicas'
+  'Depresión y trastornos de ansiedad',
+  'Trastorno por déficit de atención (TDAH)',
+  'Trastorno bipolar',
+  'Insomnio y trastornos del sueño',
+  'Manejo y ajuste de medicación',
+  'Psiquiatría infantil y adolescente',
+  'Atención al adulto mayor',
+  'Trabajo conjunto con psicología y medicina general',
 ];
 
 const faqs = [
   {
-    q: '¿Atienden sin cita previa?',
-    a: 'Atendemos únicamente con cita previa para garantizar tiempo suficiente por paciente. Puedes agendar por WhatsApp al 7049-4362 o desde la página de agendar.',
+    q: '¿Cuál es la diferencia entre psiquiatría y psicología?',
+    a: 'El psiquiatra es un médico especialista que puede diagnosticar y recetar medicamentos; el psicólogo trabaja con terapia. Muchos procesos avanzan mejor combinando ambos, y en NeoMed coordinamos las dos consultas en el mismo lugar.',
   },
   {
-    q: '¿Pueden ordenar exámenes de laboratorio?',
-    a: 'Sí. Contamos con laboratorio clínico propio en la misma sede, por lo que tu médico puede ordenar y revisar tus exámenes sin que tengas que trasladarte.',
+    q: '¿Necesito referencia médica para una consulta de psiquiatría?',
+    a: 'No. Puedes agendar directamente por WhatsApp al 7049-4362 o desde nuestra página de agendar.',
   },
   {
-    q: '¿Atienden control de diabetes e hipertensión?',
-    a: 'Sí. Damos seguimiento a enfermedades crónicas como diabetes, hipertensión, colesterol alto y síndrome metabólico, con apoyo de nutrición y análisis de composición corporal InBody.',
+    q: '¿Toda consulta psiquiátrica termina en medicación?',
+    a: 'No. La primera cita es una valoración clínica completa y el tratamiento se define según tu caso: puede incluir medicación, psicoterapia, cambios de hábitos o una combinación. Si ya tomás medicamentos, también valoramos ajustarlos o retirarlos.',
+  },
+  {
+    q: '¿Atienden niños y adolescentes?',
+    a: 'Sí. Ofrecemos valoración psiquiátrica infantojuvenil, incluyendo TDAH, ansiedad y trastornos del ánimo, con acompañamiento a la familia.',
   },
 ];
 
@@ -42,44 +46,44 @@ const faqSchema = {
 
 const serviceSchema = {
   '@type': 'MedicalBusiness',
-  name: 'Médico general en Heredia — NeoMed',
+  name: 'Psiquiatra en Heredia — NeoMed',
   description:
-    'Consulta de medicina general en Heredia, Costa Rica. Chequeos preventivos, control de enfermedades crónicas y medicina familiar.',
-  medicalSpecialty: 'PrimaryCare',
+    'Consulta de psiquiatría en Heredia, Costa Rica. Valoración y tratamiento de depresión, ansiedad, TDAH, trastorno bipolar e insomnio, con manejo de medicación.',
+  medicalSpecialty: 'Psychiatric',
   areaServed: { '@type': 'City', name: 'Heredia' },
 };
 ---
 
 <Layout
-  title="Médico en Heredia | Consulta de medicina general — NeoMed"
+  title="Psiquiatra en Heredia | Depresión, ansiedad y TDAH — NeoMed"
   rawTitle={true}
-  description="Médico general en Heredia, Costa Rica. Consultas, chequeos preventivos, control de diabetes e hipertensión y laboratorio clínico. Agenda tu cita al 7049-4362."
-  keywords="medico Heredia, medico general Heredia, consulta medica Heredia, clinica Heredia, doctor en Heredia, chequeo medico Heredia, medicina familiar Costa Rica"
+  description="¿Buscas un psiquiatra en Heredia? Valoración y tratamiento de depresión, ansiedad, TDAH, trastorno bipolar e insomnio, con manejo de medicación. Agenda al 7049-4362."
+  keywords="psiquiatra en Heredia, psiquiatra Heredia, consulta psiquiatrica Heredia, depresion Heredia, ansiedad Heredia, TDAH Heredia, trastorno bipolar Heredia, psiquiatra Costa Rica"
   breadcrumbs={[
     { name: 'Inicio', href: '/' },
     { name: 'Especialidades', href: '/servicios' },
-    { name: 'Medicina', href: '/servicios/medicina' },
+    { name: 'Psiquiatría', href: '/servicios/psiquiatria' },
   ]}
   schema={[serviceSchema, faqSchema]}
   pageType="MedicalWebPage"
 >
   <Header />
-  
+
   <!-- Hero con imagen de fondo -->
   <section class="relative pt-32 pb-16 overflow-hidden">
     <div class="absolute inset-0 z-0">
       <div class="absolute inset-0 bg-gradient-to-b from-slate-900/90 to-slate-800/80 z-10"></div>
-      <img 
-        src="https://images.unsplash.com/photo-1584982751601-97dcc096659c?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
-        alt="Medicina" 
-        class="w-full h-full object-cover"
+      <img
+        src="https://images.unsplash.com/photo-1758691462878-6edc3d3da1be?q=80&w=2070&auto=format&fit=crop"
+        alt="Consulta de psiquiatría: médico psiquiatra conversando con un paciente en consultorio"
+        class="w-full h-full object-cover object-[center_60%]"
       />
     </div>
-    
+
     <div class="container mx-auto px-4 relative z-20">
       <div class="max-w-4xl">
-        <a 
-          href="/#servicios" 
+        <a
+          href="/servicios"
           class="inline-flex items-center text-white/70 hover:text-white mb-8 transition-colors group"
         >
           <svg class="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -87,21 +91,21 @@ const serviceSchema = {
           </svg>
           Servicios
         </a>
-        
+
         <div class="flex items-center gap-4 mb-6">
           <div class="w-16 h-16 rounded-2xl backdrop-blur-sm flex items-center justify-center" style="background-color: rgba(6, 112, 116, 0.2);">
             <svg class="w-8 h-8" style="color: rgb(10, 160, 165);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
             </svg>
           </div>
           <h1 class="font-heading text-4xl md:text-5xl font-light text-white">
-            <span class="font-semibold" style="color: rgb(8, 140, 145);">Médico general</span>
+            <span class="font-semibold" style="color: rgb(8, 140, 145);">Psiquiatría</span>
           </h1>
         </div>
-        
+
         <p class="text-lg text-white/80 font-light leading-relaxed">
-          Atención médica integral para toda la familia. Consultas,
-          diagnósticos, chequeos preventivos y control de enfermedades crónicas.
+          Valoración médica de la salud mental con diagnóstico, tratamiento y seguimiento
+          farmacológico cuando se necesita, en coordinación con nuestro equipo de psicología.
         </p>
       </div>
     </div>
@@ -113,9 +117,9 @@ const serviceSchema = {
       <div class="max-w-5xl mx-auto">
         <p class="text-sm font-semibold uppercase tracking-wider mb-4" style="color: rgb(6, 112, 116);">Lo que ofrecemos</p>
         <h2 class="font-heading text-3xl md:text-4xl font-light text-slate-900 mb-12">
-          Servicios de <span class="font-semibold">Medicina General</span>
+          Servicios de <span class="font-semibold">Psiquiatría</span>
         </h2>
-        
+
         <div class="grid sm:grid-cols-2 gap-4">
           {benefits.map((benefit) => (
             <div class="flex items-start gap-3 bg-white p-6 rounded-xl border border-slate-100 hover:shadow-md transition-shadow">
@@ -161,14 +165,17 @@ const serviceSchema = {
     <div class="container mx-auto px-4">
       <div class="max-w-3xl mx-auto text-center">
         <h2 class="font-heading text-3xl md:text-4xl font-light text-slate-900 mb-6">
-          ¿Listo para cuidar tu <span class="font-semibold" style="color: rgb(6, 112, 116);">salud</span>?
+          ¿Necesitas una <span class="font-semibold" style="color: rgb(6, 112, 116);">valoración psiquiátrica</span>?
         </h2>
         <p class="text-lg text-slate-500 mb-8 font-light">
-          Agenda tu consulta médica y recibe atención profesional de calidad
+          Agenda tu consulta y recibe un plan de tratamiento hecho para tu caso
         </p>
-        <a 
-          href="/agendar" 
-          class="inline-flex items-centers gap-2 text-white px-10 py-4 rounded-full transition-all duration-300 hover:scale-105 text-lg font-medium shadow-lg" style="background-color: #067074;" onmouseover="this.style.backgroundColor='#088c91'" onmouseout="this.style.backgroundColor='#067074'"
+        <a
+          href="/agendar"
+          class="inline-flex items-center gap-2 text-white px-10 py-4 rounded-full transition-all duration-300 hover:scale-105 text-lg font-medium shadow-lg"
+          style="background-color: #067074;"
+          onmouseover="this.style.backgroundColor='#088c91'"
+          onmouseout="this.style.backgroundColor='#067074'"
         >
           <span>Agendar cita</span>
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

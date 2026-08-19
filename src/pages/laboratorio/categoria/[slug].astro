@@ -1,0 +1,196 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { getExamenes, getCategorias, type Examen } from '../../../data/examenes';
+import { SITE_URL } from '../../../data/site';
+import '../../../styles/global.css';
+
+// Astro extrae getStaticPaths a su propio ámbito, por eso la función se define dentro.
+export async function getStaticPaths() {
+  const slugify = (value: string) =>
+    value
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '');
+
+  const [examenes, categorias] = await Promise.all([getExamenes(), getCategorias()]);
+
+  const nombres = new Set([
+    ...categorias.map((c) => c.name),
+    ...examenes.map((e) => e.category),
+  ]);
+
+  return [...nombres]
+    .filter(Boolean)
+    .map((name) => ({
+      params: { slug: slugify(name) },
+      props: {
+        categoryName: name,
+        categorySlug: slugify(name),
+        examenes: examenes.filter((e) => e.category === name),
+        otrasCategorias: [...nombres]
+          .filter((n) => n !== name)
+          .sort((a, b) => a.localeCompare(b, 'es'))
+          .map((n) => ({ name: n, slug: slugify(n) })),
+      },
+    }));
+}
+
+interface Props {
+  categoryName: string;
+  categorySlug: string;
+  examenes: Examen[];
+  otrasCategorias: { name: string; slug: string }[];
+}
+
+const { categoryName, categorySlug, examenes, otrasCategorias } = Astro.props;
+
+const canonical = `/laboratorio/categoria/${categorySlug}`;
+const precios = examenes.map((e) => e.price).filter((p) => p > 0);
+const precioMin = precios.length ? Math.min(...precios) : 0;
+const precioMax = precios.length ? Math.max(...precios) : 0;
+
+const listSchema = {
+  '@type': 'ItemList',
+  '@id': `${SITE_URL}${canonical}#lista`,
+  name: `Exámenes de ${categoryName} en Heredia`,
+  numberOfItems: examenes.length,
+  itemListElement: examenes.map((exam, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: exam.name,
+    url: `${SITE_URL}/laboratorio/${exam.slug}`,
+  })),
+};
+
+const offerCatalogSchema =
+  precios.length > 0
+    ? {
+        '@type': 'AggregateOffer',
+        priceCurrency: 'CRC',
+        lowPrice: precioMin,
+        highPrice: precioMax,
+        offerCount: examenes.length,
+        availability: 'https://schema.org/InStock',
+        seller: { '@id': `${SITE_URL}/#clinica` },
+      }
+    : null;
+
+const titulo = [
+  `Exámenes de ${categoryName} en Heredia | Precios — Laboratorio NeoMed`,
+  `Exámenes de ${categoryName} en Heredia | Precios — NeoMed`,
+  `Exámenes de ${categoryName} | Precios — Laboratorio NeoMed`,
+  `${categoryName} | Precios — Laboratorio NeoMed`,
+].find((t) => t.length <= 65) ?? `${categoryName} | Laboratorio NeoMed`;
+---
+
+<Layout
+  title={titulo}
+  rawTitle={true}
+  description={`${examenes.length} exámenes de ${categoryName} en Heredia, Costa Rica${precios.length ? ` desde ₡${precioMin.toLocaleString('es-CR')}` : ''}. Precios visibles y resultados rápidos en el laboratorio clínico NeoMed. Agenda al 7049-4362.`}
+  keywords={`examenes de ${categoryName} Heredia, ${categoryName} laboratorio Heredia, precios ${categoryName} Costa Rica, laboratorio clinico Heredia`}
+  canonical={canonical}
+  breadcrumbs={[
+    { name: 'Inicio', href: '/' },
+    { name: 'Laboratorio', href: '/laboratorio' },
+    { name: categoryName, href: canonical },
+  ]}
+  schema={offerCatalogSchema ? [listSchema, offerCatalogSchema] : [listSchema]}
+  pageType="MedicalWebPage"
+>
+  <Header />
+
+  <section class="bg-gradient-to-b from-slate-100 to-slate-50 pt-28 pb-12">
+    <div class="container mx-auto px-4 max-w-5xl">
+      <nav aria-label="Ruta de navegación" class="mb-8">
+        <ol class="flex flex-wrap items-center gap-2 text-sm text-slate-500">
+          <li><a href="/" class="hover:text-cyan-600 transition-colors">Inicio</a></li>
+          <li aria-hidden="true">/</li>
+          <li><a href="/laboratorio" class="hover:text-cyan-600 transition-colors">Laboratorio</a></li>
+          <li aria-hidden="true">/</li>
+          <li class="text-slate-700 font-medium">{categoryName}</li>
+        </ol>
+      </nav>
+
+      <h1 class="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
+        Exámenes de {categoryName}
+      </h1>
+      <p class="text-lg text-slate-600 font-light leading-relaxed max-w-3xl">
+        {examenes.length === 1
+          ? `Hacemos 1 examen de ${categoryName.toLowerCase()} en nuestro laboratorio.`
+          : `Hacemos ${examenes.length} exámenes de ${categoryName.toLowerCase()} en nuestro laboratorio.`}
+      </p>
+    </div>
+  </section>
+
+  <section class="py-12 bg-slate-50">
+    <div class="container mx-auto px-4 max-w-5xl">
+      <div class="space-y-4">
+        {examenes.map((exam) => (
+          <a
+            href={`/laboratorio/${exam.slug}`}
+            class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-6 md:p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg hover:border-cyan-200 transition-all group"
+          >
+            <div class="flex-1">
+              <h2 class="font-heading text-xl font-semibold text-slate-900 group-hover:text-cyan-700 transition-colors mb-1">
+                {exam.name}
+              </h2>
+              {exam.description && (
+                <p class="text-slate-500 text-sm leading-relaxed">{exam.description}</p>
+              )}
+            </div>
+            <div class="flex-shrink-0 text-right">
+              <span class="text-2xl md:text-3xl font-bold text-cyan-600">
+                {exam.currency}{exam.price.toLocaleString('es-CR')}
+              </span>
+              <p class="text-slate-400 text-xs mt-1">Precio de contado</p>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      {otrasCategorias.length > 0 && (
+        <div class="mt-16">
+          <h2 class="font-heading text-2xl font-light text-slate-900 mb-6">
+            Otras <span class="font-semibold">categorías</span> de laboratorio
+          </h2>
+          <div class="flex flex-wrap gap-3">
+            {otrasCategorias.map((cat) => (
+              <a
+                href={`/laboratorio/categoria/${cat.slug}`}
+                class="px-5 py-2.5 rounded-full bg-white border border-slate-200 text-slate-700 hover:border-cyan-400 hover:text-cyan-700 transition-all text-sm font-medium"
+              >
+                {cat.name}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4 max-w-3xl text-center">
+      <h2 class="font-heading text-2xl md:text-3xl font-light text-slate-900 mb-4">
+        ¿Necesitas hacerte un examen de <span class="font-semibold">{categoryName}</span>?
+      </h2>
+      <p class="text-slate-500 mb-8 font-light">
+        Agenda tu cita en nuestro laboratorio clínico y recibe tus resultados rápido.
+      </p>
+      <a
+        href="/agendar"
+        class="inline-flex items-center gap-2 bg-cyan-600 hover:bg-cyan-700 text-white px-10 py-4 rounded-full font-medium transition-all shadow-lg"
+      >
+        Agendar cita
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
