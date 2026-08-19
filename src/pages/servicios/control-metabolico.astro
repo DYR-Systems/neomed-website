@@ -46,23 +46,40 @@ const conditions = [
 const faqs = [
   {
     q: '¿Qué es el control metabólico?',
-    a: 'Es un programa médico-nutricional que evalúa cómo tu cuerpo procesa la energía. Combina valoración médica, exámenes de laboratorio y análisis de composición corporal InBody para identificar la causa real del aumento de peso (resistencia a la insulina, tiroides, hábitos, estrés) y tratarla de raíz.',
+    a: [
+      'El control metabólico es una valoración médica integral que permite conocer cómo se encuentra tu organismo y detectar factores que pueden estar relacionados con el sobrepeso, la obesidad y otras alteraciones metabólicas. Durante la valoración se pueden revisar parámetros como glucosa en sangre, colesterol, presión arterial, composición corporal y peso, entre otros.',
+      'El objetivo es identificar las necesidades de cada paciente y establecer un plan personalizado de alimentación, actividad física y, cuando esté indicado por el médico, tratamiento farmacológico.',
+    ],
   },
   {
     q: '¿Cuánto peso puedo bajar y en cuánto tiempo?',
-    a: 'Una pérdida segura y sostenible ronda entre 0.5 y 1 kg por semana. Lo importante no es solo el número en la balanza: con el InBody verificamos que lo que baja sea grasa y no masa muscular.',
+    a: [
+      'Cada persona responde de manera diferente al tratamiento, por lo que no es posible garantizar una cantidad específica de pérdida de peso.',
+      'El objetivo es lograr una reducción de peso segura, progresiva y sostenible, tomando en cuenta tu peso inicial, composición corporal, alimentación, actividad física, estado de salud y, si corresponde, el tratamiento indicado por el médico.',
+      'En algunos pacientes pueden lograrse pérdidas importantes de peso a lo largo de varios meses, pero el porcentaje y el tiempo varían de una persona a otra. Durante el programa evaluamos periódicamente tu evolución mediante mediciones de composición corporal y ajustamos el plan de acuerdo con tus resultados y objetivos.',
+    ],
   },
   {
     q: '¿Necesito una orden médica para entrar al programa?',
-    a: 'No. Puedes agendar directamente tu valoración inicial por WhatsApp al 7049-4362 o desde nuestra página de agendar cita.',
+    a: [
+      'No. Puedes agendar directamente tu valoración inicial por WhatsApp al 7049-4362 o a través de nuestra página de agendar cita.',
+      'En la valoración inicial, el médico determinará qué estudios y evaluaciones son necesarios para conocer tu estado de salud y definir el tratamiento más adecuado para ti.',
+    ],
   },
   {
     q: '¿El programa incluye medicamentos para bajar de peso?',
-    a: 'Solo si tu médico lo considera clínicamente necesario tras la valoración y los exámenes. La base del programa es la alimentación, el movimiento y el seguimiento objetivo.',
+    a: [
+      'El programa puede incluir medicamentos para el control del peso, incluyendo tratamientos de la familia de los GLP-1, pero no se indican de manera automática.',
+      'Después de la valoración médica y la revisión de los exámenes de laboratorio solicitados, el médico determinará si existe una indicación para utilizar este tipo de tratamiento y cuál sería la opción más adecuada.',
+      'La elección del medicamento, la dosis y la duración del tratamiento dependen de las características y necesidades de cada paciente.',
+    ],
   },
   {
     q: '¿Cada cuánto debo asistir a control?',
-    a: 'Generalmente cada 3 o 4 semanas al inicio, con una nueva medición InBody en cada cita para ajustar tu plan según los resultados reales.',
+    a: [
+      'Las valoraciones son semanales, especialmente durante las primeras etapas del programa, para dar un seguimiento cercano a tu evolución. Sin embargo, la frecuencia de los controles puede ajustarse y personalizarse según las necesidades, objetivos y respuesta de cada paciente.',
+      'En cada valoración revisamos tu progreso, composición corporal, alimentación y respuesta al tratamiento para realizar los ajustes necesarios y acompañarte de manera segura durante todo el proceso.',
+    ],
   },
 ];
 
@@ -71,7 +88,7 @@ const faqSchema = {
   mainEntity: faqs.map((f) => ({
     '@type': 'Question',
     name: f.q,
-    acceptedAnswer: { '@type': 'Answer', text: f.a },
+    acceptedAnswer: { '@type': 'Answer', text: f.a.join(' ') },
   })),
 };
 
@@ -265,7 +282,9 @@ const serviceSchema = {
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                 </svg>
               </summary>
-              <p class="mt-4 text-slate-600 font-light leading-relaxed">{faq.a}</p>
+              {faq.a.map((parrafo) => (
+                <p class="mt-4 text-slate-600 font-light leading-relaxed">{parrafo}</p>
+              ))}
             </details>
           ))}
         </div>
