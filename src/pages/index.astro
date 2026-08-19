@@ -80,35 +80,61 @@ const uniqueRoles = new Set(directorio.map(p => p.role)).size;
 const faqs = [
   {
     q: '¿Qué servicios ofrece la clínica NeoMed?',
-    a: 'Somos una clínica integral: medicina general, nutrición, psicología, psiquiatría, terapia física, enfermería, control metabólico con análisis InBody y laboratorio clínico. Todo en un mismo lugar, para que no tengas que trasladarte entre distintos centros médicos.',
+    a: [
+      'En NeoMed ofrecemos una atención integral, reuniendo diferentes especialidades y servicios de salud en un mismo lugar: medicina general, nutrición, psicología, psiquiatría, terapia física, enfermería, control metabólico con análisis de composición corporal InBody y laboratorio clínico.',
+      'Nuestro objetivo es brindarte un acompañamiento completo y personalizado, facilitando el acceso a diferentes servicios de salud sin necesidad de trasladarte entre distintos centros médicos.',
+    ],
   },
   {
     q: '¿Cómo agendo una cita?',
-    a: 'Puedes agendar en línea desde la página de citas, escribirnos por WhatsApp al 7049-4362 o llamarnos. Atendemos con cita previa de lunes a viernes de 8:00 a.m. a 6:00 p.m. y sábados de 9:00 a.m. a 1:00 p.m.',
+    a: [
+      'Puedes agendar tu cita de forma fácil y rápida a través de nuestra página web, en la sección «Agenda tu cita», escribiéndonos por WhatsApp al 7049-4362 o llamándonos directamente.',
+      'Atendemos con cita previa de lunes a viernes de 9:00 a.m. a 6:00 p.m. y sábados de 8:00 a.m. a 1:00 p.m.',
+      'Será un gusto ayudarte a encontrar el horario que mejor se adapte a ti.',
+    ],
   },
   {
-    q: '¿Dónde están ubicados y hay parqueo?',
-    a: 'Estamos en Heredia centro, 100 metros oeste de KFC Pirro, en el Edificio ASO UNA, a pocos minutos del centro y con acceso cómodo en vehículo o transporte público.',
+    q: '¿Dónde está ubicada la clínica NeoMed y cuentan con parqueo?',
+    a: [
+      'Nos encontramos en Heredia centro, Costa Rica, 100 metros al oeste de KFC Pirro, en el Edificio ASO UNA. Nuestra ubicación es de fácil acceso y se encuentra a pocos minutos del centro de Heredia, con opciones para llegar tanto en vehículo como en transporte público.',
+      'Sí, contamos con parqueo para nuestros pacientes, para que tu visita sea más cómoda y conveniente.',
+    ],
   },
   {
-    q: '¿Necesito referencia médica para ser atendido?',
-    a: 'No. Puedes agendar directamente con cualquiera de nuestros profesionales sin referencia previa. Si tu caso requiere una valoración con otra especialidad, coordinamos la referencia internamente.',
+    q: '¿Necesito una referencia médica para agendar una cita?',
+    a: [
+      'No, no necesitas una referencia médica para ser atendido en NeoMed. Puedes agendar directamente con el profesional o la especialidad que necesites.',
+      'Si durante tu valoración identificamos que requieres atención de otra especialidad, coordinamos internamente la referencia con el profesional correspondiente, para ofrecerte un abordaje integral y facilitar tu atención en un mismo lugar.',
+    ],
   },
   {
-    q: '¿Aceptan seguros médicos y qué formas de pago manejan?',
-    a: 'Trabajamos con los principales seguros médicos del país, entre ellos INS, ASSA, MAPFRE, BMI, Sagicor, Pan-American, MediSmart, EBS y ADISA. Recibimos efectivo, tarjeta de débito, tarjeta de crédito y SINPE Móvil. Escríbenos antes de tu cita para confirmar la cobertura de tu póliza.',
+    q: '¿Aceptan seguros médicos y cuáles son las formas de pago disponibles?',
+    a: [
+      'Sí. Trabajamos con los principales seguros médicos del país, entre ellos INS, ASSA, MAPFRE, BMI, Sagicor, Pan-American, MediSmart, EBS y ADISA.',
+      'Para tu comodidad, puedes realizar el pago mediante efectivo, tarjeta de débito, tarjeta de crédito o SINPE Móvil.',
+      'Te recomendamos contactarnos antes de tu cita para confirmar la cobertura y las condiciones específicas de tu póliza, ya que estas pueden variar según el seguro y el servicio que necesites.',
+    ],
   },
   {
     q: '¿Atienden a niños y adolescentes?',
-    a: 'Sí. Nuestro equipo atiende a pacientes de todas las edades, incluyendo consulta médica, nutrición infantil, psicología y terapia del lenguaje para niños y adolescentes.',
+    a: [
+      'Sí. En NeoMed brindamos atención a niños y adolescentes, con servicios adaptados a las necesidades de cada etapa de desarrollo.',
+      'Contamos con profesionales en áreas como medicina general, nutrición infantil, psicología y terapia del lenguaje, ofreciendo un abordaje integral y personalizado para nuestros pacientes más jóvenes.',
+    ],
   },
   {
     q: '¿Ofrecen consultas virtuales?',
-    a: 'Sí. Varias de nuestras especialidades ofrecen consulta virtual, lo que nos permite atender pacientes de todo Costa Rica sin que tengan que desplazarse hasta Heredia.',
+    a: [
+      'Sí. Contamos con consultas virtuales en varias de nuestras especialidades, para que puedas recibir atención profesional desde la comodidad de tu hogar, sin necesidad de trasladarte hasta nuestra clínica en Heredia.',
+      'La disponibilidad de la modalidad virtual depende de la especialidad y del tipo de consulta. Contáctanos para confirmar si el servicio que necesitas está disponible en modalidad virtual.',
+    ],
   },
   {
-    q: '¿Necesito cita para hacerme exámenes de laboratorio?',
-    a: 'Puedes consultar los precios de los exámenes en nuestro laboratorio clínico y coordinar tu toma de muestra por WhatsApp. Te indicamos la preparación necesaria, como las horas de ayuno, según el examen.',
+    q: '¿Necesito cita para realizarme exámenes de laboratorio?',
+    a: [
+      'Sí, trabajamos con diferentes modalidades de atención para los exámenes de laboratorio, siempre con cita previa. Puedes contactarnos por WhatsApp para consultar los exámenes disponibles, precios y coordinar el horario que mejor te convenga.',
+      'Antes de tu cita, nuestro equipo te indicará la preparación necesaria según el examen, incluyendo las horas de ayuno y cualquier otra recomendación que debas seguir para la toma de muestra.',
+    ],
   },
 ];
 
@@ -117,7 +143,7 @@ const faqSchema = {
   mainEntity: faqs.map((f) => ({
     '@type': 'Question',
     name: f.q,
-    acceptedAnswer: { '@type': 'Answer', text: f.a },
+    acceptedAnswer: { '@type': 'Answer', text: f.a.join(' ') },
   })),
 };
 
@@ -818,11 +844,11 @@ const faqSchema = {
                   <div class="space-y-2 text-slate-600">
                     <div class="flex justify-between">
                       <span>Lunes - Viernes</span>
-                      <span class="font-medium">8:00 AM - 6:00 PM</span>
+                      <span class="font-medium">9:00 AM - 6:00 PM</span>
                     </div>
                     <div class="flex justify-between">
                       <span>Sábados</span>
-                      <span class="font-medium">9:00 AM - 1:00 PM</span>
+                      <span class="font-medium">8:00 AM - 1:00 PM</span>
                     </div>
                     <div class="flex justify-between">
                       <span>Domingos</span>
@@ -927,7 +953,11 @@ const faqSchema = {
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                 </svg>
               </summary>
-              <p class="mt-4 text-slate-600 font-light leading-relaxed">{faq.a}</p>
+              <div class="mt-4 space-y-3 text-slate-600 font-light leading-relaxed">
+                {faq.a.map((parrafo) => (
+                  <p>{parrafo}</p>
+                ))}
+              </div>
             </details>
           ))}
         </div>
