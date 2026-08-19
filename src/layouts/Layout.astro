@@ -22,6 +22,8 @@ interface Props {
   preloadImage?: string;
   /** Nodos JSON-LD adicionales que se añaden al @graph de la página. */
   schema?: Record<string, any> | Record<string, any>[];
+  /** 'MedicalWebPage' en contenido clínico: añade señales de revisión profesional. */
+  pageType?: 'WebPage' | 'MedicalWebPage';
 }
 
 const {
@@ -35,6 +37,7 @@ const {
   breadcrumbs,
   preloadImage,
   schema,
+  pageType = 'WebPage',
 } = Astro.props;
 
 const fullTitle = rawTitle ? title : `${title} | NeoMed Heredia`;
@@ -56,13 +59,15 @@ const breadcrumbSchema = breadcrumbs?.length
 
 const extraSchema = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
 
+const isMedical = pageType === 'MedicalWebPage';
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
     clinicSchema,
     websiteSchema,
     {
-      '@type': 'WebPage',
+      '@type': pageType,
       '@id': `${canonicalURL}#webpage`,
       url: canonicalURL,
       name: fullTitle,
@@ -70,6 +75,15 @@ const jsonLd = {
       inLanguage: 'es-CR',
       isPartOf: { '@id': `${SITE_URL}/#website` },
       about: { '@id': `${SITE_URL}/#clinica` },
+      publisher: { '@id': `${SITE_URL}/#clinica` },
+      primaryImageOfPage: ogImage,
+      ...(isMedical
+        ? {
+            reviewedBy: { '@id': `${SITE_URL}/#clinica` },
+            lastReviewed: new Date().toISOString().slice(0, 10),
+            audience: { '@type': 'Patient' },
+          }
+        : {}),
     },
     ...(breadcrumbSchema ? [breadcrumbSchema] : []),
     ...extraSchema,

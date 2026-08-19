@@ -8,4 +8,49 @@ Disallow: /coming-soon
 Disallow: /maintenance
 Disallow: /config.yml
 
+# --- Motores de respuesta / agentes de IA (acceso explícito) ---
+# Buscadores generativos: aparecer en respuestas de ChatGPT, Perplexity, Claude y Gemini.
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+# Scraping para datasets de entrenamiento, sin tráfico de retorno.
+User-agent: CCBot
+Disallow: /
+
 Sitemap: https://neomedcr.com/sitemap-index.xml

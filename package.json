@@ -8,7 +8,8 @@
     "build": "node scripts/sync-filters.mjs && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "sync-filters": "node scripts/sync-filters.mjs"
+    "sync-filters": "node scripts/sync-filters.mjs",
+    "seo-audit": "npm run build && node scripts/seo-audit.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",

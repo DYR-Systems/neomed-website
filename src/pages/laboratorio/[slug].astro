@@ -95,12 +95,48 @@ const faqSchema = {
     acceptedAnswer: { '@type': 'Answer', text: f.a },
   })),
 };
+
+// Google trunca alrededor de 60-65 caracteres: se recorta el sufijo antes que el nombre del examen.
+const buildTitle = () => {
+  const candidatos = [
+    `${exam.name} en Heredia — Precio ${precioFormateado} | Laboratorio NeoMed`,
+    `${exam.name} — Precio ${precioFormateado} | Laboratorio NeoMed`,
+    `${exam.name} — ${precioFormateado} | Laboratorio NeoMed`,
+    `${exam.name} — ${precioFormateado} | NeoMed`,
+  ];
+  return candidatos.find((t) => t.length <= 65) ?? candidatos[candidatos.length - 1];
+};
+
+const buildDescription = () => {
+  const cierre = ' Agenda al 7049-4362.';
+  const base = `${exam.name} en Heredia por ${precioFormateado}. `;
+  const margen = 172 - base.length - cierre.length;
+  const texto = (exam.description || 'Resultados rápidos y confiables en el laboratorio clínico de NeoMed.').trim();
+  const cerrar = (s: string) =>
+    base +
+    s
+      .replace(/[.,;:\s]+$/, '')
+      // Evita terminar en conjunción o preposición cuando el corte fue por palabra.
+      .replace(/\s+(y|o|u|e|de|del|la|el|los|las|un|una|en|con|para|por|a|al|que|su|sus)$/i, '') +
+    '.' +
+    cierre;
+
+  if (texto.length <= margen) return cerrar(texto);
+
+  // Al recortar conserva solo oraciones completas; si ninguna cabe, corta por palabra.
+  let acc = '';
+  for (const frase of texto.match(/[^.!?]+[.!?]*/g) ?? []) {
+    if ((acc + frase).trim().length > margen) break;
+    acc += frase;
+  }
+  return cerrar(acc.trim() || texto.slice(0, texto.lastIndexOf(' ', margen - 2)));
+};
 ---
 
 <Layout
-  title={`${exam.name} en Heredia — Precio ${precioFormateado} | Laboratorio NeoMed`}
+  title={buildTitle()}
   rawTitle={true}
-  description={`${exam.name} en Heredia, Costa Rica por ${precioFormateado}. ${exam.description || 'Resultados rápidos y confiables en el laboratorio clínico de NeoMed.'} Agenda al 7049-4362.`}
+  description={buildDescription()}
   keywords={`${exam.name} Heredia, precio ${exam.name}, ${exam.name} Costa Rica, ${exam.category} Heredia, laboratorio clinico Heredia`}
   canonical={canonical}
   breadcrumbs={[
@@ -110,6 +146,7 @@ const faqSchema = {
     { name: exam.name, href: canonical },
   ]}
   schema={[testSchema, offerSchema, faqSchema]}
+  pageType="MedicalWebPage"
 >
   <Header />
 

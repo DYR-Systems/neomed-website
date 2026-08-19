@@ -78,10 +78,17 @@ const offerCatalogSchema =
         seller: { '@id': `${SITE_URL}/#clinica` },
       }
     : null;
+
+const titulo = [
+  `Exámenes de ${categoryName} en Heredia | Precios — Laboratorio NeoMed`,
+  `Exámenes de ${categoryName} en Heredia | Precios — NeoMed`,
+  `Exámenes de ${categoryName} | Precios — Laboratorio NeoMed`,
+  `${categoryName} | Precios — Laboratorio NeoMed`,
+].find((t) => t.length <= 65) ?? `${categoryName} | Laboratorio NeoMed`;
 ---
 
 <Layout
-  title={`Exámenes de ${categoryName} en Heredia | Precios — Laboratorio NeoMed`}
+  title={titulo}
   rawTitle={true}
   description={`${examenes.length} exámenes de ${categoryName} en Heredia, Costa Rica${precios.length ? ` desde ₡${precioMin.toLocaleString('es-CR')}` : ''}. Precios visibles y resultados rápidos en el laboratorio clínico NeoMed. Agenda al 7049-4362.`}
   keywords={`examenes de ${categoryName} Heredia, ${categoryName} laboratorio Heredia, precios ${categoryName} Costa Rica, laboratorio clinico Heredia`}
@@ -92,6 +99,7 @@ const offerCatalogSchema =
     { name: categoryName, href: canonical },
   ]}
   schema={offerCatalogSchema ? [listSchema, offerCatalogSchema] : [listSchema]}
+  pageType="MedicalWebPage"
 >
   <Header />
 
