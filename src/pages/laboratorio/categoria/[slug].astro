@@ -3,7 +3,7 @@ import Layout from '../../../layouts/Layout.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import { getExamenes, getCategorias, type Examen } from '../../../data/examenes';
-import { SITE_URL, CLINIC } from '../../../data/site';
+import { SITE_URL } from '../../../data/site';
 import '../../../styles/global.css';
 
 // Astro extrae getStaticPaths a su propio ámbito, por eso la función se define dentro.
@@ -119,8 +119,9 @@ const titulo = [
         Exámenes de {categoryName}
       </h1>
       <p class="text-lg text-slate-600 font-light leading-relaxed max-w-3xl">
-        {examenes.length} exámenes de {categoryName} disponibles en el laboratorio clínico de NeoMed,
-        {' '}{CLINIC.streetAddress}, Heredia. Precios de contado visibles y resultados rápidos.
+        {examenes.length === 1
+          ? `Hacemos 1 examen de ${categoryName.toLowerCase()} en nuestro laboratorio.`
+          : `Hacemos ${examenes.length} exámenes de ${categoryName.toLowerCase()} en nuestro laboratorio.`}
       </p>
     </div>
   </section>
