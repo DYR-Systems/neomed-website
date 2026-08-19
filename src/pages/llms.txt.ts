@@ -25,6 +25,7 @@ export const GET: APIRoute = async () => {
     ['Medicina general', '/servicios/medicina', 'Consulta médica, chequeos preventivos y control de diabetes e hipertensión.'],
     ['Nutrición', '/servicios/nutricion', 'Planes alimenticios para bajar de peso, nutrición deportiva y análisis InBody.'],
     ['Psicología', '/servicios/psicologia', 'Terapia para ansiedad, depresión, estrés, pareja e infantil.'],
+    ['Psiquiatría', '/servicios/psiquiatria', 'Valoración médica y manejo de medicación para depresión, ansiedad, TDAH, trastorno bipolar e insomnio.'],
     ['Control metabólico', '/servicios/control-metabolico', 'Programa médico-nutricional para bajar de peso con exámenes de laboratorio e InBody.'],
     ['Terapia física', '/servicios/terapia-fisica', 'Fisioterapia, rehabilitación post-lesión y tratamiento del dolor.'],
     ['Enfermería', '/servicios/enfermeria', 'Inyecciones, curaciones, signos vitales y cuidados post-operatorios.'],
@@ -33,7 +34,7 @@ export const GET: APIRoute = async () => {
 
   const body = `# ${CLINIC.name}
 
-> Clínica médica integral en ${CLINIC.city}, Costa Rica. Reúne medicina general, nutrición, psicología, terapia física, enfermería, control metabólico con análisis de composición corporal InBody y laboratorio clínico propio con ${examenes.length} exámenes de precio público.
+> Clínica médica integral en ${CLINIC.city}, Costa Rica. Reúne medicina general, nutrición, psicología, psiquiatría, terapia física, enfermería, control metabólico con análisis de composición corporal InBody y laboratorio clínico propio con ${examenes.length} exámenes de precio público.
 
 ## Datos de la clínica
 

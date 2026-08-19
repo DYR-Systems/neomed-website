@@ -1,0 +1,190 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Ubicacion from '../../components/Ubicacion.astro';
+import '../../styles/global.css';
+
+const benefits = [
+  'Depresión y trastornos de ansiedad',
+  'Trastorno por déficit de atención (TDAH)',
+  'Trastorno bipolar',
+  'Insomnio y trastornos del sueño',
+  'Manejo y ajuste de medicación',
+  'Psiquiatría infantil y adolescente',
+  'Atención al adulto mayor',
+  'Trabajo conjunto con psicología y medicina general',
+];
+
+const faqs = [
+  {
+    q: '¿Cuál es la diferencia entre psiquiatría y psicología?',
+    a: 'El psiquiatra es un médico especialista que puede diagnosticar y recetar medicamentos; el psicólogo trabaja con terapia. Muchos procesos avanzan mejor combinando ambos, y en NeoMed coordinamos las dos consultas en el mismo lugar.',
+  },
+  {
+    q: '¿Necesito referencia médica para una consulta de psiquiatría?',
+    a: 'No. Puedes agendar directamente por WhatsApp al 7049-4362 o desde nuestra página de agendar.',
+  },
+  {
+    q: '¿Toda consulta psiquiátrica termina en medicación?',
+    a: 'No. La primera cita es una valoración clínica completa y el tratamiento se define según tu caso: puede incluir medicación, psicoterapia, cambios de hábitos o una combinación. Si ya tomás medicamentos, también valoramos ajustarlos o retirarlos.',
+  },
+  {
+    q: '¿Atienden niños y adolescentes?',
+    a: 'Sí. Ofrecemos valoración psiquiátrica infantojuvenil, incluyendo TDAH, ansiedad y trastornos del ánimo, con acompañamiento a la familia.',
+  },
+];
+
+const faqSchema = {
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const serviceSchema = {
+  '@type': 'MedicalBusiness',
+  name: 'Psiquiatra en Heredia — NeoMed',
+  description:
+    'Consulta de psiquiatría en Heredia, Costa Rica. Valoración y tratamiento de depresión, ansiedad, TDAH, trastorno bipolar e insomnio, con manejo de medicación.',
+  medicalSpecialty: 'Psychiatric',
+  areaServed: { '@type': 'City', name: 'Heredia' },
+};
+---
+
+<Layout
+  title="Psiquiatra en Heredia | Depresión, ansiedad y TDAH — NeoMed"
+  rawTitle={true}
+  description="¿Buscas un psiquiatra en Heredia? Valoración y tratamiento de depresión, ansiedad, TDAH, trastorno bipolar e insomnio, con manejo de medicación. Agenda al 7049-4362."
+  keywords="psiquiatra en Heredia, psiquiatra Heredia, consulta psiquiatrica Heredia, depresion Heredia, ansiedad Heredia, TDAH Heredia, trastorno bipolar Heredia, psiquiatra Costa Rica"
+  breadcrumbs={[
+    { name: 'Inicio', href: '/' },
+    { name: 'Especialidades', href: '/servicios' },
+    { name: 'Psiquiatría', href: '/servicios/psiquiatria' },
+  ]}
+  schema={[serviceSchema, faqSchema]}
+  pageType="MedicalWebPage"
+>
+  <Header />
+
+  <!-- Hero con imagen de fondo -->
+  <section class="relative pt-32 pb-16 overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <div class="absolute inset-0 bg-gradient-to-b from-slate-900/90 to-slate-800/80 z-10"></div>
+      <img
+        src="https://images.unsplash.com/photo-1527613426441-4da17471b66d?q=80&w=2070&auto=format&fit=crop"
+        alt="Psiquiatría"
+        class="w-full h-full object-cover object-[center_60%]"
+      />
+    </div>
+
+    <div class="container mx-auto px-4 relative z-20">
+      <div class="max-w-4xl">
+        <a
+          href="/servicios"
+          class="inline-flex items-center text-white/70 hover:text-white mb-8 transition-colors group"
+        >
+          <svg class="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+          </svg>
+          Servicios
+        </a>
+
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-16 h-16 rounded-2xl backdrop-blur-sm flex items-center justify-center" style="background-color: rgba(6, 112, 116, 0.2);">
+            <svg class="w-8 h-8" style="color: rgb(10, 160, 165);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+            </svg>
+          </div>
+          <h1 class="font-heading text-4xl md:text-5xl font-light text-white">
+            <span class="font-semibold" style="color: rgb(8, 140, 145);">Psiquiatría</span>
+          </h1>
+        </div>
+
+        <p class="text-lg text-white/80 font-light leading-relaxed">
+          Valoración médica de la salud mental con diagnóstico, tratamiento y seguimiento
+          farmacológico cuando se necesita, en coordinación con nuestro equipo de psicología.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="py-20 bg-slate-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-5xl mx-auto">
+        <p class="text-sm font-semibold uppercase tracking-wider mb-4" style="color: rgb(6, 112, 116);">Lo que ofrecemos</p>
+        <h2 class="font-heading text-3xl md:text-4xl font-light text-slate-900 mb-12">
+          Servicios de <span class="font-semibold">Psiquiatría</span>
+        </h2>
+
+        <div class="grid sm:grid-cols-2 gap-4">
+          {benefits.map((benefit) => (
+            <div class="flex items-start gap-3 bg-white p-6 rounded-xl border border-slate-100 hover:shadow-md transition-shadow">
+              <svg class="w-6 h-6 flex-shrink-0 mt-0.5" style="color: rgb(6, 112, 116);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              <span class="text-slate-700 font-light">{benefit}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-20 bg-white border-t border-slate-100">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="font-heading text-3xl md:text-4xl font-light text-slate-900 mb-10 text-center">
+          Preguntas <span class="font-semibold">frecuentes</span>
+        </h2>
+        <div class="space-y-4">
+          {faqs.map((faq) => (
+            <details class="group bg-slate-50 rounded-2xl border border-slate-200 p-6">
+              <summary class="flex items-start justify-between gap-4 cursor-pointer list-none">
+                <h3 class="font-heading text-lg font-semibold text-slate-900">{faq.q}</h3>
+                <svg class="w-5 h-5 mt-1 flex-shrink-0 text-cyan-600 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </summary>
+              <p class="mt-4 text-slate-600 font-light leading-relaxed">{faq.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Ubicacion background="white" />
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="font-heading text-3xl md:text-4xl font-light text-slate-900 mb-6">
+          ¿Necesitas una <span class="font-semibold" style="color: rgb(6, 112, 116);">valoración psiquiátrica</span>?
+        </h2>
+        <p class="text-lg text-slate-500 mb-8 font-light">
+          Agenda tu consulta y recibe un plan de tratamiento hecho para tu caso
+        </p>
+        <a
+          href="/agendar"
+          class="inline-flex items-center gap-2 text-white px-10 py-4 rounded-full transition-all duration-300 hover:scale-105 text-lg font-medium shadow-lg"
+          style="background-color: #067074;"
+          onmouseover="this.style.backgroundColor='#088c91'"
+          onmouseout="this.style.backgroundColor='#067074'"
+        >
+          <span>Agendar cita</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

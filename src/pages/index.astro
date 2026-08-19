@@ -63,6 +63,15 @@ const services = [
     icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
     </svg>`
+  },
+  {
+    title: 'Psiquiatría',
+    description: 'Valoración médica y manejo de medicación para depresión, ansiedad, TDAH y trastornos del sueño.',
+    href: '/servicios/psiquiatria',
+    image: 'https://images.unsplash.com/photo-1527613426441-4da17471b66d?auto=format&fit=crop&w=800&q=80',
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+    </svg>`
   }
 ];
 // Unique specialties count for the team section
@@ -71,7 +80,7 @@ const uniqueRoles = new Set(directorio.map(p => p.role)).size;
 const faqs = [
   {
     q: '¿Qué servicios ofrece la clínica NeoMed?',
-    a: 'Somos una clínica integral: medicina general, nutrición, psicología, terapia física, enfermería, control metabólico con análisis InBody y laboratorio clínico. Todo en un mismo lugar, para que no tengas que trasladarte entre distintos centros médicos.',
+    a: 'Somos una clínica integral: medicina general, nutrición, psicología, psiquiatría, terapia física, enfermería, control metabólico con análisis InBody y laboratorio clínico. Todo en un mismo lugar, para que no tengas que trasladarte entre distintos centros médicos.',
   },
   {
     q: '¿Cómo agendo una cita?',
@@ -118,8 +127,8 @@ const faqSchema = {
 <Layout
   title="Clínica en Heredia | Médico, Nutricionista y Psicólogo — NeoMed"
   rawTitle={true}
-  description="Clínica integral en Heredia, Costa Rica. Médico general, nutricionista, psicólogo, terapia física, control metabólico e InBody. Agenda tu cita al 7049-4362."
-  keywords="clinica en Heredia, medico Heredia, psicologo en Heredia, nutricionista Heredia, control metabolico, bajar de peso Heredia, InBody Heredia, laboratorio clinico Heredia, terapia fisica Heredia, consulta medica Heredia Costa Rica"
+  description="Clínica integral en Heredia, Costa Rica. Médico general, nutricionista, psicólogo, psiquiatra, terapia física y control metabólico con InBody. Agenda al 7049-4362."
+  keywords="clinica en Heredia, medico Heredia, psicologo en Heredia, psiquiatra en Heredia, nutricionista Heredia, control metabolico, bajar de peso Heredia, InBody Heredia, laboratorio clinico Heredia, terapia fisica Heredia, consulta medica Heredia Costa Rica"
   canonical="/"
   preloadImage="/facilities/instalacion_1.webp"
   schema={faqSchema}
@@ -165,7 +174,7 @@ const faqSchema = {
         </h1>
 
         <p class="text-lg md:text-xl text-white/80 max-w-3xl mx-auto mb-10 font-light leading-relaxed animate-fade-in-delay-2">
-          Medicina general, nutrición, psicología, terapia física, control metabólico con InBody
+          Medicina general, nutrición, psicología, psiquiatría, terapia física, control metabólico con InBody
           y laboratorio clínico. Tu mejor opción en salud integral.
         </p>
         
@@ -325,7 +334,7 @@ const faqSchema = {
           Nuestros <span class="font-semibold">servicios médicos</span>
         </h2>
         <p class="text-lg text-slate-500 font-light leading-relaxed">
-          Médico general, nutricionista, psicólogo, fisioterapeuta y control metabólico
+          Médico general, nutricionista, psicólogo, psiquiatra, fisioterapeuta y control metabólico
           en un solo lugar.
         </p>
       </div>

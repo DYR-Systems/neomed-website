@@ -64,6 +64,9 @@ collections:
       - label: "Psicopedagogía"
         field: role
         pattern: "Psicopedagogía"
+      - label: "Psiquiatría"
+        field: role
+        pattern: "Psiquiatría"
       - label: "Terapia del Lenguaje"
         field: role
         pattern: "Terapia del Lenguaje"
