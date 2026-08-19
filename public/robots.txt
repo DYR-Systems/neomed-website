@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+Disallow: /cms/
+Disallow: /admin/
+Disallow: /ads/
+Disallow: /coming-soon
+Disallow: /maintenance
+Disallow: /config.yml
+
+Sitemap: https://neomedcr.com/sitemap-index.xml

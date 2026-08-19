@@ -2,21 +2,66 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import Ubicacion from '../../components/Ubicacion.astro';
 import '../../styles/global.css';
 
 const benefits = [
-  'Terapia individual',
+  'Terapia psicológica individual',
   'Terapia de pareja',
-  'Manejo de ansiedad',
+  'Manejo de ansiedad y ataques de pánico',
   'Tratamiento de depresión',
-  'Terapia infantil',
+  'Psicología infantil y adolescente',
   'Orientación vocacional',
-  'Manejo del estrés',
-  'Crecimiento personal'
+  'Manejo del estrés y burnout',
+  'Crecimiento y desarrollo personal'
 ];
+
+const faqs = [
+  {
+    q: '¿Cuánto dura una consulta psicológica?',
+    a: 'Una sesión de psicología dura aproximadamente 50 a 60 minutos. La frecuencia recomendada suele ser semanal o quincenal según tu proceso.',
+  },
+  {
+    q: '¿Atienden ansiedad y depresión?',
+    a: 'Sí. Nuestros psicólogos tratan ansiedad, ataques de pánico, depresión, estrés laboral, duelo, problemas de pareja y dificultades de conducta en niños y adolescentes.',
+  },
+  {
+    q: '¿Necesito referencia médica para ir al psicólogo?',
+    a: 'No. Puedes agendar directamente tu cita de psicología por WhatsApp al 7049-4362 o desde nuestra página de agendar.',
+  },
+];
+
+const faqSchema = {
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const serviceSchema = {
+  '@type': 'MedicalBusiness',
+  name: 'Psicólogo en Heredia — NeoMed',
+  description:
+    'Consulta psicológica en Heredia, Costa Rica. Terapia individual, de pareja e infantil para ansiedad, depresión y manejo del estrés.',
+  medicalSpecialty: 'Psychiatric',
+  areaServed: { '@type': 'City', name: 'Heredia' },
+};
 ---
 
-<Layout title="Psicología" description="Servicios de psicología en NeoMed. Apoyo profesional para tu salud mental.">
+<Layout
+  title="Psicólogo en Heredia | Terapia para ansiedad y depresión — NeoMed"
+  rawTitle={true}
+  description="¿Buscas un psicólogo en Heredia? En NeoMed ofrecemos terapia individual, de pareja e infantil para ansiedad, depresión y estrés. Agenda tu cita al 7049-4362."
+  keywords="psicologo en Heredia, psicologa Heredia, terapia psicologica Heredia, consulta psicologica Heredia, ansiedad Heredia, depresion Heredia, psicologo Costa Rica"
+  breadcrumbs={[
+    { name: 'Inicio', href: '/' },
+    { name: 'Especialidades', href: '/#servicios' },
+    { name: 'Psicología', href: '/servicios/psicologia' },
+  ]}
+  schema={[serviceSchema, faqSchema]}
+>
   <Header />
   
   <!-- Hero con imagen de fondo -->
@@ -49,13 +94,13 @@ const benefits = [
             </svg>
           </div>
           <h1 class="font-heading text-4xl md:text-5xl font-light text-white">
-            <span class="font-semibold" style="color: rgb(8, 140, 145);">Psicología</span>
+            <span class="font-semibold" style="color: rgb(8, 140, 145);">Psicólogo</span> en Heredia
           </h1>
         </div>
         
         <p class="text-lg text-white/80 font-light leading-relaxed">
-          Apoyo profesional para tu salud mental y emocional. Terapia personalizada 
-          para tu bienestar integral.
+          Consulta psicológica en el centro de Heredia. Terapia personalizada para ansiedad,
+          depresión, estrés y bienestar emocional, con psicólogos colegiados.
         </p>
       </div>
     </div>
@@ -67,7 +112,7 @@ const benefits = [
       <div class="max-w-5xl mx-auto">
         <p class="text-sm font-semibold uppercase tracking-wider mb-4" style="color: rgb(6, 112, 116);">Lo que ofrecemos</p>
         <h2 class="font-heading text-3xl md:text-4xl font-light text-slate-900 mb-12">
-          Servicios de <span class="font-semibold">Psicología</span>
+          Servicios de <span class="font-semibold">Psicología en Heredia</span>
         </h2>
         
         <div class="grid sm:grid-cols-2 gap-4">
@@ -83,6 +128,32 @@ const benefits = [
       </div>
     </div>
   </section>
+
+  <!-- FAQ Section -->
+  <section class="py-20 bg-white border-t border-slate-100">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="font-heading text-3xl md:text-4xl font-light text-slate-900 mb-10 text-center">
+          Preguntas <span class="font-semibold">frecuentes</span>
+        </h2>
+        <div class="space-y-4">
+          {faqs.map((faq) => (
+            <details class="group bg-slate-50 rounded-2xl border border-slate-200 p-6">
+              <summary class="flex items-start justify-between gap-4 cursor-pointer list-none">
+                <h3 class="font-heading text-lg font-semibold text-slate-900">{faq.q}</h3>
+                <svg class="w-5 h-5 mt-1 flex-shrink-0 text-cyan-600 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </summary>
+              <p class="mt-4 text-slate-600 font-light leading-relaxed">{faq.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Ubicacion background="white" />
 
   <!-- CTA Section -->
   <section class="py-20 bg-white">

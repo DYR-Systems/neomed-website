@@ -1,0 +1,236 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getExamenes, type Examen } from '../../data/examenes';
+import { SITE_URL, CLINIC } from '../../data/site';
+import '../../styles/global.css';
+
+export async function getStaticPaths() {
+  const examenes = await getExamenes();
+  return examenes.map((exam) => ({
+    params: { slug: exam.slug },
+    props: {
+      exam,
+      relacionados: examenes
+        .filter((e) => e.category === exam.category && e.slug !== exam.slug)
+        .slice(0, 8),
+    },
+  }));
+}
+
+interface Props {
+  exam: Examen;
+  relacionados: Examen[];
+}
+
+const { exam, relacionados } = Astro.props;
+
+const categorySlug = exam.category
+  .toLowerCase()
+  .normalize('NFD')
+  .replace(/[\u0300-\u036f]/g, '')
+  .replace(/[^a-z0-9]+/g, '-')
+  .replace(/^-|-$/g, '');
+
+const precioFormateado = `${exam.currency}${exam.price.toLocaleString('es-CR')}`;
+const canonical = `/laboratorio/${exam.slug}`;
+
+const testSchema = {
+  '@type': 'MedicalTest',
+  '@id': `${SITE_URL}${canonical}#test`,
+  name: exam.name,
+  alternateName: `${exam.name} en Heredia`,
+  description:
+    exam.description ||
+    `${exam.name} disponible en el laboratorio clínico de NeoMed en Heredia, Costa Rica.`,
+  usedToDiagnose: exam.category,
+  affectedBy: exam.description || undefined,
+  provider: { '@id': `${SITE_URL}/#clinica` },
+};
+
+const offerSchema = {
+  '@type': 'Product',
+  '@id': `${SITE_URL}${canonical}#producto`,
+  name: `${exam.name} — Laboratorio clínico en Heredia`,
+  description:
+    exam.description ||
+    `Precio de ${exam.name} en el laboratorio clínico NeoMed, Heredia, Costa Rica.`,
+  category: exam.category,
+  brand: { '@type': 'Brand', name: CLINIC.name },
+  offers: {
+    '@type': 'Offer',
+    price: exam.price,
+    priceCurrency: 'CRC',
+    availability: 'https://schema.org/InStock',
+    url: `${SITE_URL}${canonical}`,
+    priceValidUntil: `${new Date().getFullYear() + 1}-12-31`,
+    seller: { '@id': `${SITE_URL}/#clinica` },
+    areaServed: { '@type': 'City', name: 'Heredia' },
+  },
+};
+
+const faqs = [
+  {
+    q: `¿Cuánto cuesta el examen de ${exam.name}?`,
+    a: `El precio de ${exam.name} en el laboratorio clínico de NeoMed es de ${precioFormateado} (precio de contado). Puedes confirmar disponibilidad al 7049-4362.`,
+  },
+  {
+    q: `¿Necesito preparación para ${exam.name}?`,
+    a:
+      exam.description ||
+      `Para ${exam.name} generalmente no se requiere preparación especial. Si tienes dudas, escríbenos por WhatsApp al 7049-4362 antes de tu cita.`,
+  },
+  {
+    q: '¿Dónde me hago este examen de laboratorio?',
+    a: `En NeoMed Clínica Integral, ${CLINIC.streetAddress}, Heredia. Atendemos con cita previa de lunes a viernes de 8:00 a.m. a 6:00 p.m. y sábados de 9:00 a.m. a 1:00 p.m.`,
+  },
+];
+
+const faqSchema = {
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<Layout
+  title={`${exam.name} en Heredia — Precio ${precioFormateado} | Laboratorio NeoMed`}
+  rawTitle={true}
+  description={`${exam.name} en Heredia, Costa Rica por ${precioFormateado}. ${exam.description || 'Resultados rápidos y confiables en el laboratorio clínico de NeoMed.'} Agenda al 7049-4362.`}
+  keywords={`${exam.name} Heredia, precio ${exam.name}, ${exam.name} Costa Rica, ${exam.category} Heredia, laboratorio clinico Heredia`}
+  canonical={canonical}
+  breadcrumbs={[
+    { name: 'Inicio', href: '/' },
+    { name: 'Laboratorio', href: '/laboratorio' },
+    { name: exam.category, href: `/laboratorio/categoria/${categorySlug}` },
+    { name: exam.name, href: canonical },
+  ]}
+  schema={[testSchema, offerSchema, faqSchema]}
+>
+  <Header />
+
+  <section class="bg-gradient-to-b from-slate-100 to-slate-50 pt-28 pb-12">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <nav aria-label="Ruta de navegación" class="mb-8">
+        <ol class="flex flex-wrap items-center gap-2 text-sm text-slate-500">
+          <li><a href="/" class="hover:text-cyan-600 transition-colors">Inicio</a></li>
+          <li aria-hidden="true">/</li>
+          <li><a href="/laboratorio" class="hover:text-cyan-600 transition-colors">Laboratorio</a></li>
+          <li aria-hidden="true">/</li>
+          <li>
+            <a href={`/laboratorio/categoria/${categorySlug}`} class="hover:text-cyan-600 transition-colors">
+              {exam.category}
+            </a>
+          </li>
+          <li aria-hidden="true">/</li>
+          <li class="text-slate-700 font-medium">{exam.name}</li>
+        </ol>
+      </nav>
+
+      <div class="bg-white rounded-2xl shadow-lg border border-slate-100 p-8 md:p-10">
+        <p class="text-cyan-600 font-semibold text-sm uppercase tracking-wider mb-3">{exam.category}</p>
+        <h1 class="font-heading text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+          {exam.name} en Heredia
+        </h1>
+
+        <div class="flex flex-wrap items-end gap-3 mb-6">
+          <span class="text-4xl md:text-5xl font-bold text-cyan-600">{precioFormateado}</span>
+          <span class="text-slate-400 text-sm mb-2">precio de contado</span>
+        </div>
+
+        {exam.description && (
+          <div class="p-5 rounded-xl bg-cyan-50 border border-cyan-100 mb-8">
+            <h2 class="text-sm font-semibold text-cyan-900 uppercase tracking-wider mb-2">Preparación</h2>
+            <p class="text-slate-700 leading-relaxed">{exam.description}</p>
+          </div>
+        )}
+
+        <p class="text-slate-600 font-light leading-relaxed mb-8">
+          El examen de <strong>{exam.name}</strong> forma parte de nuestra categoría de {exam.category} y se
+          realiza en el laboratorio clínico de NeoMed, ubicado en {CLINIC.streetAddress}, Heredia.
+          Trabajamos con cita previa y entregamos resultados de forma rápida y confiable.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a
+            href="/agendar"
+            class="inline-flex items-center justify-center gap-2 bg-cyan-600 hover:bg-cyan-700 text-white px-8 py-4 rounded-full font-medium transition-all shadow-lg"
+          >
+            Agendar este examen
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <a
+            href={`https://wa.me/50670494362?text=${encodeURIComponent(`Hola, quiero información sobre el examen ${exam.name}`)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-2 border-2 border-cyan-600 text-cyan-700 hover:bg-cyan-50 px-8 py-4 rounded-full font-medium transition-all"
+          >
+            Consultar por WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4 max-w-3xl">
+      <h2 class="font-heading text-2xl md:text-3xl font-light text-slate-900 mb-8">
+        Preguntas <span class="font-semibold">frecuentes</span>
+      </h2>
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <details class="group bg-slate-50 rounded-2xl border border-slate-200 p-6">
+            <summary class="flex items-start justify-between gap-4 cursor-pointer list-none">
+              <h3 class="font-heading text-lg font-semibold text-slate-900">{faq.q}</h3>
+              <svg class="w-5 h-5 mt-1 flex-shrink-0 text-cyan-600 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </summary>
+            <p class="mt-4 text-slate-600 font-light leading-relaxed">{faq.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {relacionados.length > 0 && (
+    <section class="py-16 bg-slate-50">
+      <div class="container mx-auto px-4 max-w-4xl">
+        <h2 class="font-heading text-2xl md:text-3xl font-light text-slate-900 mb-8">
+          Otros exámenes de <span class="font-semibold">{exam.category}</span>
+        </h2>
+        <div class="grid sm:grid-cols-2 gap-4">
+          {relacionados.map((rel) => (
+            <a
+              href={`/laboratorio/${rel.slug}`}
+              class="flex items-center justify-between gap-4 bg-white p-5 rounded-xl border border-slate-200 hover:border-cyan-300 hover:shadow-md transition-all"
+            >
+              <span class="text-slate-800 font-medium">{rel.name}</span>
+              <span class="text-cyan-600 font-semibold whitespace-nowrap">
+                {rel.currency}{rel.price.toLocaleString('es-CR')}
+              </span>
+            </a>
+          ))}
+        </div>
+        <a
+          href={`/laboratorio/categoria/${categorySlug}`}
+          class="inline-flex items-center gap-2 mt-8 text-cyan-700 font-medium hover:text-cyan-800 transition-colors"
+        >
+          Ver todos los exámenes de {exam.category}
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+  )}
+
+  <Footer />
+</Layout>

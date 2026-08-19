@@ -17,10 +17,28 @@ services:
         value: no-cache, no-store, must-revalidate
       - path: /*
         name: Cache-Control
-        value: no-cache, no-store, must-revalidate
+        value: public, max-age=0, must-revalidate
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
       - path: /_astro/*
         name: Cache-Control
         value: public, max-age=31536000, immutable
+      - path: /facilities/*
+        name: Cache-Control
+        value: public, max-age=2592000
+      - path: /professionals/*
+        name: Cache-Control
+        value: public, max-age=2592000
+      - path: /lab-icons/*
+        name: Cache-Control
+        value: public, max-age=2592000
+      - path: /medical-icons/*
+        name: Cache-Control
+        value: public, max-age=2592000
     routes:
       - type: redirect
         source: /admin

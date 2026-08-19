@@ -2,21 +2,66 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import Ubicacion from '../../components/Ubicacion.astro';
 import '../../styles/global.css';
 
 const benefits = [
-  'Consultas médicas generales',
-  'Chequeos preventivos',
-  'Control de enfermedades crónicas',
-  'Medicina familiar',
-  'Diagnóstico y tratamiento',
+  'Consultas de medicina general',
+  'Chequeos preventivos y exámenes de laboratorio',
+  'Control de enfermedades crónicas (diabetes, presión, colesterol)',
+  'Medicina familiar para niños y adultos',
+  'Diagnóstico y tratamiento oportuno',
+  'Referencias a especialistas',
   'Seguimiento médico continuo',
-  'Atención integral',
-  'Medicina preventiva'
+  'Certificados y órdenes médicas'
 ];
+
+const faqs = [
+  {
+    q: '¿Atienden sin cita previa?',
+    a: 'Atendemos únicamente con cita previa para garantizar tiempo suficiente por paciente. Puedes agendar por WhatsApp al 7049-4362 o desde la página de agendar.',
+  },
+  {
+    q: '¿Pueden ordenar exámenes de laboratorio?',
+    a: 'Sí. Contamos con laboratorio clínico propio en la misma sede, por lo que tu médico puede ordenar y revisar tus exámenes sin que tengas que trasladarte.',
+  },
+  {
+    q: '¿Atienden control de diabetes e hipertensión?',
+    a: 'Sí. Damos seguimiento a enfermedades crónicas como diabetes, hipertensión, colesterol alto y síndrome metabólico, con apoyo de nutrición y análisis de composición corporal InBody.',
+  },
+];
+
+const faqSchema = {
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const serviceSchema = {
+  '@type': 'MedicalBusiness',
+  name: 'Médico general en Heredia — NeoMed',
+  description:
+    'Consulta de medicina general en Heredia, Costa Rica. Chequeos preventivos, control de enfermedades crónicas y medicina familiar.',
+  medicalSpecialty: 'PrimaryCare',
+  areaServed: { '@type': 'City', name: 'Heredia' },
+};
 ---
 
-<Layout title="Medicina" description="Servicios médicos integrales en NeoMed. Atención médica para toda la familia.">
+<Layout
+  title="Médico en Heredia | Consulta de medicina general — NeoMed"
+  rawTitle={true}
+  description="Médico general en Heredia, Costa Rica. Consultas, chequeos preventivos, control de diabetes e hipertensión y laboratorio clínico. Agenda tu cita al 7049-4362."
+  keywords="medico Heredia, medico general Heredia, consulta medica Heredia, clinica Heredia, doctor en Heredia, chequeo medico Heredia, medicina familiar Costa Rica"
+  breadcrumbs={[
+    { name: 'Inicio', href: '/' },
+    { name: 'Especialidades', href: '/#servicios' },
+    { name: 'Medicina', href: '/servicios/medicina' },
+  ]}
+  schema={[serviceSchema, faqSchema]}
+>
   <Header />
   
   <!-- Hero con imagen de fondo -->
@@ -49,13 +94,13 @@ const benefits = [
             </svg>
           </div>
           <h1 class="font-heading text-4xl md:text-5xl font-light text-white">
-            <span class="font-semibold" style="color: rgb(8, 140, 145);">Medicina</span>
+            <span class="font-semibold" style="color: rgb(8, 140, 145);">Médico general</span> en Heredia
           </h1>
         </div>
         
         <p class="text-lg text-white/80 font-light leading-relaxed">
-          Atención médica integral para toda la familia. Consultas, diagnósticos y 
-          tratamientos con profesionales experimentados.
+          Atención médica integral para toda la familia en el centro de Heredia. Consultas,
+          diagnósticos, chequeos preventivos y control de enfermedades crónicas.
         </p>
       </div>
     </div>
@@ -67,7 +112,7 @@ const benefits = [
       <div class="max-w-5xl mx-auto">
         <p class="text-sm font-semibold uppercase tracking-wider mb-4" style="color: rgb(6, 112, 116);">Lo que ofrecemos</p>
         <h2 class="font-heading text-3xl md:text-4xl font-light text-slate-900 mb-12">
-          Servicios de <span class="font-semibold">Medicina</span>
+          Servicios de <span class="font-semibold">Medicina General</span>
         </h2>
         
         <div class="grid sm:grid-cols-2 gap-4">
@@ -83,6 +128,32 @@ const benefits = [
       </div>
     </div>
   </section>
+
+  <!-- FAQ Section -->
+  <section class="py-20 bg-white border-t border-slate-100">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="font-heading text-3xl md:text-4xl font-light text-slate-900 mb-10 text-center">
+          Preguntas <span class="font-semibold">frecuentes</span>
+        </h2>
+        <div class="space-y-4">
+          {faqs.map((faq) => (
+            <details class="group bg-slate-50 rounded-2xl border border-slate-200 p-6">
+              <summary class="flex items-start justify-between gap-4 cursor-pointer list-none">
+                <h3 class="font-heading text-lg font-semibold text-slate-900">{faq.q}</h3>
+                <svg class="w-5 h-5 mt-1 flex-shrink-0 text-cyan-600 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </summary>
+              <p class="mt-4 text-slate-600 font-light leading-relaxed">{faq.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Ubicacion background="white" />
 
   <!-- CTA Section -->
   <section class="py-20 bg-white">

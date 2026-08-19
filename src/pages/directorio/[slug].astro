@@ -19,9 +19,34 @@ interface Props {
 }
 
 const { prof } = Astro.props;
+
+const personSchema = {
+  '@type': 'Physician',
+  name: prof.name,
+  jobTitle: prof.role,
+  description: prof.about || prof.banner,
+  image: new URL(prof.image, Astro.site ?? Astro.url).href,
+  knowsLanguage: prof.languages,
+  knowsAbout: [...prof.specialties, ...prof.procedures],
+  medicalSpecialty: prof.role,
+  areaServed: { '@type': 'City', name: 'Heredia' },
+  worksFor: { '@id': `${new URL('/', Astro.site ?? Astro.url).href.replace(/\/$/, '')}/#clinica` },
+};
 ---
 
-<Layout title={`${prof.name} - NeoMed`} description={`${prof.name} - ${prof.banner}. Profesional de salud en NeoMed Clínica Integral. Agenda tu cita.`}>
+<Layout
+  title={`${prof.name} — ${prof.role} en Heredia | NeoMed`}
+  rawTitle={true}
+  description={`${prof.name}, ${prof.role} en Heredia, Costa Rica. ${prof.banner}. Agenda tu cita en NeoMed Clínica Integral al 7049-4362.`}
+  keywords={`${prof.role} Heredia, ${prof.name}, ${prof.specialties.slice(0, 5).join(', ')}`}
+  image={prof.image}
+  breadcrumbs={[
+    { name: 'Inicio', href: '/' },
+    { name: 'Directorio', href: '/directorio' },
+    { name: prof.name, href: `/directorio/${prof.slug}` },
+  ]}
+  schema={personSchema}
+>
   <Header />
 
   <!-- Profile Hero -->

@@ -5,7 +5,16 @@ import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 ---
 
-<Layout title="Agendar Cita" description="Agenda tu cita en NeoMed. Reserva tu consulta con nuestros especialistas.">
+<Layout
+  title="Agendar Cita Médica en Heredia | NeoMed"
+  rawTitle={true}
+  description="Agenda tu cita en NeoMed Heredia: médico general, nutricionista, psicólogo, terapia física, control metabólico e InBody. Reserva en línea o al 7049-4362."
+  keywords="agendar cita medica Heredia, cita nutricionista Heredia, cita psicologo Heredia, reservar cita clinica Heredia"
+  breadcrumbs={[
+    { name: 'Inicio', href: '/' },
+    { name: 'Agendar cita', href: '/agendar' },
+  ]}
+>
   <!-- Desktop: Header normal -->
   <div class="hidden md:block">
     <Header />

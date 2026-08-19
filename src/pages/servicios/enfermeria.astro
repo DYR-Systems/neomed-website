@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import Ubicacion from '../../components/Ubicacion.astro';
 import '../../styles/global.css';
 
 const benefits = [
@@ -16,7 +17,17 @@ const benefits = [
 ];
 ---
 
-<Layout title="Enfermería" description="Servicios profesionales de enfermería en NeoMed. Cuidados personalizados con calidez humana.">
+<Layout
+  title="Enfermería en Heredia | Inyecciones, curaciones y signos vitales — NeoMed"
+  rawTitle={true}
+  description="Servicios de enfermería en Heredia: aplicación de inyecciones, curaciones, control de signos vitales y cuidados post-operatorios. Agenda al 7049-4362."
+  keywords="enfermeria Heredia, inyecciones Heredia, curaciones Heredia, enfermera a domicilio Heredia, signos vitales Heredia, cuidados de enfermeria Costa Rica"
+  breadcrumbs={[
+    { name: 'Inicio', href: '/' },
+    { name: 'Especialidades', href: '/#servicios' },
+    { name: 'Enfermería', href: '/servicios/enfermeria' },
+  ]}
+>
   <Header />
   
   <!-- Hero con imagen de fondo -->
@@ -49,12 +60,12 @@ const benefits = [
             </svg>
           </div>
           <h1 class="font-heading text-4xl md:text-5xl font-light text-white">
-            <span class="font-semibold" style="color: rgb(8, 140, 145);">Enfermería</span>
+            <span class="font-semibold" style="color: rgb(8, 140, 145);">Enfermería</span> en Heredia
           </h1>
         </div>
         
         <p class="text-lg text-white/80 font-light leading-relaxed">
-          Atención profesional de enfermería con cuidados especializados, 
+          Atención profesional de enfermería en el centro de Heredia: inyecciones, curaciones,
           administración de medicamentos y seguimiento personalizado de tu salud.
         </p>
       </div>
@@ -83,6 +94,8 @@ const benefits = [
       </div>
     </div>
   </section>
+
+  <Ubicacion background="white" />
 
   <!-- CTA Section -->
   <section class="py-20 bg-white">

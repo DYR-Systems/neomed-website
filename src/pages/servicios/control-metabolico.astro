@@ -1,0 +1,313 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Ubicacion from '../../components/Ubicacion.astro';
+import '../../styles/global.css';
+
+const includes = [
+  {
+    title: 'Valoración médica inicial',
+    text: 'Historia clínica, antecedentes familiares, medición de presión arterial y revisión de tu peso actual y objetivos.',
+  },
+  {
+    title: 'Exámenes de laboratorio',
+    text: 'Glicemia, hemoglobina glicosilada, perfil lipídico, insulina, hormonas tiroideas y más, en nuestro laboratorio clínico propio.',
+  },
+  {
+    title: 'Análisis InBody',
+    text: 'Composición corporal completa: masa muscular, porcentaje de grasa, grasa visceral, agua corporal y tasa metabólica basal.',
+  },
+  {
+    title: 'Plan nutricional personalizado',
+    text: 'Un nutricionista diseña tu plan según tus resultados, tu rutina y tus gustos. Sin dietas genéricas.',
+  },
+  {
+    title: 'Seguimiento y ajustes',
+    text: 'Citas de control con nueva medición InBody para comprobar que estás bajando grasa y conservando músculo.',
+  },
+  {
+    title: 'Apoyo multidisciplinario',
+    text: 'Acceso a psicología para el manejo de la ansiedad por comer y a terapia física para retomar la actividad de forma segura.',
+  },
+];
+
+const conditions = [
+  'Sobrepeso y obesidad',
+  'Resistencia a la insulina',
+  'Prediabetes y diabetes tipo 2',
+  'Colesterol y triglicéridos altos',
+  'Hígado graso',
+  'Síndrome metabólico',
+  'Hipotiroidismo',
+  'Efecto rebote tras dietas previas',
+];
+
+const faqs = [
+  {
+    q: '¿Qué es el control metabólico?',
+    a: 'Es un programa médico-nutricional que evalúa cómo tu cuerpo procesa la energía. Combina valoración médica, exámenes de laboratorio y análisis de composición corporal InBody para identificar la causa real del aumento de peso (resistencia a la insulina, tiroides, hábitos, estrés) y tratarla de raíz.',
+  },
+  {
+    q: '¿Cuánto peso puedo bajar y en cuánto tiempo?',
+    a: 'Una pérdida segura y sostenible ronda entre 0.5 y 1 kg por semana. Lo importante no es solo el número en la balanza: con el InBody verificamos que lo que baja sea grasa y no masa muscular.',
+  },
+  {
+    q: '¿Necesito una orden médica para entrar al programa?',
+    a: 'No. Puedes agendar directamente tu valoración inicial por WhatsApp al 7049-4362 o desde nuestra página de agendar cita.',
+  },
+  {
+    q: '¿El programa incluye medicamentos para bajar de peso?',
+    a: 'Solo si tu médico lo considera clínicamente necesario tras la valoración y los exámenes. La base del programa es la alimentación, el movimiento y el seguimiento objetivo.',
+  },
+  {
+    q: '¿Cada cuánto debo asistir a control?',
+    a: 'Generalmente cada 3 o 4 semanas al inicio, con una nueva medición InBody en cada cita para ajustar tu plan según los resultados reales.',
+  },
+];
+
+const faqSchema = {
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const serviceSchema = {
+  '@type': 'MedicalProcedure',
+  name: 'Programa de control metabólico y pérdida de peso',
+  description:
+    'Programa médico-nutricional en Heredia para bajar de peso: valoración médica, exámenes de laboratorio, análisis de composición corporal InBody, plan alimenticio personalizado y seguimiento.',
+  procedureType: 'https://schema.org/NoninvasiveProcedure',
+  bodyLocation: 'Composición corporal',
+  howPerformed:
+    'Valoración médica inicial, exámenes de laboratorio metabólicos, análisis de composición corporal InBody, plan nutricional personalizado y citas de seguimiento periódicas.',
+  availableService: ['Análisis InBody', 'Consulta nutricional', 'Laboratorio clínico'],
+};
+---
+
+<Layout
+  title="Control Metabólico en Heredia | Bajar de peso con InBody — NeoMed"
+  rawTitle={true}
+  description="Programa de control metabólico en Heredia para bajar de peso con acompañamiento médico: exámenes de laboratorio, análisis de composición corporal InBody y plan nutricional personalizado. Agenda al 7049-4362."
+  keywords="control metabolico, control metabolico Heredia, bajar de peso, bajar de peso Heredia, InBody Heredia, composicion corporal Heredia, perder peso Costa Rica, resistencia a la insulina Heredia, obesidad Heredia"
+  breadcrumbs={[
+    { name: 'Inicio', href: '/' },
+    { name: 'Especialidades', href: '/#servicios' },
+    { name: 'Control Metabólico', href: '/servicios/control-metabolico' },
+  ]}
+  schema={[serviceSchema, faqSchema]}
+>
+  <Header />
+
+  <!-- Hero -->
+  <section class="relative pt-32 pb-16 overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <div class="absolute inset-0 bg-gradient-to-b from-slate-900/90 to-slate-800/80 z-10"></div>
+      <img
+        src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=2000&q=80"
+        alt="Control metabólico y pérdida de peso en Heredia"
+        class="w-full h-full object-cover"
+      />
+    </div>
+
+    <div class="container mx-auto px-4 relative z-20">
+      <div class="max-w-4xl">
+        <a
+          href="/#servicios"
+          class="inline-flex items-center text-white/70 hover:text-white mb-8 transition-colors group"
+        >
+          <svg class="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+          </svg>
+          Servicios
+        </a>
+
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-16 h-16 rounded-2xl backdrop-blur-sm flex items-center justify-center" style="background-color: rgba(6, 112, 116, 0.2);">
+            <svg class="w-8 h-8" style="color: rgb(10, 160, 165);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12h4l3 8 4-16 3 8h4"/>
+            </svg>
+          </div>
+          <h1 class="font-heading text-4xl md:text-5xl font-light text-white">
+            <span class="font-semibold" style="color: rgb(8, 140, 145);">Control Metabólico</span> en Heredia
+          </h1>
+        </div>
+
+        <p class="text-lg text-white/80 font-light leading-relaxed">
+          Baja de peso con acompañamiento médico real. Exámenes de laboratorio, análisis de
+          composición corporal InBody y un plan nutricional hecho para tu cuerpo, no para el promedio.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Qué es -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto">
+        <p class="text-sm font-semibold uppercase tracking-wider mb-4" style="color: rgb(6, 112, 116);">Qué es</p>
+        <h2 class="font-heading text-3xl md:text-4xl font-light text-slate-900 mb-6">
+          Bajar de peso <span class="font-semibold">sin adivinar</span>
+        </h2>
+        <p class="text-lg text-slate-600 font-light leading-relaxed mb-4">
+          Si ya intentaste varias dietas y el peso siempre vuelve, el problema probablemente no
+          es la fuerza de voluntad: es que nunca se midió qué está pasando en tu metabolismo.
+        </p>
+        <p class="text-lg text-slate-600 font-light leading-relaxed">
+          El programa de control metabólico de NeoMed parte de datos: exámenes de
+          sangre, presión, hormonas y un análisis InBody que muestra exactamente cuánta grasa,
+          cuánto músculo y cuánta grasa visceral tienes. Con esa información, tu médico y tu
+          nutricionista construyen un plan que sí se puede sostener.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Qué incluye -->
+  <section class="py-20 bg-slate-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-5xl mx-auto">
+        <p class="text-sm font-semibold uppercase tracking-wider mb-4" style="color: rgb(6, 112, 116);">Lo que incluye</p>
+        <h2 class="font-heading text-3xl md:text-4xl font-light text-slate-900 mb-12">
+          El programa de <span class="font-semibold">control metabólico</span>
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          {includes.map((item) => (
+            <div class="bg-white p-8 rounded-2xl border border-slate-100 hover:shadow-md transition-shadow">
+              <h3 class="font-heading text-xl font-semibold text-slate-900 mb-3">{item.title}</h3>
+              <p class="text-slate-600 font-light leading-relaxed">{item.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- InBody -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <p class="text-sm font-semibold uppercase tracking-wider mb-4" style="color: rgb(6, 112, 116);">Tecnología</p>
+        <h2 class="font-heading text-3xl md:text-4xl font-light text-slate-900 mb-6">
+          Análisis de composición corporal <span class="font-semibold">InBody</span>
+        </h2>
+        <p class="text-lg text-slate-600 font-light leading-relaxed mb-8">
+          La balanza común solo te da un número. El InBody separa ese número en sus partes reales
+          y te permite ver el progreso que una balanza esconde: puedes pesar lo mismo y haber
+          perdido varios kilos de grasa.
+        </p>
+
+        <div class="grid sm:grid-cols-2 gap-4">
+          {[
+            'Masa muscular esquelética por segmento',
+            'Porcentaje de grasa corporal',
+            'Nivel de grasa visceral',
+            'Agua corporal total e hidratación',
+            'Tasa metabólica basal',
+            'Historial comparativo entre citas',
+            'Resultados en menos de un minuto',
+            'Prueba no invasiva y sin dolor',
+          ].map((item) => (
+            <div class="flex items-start gap-3 bg-slate-50 p-6 rounded-xl border border-slate-100">
+              <svg class="w-6 h-6 flex-shrink-0 mt-0.5" style="color: rgb(6, 112, 116);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              <span class="text-slate-700 font-light">{item}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Condiciones -->
+  <section class="py-20 bg-slate-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-5xl mx-auto">
+        <p class="text-sm font-semibold uppercase tracking-wider mb-4" style="color: rgb(6, 112, 116);">Para quién es</p>
+        <h2 class="font-heading text-3xl md:text-4xl font-light text-slate-900 mb-12">
+          Condiciones que <span class="font-semibold">acompañamos</span>
+        </h2>
+
+        <div class="grid sm:grid-cols-2 gap-4">
+          {conditions.map((condition) => (
+            <div class="flex items-start gap-3 bg-white p-6 rounded-xl border border-slate-100">
+              <svg class="w-6 h-6 flex-shrink-0 mt-0.5" style="color: rgb(6, 112, 116);" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              <span class="text-slate-700 font-light">{condition}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="font-heading text-3xl md:text-4xl font-light text-slate-900 mb-10 text-center">
+          Preguntas <span class="font-semibold">frecuentes</span>
+        </h2>
+        <div class="space-y-4">
+          {faqs.map((faq) => (
+            <details class="group bg-slate-50 rounded-2xl border border-slate-200 p-6">
+              <summary class="flex items-start justify-between gap-4 cursor-pointer list-none">
+                <h3 class="font-heading text-lg font-semibold text-slate-900">{faq.q}</h3>
+                <svg class="w-5 h-5 mt-1 flex-shrink-0 text-cyan-600 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </summary>
+              <p class="mt-4 text-slate-600 font-light leading-relaxed">{faq.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ubicación -->
+  <Ubicacion />
+
+  <!-- CTA -->
+  <section class="py-20 bg-slate-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="font-heading text-3xl md:text-4xl font-light text-slate-900 mb-6">
+          ¿Listo para <span class="font-semibold" style="color: rgb(6, 112, 116);">bajar de peso en serio</span>?
+        </h2>
+        <p class="text-lg text-slate-500 mb-8 font-light">
+          Agenda tu valoración inicial con InBody y empieza con datos, no con suposiciones.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/agendar"
+            class="inline-flex items-center justify-center gap-2 text-white px-10 py-4 rounded-full transition-all duration-300 hover:scale-105 text-lg font-medium shadow-lg"
+            style="background-color: #067074;"
+          >
+            <span>Agendar cita</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <a
+            href="https://wa.me/50670494362?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20el%20programa%20de%20control%20metab%C3%B3lico"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-2 border-2 px-10 py-4 rounded-full transition-all text-lg font-medium"
+            style="border-color: #067074; color: #067074;"
+          >
+            Consultar por WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

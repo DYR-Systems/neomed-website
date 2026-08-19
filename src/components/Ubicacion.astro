@@ -1,0 +1,74 @@
+---
+import { CLINIC } from '../data/site';
+
+interface Props {
+  /** Alterna el fondo para no chocar con la sección anterior. */
+  background?: 'white' | 'slate';
+}
+
+const { background = 'slate' } = Astro.props;
+const sectionClass = background === 'white' ? 'py-20 bg-white' : 'py-20 bg-slate-50';
+const cardClass =
+  background === 'white'
+    ? 'bg-slate-50 p-8 rounded-2xl border border-slate-200'
+    : 'bg-white p-8 rounded-2xl border border-slate-200 shadow-sm';
+---
+
+<section class={sectionClass}>
+  <div class="container mx-auto px-4">
+    <div class="max-w-5xl mx-auto">
+      <p class="text-sm font-semibold uppercase tracking-wider mb-4" style="color: rgb(6, 112, 116);">Dónde estamos</p>
+      <h2 class="font-heading text-3xl md:text-4xl font-light text-slate-900 mb-10">
+        Visítanos en <span class="font-semibold">NeoMed Clínica Integral</span>
+      </h2>
+
+      <div class="grid lg:grid-cols-2 gap-8 items-start">
+        <div class="rounded-2xl overflow-hidden shadow-xl border border-slate-200">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1992.052060810276!2d-84.11402412745329!3d9.99616115653302!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0fbe978ef7a3b%3A0x9854106fc0b6fd52!2sNeo%20Med%20Clinica%20Integral!5e0!3m2!1ses-419!2scr!4v1768845781502!5m2!1ses-419!2scr"
+            width="100%"
+            height="380"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Ubicación NeoMed"
+          ></iframe>
+        </div>
+
+        <div class={cardClass}>
+          <address class="not-italic text-slate-600 font-light leading-relaxed">
+            <p class="font-semibold text-slate-900 mb-1">Dirección</p>
+            <p class="mb-6">{CLINIC.streetAddress},<br />{CLINIC.city}, Costa Rica</p>
+
+            <p class="font-semibold text-slate-900 mb-1">Horario</p>
+            <p class="mb-1">Lunes a viernes: 8:00 a.m. – 6:00 p.m.</p>
+            <p class="mb-6">Sábados: 9:00 a.m. – 1:00 p.m.</p>
+
+            <p class="font-semibold text-slate-900 mb-1">Contacto</p>
+            <p>
+              <a href={`tel:${CLINIC.phone}`} class="hover:underline" style="color: rgb(6, 112, 116);">{CLINIC.phoneDisplay}</a>
+            </p>
+            <p class="mb-6">
+              <a href={`mailto:${CLINIC.email}`} class="hover:underline" style="color: rgb(6, 112, 116);">{CLINIC.email}</a>
+            </p>
+          </address>
+
+          <a
+            href="https://maps.google.com/?q=Neo+Med+Clinica+Integral+Heredia"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 font-medium hover:underline"
+            style="color: rgb(6, 112, 116);"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+            Cómo llegar
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -5,7 +5,16 @@ import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 ---
 
-<Layout title="Nosotros - NeoMed" description="Conoce NeoMed Clínica Integral de Salud. Nuestro equipo de profesionales comprometidos con tu bienestar y salud integral.">
+<Layout
+  title="Sobre NeoMed | Clínica integral en Heredia, Costa Rica"
+  rawTitle={true}
+  description="Conoce NeoMed, clínica integral en Heredia: nuestro equipo de médicos, nutricionistas, psicólogos y fisioterapeutas comprometidos con tu salud."
+  keywords="NeoMed Heredia, clinica integral Heredia, centro medico Heredia, equipo medico Heredia Costa Rica"
+  breadcrumbs={[
+    { name: 'Inicio', href: '/' },
+    { name: 'Nosotros', href: '/nosotros' },
+  ]}
+>
   <Header />
   
   <!-- Hero Section -->
