@@ -41,6 +41,9 @@ services:
         value: public, max-age=2592000
     routes:
       - type: redirect
+        source: /google_review
+        destination: https://search.google.com/local/writereview?placeid=ChIJO3rveOn7oI8RUv22wG8QVJg
+      - type: redirect
         source: /admin
         destination: /cms
       - type: redirect
