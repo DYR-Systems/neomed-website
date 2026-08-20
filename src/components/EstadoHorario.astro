@@ -1,0 +1,125 @@
+---
+import { OPENING_HOURS } from '../data/site';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+
+const DAY_INDEX: Record<string, number> = {
+  Sunday: 0, Monday: 1, Tuesday: 2, Wednesday: 3, Thursday: 4, Friday: 5, Saturday: 6,
+};
+
+// schedule[0] = domingo ... schedule[6] = sábado; null = cerrado
+const schedule: ({ opens: string; closes: string } | null)[] = Array(7).fill(null);
+for (const bloque of OPENING_HOURS) {
+  for (const day of bloque.days) {
+    schedule[DAY_INDEX[day]] = { opens: bloque.opens, closes: bloque.closes };
+  }
+}
+---
+
+<div
+  data-horario
+  aria-live="polite"
+  class={`horario-pill inline-flex items-center gap-2.5 rounded-full px-5 py-2.5 backdrop-blur-md opacity-0 transition-opacity duration-500 ${className}`}
+>
+  <span data-horario-dot class="h-2.5 w-2.5 rounded-full bg-amber-400 shrink-0"></span>
+  <span data-horario-texto class="text-sm md:text-base font-medium whitespace-nowrap"></span>
+</div>
+
+<script define:vars={{ schedule }}>
+  const TZ = 'America/Costa_Rica';
+  const DIAS = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+  const DIAS_EN = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+  const toMin = (hhmm) => {
+    const [h, m] = hhmm.split(':').map(Number);
+    return h * 60 + m;
+  };
+
+  const label = (hhmm) => {
+    const [h, m] = hhmm.split(':').map(Number);
+    const sufijo = h < 12 ? 'a.m.' : 'p.m.';
+    const h12 = h % 12 === 0 ? 12 : h % 12;
+    return `${h12}:${String(m).padStart(2, '0')} ${sufijo}`;
+  };
+
+  /** Hora actual en Costa Rica, sin importar la zona horaria del visitante. */
+  const horaCR = () => {
+    const partes = Object.fromEntries(
+      new Intl.DateTimeFormat('en-US', {
+        timeZone: TZ,
+        weekday: 'long',
+        hour: '2-digit',
+        minute: '2-digit',
+        hourCycle: 'h23',
+      })
+        .formatToParts(new Date())
+        .map((p) => [p.type, p.value])
+    );
+    return {
+      dia: DIAS_EN.indexOf(partes.weekday),
+      minutos: Number(partes.hour) * 60 + Number(partes.minute),
+    };
+  };
+
+  const estado = () => {
+    const { dia, minutos } = horaCR();
+    const hoy = schedule[dia];
+
+    if (hoy && minutos >= toMin(hoy.opens) && minutos < toMin(hoy.closes)) {
+      return { abierto: true, texto: `Abierto ahora · cierra ${label(hoy.closes)}` };
+    }
+
+    for (let offset = 0; offset < 8; offset++) {
+      const idx = (dia + offset) % 7;
+      const bloque = schedule[idx];
+      if (!bloque) continue;
+      if (offset === 0 && minutos >= toMin(bloque.opens)) continue;
+
+      const cuando = offset === 0 ? 'hoy' : offset === 1 ? 'mañana' : `el ${DIAS[idx]}`;
+      return { abierto: false, texto: `Cerrado ahora · abre ${cuando} ${label(bloque.opens)}` };
+    }
+
+    return { abierto: false, texto: 'Cerrado ahora' };
+  };
+
+  const pintar = () => {
+    const { abierto, texto } = estado();
+    document.querySelectorAll('[data-horario]').forEach((pill) => {
+      pill.querySelector('[data-horario-texto]').textContent = texto;
+      const dot = pill.querySelector('[data-horario-dot]');
+      dot.classList.toggle('bg-emerald-400', abierto);
+      dot.classList.toggle('bg-amber-400', !abierto);
+      dot.classList.toggle('horario-dot-live', abierto);
+      pill.classList.remove('opacity-0');
+    });
+  };
+
+  pintar();
+  setInterval(pintar, 60000);
+</script>
+
+<style>
+  .horario-pill {
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.95);
+  }
+
+  .horario-dot-live {
+    box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.6);
+    animation: horario-pulse 2s ease-out infinite;
+  }
+
+  @keyframes horario-pulse {
+    70% { box-shadow: 0 0 0 8px rgba(52, 211, 153, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .horario-dot-live { animation: none; }
+  }
+</style>

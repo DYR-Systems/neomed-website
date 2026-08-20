@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import EstadoHorario from '../components/EstadoHorario.astro';
 import { getDirectorio } from '../data/directorio';
 import { getCategorias } from '../data/examenes';
 import '../styles/global.css';
@@ -201,11 +202,15 @@ const faqSchema = {
 
         <h1 class="sr-only">NeoMed — Clínica integral en Heredia, Costa Rica</h1>
 
-        <p class="text-lg md:text-xl text-white/80 max-w-3xl mx-auto mb-10 font-light leading-relaxed animate-fade-in-delay-2">
+        <p class="text-lg md:text-xl text-white/80 max-w-3xl mx-auto mb-8 font-light leading-relaxed animate-fade-in-delay-2">
           Consulta médica, salud mental, nutrición, terapia física y más especialidades,
           con laboratorio clínico. Tu mejor opción en salud integral.
         </p>
         
+        <div class="flex justify-center mb-8 animate-fade-in-delay-2">
+          <EstadoHorario />
+        </div>
+
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-delay-3">
           <a 
             href="#servicios" 
