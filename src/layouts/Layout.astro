@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import FloatingContact from '../components/FloatingContact.astro';
 import { SITE_URL, CLINIC, clinicSchema, websiteSchema } from '../data/site';
 
 interface Breadcrumb {
@@ -160,5 +161,6 @@ const jsonLd = {
   </head>
   <body class="bg-white text-slate-900 font-sans antialiased overflow-x-hidden">
     <slot />
+    <FloatingContact />
   </body>
 </html>
