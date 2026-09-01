@@ -23,6 +23,12 @@ const { prof } = Astro.props;
 // Algunos nombres del CMS traen espacios sobrantes.
 const nombre = prof.name.replace(/\s+/g, ' ').trim();
 
+// YAML folded (>) colapsa los párrafos del textarea del CMS en saltos simples.
+const aboutParrafos = (prof.about ?? '')
+  .split(/\n+/)
+  .map((p) => p.trim())
+  .filter(Boolean);
+
 const personSchema = {
   '@type': 'Physician',
   name: nombre,
@@ -146,7 +152,11 @@ const titulo = [
                 </svg>
                 Acerca de
               </h2>
-              <p class="text-slate-600 leading-relaxed">{prof.about}</p>
+              <div class="space-y-3">
+                {aboutParrafos.map((parrafo) => (
+                  <p class="text-slate-600 leading-relaxed">{parrafo}</p>
+                ))}
+              </div>
             </div>
           )}
 
