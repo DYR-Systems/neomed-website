@@ -26,10 +26,10 @@ const categoriasMedicas = await getCategoriasMedicas();
     <!-- Subtle medical background pattern -->
     <div class="absolute inset-0 opacity-[0.06]">
       <div class="absolute top-20 left-10 w-40 h-40">
-        <img src="/neomed_icon.png" alt="" class="w-full h-full object-contain" />
+        <img src="/neomed_icon.webp" alt="" width="512" height="488" loading="lazy" decoding="async" class="w-full h-full object-contain" />
       </div>
       <div class="absolute bottom-10 right-20 w-32 h-32">
-        <img src="/neomed_icon.png" alt="" class="w-full h-full object-contain" />
+        <img src="/neomed_icon.webp" alt="" width="512" height="488" loading="lazy" decoding="async" class="w-full h-full object-contain" />
       </div>
     </div>
 
@@ -151,8 +151,10 @@ const categoriasMedicas = await getCategoriasMedicas();
               <!-- Photo -->
               <div class="w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden ring-4 ring-cyan-50 flex-shrink-0">
                 <img 
-                  src={prof.image} 
+                  src={prof.thumbImage} 
                   alt={prof.name}
+                  loading="lazy"
+                  decoding="async"
                   class="w-full h-full object-cover"
                   style={prof.imagePosition ? `object-position: 50% ${prof.imagePosition};` : ''}
                 />

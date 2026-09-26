@@ -7,6 +7,7 @@ export interface Profesional {
   banner: string;
   code: string;
   image: string;
+  thumbImage: string;
   imagePosition: string;
   location: string;
   locationDetail: string;
@@ -15,6 +16,11 @@ export interface Profesional {
   specialties: string[];
   procedures: string[];
   languages: string[];
+}
+
+/** Miniatura webp generada por scripts/optimize-images.mjs a partir de la imagen original. */
+export function thumbOf(image: string): string {
+  return image.replace(/\.(jpe?g|png|webp)$/i, '-thumb.webp');
 }
 
 export interface CategoriaMedica {
@@ -34,6 +40,7 @@ export async function getDirectorio(): Promise<Profesional[]> {
       banner: entry.data.banner,
       code: entry.data.code || '',
       image: entry.data.image,
+      thumbImage: thumbOf(entry.data.image),
       imagePosition: entry.data.imagePosition || '',
       location: entry.data.location || 'NeoMed - Consulta Principal',
       locationDetail: entry.data.locationDetail || 'Heredia, Costa Rica',

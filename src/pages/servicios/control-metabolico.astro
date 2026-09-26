@@ -117,6 +117,7 @@ const serviceSchema = {
   ]}
   schema={[serviceSchema, faqSchema]}
   pageType="MedicalWebPage"
+  preloadImage="/services/control_metabolico.webp"
 >
   <Header />
 
@@ -127,6 +128,10 @@ const serviceSchema = {
       <img
         src="/services/control_metabolico.webp"
         alt="Control metabólico y pérdida de peso en Heredia"
+        width="1086"
+        height="1448"
+        fetchpriority="high"
+        decoding="async"
         class="w-full h-full object-cover object-[center_12%]"
       />
     </div>

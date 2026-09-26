@@ -27,6 +27,12 @@ services:
       - path: /_astro/*
         name: Cache-Control
         value: public, max-age=31536000, immutable
+      - path: /fonts/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /services/*
+        name: Cache-Control
+        value: public, max-age=2592000
       - path: /facilities/*
         name: Cache-Control
         value: public, max-age=2592000
@@ -37,6 +43,36 @@ services:
         name: Cache-Control
         value: public, max-age=2592000
       - path: /medical-icons/*
+        name: Cache-Control
+        value: public, max-age=2592000
+      - path: /insurances/*
+        name: Cache-Control
+        value: public, max-age=2592000
+      - path: /og-image.jpg
+        name: Cache-Control
+        value: public, max-age=2592000
+      - path: /neomed_logo.png
+        name: Cache-Control
+        value: public, max-age=2592000
+      - path: /neomed_logo.webp
+        name: Cache-Control
+        value: public, max-age=2592000
+      - path: /neomed_icon.png
+        name: Cache-Control
+        value: public, max-age=2592000
+      - path: /neomed_icon.webp
+        name: Cache-Control
+        value: public, max-age=2592000
+      - path: /neomed_text.png
+        name: Cache-Control
+        value: public, max-age=2592000
+      - path: /neomed_text.webp
+        name: Cache-Control
+        value: public, max-age=2592000
+      - path: /favicon.png
+        name: Cache-Control
+        value: public, max-age=2592000
+      - path: /apple-touch-icon.png
         name: Cache-Control
         value: public, max-age=2592000
     routes:

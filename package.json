@@ -5,11 +5,13 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "node scripts/sync-filters.mjs && astro build",
+    "build": "node scripts/optimize-images.mjs && node scripts/sync-filters.mjs && astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "optimize-images": "node scripts/optimize-images.mjs",
     "sync-filters": "node scripts/sync-filters.mjs",
-    "seo-audit": "npm run build && node scripts/seo-audit.mjs"
+    "seo-audit": "npm run build && node scripts/seo-audit.mjs",
+    "fetch-fonts": "node scripts/fetch-fonts.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
@@ -18,6 +20,7 @@
     "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
+    "sharp": "^0.34.5",
     "xlsx": "^0.18.5"
   }
 }

@@ -62,6 +62,7 @@ const serviceSchema = {
   ]}
   schema={[serviceSchema, faqSchema]}
   pageType="MedicalWebPage"
+  preloadImage="/services/nutricion.webp"
 >
   <Header />
   
@@ -70,8 +71,12 @@ const serviceSchema = {
     <div class="absolute inset-0 z-0">
       <div class="absolute inset-0 bg-gradient-to-b from-slate-900/90 to-slate-800/80 z-10"></div>
       <img 
-        src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=2000&q=80" 
+        src="/services/nutricion.webp" 
         alt="Nutrición" 
+        width="1200"
+        height="817"
+        fetchpriority="high"
+        decoding="async"
         class="w-full h-full object-cover"
       />
     </div>

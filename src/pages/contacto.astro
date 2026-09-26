@@ -14,6 +14,7 @@ import '../styles/global.css';
     { name: 'Inicio', href: '/' },
     { name: 'Contacto', href: '/contacto' },
   ]}
+  preloadImage="/services/contacto-hero.webp"
 >
   <Header />
   
@@ -22,8 +23,12 @@ import '../styles/global.css';
     <div class="absolute inset-0 z-0">
       <div class="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-slate-800/70 to-cyan-900/60 z-10"></div>
       <img 
-        src="https://images.unsplash.com/photo-1487611459768-bd414656ea10?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+        src="/services/contacto-hero.webp" 
         alt="Contacto NeoMed" 
+        width="1600"
+        height="1067"
+        fetchpriority="high"
+        decoding="async"
         class="w-full h-full object-cover object-top"
       />
     </div>

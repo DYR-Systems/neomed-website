@@ -1,5 +1,22 @@
 @import "tailwindcss";
 
+/* Fuentes autoalojadas (scripts/fetch-fonts.mjs). Variables: cubren 300–700 en un archivo. */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('/fonts/inter-var.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('/fonts/montserrat-var.woff2') format('woff2');
+}
+
 /* Smooth scroll globally */
 html {
   scroll-behavior: smooth;
@@ -13,6 +30,9 @@ html {
   --color-secondary: #0aa0a5;
   --color-secondary-light: #6dd5d8;
   --color-secondary-dark: #067074;
+
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-heading: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
   
   /* Cyan replacements with NeoMed green */
   --color-cyan-50: #f0fcfc;

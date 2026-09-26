@@ -66,6 +66,7 @@ const serviceSchema = {
   ]}
   schema={[serviceSchema, faqSchema]}
   pageType="MedicalWebPage"
+  preloadImage="/services/psiquiatria.webp"
 >
   <Header />
 
@@ -76,6 +77,10 @@ const serviceSchema = {
       <img
         src="/services/psiquiatria.webp"
         alt="Psiquiatra de NeoMed en Heredia"
+        width="1227"
+        height="1600"
+        fetchpriority="high"
+        decoding="async"
         class="w-full h-full object-cover object-[center_20%]"
       />
     </div>
