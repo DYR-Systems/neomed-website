@@ -25,11 +25,16 @@ about: >-
 specialties:
   - "Tratamiento y Rehabilitación en Adicciones "
   - Acompañamiento terapéutico
+  - Psicología Deportiva
+  - Apoyo emocional para el adulto mayor
 procedures:
   - "Consulta Psicológica "
   - Intervención en crisis
-  - Terapia de familia
   - Atención psicológica para empresas
+  - Terapia de Pareja
+  - Terapia de Familia
+  - Terapia Grupal
+  - Acompañamiento Terapéutico
 languages:
   - Español
   - Portugués
