@@ -22,21 +22,14 @@ about: >-
   Su trayectoria también incluye más de dos décadas de experiencia en salud ocupacional, seguridad industrial, gestión de calidad y liderazgo de equipos multidisciplinarios.
 specialties:
   - Medicina General
-  - Abordaje médico integrativo
   - Medicina Biológica
-  - Terapia Neural
-  - Homeopatía
-  - Electroacupuntura
-  - Terapia Floral
   - Salud ocupacional
+  - Abordaje médico integrativo
 procedures:
-  - Consulta de Medicina General
-  - Consulta médica con enfoque integrativo
-  - Valoración integral del paciente
+  - Terapia Floral
   - Terapia Neural
-  - Electroacupuntura sin agujas
   - Homeopatía
-  - Esencias Florales
+  - Electroacupuntura sin agujas
   - Evaluación mediante Biorresonancia No Lineal (NLS) con sistemas Metatron /
     Metatron Hunter
 languages:
